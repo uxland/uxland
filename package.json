@@ -1,0 +1,30 @@
+{
+  "name": "@uxland/uxland",
+  "private": true,
+  "devDependencies": {
+    "lerna": "^3.16.4"
+  },
+  "description": "UXLand Libraries",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uxland/uxland.git"
+  },
+  "author": "UXLand <dev@uxland.es>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/uxland/uxland/issues"
+  },
+  "homepage": "https://github.com/uxland/uxland#readme",
+  "workspaces": [
+    "packages/*"
+  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "lerna run test && lerna run readme:coverage && git add ."
+    }
+  }
+}

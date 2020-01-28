@@ -1,0 +1,29 @@
+{
+  "name": "@uxland/utilities",
+  "version": "0.0.0",
+  "description": "Utilities library",
+  "author": "Alex Vizcaino <avizcaino@uxland.es>",
+  "homepage": "https://github.com/uxland/uxland/tree/master/packages/utilities#readme",
+  "license": "ISC",
+  "main": "src/index.ts",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "registry": "http://registry.npmjs.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uxland/uxland.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 0"
+  },
+  "bugs": {
+    "url": "https://github.com/uxland/uxland/issues"
+  }
+}
