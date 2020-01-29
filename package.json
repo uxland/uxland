@@ -10,6 +10,7 @@
   "main": "index.js",
   "scripts": {
     "dist": "lerna run dist",
+    "readme:coverage": "lerna run readme:coverage",
     "release": "lerna run semantic-release",
     "release:dry-run": "lerna run semantic-release:dry-run",
     "test": "lerna run test"
@@ -30,7 +31,7 @@
   "husky": {
     "hooks": {
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-commit": "lerna run test && lerna run readme:coverage && git add ."
+      "pre-commit": "yarn test && yarn readme:coverage && git add ."
     }
   },
   "dependencies": {
