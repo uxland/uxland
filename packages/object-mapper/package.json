@@ -8,10 +8,13 @@
   "main": "src/index.ts",
   "directories": {
     "lib": "lib",
-    "test": "__tests__"
+    "test": "test"
   },
   "files": [
-    "lib"
+    "lib",
+    "es",
+    "README.md",
+    "package.json"
   ],
   "publishConfig": {
     "registry": "http://registry.npmjs.org/"
