@@ -18,7 +18,7 @@ jobs:
       - name: Build
         run: yarn dist
       - name: Deploy to registry
-        run: yarn release
+        run: yarn release:dry-run
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

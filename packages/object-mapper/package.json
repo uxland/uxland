@@ -5,7 +5,9 @@
   "author": "Alex Vizcaino <avizcaino@uxland.es>",
   "homepage": "https://github.com/uxland/uxland/tree/master/packages/object-mapper#readme",
   "license": "ISC",
-  "main": "src/index.ts",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "types": "lib/index.d.ts",
   "directories": {
     "lib": "lib",
     "test": "test"
@@ -24,7 +26,7 @@
     "url": "git+https://github.com/uxland/uxland.git"
   },
   "scripts": {
-    "build:es": "tsc -p tsconfig.build.json --outDir es  ",
+    "build:es": "tsc -p tsconfig.build.json --outDir es",
     "build:cjs": "tsc -p tsconfig.build.json --outDir lib --module commonjs --declaration",
     "build": "yarn build:es && yarn build:cjs",
     "prebuild": "echo nok > .buildstatus",
@@ -32,7 +34,7 @@
     "dist": "yarn build",
     "readme:coverage": "node_modules/.bin/jest-badges-readme",
     "semantic-release": "semantic-release",
-    "semantic-release:dry-run": "semantic-release --dry",
+    "semantic-release:dry-run": "semantic-release --dry-run",
     "semantic-release:local": "yarn dist && semantic-release --no-ci --debug",
     "postsemantic-release:local": "git checkout -- package*",
     "tdd": "jest --watch --collect-coverage",

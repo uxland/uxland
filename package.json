@@ -10,7 +10,8 @@
   "main": "index.js",
   "scripts": {
     "dist": "lerna run dist",
-    "release": "lerna run semantic-release:dry-run",
+    "release": "lerna run semantic-release",
+    "release:dry-run": "lerna run semantic-release:dry-run",
     "test": "lerna run test"
   },
   "repository": {
