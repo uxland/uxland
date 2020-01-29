@@ -9,7 +9,9 @@
   "description": "UXLand Libraries",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dist": "lerna run dist",
+    "release": "lerna run semantic-release:dry-run",
+    "test": "lerna run test"
   },
   "repository": {
     "type": "git",
