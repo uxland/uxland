@@ -1,0 +1,51 @@
+{
+  "name": "@uxland/style-utilities",
+  "version": "0.0.0",
+  "description": "Style Utilities",
+  "author": "Alex Vizcaino <avizcaino@uxland.es>",
+  "homepage": "https://github.com/uxland/uxland/tree/master/packages/style-utilities#readme",
+  "license": "ISC",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "types": "lib/index.d.ts",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "files": [
+    "lib",
+    "es",
+    "README.md",
+    "package.json"
+  ],
+  "publishConfig": {
+    "registry": "http://registry.npmjs.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uxland/uxland.git"
+  },
+  "scripts": {
+    "semantic-release": "semantic-release",
+    "semantic-release:dry-run": "semantic-release --dry-run",
+    "semantic-release:local": "yarn dist && semantic-release --no-ci --debug",
+    "postsemantic-release:local": "git checkout -- package*"
+  },
+  "bugs": {
+    "url": "https://github.com/uxland/uxland/issues"
+  },
+  "dependencies": {
+    "lit-element": "^2.2.1",
+    "ramda": "^0.26.1"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-optional-chaining": "^7.8.3",
+    "@olavoparno/jest-badges-readme": "^1.4.0",
+    "@types/jest": "^25.1.0",
+    "jest": "^25.1.0",
+    "mutation-observer": "^1.0.3",
+    "semantic-release": "^17.0.0",
+    "ts-jest": "^25.0.0",
+    "typescript": "^3.7.5"
+  }
+}
