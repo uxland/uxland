@@ -52,7 +52,8 @@
     "url": "https://github.com/uxland/uxland/issues"
   },
   "dependencies": {
-    "lit-element": "^2.2.1"
+    "lit-element": "^2.2.1",
+    "ramda": "^0.26.1"
   },
   "devDependencies": {
     "@babel/plugin-proposal-optional-chaining": "^7.8.3",
