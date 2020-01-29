@@ -14,11 +14,11 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Install and test
-        run: yarn install && npx lerna run test
+        run: yarn install
       - name: Build
-        run: npx lerna run dist
+        run: lerna run dist
       - name: Deploy to registry
-        run: npx lerna run semantic-release:dry-run
+        run: lerna run semantic-release:dry-run
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
