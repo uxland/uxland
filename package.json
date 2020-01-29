@@ -4,6 +4,7 @@
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^8.3.4",
+    "current-git-branch": "^1.1.0",
     "lerna": "^3.16.4"
   },
   "description": "UXLand Libraries",
@@ -11,8 +12,8 @@
   "scripts": {
     "dist": "lerna run dist",
     "readme:coverage": "lerna run readme:coverage",
-    "release": "lerna run semantic-release",
     "release:dry-run": "lerna run semantic-release:dry-run",
+    "release": "node scripts/publish.js",
     "test": "lerna run test"
   },
   "repository": {
