@@ -6,6 +6,9 @@ module.exports = {
     '^.+\\\\node_modules\\\\.*?\\\\es\\\\.*?\\\\*?.js$': 'ts-jest',
     '^.+\\node_modules\\.*?\\es\\.*?\\*?.js$': 'ts-jest',
     '^.+/node_modules/.*?/es/.*?/*?.js$': 'ts-jest',
+    '^.+\\\\packages\\\\.*?\\\\src\\\\.*?\\\\*?.ts$': 'ts-jest',
+    '^.+\\packages\\.*?\\src\\.*?\\*?.ts$': 'ts-jest',
+    '^.+/packages/.*?/src/.*?/*?.ts$': 'ts-jest',
     '^.+\\.ts$': 'ts-jest',
     '^.+.ts$': 'ts-jest'
   },
@@ -23,5 +26,5 @@ module.exports = {
         plugins: ['@babel/plugin-proposal-optional-chaining']
       }
     }
-  }
+  },
 };

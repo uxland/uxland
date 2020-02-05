@@ -14,7 +14,7 @@
     "readme:coverage": "lerna run readme:coverage",
     "release:dry-run": "lerna run semantic-release:dry-run",
     "release": "node scripts/publish.js",
-    "test": "lerna run build && lerna run test"
+    "test": "lerna run test"
   },
   "repository": {
     "type": "git",

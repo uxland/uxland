@@ -19,7 +19,8 @@
     "lib": ["es2018", "dom"],
     "baseUrl": ".",
     "paths": {
-      "tslib": ["node_modules/tslib/tslib.d.ts"]
+      "tslib": ["node_modules/tslib/tslib.d.ts"],
+      "@uxland/*": ["packages/*/src"],
     }
   },
   "include": ["packages/**/*.d.ts", "src/**/*", "test/**/*"],
