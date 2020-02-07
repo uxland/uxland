@@ -5,7 +5,7 @@ import { serialize as serializeSet } from '../../src/serialize-set';
 import * as generators from './data/generators';
 
 describe('Benchmarks', () => {
-  it('Benchmark: object serialization uxl-object-mapper vs json-object-mapper', () => {
+  it('Benchmark: object serialization object-mapper vs json-object-mapper', () => {
     /* PREVALIDATION */
     const input = generators.input(100, 0);
     const output = generators.output(100, 0);

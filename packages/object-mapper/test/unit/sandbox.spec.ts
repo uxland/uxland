@@ -38,7 +38,7 @@ describe('Sandbox', () => {
     const serializers: any = [{ from: 'foo', to: 'FOO', serializerFn: SAPBooleanSerializer }];
     expect(serialize(input, serializers)).toStrictEqual(output);
   });
-  it('Massive object serialization: uxl-object-mapper vs json-object-mapper', () => {
+  it('Massive object serialization: object-mapper vs json-object-mapper', () => {
     const nTests: number = 50;
     let results = {
       uxl: [],

@@ -8,8 +8,8 @@
   "directories": {},
   "files": [
     "src/flex-layout-styles.scss",
-    "src/uxl-units-styles.scss",
-    "src/uxl-mediaqueries-styles.scss",
+    "src/units-styles.scss",
+    "src/mediaqueries-styles.scss",
     "src/animations.scss"
   ],
   "publishConfig": {

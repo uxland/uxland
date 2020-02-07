@@ -11,18 +11,18 @@ Add import statement to SCSS style file
 Example:
 
 ```
-@import "@uxland/uxl-style-utilities/flex-layout-styles"
-@import "@uxland/uxl-style-utilities/uxl-units-styles"
-@import "@uxland/uxl-style-utilities/uxl-mediaqueries-styles"
+@import "@uxland/style-utilities/flex-layout-styles"
+@import "@uxland/style-utilities/units-styles"
+@import "@uxland/style-utilities/mediaqueries-styles"
 ```
 
-### Available `uxl-style-utilities` files:
+### Available `style-utilities` files:
 
 `flex-layout-styles`: Flex layout
 
-`uxl-units-styles`: Custom UXL units
+`units-styles`: Custom UXL units
 
-`uxl-mediaqueries-styles`: Custom UXL Media queries
+`mediaqueries-styles`: Custom UXL Media queries
 
 #### UXL Media Queries
 

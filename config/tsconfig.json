@@ -20,9 +20,9 @@
     "baseUrl": ".",
     "paths": {
       "tslib": ["node_modules/tslib/tslib.d.ts"],
-      "@uxland/*": ["packages/*/src"],
+      "@uxland/*": ["../packages/*/src"]
     }
   },
-  "include": ["packages/**/*.d.ts", "src/**/*", "test/**/*"],
+  "include": ["../packages/**/*.d.ts", "src/**/*", "test/**/*"],
   "exclude": ["node_modules", "es"]
 }

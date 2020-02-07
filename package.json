@@ -10,6 +10,9 @@
   "description": "UXLand Libraries",
   "main": "index.js",
   "scripts": {
+    "deps:clean": "rimraf node_modules yarn.lock packages/**/node_modules",
+    "deps:install": "yarn install",
+    "deps:refresh": "yarn deps:clean && yarn deps:install",
     "dist": "lerna run dist",
     "readme:coverage": "lerna run readme:coverage",
     "release:dry-run": "lerna run semantic-release:dry-run",

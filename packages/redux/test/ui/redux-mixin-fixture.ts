@@ -9,7 +9,7 @@ const middlewares = [];
 const mockStore = configureStore(middlewares)();
 import * as sinon from "sinon";
 import {customElement, property, query} from "lit-element";
-import {MixinFunction} from "@uxland/uxl-utilities/types";
+import {MixinFunction} from "@uxland/utilities/types";
 
 const fixtureElementName = "redux-mixin-fixture";
 const defaultComponentName = "custom-element";
