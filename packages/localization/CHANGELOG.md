@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.1](https://github.com/uxland/uxland/compare/@uxland/localization@1.0.0-alpha.0...@uxland/localization@1.0.0-alpha.1) (2020-02-10)
+
+
+### Bug Fixes
+
+* update lit-redux-connect dependency version ([27aa10c](https://github.com/uxland/uxland/commit/27aa10cb503666ef4dfc869796e45755366db3c5))
+
+
+
+
+
 # 1.0.0-alpha.0 (2020-02-10)
 
 

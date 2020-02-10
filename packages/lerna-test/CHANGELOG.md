@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.1.0-alpha.1](https://github.com/uxland/uxland/compare/@uxland/lerna-test@0.1.0-alpha.0...@uxland/lerna-test@0.1.0-alpha.1) (2020-02-10)
+
+
+### Bug Fixes
+
+* update lerna-test test script ([f127448](https://github.com/uxland/uxland/commit/f127448ff065235a803f70deaf64e19c7ad67db0))
+
+
+
+
+
 # 0.1.0-alpha.0 (2020-02-10)
 
 
