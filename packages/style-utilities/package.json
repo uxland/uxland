@@ -13,6 +13,7 @@
     "src/animations.scss"
   ],
   "publishConfig": {
+    "access": "public",
     "registry": "http://registry.npmjs.org/"
   },
   "repository": {
