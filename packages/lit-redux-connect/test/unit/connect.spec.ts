@@ -41,14 +41,14 @@ describe('connect mixin test suite', () => {
   afterEach(() => {
     //propertySelector.mockReset();
   });
-  it('properties should be set when the component is created', async () => {
-    // TODO: must prepare testing
+  it('properties should be set when the component is created', () => {
+    //TODO: must define test
+    expect(true).toBeTruthy();
     // let componentName = createDefaultComponent();
     // const component = mount(`<${componentName}></${componentName}>`).node;
     // await delay();
     // expect(propertySelector).toBeCalledTimes(1);
     // await component.updateComplete;
     // expect(component.header.innerText).toBe('Hello from redux state');
-    expect(true).toBeTruthy();
   });
 });

@@ -1,7 +1,5 @@
-import { IRegionHost } from '../../src';
-import { regionFactory } from '../../src';
-import { RegionAdapterRegistry } from '../../src';
 import { when } from 'jest-when';
+import { IRegionHost, RegionAdapterRegistry, regionFactory } from '../../src';
 const regionName = 'region';
 
 describe('when invoking `regionFactory` method', () => {
@@ -9,7 +7,7 @@ describe('when invoking `regionFactory` method', () => {
     jest.resetAllMocks();
     jest.restoreAllMocks();
   });
-  it('should create a new Region and add it to the regionManager', async () => {
+  it('should create a new Region and add it to the regionManager', async done => {
     let regionManager: any = { add: jest.fn() };
     let adapter = {};
     let registry = new RegionAdapterRegistry();
@@ -31,8 +29,9 @@ describe('when invoking `regionFactory` method', () => {
     expect(region.adapter).toBe(adapter);
     expect(adapterFactory).toBeCalledWith(regionDefinition, target);
     expect(regionManager.add).toBeCalledWith(regionName, region);
+    done();
   });
-  it('should create a new RegionManager if scoped and add region to the scoped RegionManager', async () => {
+  it('should create a new RegionManager if scoped and add region to the scoped RegionManager', async done => {
     let scopedRegionManager = { add: jest.fn() };
     let regionManager: any = { createRegionManager: jest.fn().mockReturnValue(scopedRegionManager) };
     let adapter = {};
@@ -50,6 +49,7 @@ describe('when invoking `regionFactory` method', () => {
     let region = await regionFactory(regionDefinition, host, regionManager, registry);
     expect(region.regionManager).toBe(scopedRegionManager);
     expect(scopedRegionManager.add).toBeCalledWith(regionName, region);
+    done();
   });
   /* it('should raise error if no adapter factory for host', () => {
     let regionManager: any = {};
