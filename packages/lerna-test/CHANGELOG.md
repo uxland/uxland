@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.1-alpha.0](https://github.com/uxland/uxland/compare/@uxland/lerna-test@0.0.1-alpha.0...@uxland/lerna-test@0.0.1-alpha.0) (2020-02-10)
+
+
+### Bug Fixes
+
+* add public access to publishConfig ([07caa42](https://github.com/uxland/uxland/commit/07caa42556c0b6726cc5034ad62389728ad17616))
+* rollback package ([5f2faaa](https://github.com/uxland/uxland/commit/5f2faaaa244b5da3a0df7013fcb48f951f1b24f5))
+
+
+
+
+
 ## [0.0.1-alpha.0](https://github.com/uxland/uxland/compare/@uxland/lerna-test@0.1.0-alpha.0...@uxland/lerna-test@0.0.1-alpha.0) (2020-02-10)
 
 
