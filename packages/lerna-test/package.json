@@ -1,0 +1,29 @@
+{
+  "name": "@uxland/lerna-test",
+  "version": "1.0.0",
+  "description": "> TODO: description",
+  "author": "Alex Vizcaino <avizcaino@uxland.es>",
+  "homepage": "https://github.com/uxland/uxland/tree/master/packages/lerna-test#readme",
+  "license": "ISC",
+  "main": "lib/lerna-test.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "registry": "http://registry.npmjs.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uxland/uxland.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/uxland/uxland/issues"
+  }
+}
