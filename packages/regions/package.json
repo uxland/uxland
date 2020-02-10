@@ -29,6 +29,7 @@
     "build:es": "tsc -p tsconfig.build.json --outDir es",
     "build:cjs": "tsc -p tsconfig.build.json --outDir lib --module commonjs --declaration",
     "build": "yarn build:es && yarn build:cjs",
+    "build:test": "echo nok > .buildstatus && yarn type-check && echo ok > .buildstatus",
     "prebuild": "echo nok > .buildstatus",
     "postbuild": "echo ok > .buildstatus",
     "dist": "yarn build",

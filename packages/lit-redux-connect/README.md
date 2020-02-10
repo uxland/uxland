@@ -4,7 +4,7 @@ Offers a connect mixin and a watch decorator to connect a redux store to lit-ele
 
 | Build Status                                    | Statements                                    | Branches                                  | Functions                                   | Lines                               |
 | ----------------------------------------------- | --------------------------------------------- | ----------------------------------------- | ------------------------------------------- | ----------------------------------- |
-| ![BuildStatus](#buildstatus# 'Building Status') | ![Statements](https://img.shields.io/badge/Coverage-Unknown%25-brightgreen.svg 'Make me better!') | ![Branches](https://img.shields.io/badge/Coverage-Unknown%25-brightgreen.svg 'Make me better!') | ![Functions](https://img.shields.io/badge/Coverage-Unknown%25-brightgreen.svg 'Make me better!') | ![Lines](https://img.shields.io/badge/Coverage-Unknown%25-brightgreen.svg 'Make me better!') |
+| ![BuildStatus](https://img.shields.io/badge/Build-Passing-brightgreen.svg 'Building Status') | ![Statements](https://img.shields.io/badge/Coverage-Unknown%25-brightgreen.svg 'Make me better!') | ![Branches](https://img.shields.io/badge/Coverage-Unknown%25-brightgreen.svg 'Make me better!') | ![Functions](https://img.shields.io/badge/Coverage-Unknown%25-brightgreen.svg 'Make me better!') | ![Lines](https://img.shields.io/badge/Coverage-Unknown%25-brightgreen.svg 'Make me better!') |
 
 ## Installation
 
