@@ -54,7 +54,7 @@
     "url": "https://github.com/uxland/uxland/issues"
   },
   "dependencies": {
-    "@uxland/lit-redux-connect": "^0.0.0",
+    "@uxland/lit-redux-connect": "^2.0.0-alpha.0",
     "@uxland/redux": "^1.0.0-alpha.0",
     "@uxland/utilities": "^1.0.0-alpha.0",
     "lit-element": "^2.2.1",
