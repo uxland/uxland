@@ -1,4 +1,4 @@
-import { connect, ConnectMixin, ConnectMixinConstructor, watch } from '@uxland/lit-redux-connect';
+import { connect, ConnectMixin, ConnectMixinConstructor, ConnectMixinFunction, watch } from '@uxland/lit-redux-connect';
 import { dedupingMixin, MixinFunction } from '@uxland/utilities';
 import { property } from 'lit-element/lib/decorators';
 import { LitElement, notEqual, PropertyValues } from 'lit-element/lit-element';
@@ -24,12 +24,10 @@ export interface RoutingMixinConstructor<TParams = any> extends ConnectMixinCons
 
 export type RoutingMixinFunction<TParams = any> = MixinFunction<RoutingMixinConstructor<TParams>>;
 
-export const routingMixin: <TParams>(store: Store<any, any>, selectors: RoutingSelectors) => RoutingMixinFunction = <
-  TParams
->(
-  store,
-  selectors
-) =>
+export const routingMixin: <TParams>(
+  store: Store<any, any> | ConnectMixinFunction,
+  selectors: RoutingSelectors
+) => RoutingMixinFunction = <TParams>(store, selectors) =>
   dedupingMixin((superClass: ConnectMixinConstructor) => {
     const watchOptions = { store };
     class RoutingMixinClass extends connect(store)(superClass) implements RoutingMixin<TParams> {

@@ -1,4 +1,4 @@
-# UXL Utilities [![npm version](https://badge.fury.io/js/%40uxland%2Futilities.svg)](https://badge.fury.io/js/%40uxland%2Futilities)
+# UXL Routing [![npm version](https://badge.fury.io/js/%40uxland%2Frouting.svg)](https://badge.fury.io/js/%40uxland%2Frouting)
 
 | Build Status                                    | Statements                                    | Branches                                  | Functions                                   | Lines                               |
 | ----------------------------------------------- | --------------------------------------------- | ----------------------------------------- | ------------------------------------------- | ----------------------------------- |
@@ -6,6 +6,6 @@
 
 ## Installation
 
-`npm i @uxland/utilities`
+`npm i @uxland/routing`
 
 ## Usage

@@ -25,3 +25,4 @@ export * from './nop';
 export * from './properties-observer';
 export * from './types';
 export * from './async-queue';
+export * from './settings';

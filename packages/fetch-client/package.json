@@ -57,6 +57,7 @@
     "@olavoparno/jest-badges-readme": "^1.4.0",
     "@types/jest": "^25.1.0",
     "jest": "^25.1.0",
+    "jsdom": "^16.1.0",
     "mutation-observer": "^1.0.3",
     "raf": "^3.4.1",
     "semantic-release": "^17.0.0",

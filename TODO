@@ -1,0 +1,13 @@
+Testing
+[] UI
+[] lit-redux-connect
+
+CI/CD
+[] pre-commit script only for main branches [master/alpha/beta/next]
+
+READMEs
+[] Main README
+[] Packages specific README
+
+Config
+[] Common unit `setup`
