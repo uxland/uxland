@@ -13,12 +13,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - name: Install and test
-        run: yarn install && yarn test
-      - name: Build
-        run: yarn dist
-      - name: Deploy to registry
-        run: yarn release
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      run: echo TBD
+      # - name: Install and test
+      #   run: yarn install && yarn test
+      # - name: Build
+      #   run: yarn dist
+      # - name: Deploy to registry
+      #   run: yarn release
+      #   env:
+      #     GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      #     NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
