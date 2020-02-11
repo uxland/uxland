@@ -13,7 +13,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      run: echo TBD
       # - name: Install and test
       #   run: yarn install && yarn test
       # - name: Build
