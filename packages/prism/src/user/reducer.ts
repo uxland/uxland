@@ -1,4 +1,5 @@
 import { Action, AsyncState, createAsyncActions } from '@uxland/redux';
+import * as R from 'ramda';
 import { actionsBuilder } from '../constants';
 export type ModuleType = 'remote' | 'local' | 'demo';
 export interface ModuleInfo {
@@ -19,6 +20,7 @@ export interface UserState<T extends UserInfo> extends AsyncState<T> {
 }
 export const FETCH_USER_ACTION = actionsBuilder('fetch-user');
 export const LOGIN_USER_ACTION = actionsBuilder('login-user');
+export const SET_MODULES = actionsBuilder('set-modules');
 const FETCH_ACTIONS = createAsyncActions(FETCH_USER_ACTION);
 const LOGIN_ACTIONS = createAsyncActions(LOGIN_USER_ACTION);
 const getLoginActionMessage = (error: any) => {
@@ -49,22 +51,25 @@ export const reducer: (state: UserState<any>, action: Action) => UserState<any> 
   switch (action.type) {
     case FETCH_ACTIONS.started:
     case LOGIN_ACTIONS.started:
-      return { ...defaultUserState, isFetching: true };
+      return { ...state, isFetching: true };
     case FETCH_ACTIONS.failed:
-      return { ...defaultUserState };
+      return { ...state };
     case LOGIN_ACTIONS.failed:
       return {
-        ...defaultUserState,
+        ...state,
         error: true,
         errorDescription: getLoginActionMessage(action.payload),
         exceptions: [...[action.payload]]
       };
     case LOGIN_ACTIONS.succeeded:
     case FETCH_ACTIONS.succeeded:
-      return { ...defaultUserState, state: action.payload, isLoggedIn: true };
+      return { ...state, state: action.payload, isLoggedIn: true };
     case FETCH_ACTIONS.ended:
     case LOGIN_ACTIONS.ended:
       return { ...state, elapsed: action.elapsed };
+    case SET_MODULES:
+      const modulesLens = R.lensPath(['state', 'modules']);
+      return R.set(modulesLens, action.payload, state);
     default:
       return state;
   }
