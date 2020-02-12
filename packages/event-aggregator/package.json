@@ -1,6 +1,6 @@
 {
   "name": "@uxland/event-aggregator",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0-alpha.2",
   "description": "Event Aggregator",
   "author": "Alex Vizcaino <avizcaino@uxland.es>",
   "homepage": "https://github.com/uxland/uxland/tree/master/packages/event-aggregator#readme",
@@ -66,7 +66,7 @@
     "typescript": "^3.7.5"
   },
   "dependencies": {
-    "@uxland/utilities": "^1.0.0-alpha.1",
+    "@uxland/utilities": "^1.0.0-alpha.2",
     "lit-element": "^2.2.1"
   }
 }

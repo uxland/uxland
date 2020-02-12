@@ -1,6 +1,6 @@
 {
   "name": "@uxland/regions-bkp",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0-alpha.2",
   "description": "Region manager",
   "author": "Alex Vizcaino <avizcaino@uxland.es>",
   "homepage": "https://github.com/uxland/uxland/tree/master/packages/regions#readme",
@@ -54,7 +54,7 @@
     "url": "https://github.com/uxland/uxland/issues"
   },
   "dependencies": {
-    "@uxland/utilities": "^1.0.0-alpha.1",
+    "@uxland/utilities": "^1.0.0-alpha.2",
     "lit-element": "^2.2.1",
     "ramda": "^0.27.0"
   },
