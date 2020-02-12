@@ -48,7 +48,7 @@ export abstract class PrismAppBase extends Redux(LitElement) {
   loggedIn: boolean;
   @watch(appInitializedSelector)
   initialized: boolean;
-  protected get currentView(): string {
+  public get currentView(): string {
     let view: MainViewType = !this.initialized ? 'splash' : this.loggedIn ? 'shell' : 'login';
     if (view !== this._currentView) this._currentView = view;
     setView(view);
