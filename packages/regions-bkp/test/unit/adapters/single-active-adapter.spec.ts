@@ -1,4 +1,4 @@
-import { nop } from '@uxland/utilities';
+import { nop } from '@uxland/functional';
 import { SingleActiveAdapter } from '../../../src';
 
 describe('Given an instance of SingleActiveAdapter class', () => {

@@ -1,4 +1,4 @@
-import { nop } from '@uxland/utilities';
+import { nop } from '@uxland/functional';
 import { SelectableAdapter } from '../../../src';
 
 describe('When instantiating SelectableAdapter class', () => {
