@@ -1,6 +1,6 @@
 {
   "name": "@uxland/regions",
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.0-alpha.3",
   "description": "Region manager",
   "author": "Alex Vizcaino <avizcaino@uxland.es>",
   "homepage": "https://github.com/uxland/uxland/tree/master/packages/regions#readme",
@@ -54,8 +54,8 @@
     "url": "https://github.com/uxland/uxland/issues"
   },
   "dependencies": {
-    "@uxland/functional": "^1.0.0-alpha.1",
-    "@uxland/utilities": "^1.0.0-alpha.2",
+    "@uxland/functional": "^1.0.0-alpha.2",
+    "@uxland/utilities": "^1.0.0-alpha.3",
     "lit-element": "^2.2.1",
     "ramda": "^0.27.0"
   },
