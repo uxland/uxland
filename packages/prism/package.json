@@ -1,6 +1,6 @@
 {
   "name": "@uxland/prism",
-  "version": "1.0.0-alpha.6",
+  "version": "1.0.0-alpha.7",
   "description": "Prism library",
   "author": "Alex Vizcaino <avizcaino@uxland.es>",
   "homepage": "https://github.com/uxland/uxland/tree/master/packages/prism#readme",
@@ -59,7 +59,7 @@
     "@uxland/lit-redux-connect": "^2.0.0-alpha.4",
     "@uxland/localization": "^1.0.0-alpha.5",
     "@uxland/redux": "^1.0.0-alpha.4",
-    "@uxland/regions": "^1.0.0-alpha.5",
+    "@uxland/regions": "^1.0.0-alpha.6",
     "@uxland/routing": "^1.0.0-alpha.5",
     "@uxland/utilities": "^1.0.0-alpha.3",
     "lit-element": "^2.2.1",

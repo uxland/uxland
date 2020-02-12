@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.6](https://github.com/uxland/uxland/compare/@uxland/regions@1.0.0-alpha.5...@uxland/regions@1.0.0-alpha.6) (2020-02-12)
+
+
+### Bug Fixes
+
+* correct multipleAdapterFactory typo ([600f2e2](https://github.com/uxland/uxland/commit/600f2e29c3ed3cb79f591657f459eae6e4f1add2))
+* corrects bug in test ([7fe4512](https://github.com/uxland/uxland/commit/7fe4512626c1aabb4c3c509c90a88a99b3231875))
+
+
+
+
+
 # [1.0.0-alpha.5](https://github.com/uxland/uxland/compare/@uxland/regions@1.0.0-alpha.4...@uxland/regions@1.0.0-alpha.5) (2020-02-12)
 
 
