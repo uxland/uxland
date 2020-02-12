@@ -69,6 +69,7 @@
     "typescript": "^3.7.5"
   },
   "dependencies": {
+    "@uxland/functional": "^1.0.0-alpha.2",
     "@uxland/utilities": "^1.0.0-alpha.3",
     "lit-element": "^2.2.1",
     "ramda": "^0.27.0",
