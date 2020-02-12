@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.1](https://github.com/uxland/uxland/compare/@uxland/redux@1.0.0-alpha.0...@uxland/redux@1.0.0-alpha.1) (2020-02-12)
+
+
+### Bug Fixes
+
+* refactored imports from utilities by functional ([21e56e1](https://github.com/uxland/uxland/commit/21e56e1160b66ee91fcb8c5db60af6512481ad0e))
+
+
+
+
+
 # 1.0.0-alpha.0 (2020-02-10)
 
 

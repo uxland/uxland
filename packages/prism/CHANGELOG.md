@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.2](https://github.com/uxland/uxland/compare/@uxland/prism@1.0.0-alpha.1...@uxland/prism@1.0.0-alpha.2) (2020-02-12)
+
+
+### Bug Fixes
+
+* make currentView public ([0f05ce3](https://github.com/uxland/uxland/commit/0f05ce3b800b41311aeb780e18a318e663f16190))
+
+
+### Features
+
+* set-modules action ([d1842dc](https://github.com/uxland/uxland/commit/d1842dcefcbe48458721c222b365becf7b5f022a))
+
+
+
+
+
 # [1.0.0-alpha.1](https://github.com/uxland/uxland/compare/@uxland/prism@1.0.0-alpha.0...@uxland/prism@1.0.0-alpha.1) (2020-02-10)
 
 
