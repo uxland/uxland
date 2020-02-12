@@ -1,4 +1,4 @@
-import { isNotNil } from '@uxland/utilities';
+import { isNotNil } from '@uxland/functional';
 import { addDays, addHours, addMinutes, addSeconds, isBefore, isValid } from 'date-fns';
 import { allPass, always, both, cond, either, equals, isNil, propEq, T } from 'ramda';
 import { AsyncState, getDefaultState } from './create-async-reducer';

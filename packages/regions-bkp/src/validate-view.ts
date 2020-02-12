@@ -1,4 +1,4 @@
-import { invariant } from '@uxland/utilities';
+import { invariant } from '@uxland/functional';
 import { ViewDefinition } from "./view-definition";
 const isDomElement = (element: HTMLElement) => typeof HTMLElement === 'object' ?
     element instanceof HTMLElement :

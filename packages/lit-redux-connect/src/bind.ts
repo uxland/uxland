@@ -1,4 +1,5 @@
-import { Debouncer, nop, timeOut } from '@uxland/utilities';
+import { Debouncer, timeOut } from '@uxland/utilities';
+import {nop} from '@uxland/functional'
 import { LitElement } from 'lit-element';
 import { filter, hasIn, map, pipe, propEq, reject, uniq, values } from 'ramda';
 import { Store, Unsubscribe } from 'redux';

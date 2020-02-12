@@ -1,4 +1,4 @@
-import { isNotNil, toPath } from '@uxland/utilities';
+import { isNotNil, toPath } from '@uxland/functional';
 import { allPass, difference, pathSatisfies, propSatisfies } from 'ramda';
 import { Dispatch } from 'redux';
 import { clean } from './helpers/clean';
