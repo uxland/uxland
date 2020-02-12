@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.5](https://github.com/uxland/uxland/compare/@uxland/regions@1.0.0-alpha.4...@uxland/regions@1.0.0-alpha.5) (2020-02-12)
+
+
+### Bug Fixes
+
+* add region functionalities ([42c9a53](https://github.com/uxland/uxland/commit/42c9a5369edba3b744c0a4aa8e4d0d2acb9842ed))
+
+
+
+
+
 # [1.0.0-alpha.4](https://github.com/uxland/uxland/compare/@uxland/regions@1.0.0-alpha.3...@uxland/regions@1.0.0-alpha.4) (2020-02-12)
 
 

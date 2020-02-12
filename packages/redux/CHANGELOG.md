@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.4](https://github.com/uxland/uxland/compare/@uxland/redux@1.0.0-alpha.3...@uxland/redux@1.0.0-alpha.4) (2020-02-12)
+
+
+### Bug Fixes
+
+* add @uxland/functional dependency ([0d7731b](https://github.com/uxland/uxland/commit/0d7731b317b1305eb12824db090f5c585d980543))
+
+
+
+
+
 # [1.0.0-alpha.3](https://github.com/uxland/uxland/compare/@uxland/redux@1.0.0-alpha.2...@uxland/redux@1.0.0-alpha.3) (2020-02-12)
 
 **Note:** Version bump only for package @uxland/redux

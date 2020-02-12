@@ -1,6 +1,6 @@
 {
   "name": "@uxland/localization",
-  "version": "1.0.0-alpha.4",
+  "version": "1.0.0-alpha.5",
   "description": "Localization",
   "author": "Alex Vizcaino <avizcaino@uxland.es>",
   "homepage": "https://github.com/uxland/uxland/tree/master/packages/localization#readme",
@@ -68,8 +68,8 @@
     "typescript": "^3.7.5"
   },
   "dependencies": {
-    "@uxland/lit-redux-connect": "^2.0.0-alpha.3",
-    "@uxland/redux": "^1.0.0-alpha.3",
+    "@uxland/lit-redux-connect": "^2.0.0-alpha.4",
+    "@uxland/redux": "^1.0.0-alpha.4",
     "@uxland/utilities": "^1.0.0-alpha.3",
     "intl-messageformat": "^7.8.4",
     "lit-element": "^2.2.1",
