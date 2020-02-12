@@ -1,4 +1,4 @@
-import { invariant } from '@uxland/functional';
+import { invariant } from '@uxland/utilities';
 import { IRegion } from './region';
 import { ViewDefinition } from './view-definition';
 
@@ -26,7 +26,7 @@ class Registry {
     this.regions = {};
   }
 }
-const regionRegistry = new Registry();
+const viewRegistry = new Registry();
 
 export interface IRegionManager {
   add(name: string, region: IRegion): IRegionManager;
@@ -57,7 +57,7 @@ export class RegionManager implements IRegionManager {
     //this.assertRegionCanBeAdded(name)
     invariant(!this.getRegion(name), 'A region with the same name already exists');
     this._regions[name] = region;
-    regionRegistry.registerRegion(name, region);
+    viewRegistry.registerRegion(name, region);
     return this;
   }
 
@@ -80,7 +80,7 @@ export class RegionManager implements IRegionManager {
         delete this._regions[regionName];
       }
     }
-    if (regionName && result) regionRegistry.unregisterRegion(regionName, result);
+    if (regionName && result) viewRegistry.unregisterRegion(regionName, result);
     return result;
   }
 
@@ -96,13 +96,13 @@ export class RegionManager implements IRegionManager {
     key: string,
     view: T
   ): IRegionManager {
-    regionRegistry.registerView(regionName, key, view);
-    regionRegistry.getRegionsByName(regionName).forEach(r => r.addView(key, view));
+    viewRegistry.registerView(regionName, key, view);
+    viewRegistry.getRegionsByName(regionName).forEach(r => r.addView(key, view));
     return this;
   }
 
   getRegisteredViews(regionName: string): { key: string; view: ViewDefinition }[] {
-    return regionRegistry.getRegisteredViews(regionName);
+    return viewRegistry.getRegisteredViews(regionName);
   }
 
   clear(): IRegionManager {
@@ -118,7 +118,7 @@ export class RegionManager implements IRegionManager {
 class MainRegionManager extends RegionManager {
   clear() {
     super.clear();
-    regionRegistry.clear();
+    viewRegistry.clear();
     return this;
   }
 }
