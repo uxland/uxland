@@ -79,7 +79,7 @@ describe('Given an instance of Region', () => {
     });
     it('should deactivate it', () => {
       let region = regionFactory();
-      let view = { htmlTag: 'div' };
+      let view = { factory: jest.fn() };
       region['views'] = { [mockViewName]: view };
       let spy = jest.spyOn(region, 'deactivate');
       region.removeView(mockViewName);
@@ -87,7 +87,7 @@ describe('Given an instance of Region', () => {
     });
     it('should remove it', async done => {
       let region = regionFactory();
-      let view = { htmlTag: 'div' };
+      let view = { factory: jest.fn() };
       region['views'] = { [mockViewName]: view };
       let spy = jest.spyOn(region, 'remove');
       await region.removeView(mockViewName);
