@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.7](https://github.com/uxland/uxland/compare/@uxland/regions@1.0.0-alpha.6...@uxland/regions@1.0.0-alpha.7) (2020-02-13)
+
+
+### Bug Fixes
+
+* add npmignore ([7620743](https://github.com/uxland/uxland/commit/76207431d17cff75307526f3be340addb44864c2))
+* make region props protected ([8dc9bd1](https://github.com/uxland/uxland/commit/8dc9bd1ee0d51c049c5f29114b75a7682faa72c4))
+
+
+
+
+
 # [1.0.0-alpha.6](https://github.com/uxland/uxland/compare/@uxland/regions@1.0.0-alpha.5...@uxland/regions@1.0.0-alpha.6) (2020-02-12)
 
 
