@@ -56,10 +56,10 @@ export interface IRegion<T = any> {
 }
 
 export class Region<T> implements IRegion<T> {
-  private views: { [key: string]: ViewDefinition<T> } = {};
-  private activeViews: ViewDefinition<T>[] = [];
+  protected views: { [key: string]: ViewDefinition<T> } = {};
+  protected activeViews: ViewDefinition<T>[] = [];
+  protected components = new WeakMap<ViewDefinition<T>, HTMLElement & ViewComponent<T>>();
 
-  private components = new WeakMap<ViewDefinition<T>, HTMLElement & ViewComponent<T>>();
   constructor(
     public name: string,
     public regionManager: IRegionManager,
