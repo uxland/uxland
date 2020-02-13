@@ -17,7 +17,7 @@
     "build": "lerna run build",
     "readme:coverage": "lerna run readme:coverage",
     "release:dry-run": "lerna run semantic-release:dry-run",
-    "release": "yarn build && yarn readme:coverage && node scripts/publish.js",
+    "release": "yarn build && yarn test && yarn readme:coverage && node scripts/publish.js",
     "test": "lerna run test",
     "build:test": "lerna run build:test",
     "precommit": "yarn test && yarn build:test && yarn readme:coverage && git add ."
