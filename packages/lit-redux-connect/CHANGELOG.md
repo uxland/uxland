@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.5](https://github.com/uxland/uxland/compare/@uxland/lit-redux-connect@2.0.0-alpha.4...@uxland/lit-redux-connect@2.0.0-alpha.5) (2020-02-13)
+
+
+### Bug Fixes
+
+* update package.json of packages ([c7da4cc](https://github.com/uxland/uxland/commit/c7da4cc392a63bd25bc74c6c5b327eaa03034640))
+
+
+
+
+
 # [2.0.0-alpha.4](https://github.com/uxland/uxland/compare/@uxland/lit-redux-connect@2.0.0-alpha.3...@uxland/lit-redux-connect@2.0.0-alpha.4) (2020-02-12)
 
 

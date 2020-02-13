@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.8](https://github.com/uxland/uxland/compare/@uxland/regions@1.0.0-alpha.7...@uxland/regions@1.0.0-alpha.8) (2020-02-13)
+
+
+### Bug Fixes
+
+* update package.json of packages ([c7da4cc](https://github.com/uxland/uxland/commit/c7da4cc392a63bd25bc74c6c5b327eaa03034640))
+
+
+
+
+
 # [1.0.0-alpha.7](https://github.com/uxland/uxland/compare/@uxland/regions@1.0.0-alpha.6...@uxland/regions@1.0.0-alpha.7) (2020-02-13)
 
 

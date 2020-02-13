@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.1.0-alpha.4](https://github.com/uxland/uxland/compare/@uxland/lerna-test@0.1.0-alpha.3...@uxland/lerna-test@0.1.0-alpha.4) (2020-02-13)
+
+
+### Bug Fixes
+
+* update package.json of packages ([c7da4cc](https://github.com/uxland/uxland/commit/c7da4cc392a63bd25bc74c6c5b327eaa03034640))
+
+
+
+
+
 # [0.1.0-alpha.3](https://github.com/uxland/uxland/compare/@uxland/lerna-test@0.1.0-alpha.2...@uxland/lerna-test@0.1.0-alpha.3) (2020-02-12)
 
 **Note:** Version bump only for package @uxland/lerna-test
