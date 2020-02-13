@@ -13,6 +13,7 @@
     "test": "test"
   },
   "files": [
+    "src",
     "lib",
     "es",
     "README.md",
@@ -33,7 +34,6 @@
     "build:test": "echo nok > .buildstatus && yarn type-check && echo ok > .buildstatus",
     "prebuild": "echo nok > .buildstatus",
     "postbuild": "echo ok > .buildstatus",
-    "dist": "yarn build",
     "readme:coverage": "node_modules/.bin/jest-badges-readme",
     "semantic-release": "semantic-release",
     "semantic-release:dry-run": "semantic-release --dry-run",

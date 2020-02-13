@@ -7,6 +7,7 @@
   "license": "ISC",
   "directories": {},
   "files": [
+    "src",
     "src/flex-layout-styles.scss",
     "src/units-styles.scss",
     "src/mediaqueries-styles.scss",
