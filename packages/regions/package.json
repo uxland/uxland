@@ -8,6 +8,7 @@
   "main": "src/index.ts",
   "module": "es/index.js",
   "types": "lib/index.d.ts",
+  "type": "module",
   "directories": {
     "lib": "lib",
     "test": "test"
@@ -53,14 +54,18 @@
   "bugs": {
     "url": "https://github.com/uxland/uxland/issues"
   },
-  "dependencies": {
-  },
   "devDependencies": {
+    "@babel/core": "^7.8.4",
+    "@babel/preset-env": "^7.8.4",
     "@babel/plugin-proposal-optional-chaining": "^7.8.3",
     "@olavoparno/jest-badges-readme": "^1.4.0",
     "@types/cucumber": "^6.0.1",
     "@types/jest": "^25.1.0",
+    "babel-jest": "^25.1.0",
+    "cucumber": "^6.0.5",
+    "esm": "^3.2.25",
     "jest": "^25.1.0",
+    "jest-cucumber": "^2.0.11",
     "jest-when": "^2.7.0",
     "mutation-observer": "^1.0.3",
     "semantic-release": "^17.0.0",
