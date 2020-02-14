@@ -5,16 +5,20 @@
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^8.3.4",
     "current-git-branch": "^1.1.0",
-    "lerna": "^3.16.4"
+    "husky": "^4.2.1",
+    "jsdoc": "^3.6.3",
+    "lerna": "^3.16.4",
+    "minami": "^1.2.3"
   },
   "description": "UXLand Libraries",
   "main": "index.js",
   "scripts": {
+    "build:clean": "rimraf packages/**/lib packages/**/es",
+    "build": "lerna run build",
     "deps:clean": "rimraf node_modules yarn.lock packages/**/node_modules",
     "deps:install": "yarn install",
     "deps:refresh": "yarn deps:clean && yarn deps:install",
-    "build:clean": "rimraf packages/**/lib packages/**/es",
-    "build": "lerna run build",
+    "jsdoc": "rimraf docs && jsdoc -r ./packages/**/src -c ./config/.jsdoc.json",
     "readme:coverage": "lerna run readme:coverage",
     "release:dry-run": "lerna run semantic-release:dry-run",
     "release": "yarn build && yarn test && yarn readme:coverage && node scripts/publish.js",
@@ -40,8 +44,5 @@
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
       "pre-commit": "node ./scripts/pre-commit.js"
     }
-  },
-  "dependencies": {
-    "husky": "^4.2.1"
   }
 }
