@@ -20,24 +20,28 @@
  * AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
+import { allPass } from 'ramda';
+import { isNotEmpty } from './is-not-empty';
+import { isNotNil } from './is-not-nil';
 
 /**
- * Check if condition is fulfilled, otherwise throws supplied message error
+ * Checks wether input is not null nor empty
  * @function
- * @memberof FunctionalUtilities
+ * @memberof FunctionalUtilities.Ramda
  * @since v1.0.0
- * @param {(*|function)} condition Condition that must be complied
- * @param {string=} message Message error to be thrown in case condition is not fulfilled
- * @returns {void|never}
- * @throws Will throw an error with the message supplied if condition is not fulfilled.
+ * @param {*} input Input to check emptiness or nullity
+ * @returns {boolean}
  * @example
  *
- * invariant(R.is('number')(3), 'Supplied value is not a number'); //=> undefined
- * invariant(R.is('number')('3'), 'Supplied value is not a number'); //=> 'Supplied value is not a number'
+ * isNotNullNeitherEmpty(undefined) //=> false
+ * isNotNullNeitherEmpty(1) //=> true
+ * isNotNullNeitherEmpty("1") //=> true
+ * isNotNullNeitherEmpty("") //=> false
+ * isNotNullNeitherEmpty([]) //=> false
+ * isNotNullNeitherEmpty(["foo"]) //=> true
+ * isNotNullNeitherEmpty({}) //=> false
+ * isNotNullNeitherEmpty({"foo":"bar"}) //=> true
  *
  */
-const invariant = (condition, message) => {
-  condition = typeof condition === 'function' ? condition() : condition;
-  if (!condition) throw new Error(message);
-};
-export default invariant;
+const isNotNullNeitherEmpty = allPass([isNotNil, isNotEmpty]);
+export default isNotNullNeitherEmpty;

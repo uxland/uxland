@@ -20,24 +20,26 @@
  * AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
+import { isNil, reject } from 'ramda';
 
 /**
- * Check if condition is fulfilled, otherwise throws supplied message error
+ * Filters out input null or undefined values/items
  * @function
- * @memberof FunctionalUtilities
+ * @memberof FunctionalUtilities.Ramda
  * @since v1.0.0
- * @param {(*|function)} condition Condition that must be complied
- * @param {string=} message Message error to be thrown in case condition is not fulfilled
- * @returns {void|never}
- * @throws Will throw an error with the message supplied if condition is not fulfilled.
+ * @param {!(*|*[])} input Input to filter empty or null values/items
+ * @returns {*|void}
  * @example
  *
- * invariant(R.is('number')(3), 'Supplied value is not a number'); //=> undefined
- * invariant(R.is('number')('3'), 'Supplied value is not a number'); //=> 'Supplied value is not a number'
+ * rejectNil(1) //=>
+ * rejectNil("1") //=> 1
+ * rejectNil("") //=>
+ * rejectNil([]) //=>
+ * rejectNil(["foo"]) //=> foo
+ * rejectNil(["foo","",{},{"foo":"bar"}]) //=> foo,,[object Object],[object Object]
+ * rejectNil({}) //=> [object Object]
+ * rejectNil({"foo":"bar"}) //=> [object Object]
  *
  */
-const invariant = (condition, message) => {
-  condition = typeof condition === 'function' ? condition() : condition;
-  if (!condition) throw new Error(message);
-};
-export default invariant;
+const rejectNil = reject(isNil);
+export default rejectNil;

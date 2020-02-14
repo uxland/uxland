@@ -20,24 +20,25 @@
  * AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
+import { isEmpty, reject } from 'ramda';
 
 /**
- * Check if condition is fulfilled, otherwise throws supplied message error
+ * Filters out input of empty values/items
  * @function
- * @memberof FunctionalUtilities
+ * @memberof FunctionalUtilities.Ramda
  * @since v1.0.0
- * @param {(*|function)} condition Condition that must be complied
- * @param {string=} message Message error to be thrown in case condition is not fulfilled
- * @returns {void|never}
- * @throws Will throw an error with the message supplied if condition is not fulfilled.
+ * @param {!(*|*[])} input Input to filter empty values/items
+ * @returns {*|void}
  * @example
  *
- * invariant(R.is('number')(3), 'Supplied value is not a number'); //=> undefined
- * invariant(R.is('number')('3'), 'Supplied value is not a number'); //=> 'Supplied value is not a number'
+ * rejectEmpty(1) //=>
+ * rejectEmpty("1") //=> 1
+ * rejectEmpty("") //=>
+ * rejectEmpty([]) //=>
+ * rejectEmpty(["foo","",{},{"foo":"bar"}]) //=> foo,[object Object]
+ * rejectEmpty({}) //=> [object Object]
+ * rejectEmpty({"foo":"bar"}) //=> [object Object]
  *
  */
-const invariant = (condition, message) => {
-  condition = typeof condition === 'function' ? condition() : condition;
-  if (!condition) throw new Error(message);
-};
-export default invariant;
+const rejectEmpty = reject(isEmpty);
+export default rejectEmpty;

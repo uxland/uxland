@@ -25,7 +25,7 @@
  * Defines an empty function
  * @function
  * @memberof FunctionalUtilities
- * @since 1.0.0
+ * @since v1.0.0
  * @returns {void}
  * @example
  *

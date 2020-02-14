@@ -1,30 +1,26 @@
 module.exports = {
   testEnvironment: 'node',
-  setupFilesAfterEnv: ['./test/unit/setup.ts'],
+  setupFilesAfterEnv: ['./test/unit/setup.js'],
   transformIgnorePatterns: [],
   transform: {
-    '^.+\\\\node_modules\\\\.*?\\\\es\\\\.*?\\\\*?.js$': 'ts-jest',
-    '^.+\\node_modules\\.*?\\es\\.*?\\*?.js$': 'ts-jest',
-    '^.+/node_modules/.*?/es/.*?/*?.js$': 'ts-jest',
-    '^.+\\\\packages\\\\.*?\\\\src\\\\.*?\\\\*?.ts$': 'ts-jest',
-    '^.+\\packages\\.*?\\src\\.*?\\*?.ts$': 'ts-jest',
-    '^.+/packages/.*?/src/.*?/*?.ts$': 'ts-jest',
-    '^.+\\.ts$': 'ts-jest',
-    '^.+.ts$': 'ts-jest'
+    '^.+\\\\node_modules\\\\.*?\\\\es\\\\.*?\\\\*?.js$': 'babel-jest',
+    '^.+\\node_modules\\.*?\\es\\.*?\\*?.js$': 'babel-jest',
+    '^.+/node_modules/.*?/es/.*?/*?.js$': 'babel-jest',
+    '^.+\\\\packages\\\\.*?\\\\src\\\\.*?\\\\*?.js$': 'babel-jest',
+    '^.+\\packages\\.*?\\src\\.*?\\*?.js$': 'babel-jest',
+    '^.+/packages/.*?/src/.*?/*?.js$': 'babel-jest',
+    '^.+\\.js$': 'babel-jest',
+    '^.+.js$': 'babel-jest'
   },
-  testPathIgnorePatterns: [
-    '/node_modules/',
-    '<rootDir>/test/unit/benchmark.spec.ts',
-    '<rootDir>/test/unit/sandbox.spec.ts'
-  ],
+  testPathIgnorePatterns: ['/node_modules/'],
   coverageReporters: ['json-summary', 'text', 'lcov'],
   collectCoverage: true,
   globals: {
-    'ts-jest': {
+    'babel-jest': {
       babelConfig: {
         comments: false,
         plugins: ['@babel/plugin-proposal-optional-chaining']
       }
     }
-  },
+  }
 };

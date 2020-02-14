@@ -24,3 +24,4 @@
 /** @namespace FunctionalUtilities */
 export * from './invariant';
 export * from './nop';
+export * from './ramda';

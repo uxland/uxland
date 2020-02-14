@@ -44,19 +44,23 @@
     "test:ui:watch": "nodemon --watch test --watch src -x \"polymer test --config-file wct.config.json\"",
     "test:ui": "polymer test --config-file wct.config.json",
     "test:unit": "jest --collect-coverage",
-    "test": "yarn test:unit"
+    "test": "yarn test:unit",
+    "jsdoc": "rimraf docs && jsdoc -r ./src -c jsdoc.conf.js"
   },
   "bugs": {
     "url": "https://github.com/uxland/uxland/issues"
   },
   "devDependencies": {
     "@babel/plugin-proposal-optional-chaining": "^7.8.3",
+    "@babel/preset-env": "^7.8.4",
     "@jesterxl/hm-doc": "^1.2.1",
     "@olavoparno/jest-badges-readme": "^1.4.0",
     "@types/jest": "^25.1.0",
     "@types/ramda": "^0.26.41",
+    "babel-jest": "^25.1.0",
     "cross-env": "^7.0.0",
     "jest": "^25.1.0",
+    "jsdoc": "^3.6.3",
     "jsdom": "^16.1.0",
     "mutation-observer": "^1.0.3",
     "npm-run-all": "^4.1.5",

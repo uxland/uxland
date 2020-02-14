@@ -20,24 +20,25 @@
  * AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
+import { reduce } from 'ramda';
+
+// export const toDictionaryBy: <T = any>(key: string) => (items: T[]) => {[key: string]: T} = key =>  reduce((acc, elem) => acc[elem[key]] = elem, {});
 
 /**
- * Check if condition is fulfilled, otherwise throws supplied message error
+ * Converts an array to dictionary using provided key as reference
  * @function
- * @memberof FunctionalUtilities
+ * @memberof FunctionalUtilities.Ramda
  * @since v1.0.0
- * @param {(*|function)} condition Condition that must be complied
- * @param {string=} message Message error to be thrown in case condition is not fulfilled
- * @returns {void|never}
+ * @param {string} key Message error to be thrown in case condition is not fulfilled
+ * @returns {T}
  * @throws Will throw an error with the message supplied if condition is not fulfilled.
  * @example
  *
- * invariant(R.is('number')(3), 'Supplied value is not a number'); //=> undefined
- * invariant(R.is('number')('3'), 'Supplied value is not a number'); //=> 'Supplied value is not a number'
+ * toDictionaryBy('id')([{id: 1, description: 'foo'}, {id: 2, description: 'bar'}]) //=> {1: {}}
  *
  */
-const invariant = (condition, message) => {
-  condition = typeof condition === 'function' ? condition() : condition;
-  if (!condition) throw new Error(message);
-};
-export default invariant;
+const toDictionaryBy = key => items => reduce((acc, elem) => (acc[elem[key]] = elem), {})(items);
+export default toDictionaryBy;
+
+// export const toDictionaryBy: <T = any>(key: string) => (items: T[]) => { [key: string]: T } = key =>
+//   reduce((acc, elem) => (acc[elem[key]] = elem), {});

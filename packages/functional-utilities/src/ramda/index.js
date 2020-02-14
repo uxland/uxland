@@ -21,23 +21,16 @@
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-/**
- * Check if condition is fulfilled, otherwise throws supplied message error
- * @function
- * @memberof FunctionalUtilities
- * @since v1.0.0
- * @param {(*|function)} condition Condition that must be complied
- * @param {string=} message Message error to be thrown in case condition is not fulfilled
- * @returns {void|never}
- * @throws Will throw an error with the message supplied if condition is not fulfilled.
- * @example
- *
- * invariant(R.is('number')(3), 'Supplied value is not a number'); //=> undefined
- * invariant(R.is('number')('3'), 'Supplied value is not a number'); //=> 'Supplied value is not a number'
- *
- */
-const invariant = (condition, message) => {
-  condition = typeof condition === 'function' ? condition() : condition;
-  if (!condition) throw new Error(message);
-};
-export default invariant;
+/** @namespace FunctionalUtilities.Ramda */
+export * from './id';
+export * from './id-eq';
+export * from './is-not-empty';
+export * from './is-not-nil';
+export * from './is-not-nil-neither-empty';
+export * from './is-null-or-empty';
+export * from './reject-empty';
+export * from './reject-nil';
+export * from './reject-nil-or-empty';
+export * from './to-dictionary';
+export * from './to-dictionary-by';
+export * from './to-path';

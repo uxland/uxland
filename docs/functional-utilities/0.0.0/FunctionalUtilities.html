@@ -24,7 +24,7 @@
 <label for="nav-trigger" class="overlay"></label>
 
 <nav>
-    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Namespaces</li><li class="nav-heading"><span class="nav-item-type type-namespace">N</span><span class="nav-item-name"><a href="FunctionalUtilities.html">FunctionalUtilities</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="FunctionalUtilities.html#.invariant">invariant</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="FunctionalUtilities.html#.nop">nop</a></span></li><li class="nav-heading"><a href="global.html">Globals</a></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#idEq">idEq</a></span></li>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Namespaces</li><li class="nav-heading"><span class="nav-item-type type-namespace">N</span><span class="nav-item-name"><a href="FunctionalUtilities.html">FunctionalUtilities</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="FunctionalUtilities.html#.invariant">invariant</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="FunctionalUtilities.html#.nop">nop</a></span></li><li class="nav-heading"><span class="nav-item-type type-namespace">N</span><span class="nav-item-name"><a href="FunctionalUtilities.Ramda.html">Ramda</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="FunctionalUtilities.Ramda.html#.exports.rejectEmpty">exports.rejectEmpty</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="FunctionalUtilities.Ramda.html#.id">id</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="FunctionalUtilities.Ramda.html#.idEq">idEq</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="FunctionalUtilities.Ramda.html#.isNotEmpty">isNotEmpty</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="FunctionalUtilities.Ramda.html#.isNotNil">isNotNil</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="FunctionalUtilities.Ramda.html#.isNotNullNeitherEmpty">isNotNullNeitherEmpty</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="FunctionalUtilities.Ramda.html#.isNullOrEmpty">isNullOrEmpty</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="FunctionalUtilities.Ramda.html#.toDictionary">toDictionary</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="FunctionalUtilities.Ramda.html#.toDictionaryBy">toDictionaryBy</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="FunctionalUtilities.Ramda.html#.toPath">toPath</a></span></li><li class="nav-heading">Interfaces</li><li class="nav-heading"><span class="nav-item-type type-interface">I</span><span class="nav-item-name"><a href="Entity.html">Entity</a></span></li>
 </nav>
 
 <div id="main">
@@ -110,6 +110,13 @@
      
 
     
+        <h3 class="subsection-title">Namespaces</h3>
+
+        <dl>
+            <dt><a href="FunctionalUtilities.Ramda.html">Ramda</a></dt>
+            <dd></dd>
+        </dl>
+    
 
     
 
@@ -122,11 +129,15 @@
 
     
 
-    <h4 class="name" id=".invariant"><span class="type-signature">(static) </span>invariant<span class="signature">(condition, message<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {void}</span></h4>
+    <h4 class="name" id=".invariant"><span class="type-signature">(static) </span>invariant<span class="signature">(condition, message<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {void|never}</span></h4>
 
     
 
 
+
+<div class="description">
+    <p>Check if condition is fulfilled, otherwise throws supplied message error</p>
+</div>
 
 
 
@@ -138,7 +149,7 @@
 
     
     <dt class="tag-since">Since:</dt>
-    <dd class="tag-since"><ul class="dummy"><li>1.0.0</li></ul></dd>
+    <dd class="tag-since"><ul class="dummy"><li>v1.0.0</li></ul></dd>
     
 
     
@@ -323,6 +334,9 @@
     <dd>
         
 <span class="param-type"><code>void</code></span>
+|
+
+<span class="param-type"><code>never</code></span>
 
 
     </dd>
@@ -369,7 +383,7 @@ invariant(R.is('number')('3'), 'Supplied value is not a number'); //=> 'Supplied
 
     
     <dt class="tag-since">Since:</dt>
-    <dd class="tag-since"><ul class="dummy"><li>1.0.0</li></ul></dd>
+    <dd class="tag-since"><ul class="dummy"><li>v1.0.0</li></ul></dd>
     
 
     
@@ -395,7 +409,7 @@ invariant(R.is('number')('3'), 'Supplied value is not a number'); //=> 'Supplied
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="nop.js.html">nop.js</a>, <a href="nop.js.html#line35">line 35</a>
+        <a href="nop.js.html">nop.js</a>, <a href="nop.js.html#line34">line 34</a>
     </li></ul></dd>
     
 
@@ -452,7 +466,7 @@ invariant(R.is('number')('3'), 'Supplied value is not a number'); //=> 'Supplied
 <div class="section-examples">
 <h5>Example</h5>
 
-    <pre class="prettyprint"><code>nop() // undefined</code></pre>
+    <pre class="prettyprint"><code>nop() //=> undefined</code></pre>
 
 </div>
 
@@ -475,7 +489,7 @@ invariant(R.is('number')('3'), 'Supplied value is not a number'); //=> 'Supplied
 <br class="clear">
 
 <footer>
-    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on Fri Feb 14 2020 12:45:48 GMT+0100 (Hora estàndard del Centre d’Europa) using the Minami theme.
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on Fri Feb 14 2020 17:10:15 GMT+0100 (GMT+01:00) using the Minami theme.
 </footer>
 
 <script>prettyPrint();</script>

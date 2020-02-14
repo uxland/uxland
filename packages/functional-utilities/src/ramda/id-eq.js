@@ -21,17 +21,19 @@
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 import { propEq } from 'ramda';
-import nop from '../nop';
 
 /**
  * Checks if property is 'id'
  * @function
- * @memberof FunctionalUtilities
- * @since 1.0.0
+ * @memberof FunctionalUtilities.Ramda
+ * @since v1.0.0
+ * @param {string} key Property to be checked
  * @returns {void}
  * @example
  *
- *  nop() //=> undefined
+ * idEq('id') //=> true
+ * idEq('foo') //=> false
  */
-export const idEq = propEq('id');
-const a = () => nop;
+
+const idEq = propEq('id');
+export default idEq;

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Home - Documentation</title>
+    <title>ramda/to-path.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,52 +29,59 @@
 
 <div id="main">
     
+    <h1 class="page-title">ramda/to-path.js</h1>
+    
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*
+ * MIT License
+ *
+ * Copyright (c) 2020 UXLand
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of
+ * this software and associated documentation files (the "Software"), to deal in
+ * the Software without restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the
+ * Software, and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+ * FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+ * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN
+ * AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH
+ * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+import { is, split, when } from 'ramda';
 
+const pathSplit = split('.');
 
-
-
-
-
-
-
-
-    
-
-
-    <section class="readme">
-        <article><h1>UXL Functional <a href="https://badge.fury.io/js/%40uxland%2Ffunctional"><img src="https://badge.fury.io/js/%40uxland%2Ffunctional.svg" alt="npm version"></a></h1>
-<table>
-<thead>
-<tr>
-<th>Build Status</th>
-<th>Statements</th>
-<th>Branches</th>
-<th>Functions</th>
-<th>Lines</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><img src="#buildstatus#" alt="BuildStatus" title="Building Status"></td>
-<td><img src="#statements#" alt="Statements" title="Make me better!"></td>
-<td><img src="#branches#" alt="Branches" title="Make me better!"></td>
-<td><img src="#functions#" alt="Functions" title="Make me better!"></td>
-<td><img src="#lines#" alt="Lines" title="Make me better!"></td>
-</tr>
-</tbody>
-</table>
-<h2>Installation</h2>
-<p><code>npm i @uxland/functional</code></p>
-<h2>Usage</h2></article>
+/**
+ * Splits path by '.' into a string array
+ * @function
+ * @memberof FunctionalUtilities.Ramda
+ * @since v1.0.0
+ * @param {(string|Path)} path
+ * @returns {string[]}
+ * @example
+ *
+ * toPath('foo.bar') => ['foo', 'bar']
+ * toPath(3) => undefined
+ */
+const toPath = when(is(String), pathSplit);
+export default toPath;
+</code></pre>
+        </article>
     </section>
-
-
 
 
 

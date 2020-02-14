@@ -20,24 +20,32 @@
  * AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
+import { toDictionaryBy } from './to-dictionary-by';
+
+/**
+ * Entity interface
+ * @interface Entity
+ */
+/**
+ * Entity id
+ * @name Entity#id
+ * @constant
+ * @type string
+ */
 
 /**
  * Check if condition is fulfilled, otherwise throws supplied message error
  * @function
- * @memberof FunctionalUtilities
+ * @memberof FunctionalUtilities.Ramda
  * @since v1.0.0
- * @param {(*|function)} condition Condition that must be complied
- * @param {string=} message Message error to be thrown in case condition is not fulfilled
- * @returns {void|never}
+ * @param {T[]} items Items to be converted into dictionary
+ * @returns {Entity}
  * @throws Will throw an error with the message supplied if condition is not fulfilled.
+ * @see FunctionalUtilities.toDictionaryBy
  * @example
  *
- * invariant(R.is('number')(3), 'Supplied value is not a number'); //=> undefined
- * invariant(R.is('number')('3'), 'Supplied value is not a number'); //=> 'Supplied value is not a number'
+ * toDictionary([{id: 1, foo: 'bar'}, {id: 2, foo: 'bar'}]) //=> {1: {foo: 'bar'}, 2: {foo: 'bar'}}
  *
  */
-const invariant = (condition, message) => {
-  condition = typeof condition === 'function' ? condition() : condition;
-  if (!condition) throw new Error(message);
-};
-export default invariant;
+const toDictionary = toDictionaryBy('id');
+export default toDictionary;

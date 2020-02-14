@@ -1,4 +1,4 @@
-# UXL Functional [![npm version](https://badge.fury.io/js/%40uxland%2Ffunctional.svg)](https://badge.fury.io/js/%40uxland%2Ffunctional)
+# UXL Functional Utilities [![npm version](https://badge.fury.io/js/%40uxland%2Ffunctional-utilities.svg)](https://badge.fury.io/js/%40uxland%2Ffunctional-utilities)
 
 | Build Status                                    | Statements                                    | Branches                                  | Functions                                   | Lines                               |
 | ----------------------------------------------- | --------------------------------------------- | ----------------------------------------- | ------------------------------------------- | ----------------------------------- |
@@ -6,6 +6,6 @@
 
 ## Installation
 
-`npm i @uxland/functional`
+`npm i @uxland/functional-utilities`
 
 ## Usage

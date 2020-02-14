@@ -8,7 +8,8 @@
     "husky": "^4.2.1",
     "jsdoc": "^3.6.3",
     "lerna": "^3.16.4",
-    "minami": "^1.2.3"
+    "minami": "^1.2.3",
+    "ncp": "^2.0.0"
   },
   "description": "UXLand Libraries",
   "main": "index.js",
@@ -18,7 +19,9 @@
     "deps:clean": "rimraf node_modules yarn.lock packages/**/node_modules",
     "deps:install": "yarn install",
     "deps:refresh": "yarn deps:clean && yarn deps:install",
-    "jsdoc": "rimraf docs && jsdoc -r ./packages/**/src -c ./config/.jsdoc.json",
+    "jsdoc": "lerna run jsdoc",
+    "prejsdoc": "rimraf docs",
+    "postjsdoc": "ncp packages/**/docs/@uxland/ docs",
     "readme:coverage": "lerna run readme:coverage",
     "release:dry-run": "lerna run semantic-release:dry-run",
     "release": "yarn build && yarn test && yarn readme:coverage && node scripts/publish.js",
