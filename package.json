@@ -23,9 +23,7 @@
     "packages/*"
   ],
   "husky": {
-    "hooks": {
-      "pre-commit": "lerna run test && lerna run readme:coverage && git add ."
-    }
+    "hooks": {}
   },
   "dependencies": {
     "husky": "^4.2.1"
