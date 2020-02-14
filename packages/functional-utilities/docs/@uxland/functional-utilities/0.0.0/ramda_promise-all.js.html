@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>ramda/to-dictionary-by.js - Documentation</title>
+    <title>ramda/promise-all.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,7 +29,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">ramda/to-dictionary-by.js</h1>
+    <h1 class="page-title">ramda/promise-all.js</h1>
     
 
     
@@ -61,28 +61,36 @@
  * AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-import { reduce } from 'ramda';
-
-// export const toDictionaryBy: &lt;T = any>(key: string) => (items: T[]) => {[key: string]: T} = key =>  reduce((acc, elem) => acc[elem[key]] = elem, {});
+import { bind } from 'ramda';
 
 /**
- * Converts an array to dictionary using provided key as reference
+ * Resolves Promise.all
  * @function
  * @memberof FunctionalUtilities.Ramda
  * @since v1.0.0
- * @param {string} key Message error to be thrown in case condition is not fulfilled
- * @returns {T}
- * @throws Will throw an error with the message supplied if condition is not fulfilled.
+ * @param {Array.Promise} promises Array of promises to be resolved
+ * @returns {Array}
  * @example
  *
- * toDictionaryBy('id')([{id: 1, description: 'foo'}, {id: 2, description: 'bar'}]) //=> {1: {}}
+ * TBD
  *
  */
-const toDictionaryBy = key => items => reduce((acc, elem) => (acc[elem[key]] = elem), {})(items);
-export default toDictionaryBy;
+const promiseAll = bind(Promise.all, Promise);
 
-// export const toDictionaryBy: &lt;T = any>(key: string) => (items: T[]) => { [key: string]: T } = key =>
-//   reduce((acc, elem) => (acc[elem[key]] = elem), {});
+/**
+ * Resolves a promse
+ * @function
+ * @memberof FunctionalUtilities.Ramda
+ * @since v1.0.0
+ * @param {Promise} promise Promise to be resolved
+ * @returns {*}
+ * @example
+ *
+ * TBD
+ *
+ */
+const resolve = bind(Promise.resolve, Promise);
+export default { promiseAll, resolve };
 </code></pre>
         </article>
     </section>

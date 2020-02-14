@@ -20,18 +20,33 @@
  * AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
+import { bind } from 'ramda';
 
-/** @namespace FunctionalUtilities.Ramda */
-export * from './id';
-export * from './id-eq';
-export * from './is-not-empty';
-export * from './is-not-nil';
-export * from './is-not-nil-neither-empty';
-export * from './is-null-or-empty';
-export * from './promise-all';
-export * from './reject-empty';
-export * from './reject-nil';
-export * from './reject-nil-or-empty';
-export * from './to-dictionary';
-export * from './to-dictionary-by';
-export * from './to-path';
+/**
+ * Resolves Promise.all
+ * @function
+ * @memberof FunctionalUtilities.Ramda
+ * @since v1.0.0
+ * @param {Array.Promise} promises Array of promises to be resolved
+ * @returns {Array}
+ * @example
+ *
+ * TBD
+ *
+ */
+const promiseAll = bind(Promise.all, Promise);
+
+/**
+ * Resolves a promse
+ * @function
+ * @memberof FunctionalUtilities.Ramda
+ * @since v1.0.0
+ * @param {Promise} promise Promise to be resolved
+ * @returns {*}
+ * @example
+ *
+ * TBD
+ *
+ */
+const resolve = bind(Promise.resolve, Promise);
+export default { promiseAll, resolve };
