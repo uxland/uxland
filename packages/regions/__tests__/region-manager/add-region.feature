@@ -17,7 +17,5 @@ Business Need: Adding a region to a layout
     And an invalid region
         * is an object
         * key property is not defined
-        * addView is a function
-        * removeView is a function
     When Adding the region to the region manager
     Then an error is thrown with message 'Invalid region object'
