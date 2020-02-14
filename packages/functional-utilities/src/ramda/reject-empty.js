@@ -27,7 +27,7 @@ import { isEmpty, reject } from 'ramda';
  * @function
  * @memberof FunctionalUtilities.Ramda
  * @since v1.0.0
- * @param {!(*|*[])} input Input to filter empty values/items
+ * @param {!Array} input Input to filter empty values/items
  * @returns {*|void}
  * @example
  *

@@ -28,7 +28,7 @@ import { isNullOrEmpty } from './is-null-or-empty';
  * @function
  * @memberof FunctionalUtilities.Ramda
  * @since v1.0.0
- * @param {!(*|*[])} input Input to filter empty or null values/items
+ * @param {!Array} input Input to filter empty or null values/items
  * @returns {*|void}
  * @example
  *
