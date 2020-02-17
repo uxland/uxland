@@ -23,7 +23,7 @@
 import { complement, isEmpty } from 'ramda';
 
 /**
- * Checks wether input is empty
+ * Checks whether input is empty
  * @function
  * @memberof FunctionalUtilities.Ramda
  * @since v1.0.0

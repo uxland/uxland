@@ -25,7 +25,7 @@ import { isNotEmpty } from './is-not-empty';
 import { isNotNil } from './is-not-nil';
 
 /**
- * Checks wether input is not null nor empty
+ * Checks whether input is not null nor empty
  * @function
  * @memberof FunctionalUtilities.Ramda
  * @since v1.0.0
