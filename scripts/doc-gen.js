@@ -7,14 +7,7 @@ const fs = require('fs');
 
 const generatePackageDoc = async package => {
   const doc = await jsdoc2md.render({ files: `packages/${package}/src/**/*.js` });
-  fs.writeFile(`packages/${package}/docs/index.md`, doc, 'utf-8', async err => console.log(err));
-
-  //   const files = await (await exec(`cd packages/${package}/src && ls \`find . -name '*.js' -print\``)).stdout;
-  //   files.split('\n').forEach(async file => {
-  //     const doc = await jsdoc2md.render({ source: `packages/${package}/src/${file}` });
-  //     console.log(doc);
-  //     // fs.writeFile(`packages/${package}/docs/${file}.md`, doc);
-  //   });
+  fs.writeFile(`packages/${package}/docs/index.md`, doc, 'utf-8', async err => Promise.resolve());
 };
 
 const generateDoc = async () => {

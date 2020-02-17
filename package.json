@@ -19,6 +19,7 @@
     "deps:clean": "rimraf node_modules yarn.lock packages/**/node_modules",
     "deps:install": "yarn install",
     "deps:refresh": "yarn deps:clean && yarn deps:install",
+    "docgen": "rimraf docs && node ./scripts/doc-gen.js",
     "jsdoc": "lerna run jsdoc",
     "prejsdoc": "rimraf docs",
     "postjsdoc": "ncp packages/**/docs/@uxland/ docs",

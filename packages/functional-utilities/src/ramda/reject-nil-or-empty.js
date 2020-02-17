@@ -21,7 +21,7 @@
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 import { reject } from 'ramda';
-import { isNullOrEmpty } from './is-null-or-empty';
+import isNullOrEmpty from './is-null-or-empty';
 
 /**
  * Filters out input of empty or null values/items

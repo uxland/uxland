@@ -1,3 +1,4 @@
+import * as FunctionalUtilities from '@uxland/functional-utilities';
 export type EventCallback = (data?: any, event?: string) => void;
 export interface Subscription {
   dispose(): void;
@@ -19,6 +20,7 @@ const invokeCallback = (callback: EventCallback, data: any, event: string) => {
   try {
     callback(data, event);
   } catch (e) {
+    FunctionalUtilities.invariant();
     console.error(e);
   }
 };
@@ -54,10 +56,10 @@ class EventAggregator {
     let i;
 
     if (!event) {
-      throw new Error("Event was invalid.");
+      throw new Error('Event was invalid.');
     }
 
-    if (typeof event === "string") {
+    if (typeof event === 'string') {
       subscribers = this.eventLookup[event];
       if (subscribers) {
         subscribers = subscribers.slice();
@@ -87,10 +89,10 @@ class EventAggregator {
     let subscribers;
 
     if (!event) {
-      throw new Error("Event channel/type was invalid.");
+      throw new Error('Event channel/type was invalid.');
     }
 
-    if (typeof event === "string") {
+    if (typeof event === 'string') {
       handler = callback;
       subscribers = this.eventLookup[event] || (this.eventLookup[event] = []);
     } else {
