@@ -24,7 +24,7 @@ import { complement, isNil } from 'ramda';
 
 /**
  * Checks whether input is undefined or null
- * @function
+ * @function isNotNil
  * @memberof FunctionalUtilities.Ramda
  * @since v1.0.0
  * @param {*} input Input to check nullity
@@ -41,5 +41,4 @@ import { complement, isNil } from 'ramda';
  * isNotNil({"foo":"bar"}) //=> true
  *
  */
-const isNotNil = complement(isNil);
-export default isNotNil;
+export const isNotNil = complement(isNil);

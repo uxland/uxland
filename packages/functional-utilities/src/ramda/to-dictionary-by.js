@@ -22,11 +22,9 @@
  */
 import { reduce } from 'ramda';
 
-// export const toDictionaryBy: <T = any>(key: string) => (items: T[]) => {[key: string]: T} = key =>  reduce((acc, elem) => acc[elem[key]] = elem, {});
-
 /**
  * Converts an array to dictionary using provided key as reference
- * @function
+ * @function toDictionaryBy
  * @memberof FunctionalUtilities.Ramda
  * @since v1.0.0
  * @param {string} key Message error to be thrown in case condition is not fulfilled
@@ -37,8 +35,4 @@ import { reduce } from 'ramda';
  * toDictionaryBy('id')([{id: 1, description: 'foo'}, {id: 2, description: 'bar'}]) //=> {1: {}}
  *
  */
-const toDictionaryBy = key => items => reduce((acc, elem) => (acc[elem[key]] = elem), {})(items);
-export default toDictionaryBy;
-
-// export const toDictionaryBy: <T = any>(key: string) => (items: T[]) => { [key: string]: T } = key =>
-//   reduce((acc, elem) => (acc[elem[key]] = elem), {});
+export const toDictionaryBy = key => items => reduce((acc, elem) => (acc[elem[key]] = elem), {})(items);

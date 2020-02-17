@@ -1,5 +1,5 @@
 import { is } from 'ramda';
-import toPath from '../../../src/ramda/to-path';
+import { toPath } from '../../../src/ramda/to-path';
 describe('toPath test suite', () => {
   it('should return an array of paths when argument is an string path', () => {
     let aux = is(String, 'foo.bar.baz');

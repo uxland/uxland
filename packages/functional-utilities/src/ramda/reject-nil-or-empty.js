@@ -21,11 +21,11 @@
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 import { reject } from 'ramda';
-import isNullOrEmpty from './is-null-or-empty';
+import { isNullOrEmpty } from './is-null-or-empty';
 
 /**
  * Filters out input of empty or null values/items
- * @function
+ * @function rejectNilOrEmpty
  * @memberof FunctionalUtilities.Ramda
  * @since v1.0.0
  * @param {!Array} input Input to filter empty or null values/items
@@ -42,5 +42,4 @@ import isNullOrEmpty from './is-null-or-empty';
  * rejectNilOrEmpty({"foo":"bar"}) //=> [object Object]
  *
  */
-const rejectNilOrEmpty = reject(isNullOrEmpty);
-export default rejectNilOrEmpty;
+export const rejectNilOrEmpty = reject(isNullOrEmpty);

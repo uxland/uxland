@@ -24,7 +24,7 @@ import { isEmpty, reject } from 'ramda';
 
 /**
  * Filters out input of empty values/items
- * @function
+ * @function rejectEmpty
  * @memberof FunctionalUtilities.Ramda
  * @since v1.0.0
  * @param {!Array} input Input to filter empty values/items
@@ -40,5 +40,4 @@ import { isEmpty, reject } from 'ramda';
  * rejectEmpty({"foo":"bar"}) //=> [object Object]
  *
  */
-const rejectEmpty = reject(isEmpty);
-export default rejectEmpty;
+export const rejectEmpty = reject(isEmpty);

@@ -1,4 +1,4 @@
-import invariant from '../../src/invariant';
+import { invariant } from '../../src/invariant';
 
 describe('when invoking `invariant` method', () => {
   describe('and a value is passed as first argument', () => {

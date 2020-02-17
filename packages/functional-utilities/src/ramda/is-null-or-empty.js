@@ -21,12 +21,12 @@
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 import { anyPass } from 'ramda';
-import isNotEmpty from './is-not-empty';
-import isNotNil from './is-not-nil';
+import { isNotEmpty } from './is-not-empty';
+import { isNotNil } from './is-not-nil';
 
 /**
  * Checks whether input is null or empty
- * @function
+ * @function isNullOrEmpty
  * @memberof FunctionalUtilities.Ramda
  * @since v1.0.0
  * @param {*} input Input to check emptiness or nullity
@@ -43,5 +43,4 @@ import isNotNil from './is-not-nil';
  * isNullOrEmpty({"foo":"bar"}) //=> true
  *
  */
-const isNullOrEmpty = anyPass([isNotNil, isNotEmpty]);
-export default isNullOrEmpty;
+export const isNullOrEmpty = anyPass([isNotNil, isNotEmpty]);

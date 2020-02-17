@@ -1,4 +1,3 @@
-import * as FunctionalUtilities from '@uxland/functional-utilities';
 export type EventCallback = (data?: any, event?: string) => void;
 export interface Subscription {
   dispose(): void;
@@ -20,7 +19,6 @@ const invokeCallback = (callback: EventCallback, data: any, event: string) => {
   try {
     callback(data, event);
   } catch (e) {
-    FunctionalUtilities.invariant();
     console.error(e);
   }
 };

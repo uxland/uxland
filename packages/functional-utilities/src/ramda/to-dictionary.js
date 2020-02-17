@@ -20,7 +20,7 @@
  * AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-import toDictionaryBy from './to-dictionary-by';
+import { toDictionaryBy } from './to-dictionary-by';
 
 /**
  * Entity interface
@@ -35,7 +35,7 @@ import toDictionaryBy from './to-dictionary-by';
 
 /**
  * Check if condition is fulfilled, otherwise throws supplied message error
- * @function
+ * @function toDictionary
  * @memberof FunctionalUtilities.Ramda
  * @since v1.0.0
  * @param {T[]} items Items to be converted into dictionary
@@ -47,5 +47,4 @@ import toDictionaryBy from './to-dictionary-by';
  * toDictionary([{id: 1, foo: 'bar'}, {id: 2, foo: 'bar'}]) //=> {1: {foo: 'bar'}, 2: {foo: 'bar'}}
  *
  */
-const toDictionary = toDictionaryBy('id');
-export default toDictionary;
+export const toDictionary = toDictionaryBy('id');

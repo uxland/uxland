@@ -24,7 +24,7 @@ import { propEq } from 'ramda';
 
 /**
  * Checks if property is 'id'
- * @function
+ * @function idEq
  * @memberof FunctionalUtilities.Ramda
  * @since v1.0.0
  * @param {string} key Property to be checked
@@ -35,5 +35,4 @@ import { propEq } from 'ramda';
  * idEq('foo') //=> false
  */
 
-const idEq = propEq('id');
-export default idEq;
+export const idEq = propEq('id');

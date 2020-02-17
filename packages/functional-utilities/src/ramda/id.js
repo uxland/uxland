@@ -24,7 +24,7 @@ import { prop } from 'ramda';
 
 /**
  * Returns property 'id' of object
- * @function
+ * @function id
  * @memberof FunctionalUtilities.Ramda
  * @since v1.0.0
  * @param {object} input Input object
@@ -34,5 +34,4 @@ import { prop } from 'ramda';
  * id({id: 1}) //=> 1
  * id({foo: 'bar'}) //=> undefined
  */
-const id = prop('id');
-export default id;
+export const id = prop('id');

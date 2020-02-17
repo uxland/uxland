@@ -24,7 +24,7 @@ import { complement, isEmpty } from 'ramda';
 
 /**
  * Checks whether input is empty
- * @function
+ * @function isNotEmpty
  * @memberof FunctionalUtilities.Ramda
  * @since v1.0.0
  * @param {*} input Input to check emptiness
@@ -41,5 +41,4 @@ import { complement, isEmpty } from 'ramda';
  * isNotEmpty({"foo":"bar"}) //=> true
  *
  */
-const isNotEmpty = complement(isEmpty);
-export default isNotEmpty;
+export const isNotEmpty = complement(isEmpty);

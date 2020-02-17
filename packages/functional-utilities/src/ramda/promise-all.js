@@ -24,7 +24,7 @@ import { bind } from 'ramda';
 
 /**
  * Resolves Promise.all
- * @function
+ * @function promiseAll
  * @memberof FunctionalUtilities.Ramda
  * @since v1.0.0
  * @param {Array.Promise} promises Array of promises to be resolved
@@ -34,11 +34,11 @@ import { bind } from 'ramda';
  * TBD
  *
  */
-const promiseAll = bind(Promise.all, Promise);
+export const promiseAll = bind(Promise.all, Promise);
 
 /**
  * Resolves a promse
- * @function
+ * @function resolve
  * @memberof FunctionalUtilities.Ramda
  * @since v1.0.0
  * @param {Promise} promise Promise to be resolved
@@ -48,5 +48,4 @@ const promiseAll = bind(Promise.all, Promise);
  * TBD
  *
  */
-const resolve = bind(Promise.resolve, Promise);
-export default { promiseAll, resolve };
+export const resolve = bind(Promise.resolve, Promise);

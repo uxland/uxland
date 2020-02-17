@@ -23,7 +23,7 @@
 
 /**
  * Defines an empty function
- * @function
+ * @function nop
  * @memberof FunctionalUtilities
  * @since v1.0.0
  * @returns {void}
@@ -31,5 +31,4 @@
  *
  *  nop() //=> undefined
  */
-const nop = () => {};
-export default nop;
+export const nop = () => {};

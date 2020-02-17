@@ -26,7 +26,7 @@ const pathSplit = split('.');
 
 /**
  * Splits path by '.' into a string array
- * @function
+ * @function toPath
  * @memberof FunctionalUtilities.Ramda
  * @since v1.0.0
  * @param {(string|Path)} path
@@ -36,5 +36,4 @@ const pathSplit = split('.');
  * toPath('foo.bar') => ['foo', 'bar']
  * toPath('3') => ['3']
  */
-const toPath = when(is(String), pathSplit);
-export default toPath;
+export const toPath = when(is(String), pathSplit);
