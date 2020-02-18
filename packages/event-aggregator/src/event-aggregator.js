@@ -23,7 +23,6 @@
 
 /**
  * Subscription interface
- * @namespace EventAggregator
  * @interface Subscription
  */
 /**
@@ -35,7 +34,7 @@
 
 /**
  * EventCallback type
- * @memberof EverntAggregator
+ * @memberof EventAggregator
  * @typedef {function(data, event)} EventCallback
  * @param {*=} data
  * @param {string=} event
@@ -55,7 +54,6 @@ class Handler {
    * @type {*}
    * @const
    * @private
-   * @memberof EventAggregator.Handler
    * @since v1.0.0
    */
   messageType;
@@ -65,7 +63,6 @@ class Handler {
    * @type {EventCallback}
    * @callback
    * @private
-   * @memberof EventAggregator.Handler
    * @since v1.0.0
    */
   callback;
@@ -73,7 +70,6 @@ class Handler {
   /**
    * Handler constructor
    * @constructor
-   * @memberof Handler
    * @since v1.0.0
    * @param {*} messageType Handler message type
    * @param {EventCallback} callback Handler callback
@@ -128,7 +124,7 @@ const invokeCallback = (callback, data, event) => {
  * @function
  * @memberof EventAggregator
  * @since v1.0.0
- * @param {EventAggregator.Handler} handler Handler to be called
+ * @param {Handler} handler Handler to be called
  * @param {*} data Handler payload
  * @returns {void|never}
  * @example
@@ -158,7 +154,6 @@ class EventAggregator {
   /**
    * Event collection
    * @type {Object}
-   * @memberof EventAggregator.EventAggregator
    * @since v1.0.0
    */
   eventLookup;
@@ -166,7 +161,6 @@ class EventAggregator {
   /**
    * Message Handlers
    * @type {Array}
-   * @memberof EventAggregator.EventAggregator
    * @since v1.0.0
    */
   messageHandlers;
@@ -175,7 +169,6 @@ class EventAggregator {
    * EventAggregator constructor
    * @constructor
    * @constructor
-   * @memberof EventAggregator.EventAggregator
    * @since v1.0.0
    */
   constructor() {
@@ -186,7 +179,6 @@ class EventAggregator {
   /**
    * Publishes a message
    * @function
-   * @memberof EventAggregator.EventAggregator
    * @since v1.0.0
    * @param {string} event The event or channel to publish to
    * @param {*} data The data to publish on the channel
@@ -228,7 +220,6 @@ class EventAggregator {
   /**
    * Subscribes to a message channel or message type
    * @function
-   * @memberof EventAggregator.EventAggregator
    * @since v1.0.0
    * @param {string} event The event channel or event data type
    * @param {function} callback The callback to be invoked when when the specified message is published
@@ -270,7 +261,6 @@ class EventAggregator {
   /**
    * Subscribes to a message channel or message type, then disposes the subscription automatically after the first message is received
    * @function
-   * @memberof EventAggregator.EventAggregator
    * @since v1.0.0
    * @param {string} event The event channel or event data type
    * @param {function} callback The callback to be invoked when when the specified message is published

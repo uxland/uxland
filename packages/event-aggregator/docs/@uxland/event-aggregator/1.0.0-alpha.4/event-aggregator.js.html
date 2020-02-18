@@ -24,7 +24,7 @@
 <label for="nav-trigger" class="overlay"></label>
 
 <nav>
-    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="EventAggregator.EventAggregator.html">EventAggregator</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="EventAggregator.EventAggregator.html#.EventAggregator#publish">EventAggregator#publish</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="EventAggregator.EventAggregator.html#.EventAggregator#subscribe">EventAggregator#subscribe</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="EventAggregator.EventAggregator.html#.EventAggregator#subscribeOnce">EventAggregator#subscribeOnce</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="EventAggregator.Handler.html">Handler</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="EventAggregator.Handler.html#handle">handle</a></span></li><li class="nav-heading">Namespaces</li><li class="nav-heading"><span class="nav-item-type type-namespace">N</span><span class="nav-item-name"><a href="EventAggregator.html">EventAggregator</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="EventAggregator.html#.invokeCallback">invokeCallback</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="EventAggregator.html#.invokeHandler">invokeHandler</a></span></li><li class="nav-heading">Interfaces</li><li class="nav-heading"><span class="nav-item-type type-interface">I</span><span class="nav-item-name"><a href="Subscription.html">Subscription</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Subscription.html#dispose">dispose</a></span></li>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="EventAggregator.EventAggregator.html">EventAggregator</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="EventAggregator.EventAggregator.html#publish">publish</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="EventAggregator.EventAggregator.html#subscribe">subscribe</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="EventAggregator.EventAggregator.html#subscribeOnce">subscribeOnce</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="EventAggregator.Handler.html">Handler</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="EventAggregator.Handler.html#handle">handle</a></span></li><li class="nav-heading">Namespaces</li><li class="nav-heading"><span class="nav-item-type type-namespace">N</span><span class="nav-item-name"><a href="EventAggregator.html">EventAggregator</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="EventAggregator.html#.invokeCallback">invokeCallback</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="EventAggregator.html#.invokeHandler">invokeHandler</a></span></li><li class="nav-heading">Interfaces</li><li class="nav-heading"><span class="nav-item-type type-interface">I</span><span class="nav-item-name"><a href="Subscription.html">Subscription</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Subscription.html#dispose">dispose</a></span></li>
 </nav>
 
 <div id="main">
@@ -64,7 +64,6 @@
 
 /**
  * Subscription interface
- * @namespace EventAggregator
  * @interface Subscription
  */
 /**
@@ -76,7 +75,7 @@
 
 /**
  * EventCallback type
- * @memberof EverntAggregator
+ * @memberof EventAggregator
  * @typedef {function(data, event)} EventCallback
  * @param {*=} data
  * @param {string=} event
@@ -96,7 +95,6 @@ class Handler {
    * @type {*}
    * @const
    * @private
-   * @memberof EventAggregator.Handler
    * @since v1.0.0
    */
   messageType;
@@ -106,7 +104,6 @@ class Handler {
    * @type {EventCallback}
    * @callback
    * @private
-   * @memberof EventAggregator.Handler
    * @since v1.0.0
    */
   callback;
@@ -114,7 +111,6 @@ class Handler {
   /**
    * Handler constructor
    * @constructor
-   * @memberof Handler
    * @since v1.0.0
    * @param {*} messageType Handler message type
    * @param {EventCallback} callback Handler callback
@@ -169,7 +165,7 @@ const invokeCallback = (callback, data, event) => {
  * @function
  * @memberof EventAggregator
  * @since v1.0.0
- * @param {EventAggregator.Handler} handler Handler to be called
+ * @param {Handler} handler Handler to be called
  * @param {*} data Handler payload
  * @returns {void|never}
  * @example
@@ -199,7 +195,6 @@ class EventAggregator {
   /**
    * Event collection
    * @type {Object}
-   * @memberof EventAggregator.EventAggregator
    * @since v1.0.0
    */
   eventLookup;
@@ -207,7 +202,6 @@ class EventAggregator {
   /**
    * Message Handlers
    * @type {Array}
-   * @memberof EventAggregator.EventAggregator
    * @since v1.0.0
    */
   messageHandlers;
@@ -216,7 +210,6 @@ class EventAggregator {
    * EventAggregator constructor
    * @constructor
    * @constructor
-   * @memberof EventAggregator.EventAggregator
    * @since v1.0.0
    */
   constructor() {
@@ -227,7 +220,6 @@ class EventAggregator {
   /**
    * Publishes a message
    * @function
-   * @memberof EventAggregator.EventAggregator
    * @since v1.0.0
    * @param {string} event The event or channel to publish to
    * @param {*} data The data to publish on the channel
@@ -269,7 +261,6 @@ class EventAggregator {
   /**
    * Subscribes to a message channel or message type
    * @function
-   * @memberof EventAggregator.EventAggregator
    * @since v1.0.0
    * @param {string} event The event channel or event data type
    * @param {function} callback The callback to be invoked when when the specified message is published
@@ -311,7 +302,6 @@ class EventAggregator {
   /**
    * Subscribes to a message channel or message type, then disposes the subscription automatically after the first message is received
    * @function
-   * @memberof EventAggregator.EventAggregator
    * @since v1.0.0
    * @param {string} event The event channel or event data type
    * @param {function} callback The callback to be invoked when when the specified message is published
@@ -348,7 +338,7 @@ export const publish = eventAggregator.publish.bind(eventAggregator);
 <br class="clear">
 
 <footer>
-    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on Mon Feb 17 2020 17:09:51 GMT+0100 (Hora estàndard del Centre d’Europa) using the Minami theme.
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on Tue Feb 18 2020 12:04:33 GMT+0100 (Hora estàndard del Centre d’Europa) using the Minami theme.
 </footer>
 
 <script>prettyPrint();</script>

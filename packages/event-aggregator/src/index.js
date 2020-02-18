@@ -22,3 +22,4 @@
  */
 
 /** @namespace EventAggregator */
+export * from './event-aggregator';

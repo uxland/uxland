@@ -7,7 +7,7 @@
   "license": "ISC",
   "main": "lib/index.js",
   "module": "es/index.js",
-  "types": "types.d.ts",
+  "types": "lib/types.d.ts",
   "directories": {
     "lib": "lib",
     "test": "test"
@@ -63,7 +63,9 @@
     "babel-cli": "^6.26.0",
     "babel-jest": "^25.1.0",
     "cross-env": "^7.0.0",
+    "cucumber": "^6.0.5",
     "jest": "^25.1.0",
+    "jest-cucumber": "^2.0.11",
     "jsdoc": "^3.6.3",
     "jsdoc-to-markdown": "^5.0.3",
     "jsdom": "^16.1.0",
@@ -76,6 +78,7 @@
     "tsd-jsdoc": "^2.4.0"
   },
   "dependencies": {
+    "@uxland/functional-utilities": "^0.0.0",
     "ramda": "^0.27.0"
   }
 }
