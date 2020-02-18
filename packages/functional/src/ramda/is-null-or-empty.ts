@@ -1,4 +1,2 @@
-import {isNotNil} from "./is-not-nil";
-import {isNotEmpty} from "./is-not-empty";
-import {anyPass} from 'ramda'
-export const isNullOrEmpty = anyPass([isNotNil, isNotEmpty]);
+import {anyPass, isEmpty, isNil} from 'ramda'
+export const isNullOrEmpty = anyPass([isNil, isEmpty]);

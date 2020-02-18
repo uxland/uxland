@@ -14,8 +14,8 @@ Business Need: Adding a region to a layout
 
   Scenario: An invalid region is added
     Given a region manager
-    And an invalid region
-        * is an object
-        * key property is not defined
-    When Adding the region to the region manager
+    And an invalid region as an object
+    And an invalid region with key property not defined
+    And an invalid region without key property defined
+    When adding the region to the region manager
     Then an error is thrown with message 'Invalid region object'
