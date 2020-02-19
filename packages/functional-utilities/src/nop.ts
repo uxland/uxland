@@ -22,21 +22,13 @@
  */
 
 /**
- * Check if condition is fulfilled, otherwise throws supplied message error
- * @function invariant
+ * Defines an empty function
+ * @function nop
  * @memberof FunctionalUtilities
  * @since v1.0.0
- * @param {(*|function)} condition Condition that must be complied
- * @param {string=} message Message error to be thrown in case condition is not fulfilled
- * @returns {void|never}
- * @throws Will throw an error with the message supplied if condition is not fulfilled.
+ * @returns {void}
  * @example
  *
- * invariant(R.is('number')(3), 'Supplied value is not a number'); //=> undefined
- * invariant(R.is('number')('3'), 'Supplied value is not a number'); //=> 'Supplied value is not a number'
- *
+ *  nop() //=> undefined
  */
-export const invariant = (condition, message) => {
-  condition = typeof condition === 'function' ? condition() : condition;
-  if (!condition) throw new Error(message);
-};
+export const nop = (): void => {};
