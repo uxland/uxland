@@ -36,7 +36,10 @@
  * invariant(R.is('number')('3'), 'Supplied value is not a number'); //=> 'Supplied value is not a number'
  *
  */
-export const invariant = (condition: () => any, message?: string): void | never => {
+export interface InvariantCondition {
+  (): any;
+}
+export const invariant = (condition: InvariantCondition | any, message?: string): void | never => {
   condition = typeof condition === 'function' ? condition() : condition;
   if (!condition) throw new Error(message);
 };
