@@ -5,13 +5,11 @@
   "author": "Alex Vizcaino <avizcaino@uxland.es>",
   "homepage": "https://github.com/uxland/uxland/tree/master/packages/style-utilities#readme",
   "license": "ISC",
-  "directories": {},
   "files": [
-    "src",
-    "src/flex-layout-styles.scss",
-    "src/units-styles.scss",
-    "src/mediaqueries-styles.scss",
-    "src/animations.scss"
+    "flex-layout-styles.scss",
+    "units-styles.scss",
+    "mediaqueries-styles.scss",
+    "animations.scss"
   ],
   "publishConfig": {
     "access": "public",
@@ -21,17 +19,9 @@
     "type": "git",
     "url": "git+https://github.com/uxland/uxland.git"
   },
-  "scripts": {
-    "semantic-release": "semantic-release",
-    "semantic-release:dry-run": "semantic-release --dry-run",
-    "semantic-release:local": "semantic-release --no-ci --debug",
-    "postsemantic-release:local": "git checkout -- package*"
-  },
+  "scripts": {},
   "bugs": {
     "url": "https://github.com/uxland/uxland/issues"
   },
-  "devDependencies": {
-    "jsdom": "^16.1.0",
-    "semantic-release": "^17.0.0"
-  }
+  "devDependencies": {}
 }
