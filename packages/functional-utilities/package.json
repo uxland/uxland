@@ -26,6 +26,7 @@
   "scripts": {
     "build:es": "tsc -p tsconfig.json --outDir es --module esnext --noEmit false",
     "build:cjs": "tsc -p tsconfig.json --outDir lib --noEmit false --declaration",
+    "build:cjs:docs": "yarn build:cjs --outDir tmp --removeComments false",
     "build:umd": "cross-env NODE_ENV=development rollup -c -o dist/index.js",
     "build:umd:min": "cross-env NODE_ENV=production rollup -c -o dist/index.min.js",
     "build:clean": "rimraf es lib dist",
@@ -41,7 +42,7 @@
     "test:ui": "polymer test --config-file wct.config.json",
     "test:unit": "jest --collect-coverage",
     "test": "yarn test:unit",
-    "jsdoc": "yarn build:cjs --removeComments false && rimraf docs && jsdoc -r ./lib -c jsdoc.conf.js"
+    "jsdoc": "yarn build:cjs:docs && rimraf docs && jsdoc -r ./tmp -c jsdoc.conf.js && rimraf tmp"
   },
   "bugs": {
     "url": "https://github.com/uxland/uxland/issues"
