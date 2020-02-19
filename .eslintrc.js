@@ -12,6 +12,8 @@ module.exports = {
     project: ['./config/tsconfig.eslint.json']
   },
   rules: {
-    '@typescript-eslint/ban-ts-ignore': 'warn'
+    '@typescript-eslint/ban-ts-ignore': 'warn',
+    '@typescript-eslint/interface-name-prefix': 'off',
+    'no-prototype-builtins': 'off'
   }
 };

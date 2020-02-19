@@ -1,3 +1,27 @@
+/*
+ * MIT License
+ *
+ * Copyright (c) 2020 ${company}
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of
+ * this software and associated documentation files (the "Software"), to deal in
+ * the Software without restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the
+ * Software, and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+ * FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+ * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN
+ * AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH
+ * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+/** @namespace FetchClient */
+
 import { publish } from '@uxland/event-aggregator';
 
 declare function serialize(key: string, value: string): string;
@@ -14,7 +38,7 @@ export interface BapiRet {
 }
 export interface InvalidRequestPayload {
   statusText?: string;
-  status?: number;
+  status?: number | void;
 }
 export interface IFetchClient {
   fetch(input: any, requestInit?: any, queryParams?: any): Promise<any>;
@@ -46,25 +70,41 @@ const configuration: Configuration = {
 let baseUrl: string;
 let defaultQueryParams: {};
 
-const getRequestUrl = function(baseUrl, url, queryParams = {}) {
+const serializeValue = function(value: string | number | boolean): string {
+  return value === null || typeof value === 'undefined' ? '' : encodeURIComponent(value);
+};
+
+const toQueryParams = function(queryParams: object, prefix?: any): string {
+  const str = [];
+  for (const p in queryParams) {
+    if (queryParams.hasOwnProperty(p)) {
+      const k = prefix ? prefix + '[' + p + ']' : p,
+        v = queryParams[p];
+      str.push(v !== null && typeof v === 'object' ? serialize(v, k) : encodeURIComponent(k) + '=' + serializeValue(v));
+    }
+  }
+  return str.join('&');
+};
+
+const getRequestUrl = function(baseUrl: string, url: string, queryParams = {}): string {
   if (ABSOLUTE_URL_REGEX.test(url)) {
     return url;
   }
 
-  let resultingUrl = (baseUrl || '') + url;
-  let params = toQueryParams(Object.assign({}, defaultQueryParams, queryParams));
+  const resultingUrl = (baseUrl || '') + url;
+  const params = toQueryParams(Object.assign({}, defaultQueryParams, queryParams));
   return params ? resultingUrl + '?' + params : resultingUrl;
 };
 
-const mergeRequest = function(requestInit: RequestInit, config: Configuration) {
+const mergeRequest = function(requestInit: RequestInit, config: Configuration): object {
   requestInit = requestInit || {};
   config = config || configuration;
-  let headers = Object.assign({}, config.headers, requestInit.headers || {});
+  const headers = Object.assign({}, config.headers, requestInit.headers || {});
   return Object.assign({}, config, requestInit, { headers: headers });
 };
 
-const getCode = (r: any) => {
-  let code = r ? r.result || r.RESULT : null;
+const getCode = (r: any): number | void => {
+  const code = r ? r.result || r.RESULT : null;
   if (code) {
     try {
       return parseInt(code);
@@ -75,16 +115,16 @@ const getCode = (r: any) => {
   return null;
 };
 
-const isUnauthorizedResponse = (r: any) => {
-  let code = getCode(r);
+const isUnauthorizedResponse = (r: any): boolean => {
+  const code = getCode(r);
   return code && code == 401;
 };
-const isInvalidRequest = (r: any) => {
-  let code = getCode(r);
+const isInvalidRequest = (r: any): boolean => {
+  const code = getCode(r);
   return code && code >= 400;
 };
-const isResetCredentialsResponse = (r: any) => {
-  let code = getCode(r);
+const isResetCredentialsResponse = (r: any): boolean => {
+  const code = getCode(r);
   return code && code == 402;
 };
 const isResponseContentTypeJSON = (response: Response): boolean => {
@@ -122,8 +162,8 @@ export const handleResponse = <T>(response: Response): Promise<T> => {
     : response.text();
 };
 
-export const handleErrors = async (response: Response) => {
-  let microTask = () => new Promise(resolve => resolve());
+export const handleErrors = async (response: Response): Promise<Response | never> => {
+  const microTask = () => new Promise(resolve => resolve());
   if (!response.ok) {
     let error;
     try {
@@ -149,52 +189,35 @@ export const handleErrors = async (response: Response) => {
   return response;
 };
 
-const serializeValue = function(value) {
-  return value === null || typeof value === 'undefined' ? '' : encodeURIComponent(value);
-};
-
-const toQueryParams = function(queryParams: object, prefix?: any) {
-  let str = [],
-    p;
-  for (p in queryParams) {
-    if (queryParams.hasOwnProperty(p)) {
-      let k = prefix ? prefix + '[' + p + ']' : p,
-        v = queryParams[p];
-      str.push(v !== null && typeof v === 'object' ? serialize(v, k) : encodeURIComponent(k) + '=' + serializeValue(v));
-    }
-  }
-  return str.join('&');
-};
-
-export const configure = (config: Configuration) => {
+export const configure = (config: Configuration): void => {
   Object.assign(configuration, config);
 };
 
-export const withHeaders = (headers: any) => {
+export const withHeaders = (headers: any): void => {
   Object.assign(configuration.headers, headers);
 };
 
-export const removeHeader = (header: string) => {
+export const removeHeader = (header: string): void => {
   if (configuration.headers[header]) delete configuration.headers[header];
 };
 
-export const withBaseUrl = (url: string) => {
+export const withBaseUrl = (url: string): void => {
   baseUrl = url;
 };
 
-export const withQueryParams = (queryParams: any) => {
+export const withQueryParams = (queryParams: any): void => {
   defaultQueryParams = queryParams;
 };
 
-export const withSapClientParam = (sapClient: string) => {
-  let queryParams = {};
+export const withSapClientParam = (sapClient: string): void => {
+  const queryParams = {};
   queryParams[SAP_CLIENT_PARAM] = sapClient;
   withQueryParams(queryParams);
 };
 
 export const handleBapiret = (bapiRet: BapiRet | BapiRet[]): string => {
-  let arr = [].concat(bapiRet);
-  let ret = arr[0];
+  const arr = [].concat(bapiRet);
+  const ret = arr[0];
   if (ret && ret.TYPE == BAPIRET_ERROR_CODE) throw new Error(ret.MESSAGE);
   return ret ? ret.MESSAGE : '';
 };
@@ -216,7 +239,7 @@ export class ServiceBase {
   }
 }
 export const fetchClient = new FetchClient();
-export const registerResponseHandler = (handler: ResponseHandler) => {
+export const registerResponseHandler = (handler: ResponseHandler): void => {
   responseHandlers.push(handler);
 };
 registerResponseHandler(defaultResponseHandler);
