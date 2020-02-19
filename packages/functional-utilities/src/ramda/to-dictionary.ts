@@ -22,16 +22,17 @@
  */
 import { toDictionaryBy } from './to-dictionary-by';
 
+let STUB = 1;
 /**
  * Entity interface
+ * @memberof FunctionalUtilities
  * @interface Entity
+ * @property {string} id Entity ID
  */
-/**
- * Entity id
- * @name Entity#id
- * @constant
- * @type string
- */
+STUB = 1;
+interface Entity {
+  id: string;
+}
 
 /**
  * Check if condition is fulfilled, otherwise throws supplied message error

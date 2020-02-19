@@ -21,16 +21,21 @@
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+let STUB = 1;
 /**
  * Subscription interface
+ * @memberof EventAggregator
  * @interface Subscription
+ * @property {function} dispose Subscription disposer
  */
+STUB = 1;
 export interface Subscription {
   dispose: () => void;
 }
 
 /**
  * EventCallback type
+ * @memberof EventAggregator
  * @typedef {function} EventCallback
  * @param {*=} data Event payload
  * @param {string=} event Event ID
@@ -40,6 +45,7 @@ type EventCallback = (data: any, event?: string) => void;
 
 /**
  * Event Aggregator handler
+ * @memberof EventAggregator
  * @class
  * @since v1.0.0
  */
@@ -94,6 +100,7 @@ class Handler {
 
 /**
  * Invoke Callback and catches if error
+ * @ignore
  * @function
  * @since v1.0.0
  * @param {EventCallback} callback Callback to be called
@@ -115,6 +122,7 @@ const invokeCallback = (callback: EventCallback, data: any, event: string): void
 
 /**
  * Invoke Handler and catches if error
+ * @ignore
  * @function
  * @since v1.0.0
  * @param {Handler} handler Handler to be called
@@ -135,6 +143,7 @@ const invokeHandler = (handler: Handler, data: any): void | never => {
 
 /**
  * Event Aggregator
+ * @memberof EventAggregator
  * @class
  * @since v1.0.0
  * @example

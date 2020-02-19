@@ -1,6 +1,5 @@
 module.exports = {
   testEnvironment: 'node',
-  // setupFilesAfterEnv: ['./test/unit/setup.ts'],
   transformIgnorePatterns: [],
   transform: {
     '^.+\\\\node_modules\\\\.*?\\\\es\\\\.*?\\\\*?.ts$': 'ts-jest',
@@ -13,7 +12,7 @@ module.exports = {
     '^.+.ts$': 'ts-jest'
   },
   testPathIgnorePatterns: ['/node_modules/'],
-  testMatch: ['**/*.steps.ts'],
+  testMatch: ['**/*.steps.ts', '**/*.spec.ts'],
   coverageReporters: ['json-summary', 'text', 'lcov'],
   collectCoverage: true,
   globals: {

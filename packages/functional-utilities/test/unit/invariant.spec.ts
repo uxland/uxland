@@ -9,7 +9,7 @@ describe('when invoking `invariant` method', () => {
     });
     it('should raise exception if first argument is falsy', () => {
       expect(() => invariant(false)).toThrow();
-      expect(() => invariant(0));
+      expect(() => invariant(0)).toThrow();
       expect(() => invariant('')).toThrow;
       expect(() => invariant(null)).toThrow;
       expect(() => invariant(undefined)).toThrow;
