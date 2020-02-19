@@ -50,5 +50,5 @@ defineFeature(subscribeFeature, defineScenario => {
   });
 });
 
-const publishFeature = loadFeature(path.join(__dirname, './event-aggregator.publish.feature'));
-defineFeature(publishFeature, defineScenario => {});
+// const publishFeature = loadFeature(path.join(__dirname, './event-aggregator.publish.feature'));
+// defineFeature(publishFeature, defineScenario => {});

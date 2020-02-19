@@ -6,3 +6,4 @@ dist/
 lerna-debug.log
 .buildstatus
 .idea/
+packages/test-packages/

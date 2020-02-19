@@ -5,13 +5,9 @@
   "author": "Alex Vizcaino <avizcaino@uxland.es>",
   "homepage": "https://github.com/uxland/uxland/tree/master/packages/event-aggregator#readme",
   "license": "ISC",
-  "main": "src/index.ts",
+  "main": "lib/index",
   "module": "es/index.js",
   "types": "lib/types.d.ts",
-  "directories": {
-    "lib": "lib",
-    "test": "test"
-  },
   "files": [
     "lib",
     "es",
@@ -29,7 +25,7 @@
   },
   "scripts": {
     "build:es": "tsc -p tsconfig.build.json --outDir es",
-    "build:cjs": "tsc -p tsconfig.build.json --outDir lib --module commonjs --declaration --removeComments false",
+    "build:cjs": "tsc -p tsconfig.build.json --outDir lib --module commonjs --declaration",
     "build:umd": "cross-env NODE_ENV=development rollup -c -o dist/index.js",
     "build:umd:min": "cross-env NODE_ENV=production rollup -c -o dist/index.min.js",
     "build:clean": "rimraf es lib dist",
@@ -45,7 +41,7 @@
     "test:ui": "polymer test --config-file wct.config.json",
     "test:unit": "jest --collect-coverage",
     "test": "yarn test:unit",
-    "jsdoc": "yarn build:cjs && rimraf docs && jsdoc -r ./lib -c jsdoc.conf.js",
+    "jsdoc": "yarn build:cjs --removeComments false && rimraf docs && jsdoc -r ./lib -c jsdoc.conf.js",
     "typedoc": "rimraf docs && typedoc --out docs src --plugin typedoc-plugin-markdown"
   },
   "bugs": {

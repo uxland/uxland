@@ -20,7 +20,6 @@
     "deps:install": "yarn install",
     "deps:refresh": "yarn deps:clean && yarn deps:install",
     "docgen": "rimraf docs && node ./scripts/doc-gen.js",
-    "jsdoc": "lerna run jsdoc",
     "prejsdoc": "rimraf docs",
     "postjsdoc": "ncp packages/**/docs/@uxland/ docs",
     "readme:coverage": "lerna run readme:coverage",

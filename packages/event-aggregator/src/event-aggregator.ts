@@ -21,20 +21,20 @@
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-/** @packageDocumentation */
-
 /**
  * Subscription interface
+ * @interface Subscription
  */
 export interface Subscription {
-  /**
-   * @function
-   */
   dispose: () => void;
 }
 
 /**
  * EventCallback type
+ * @typedef {function} EventCallback
+ * @param {*=} data Event payload
+ * @param {string=} event Event ID
+ * @returns {void|never}
  */
 type EventCallback = (data: any, event?: string) => void;
 

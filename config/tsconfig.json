@@ -23,6 +23,6 @@
       "@uxland/*": ["../packages/*/src"]
     }
   },
-  "include": ["../packages/**/*.d.ts", "src/**/*", "test/**/*"],
+  "include": ["src/**/*", "test/**/*"],
   "exclude": ["node_modules", "es"]
 }
