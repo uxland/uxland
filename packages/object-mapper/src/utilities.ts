@@ -1,5 +1,6 @@
+import { isNotNullNeitherEmpty } from '@uxland/functional-utilities';
 import * as R from 'ramda';
-import { isArray, notInitial } from '.';
+import { isArray } from '.';
 import { SerializerInfo } from './model';
 
 export const thrower = (message: string) => {
@@ -10,43 +11,28 @@ export const getTo = (serializer?: any): string | string[] => serializer?.to;
 export const getSerializerFn = (serializer?: any): Function => serializer?.serializerFn;
 export const getDeserializerFn = (serializer?: any): Function => serializer?.deserializerFn;
 export const getSerializers = (serializer?: any): SerializerInfo<any, any>[] => serializer?.serializers;
-export const hasFrom = R.pipe(
-  getFrom,
-  notInitial
-);
-export const hasTo = R.pipe(
-  getTo,
-  notInitial
-);
-export const hasSerializerFn = R.pipe(
-  getSerializerFn,
-  notInitial
-);
-export const hasDeserializerFn = R.pipe(
-  getDeserializerFn,
-  notInitial
-);
-export const hasSerializers = R.pipe(
-  getSerializers,
-  notInitial
-);
+export const hasFrom = R.pipe(getFrom, isNotNullNeitherEmpty);
+export const hasTo = R.pipe(getTo, isNotNullNeitherEmpty);
+export const hasSerializerFn = R.pipe(getSerializerFn, isNotNullNeitherEmpty);
+export const hasDeserializerFn = R.pipe(getDeserializerFn, isNotNullNeitherEmpty);
+export const hasSerializers = R.pipe(getSerializers, isNotNullNeitherEmpty);
 export const noSerializers = R.complement(hasSerializers);
 export const hasFromTo = R.allPass([hasFrom, hasTo]);
-export const isPath = R.pipe(
-  R.indexOf('.'),
-  R.complement(R.equals(-1))
-);
-export const isSingleObject = R.allPass([
-  isArray,
-  R.pipe(
-    R.length,
-    R.equals(1)
-  )
-]);
+export const isPath = R.pipe(R.indexOf('.'), R.complement(R.equals(-1)));
+export const isSingleObject = R.allPass([isArray, R.pipe(R.length, R.equals(1))]);
 export const lensProp = (prop: string) =>
-  R.ifElse(isPath, () => R.lensPath(R.split('.')(prop)), () => R.lensProp(prop))(prop);
+  R.ifElse(
+    isPath,
+    () => R.lensPath(R.split('.')(prop)),
+    () => R.lensProp(prop)
+  )(prop);
 
-export const getPath = (prop: string) => R.ifElse(isPath, () => R.split('.')(prop), () => prop)(prop);
+export const getPath = (prop: string) =>
+  R.ifElse(
+    isPath,
+    () => R.split('.')(prop),
+    () => prop
+  )(prop);
 
 export const setProperty = (from: string, to: string, value: any) => (obj: any = {}) => {
   const path = getPath(to || from);

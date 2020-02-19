@@ -2,7 +2,8 @@ import { ObjectMapper } from 'json-object-mapper';
 import 'reflect-metadata';
 import { serialize } from '../../src/serialize';
 import { serialize as serializeSet } from '../../src/serialize-set';
-import * as generators from './data/generators';
+import * as generators from '../unit/data/generators';
+const performance = require('perf_hooks').performance;
 
 describe('Benchmarks', () => {
   it('Benchmark: object serialization object-mapper vs json-object-mapper', () => {

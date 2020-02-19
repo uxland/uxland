@@ -1,5 +1,6 @@
+import { isNullOrEmpty } from '@uxland/functional-utilities';
 import * as R from 'ramda';
-import { isArray, isInitial, isObject } from '.';
+import { isArray, isObject } from '.';
 import { SerializerInfo } from './model';
 import {
   getFrom,
@@ -16,10 +17,7 @@ import {
 } from './utilities';
 import { invalidPath, invalidSerializers } from './validation';
 
-const buildFirstIndexPath = R.pipe(
-  R.split('.'),
-  (paths: string[]) => [paths[0], 0, ...R.remove(0, 1, paths)]
-);
+const buildFirstIndexPath = R.pipe(R.split('.'), (paths: string[]) => [paths[0], 0, ...R.remove(0, 1, paths)]);
 const getProp = (from: string | string[], data: any) =>
   R.cond([
     [
@@ -50,9 +48,11 @@ const executeFn = (data: any, from: string | string[], fn: Function) =>
     isArray,
     () => fn(...data),
     () =>
-      R.ifElse(isArray, () => R.reduce((collection: any[], d) => collection.concat(fn(d)), [], data), () => fn(data))(
-        data
-      )
+      R.ifElse(
+        isArray,
+        () => R.reduce((collection: any[], d) => collection.concat(fn(d)), [], data),
+        () => fn(data)
+      )(data)
   )(from);
 const assignInputToOutput = (
   data: any,
@@ -108,12 +108,16 @@ export function serialize<I, O>(i: I[], serializers?: SerializerInfo<I, O>[]): O
 export function serialize<I, O>(i: I, serializers?: SerializerInfo<I, O>[]): O;
 export function serialize<I, O>(i: I | I[], serializers?: SerializerInfo<I, O>[]): O | O[] {
   return R.cond([
-    [isInitial, () => i],
+    [isNullOrEmpty, () => i],
     [invalidSerializers, () => i],
     [
       R.T,
       () =>
-        R.ifElse(isArray, () => serializeArray(i as I[], serializers), () => serializeObject(i as I, serializers))(i)
+        R.ifElse(
+          isArray,
+          () => serializeArray(i as I[], serializers),
+          () => serializeObject(i as I, serializers)
+        )(i)
     ]
   ])(serializers);
 }

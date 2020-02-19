@@ -20,9 +20,7 @@
  * AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-import { anyPass } from 'ramda';
-import { isNotEmpty } from './is-not-empty';
-import { isNotNil } from './is-not-nil';
+import { anyPass, isEmpty, isNil } from 'ramda';
 
 /**
  * Checks whether input is null or empty
@@ -43,4 +41,4 @@ import { isNotNil } from './is-not-nil';
  * isNullOrEmpty({"foo":"bar"}) //=> true
  *
  */
-export const isNullOrEmpty = anyPass([isNotNil, isNotEmpty]);
+export const isNullOrEmpty = anyPass([isNil, isEmpty]);

@@ -24,4 +24,4 @@
 /** @namespace FunctionalUtilities */
 export * from './invariant';
 export * from './nop';
-export * from './ramda/index.js';
+export * from './ramda';

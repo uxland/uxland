@@ -1,5 +1,6 @@
+import { isNullOrEmpty } from '@uxland/functional-utilities';
 import * as R from 'ramda';
-import { invalidPath, isArray, isInitial, isObject, validSerializers } from '.';
+import { invalidPath, isArray, isObject, validSerializers } from '.';
 import { SerializerInfo } from './model';
 import {
   getDeserializerFn,
@@ -137,7 +138,7 @@ export function deserialize<I, O>(i: I, serializers?: SerializerInfo<I, O>[]): O
 export function deserialize<I, O>(i: I | I[], serializers?: SerializerInfo<I, O>[]): O | O[] {
   if (validSerializers(serializers))
     return R.cond([
-      [isInitial, () => i],
+      [isNullOrEmpty, () => i],
       [
         R.T,
         () =>

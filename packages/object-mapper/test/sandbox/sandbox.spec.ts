@@ -5,9 +5,10 @@ import { SAPBooleanSerializer } from '../../src/boolean-serializer';
 import { deserialize } from '../../src/deserialize';
 import { serialize } from '../../src/serialize';
 import { serialize as serializeSet } from '../../src/serialize-set';
-import { input } from './sap/input';
-import { MedicalReport } from './sap/json-object-mapper';
-import { serializers } from './sap/serializers';
+import { input } from '../unit/sap/input';
+import { MedicalReport } from '../unit/sap/json-object-mapper';
+import { serializers } from '../unit/sap/serializers';
+const performance = require('perf_hooks').performance;
 
 describe('Sandbox', () => {
   it('From plain to plain', () => {
