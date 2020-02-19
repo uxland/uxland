@@ -41,56 +41,18 @@ export interface Subscription {
  * @param {string=} event Event ID
  * @returns {void|never}
  */
-type EventCallback = (data: any, event?: string) => void;
+STUB = 1;
+export type EventCallback = (data: any, event?: string) => void;
 
-/**
- * Event Aggregator handler
- * @memberof EventAggregator
- * @class
- * @since v1.0.0
- */
 class Handler {
-  /**
-   * Handler messageType
-   * @type {*}
-   * @const
-   * @private
-   * @since v1.0.0
-   */
   private messageType: any;
-
-  /**
-   * Handler calback
-   * @type {EventCallback}
-   * @callback
-   * @private
-   * @since v1.0.0
-   */
   private callback: EventCallback;
 
-  /**
-   * Handler constructor
-   * @constructor
-   * @since v1.0.0
-   * @param {*} messageType Handler message type
-   * @param {EventCallback} callback Handler callback
-   * @example
-   *
-   * `new Handler('click', (ev) => console.log(ev))`
-   *
-   */
   constructor(messageType: any, callback: EventCallback) {
     this.messageType = messageType;
     this.callback = callback;
   }
 
-  /**
-   * Handle event
-   * @public
-   * @function
-   * @since v1.0.0
-   * @param {*} message Message
-   */
   handle(message: any) {
     if (message instanceof this.messageType) {
       this.callback.call(null, message);
@@ -98,20 +60,6 @@ class Handler {
   }
 }
 
-/**
- * Invoke Callback and catches if error
- * @ignore
- * @function
- * @since v1.0.0
- * @param {EventCallback} callback Callback to be called
- * @param {*} data Callback payload
- * @param {string} event Callback event-related to pass as argument to callback
- * @returns {void|never}
- * @example
- *
- * `TBD`
- *
- */
 const invokeCallback = (callback: EventCallback, data: any, event: string): void | never => {
   try {
     callback(data, event);
@@ -120,19 +68,6 @@ const invokeCallback = (callback: EventCallback, data: any, event: string): void
   }
 };
 
-/**
- * Invoke Handler and catches if error
- * @ignore
- * @function
- * @since v1.0.0
- * @param {Handler} handler Handler to be called
- * @param {*} data Handler payload
- * @returns {void|never}
- * @example
- *
- * `TBD`
- *
- */
 const invokeHandler = (handler: Handler, data: any): void | never => {
   try {
     handler.handle(data);
@@ -141,55 +76,15 @@ const invokeHandler = (handler: Handler, data: any): void | never => {
   }
 };
 
-/**
- * Event Aggregator
- * @memberof EventAggregator
- * @class
- * @since v1.0.0
- * @example
- *
- * `TBD`
- *
- */
 class EventAggregator {
-  /**
-   * Event collection
-   * @type {Object}
-   * @since v1.0.0
-   */
   eventLookup: object;
-
-  /**
-   * Message Handlers
-   * @type {Array}
-   * @since v1.0.0
-   */
   messageHandlers: Array<any>;
 
-  /**
-   * EventAggregator constructor
-   * @constructor
-   * @constructor
-   * @since v1.0.0
-   */
   constructor() {
     this.eventLookup = {};
     this.messageHandlers = [];
   }
 
-  /**
-   * Publishes a message
-   * @function
-   * @since v1.0.0
-   * @param {string} event The event or channel to publish to
-   * @param {*} data The data to publish on the channel
-   * @returns {void|never}
-   * @throws Event channel/type is invalid
-   * @example
-   *
-   * `TBD`
-   *
-   */
   publish(event: string, data: any): void | never {
     let subscribers: string | any[];
     let i: number;
@@ -218,19 +113,6 @@ class EventAggregator {
     }
   }
 
-  /**
-   * Subscribes to a message channel or message type
-   * @function
-   * @since v1.0.0
-   * @param {string} event The event channel or event data type
-   * @param {EventCallback} callback The callback to be invoked when when the specified message is published
-   * @returns {Subscription}
-   * @throws Event channel/type is invalid
-   * @example
-   *
-   * `TBD`
-   *
-   */
   subscribe(event: string, callback: EventCallback): Subscription {
     let handler: EventCallback | Handler;
     let subscribers: any[];
@@ -259,18 +141,6 @@ class EventAggregator {
     };
   }
 
-  /**
-   * Subscribes to a message channel or message type, then disposes the subscription automatically after the first message is received
-   * @function
-   * @since v1.0.0
-   * @param {string} event The event channel or event data type
-   * @param {EventCallback} callback The callback to be invoked when when the specified message is published
-   * @returns {Subscription}
-   * @example
-   *
-   * `TBD`
-   *
-   */
   subscribeOnce(event: string, callback: EventCallback): Subscription {
     let sub = this.subscribe(event, (a: any, b: any) => {
       sub.dispose();
@@ -281,11 +151,61 @@ class EventAggregator {
   }
 }
 
-/** @ignore */
+/**
+ * Event Aggregator singleton
+ * @memberof EventAggregator
+ * @constant
+ * @name eventAggregator
+ * @since v1.0.0
+ */
 export const eventAggregator = new EventAggregator();
-/** @ignore */
+
+/**
+ * Subscribes to a message channel or message type
+ * @memberof EventAggregator
+ * @function
+ * @name subscribe
+ * @since v1.0.0
+ * @param {string} event The event channel or event data type
+ * @param {EventCallback} callback The callback to be invoked when when the specified message is published
+ * @returns {Subscription}
+ * @throws Event channel/type is invalid
+ * @example
+ *
+ * `TBD`
+ *
+ */
 export const subscribe = eventAggregator.subscribe.bind(eventAggregator);
-/** @ignore */
+
+/**
+ * Subscribes to a message channel or message type, then disposes the subscription automatically after the first message is received
+ * @memberof EventAggregator
+ * @function
+ * @name subscribeOnce
+ * @since v1.0.0
+ * @param {string} event The event channel or event data type
+ * @param {EventCallback} callback The callback to be invoked when when the specified message is published
+ * @returns {Subscription}
+ * @example
+ *
+ * `TBD`
+ *
+ */
 export const subscribeOnce = eventAggregator.subscribeOnce.bind(eventAggregator);
-/** @ignore */
+
+/**
+ * Publishes a message
+ * @memberof EventAggregator
+ * @function
+ * @name publish
+ * @since v1.0.0
+ * @param {string} event The event or channel to publish to
+ * @param {*} data The data to publish on the channel
+ * @returns {void|never}
+ * @throws Event channel/type is invalid
+ * @example
+ *
+ * `TBD`
+ *
+ */
 export const publish = eventAggregator.publish.bind(eventAggregator);
