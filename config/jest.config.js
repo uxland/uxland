@@ -14,7 +14,6 @@ module.exports = {
   },
   testPathIgnorePatterns: ['/node_modules/'],
   testMatch: ['**/*.steps.ts'],
-
   coverageReporters: ['json-summary', 'text', 'lcov'],
   collectCoverage: true,
   globals: {

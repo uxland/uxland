@@ -7,7 +7,7 @@
   "license": "ISC",
   "main": "lib/index",
   "module": "es/index.js",
-  "types": "lib/types.d.ts",
+  "types": "lib/index.d.ts",
   "files": [
     "lib",
     "es",
@@ -24,8 +24,8 @@
     "url": "git+https://github.com/uxland/uxland.git"
   },
   "scripts": {
-    "build:es": "tsc -p tsconfig.build.json --outDir es",
-    "build:cjs": "tsc -p tsconfig.build.json --outDir lib --module commonjs --declaration",
+    "build:es": "tsc -p tsconfig.json --outDir es --module esnext --noEmit false",
+    "build:cjs": "tsc -p tsconfig.json --outDir lib --noEmit false --declaration",
     "build:umd": "cross-env NODE_ENV=development rollup -c -o dist/index.js",
     "build:umd:min": "cross-env NODE_ENV=production rollup -c -o dist/index.min.js",
     "build:clean": "rimraf es lib dist",
@@ -41,16 +41,15 @@
     "test:ui": "polymer test --config-file wct.config.json",
     "test:unit": "jest --collect-coverage",
     "test": "yarn test:unit",
-    "jsdoc": "yarn build:cjs --removeComments false && rimraf docs && jsdoc -r ./lib -c jsdoc.conf.js",
-    "typedoc": "rimraf docs && typedoc --out docs src --plugin typedoc-plugin-markdown"
+    "jsdoc": "yarn build:cjs --removeComments false && rimraf docs && jsdoc -r ./lib -c jsdoc.conf.js"
   },
   "bugs": {
     "url": "https://github.com/uxland/uxland/issues"
   },
   "devDependencies": {
     "@babel/plugin-proposal-optional-chaining": "^7.8.3",
+    "@babel/preset-env": "^7.8.4",
     "@olavoparno/jest-badges-readme": "^1.4.0",
-    "@rollup/plugin-typescript": "^3.0.0",
     "@types/jest": "^25.1.0",
     "@types/ramda": "^0.26.41",
     "cross-env": "^7.0.0",
@@ -58,16 +57,13 @@
     "jest": "^25.1.0",
     "jest-cucumber": "^2.0.11",
     "jsdoc": "^3.6.3",
-    "jsdoc-to-markdown": "^5.0.3",
-    "jsdom": "^16.1.0",
     "mutation-observer": "^1.0.3",
     "npm-run-all": "^4.1.5",
     "raf": "^3.4.1",
     "rollup": "^1.31.1",
+    "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-uglify": "^6.0.4",
     "ts-jest": "^25.2.0",
-    "typedoc": "^0.16.10",
-    "typedoc-plugin-markdown": "^2.2.16",
     "typescript": "^3.7.5"
   },
   "dependencies": {
