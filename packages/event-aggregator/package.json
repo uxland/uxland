@@ -4,7 +4,7 @@
   "description": "Event Aggregator",
   "author": "UXLand <dev@uxland.es>",
   "homepage": "https://github.com/uxland/uxland/tree/master/packages/event-aggregator#readme",
-  "license": "ISC",
+  "license": "MIT",
   "main": "lib/index",
   "module": "es/index.js",
   "types": "lib/index.d.ts",

@@ -4,7 +4,7 @@
   "description": "Style Utilities",
   "author": "UXLand <dev@uxland.es>",
   "homepage": "https://github.com/uxland/uxland/tree/master/packages/style-utilities#readme",
-  "license": "ISC",
+  "license": "MIT",
   "files": [
     "flex-layout-styles.scss",
     "units-styles.scss",

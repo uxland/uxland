@@ -1,6 +1,17 @@
 {
   "name": "@uxland/uxland",
+  "description": "UXLand Libraries",
+  "author": "UXLand <dev@uxland.es>",
+  "license": "MIT",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uxland/uxland.git"
+  },
+  "bugs": {
+    "url": "https://github.com/uxland/uxland/issues"
+  },
+  "homepage": "https://github.com/uxland/uxland#readme",
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^8.3.4",
@@ -12,8 +23,6 @@
     "minami": "^1.2.3",
     "ncp": "^2.0.0"
   },
-  "description": "UXLand Libraries",
-  "main": "index.js",
   "scripts": {
     "build:clean": "rimraf packages/**/lib packages/**/es",
     "build:test": "lerna run build:test",
@@ -29,16 +38,6 @@
     "test": "lerna run test",
     "precommit": "yarn test && yarn build:test && yarn readme:coverage && git add ."
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/uxland/uxland.git"
-  },
-  "author": "UXLand <dev@uxland.es>",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/uxland/uxland/issues"
-  },
-  "homepage": "https://github.com/uxland/uxland#readme",
   "workspaces": [
     "packages/*"
   ],

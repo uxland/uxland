@@ -4,7 +4,7 @@
   "description": "Functional Utilities",
   "author": "UXLand <dev@uxland.es>",
   "homepage": "https://github.com/uxland/uxland/tree/master/packages/functional-utilities#readme",
-  "license": "ISC",
+  "license": "MIT",
   "main": "lib/index.js",
   "module": "es/index.js",
   "types": "lib/types.d.ts",

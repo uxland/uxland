@@ -4,7 +4,7 @@
   "description": "Redux Utilities",
   "author": "UXLand <dev@uxland.es>",
   "homepage": "https://github.com/uxland/uxland/tree/master/packages/redux#readme",
-  "license": "ISC",
+  "license": "MIT",
   "main": "src/index.ts",
   "module": "es/index.js",
   "types": "lib/index.d.ts",

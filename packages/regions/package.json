@@ -4,7 +4,7 @@
   "description": "Region manager",
   "author": "UXLand <dev@uxland.es>",
   "homepage": "https://github.com/uxland/uxland/tree/master/packages/regions#readme",
-  "license": "ISC",
+  "license": "MIT",
   "main": "src/index.ts",
   "module": "es/index.js",
   "types": "lib/index.d.ts",
