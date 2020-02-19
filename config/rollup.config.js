@@ -3,6 +3,7 @@
 const babel = require('rollup-plugin-babel');
 // uglify handles only es5 code, so this also acts as smoke test against shipping es2015+ syntax
 const uglify = require('rollup-plugin-uglify').uglify;
+const typescript = require('@rollup/plugin-typescript');
 
 const buildConfig = pkg => {
   const banner = `// ${pkg.description} v${pkg.version}
@@ -10,7 +11,7 @@ const buildConfig = pkg => {
 // (c) 2020-${new Date().getFullYear()} UXLand
 // UXLand libraries may be freely distributed under the MIT license.\n`;
 
-  const input = 'src/index.js';
+  const input = 'lib/index.js';
 
   const config = {
     input: input,

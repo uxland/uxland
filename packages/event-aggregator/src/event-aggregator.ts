@@ -21,31 +21,26 @@
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+/** @packageDocumentation */
+
 /**
  * Subscription interface
- * @interface Subscription
  */
-/**
- * Subscription disposer
- * @name Subscription#dispose
- * @function
- * @returns {void|never}
- */
+export interface Subscription {
+  /**
+   * @function
+   */
+  dispose: () => void;
+}
 
 /**
  * EventCallback type
- * @memberof EventAggregator
- * @typedef {function(data, event)} EventCallback
- * @param {*=} data
- * @param {string=} event
- * @returns {void|never}
  */
+type EventCallback = (data: any, event?: string) => void;
 
 /**
  * Event Aggregator handler
  * @class
- * @private
- * @memberof EventAggregator
  * @since v1.0.0
  */
 class Handler {
@@ -56,7 +51,7 @@ class Handler {
    * @private
    * @since v1.0.0
    */
-  messageType;
+  private messageType: any;
 
   /**
    * Handler calback
@@ -65,7 +60,7 @@ class Handler {
    * @private
    * @since v1.0.0
    */
-  callback;
+  private callback: EventCallback;
 
   /**
    * Handler constructor
@@ -75,10 +70,10 @@ class Handler {
    * @param {EventCallback} callback Handler callback
    * @example
    *
-   * new Handler('click', (ev) => console.log(ev))
+   * `new Handler('click', (ev) => console.log(ev))`
    *
    */
-  constructor(messageType, callback) {
+  constructor(messageType: any, callback: EventCallback) {
     this.messageType = messageType;
     this.callback = callback;
   }
@@ -90,7 +85,7 @@ class Handler {
    * @since v1.0.0
    * @param {*} message Message
    */
-  handle(message) {
+  handle(message: any) {
     if (message instanceof this.messageType) {
       this.callback.call(null, message);
     }
@@ -100,7 +95,6 @@ class Handler {
 /**
  * Invoke Callback and catches if error
  * @function
- * @memberof EventAggregator
  * @since v1.0.0
  * @param {EventCallback} callback Callback to be called
  * @param {*} data Callback payload
@@ -108,10 +102,10 @@ class Handler {
  * @returns {void|never}
  * @example
  *
- * TBD
+ * `TBD`
  *
  */
-const invokeCallback = (callback, data, event) => {
+const invokeCallback = (callback: EventCallback, data: any, event: string): void | never => {
   try {
     callback(data, event);
   } catch (e) {
@@ -122,17 +116,16 @@ const invokeCallback = (callback, data, event) => {
 /**
  * Invoke Handler and catches if error
  * @function
- * @memberof EventAggregator
  * @since v1.0.0
  * @param {Handler} handler Handler to be called
  * @param {*} data Handler payload
  * @returns {void|never}
  * @example
  *
- * TBD
+ * `TBD`
  *
  */
-const invokeHandler = (handler, data) => {
+const invokeHandler = (handler: Handler, data: any): void | never => {
   try {
     handler.handle(data);
   } catch (e) {
@@ -143,11 +136,10 @@ const invokeHandler = (handler, data) => {
 /**
  * Event Aggregator
  * @class
- * @memberof EventAggregator
  * @since v1.0.0
  * @example
  *
- * TBD
+ * `TBD`
  *
  */
 class EventAggregator {
@@ -156,14 +148,14 @@ class EventAggregator {
    * @type {Object}
    * @since v1.0.0
    */
-  eventLookup;
+  eventLookup: object;
 
   /**
    * Message Handlers
    * @type {Array}
    * @since v1.0.0
    */
-  messageHandlers;
+  messageHandlers: Array<any>;
 
   /**
    * EventAggregator constructor
@@ -186,12 +178,12 @@ class EventAggregator {
    * @throws Event channel/type is invalid
    * @example
    *
-   * TBD
+   * `TBD`
    *
    */
-  publish(event, data) {
-    let subscribers;
-    let i;
+  publish(event: string, data: any): void | never {
+    let subscribers: string | any[];
+    let i: number;
 
     if (!event) {
       throw new Error('Event channel/type is invalid.');
@@ -222,17 +214,17 @@ class EventAggregator {
    * @function
    * @since v1.0.0
    * @param {string} event The event channel or event data type
-   * @param {function} callback The callback to be invoked when when the specified message is published
+   * @param {EventCallback} callback The callback to be invoked when when the specified message is published
    * @returns {Subscription}
    * @throws Event channel/type is invalid
    * @example
    *
-   * TBD
+   * `TBD`
    *
    */
-  subscribe(event, callback) {
-    let handler;
-    let subscribers;
+  subscribe(event: string, callback: EventCallback): Subscription {
+    let handler: EventCallback | Handler;
+    let subscribers: any[];
 
     if (!event) {
       throw new Error('Event channel/type is invalid.');
@@ -263,15 +255,15 @@ class EventAggregator {
    * @function
    * @since v1.0.0
    * @param {string} event The event channel or event data type
-   * @param {function} callback The callback to be invoked when when the specified message is published
+   * @param {EventCallback} callback The callback to be invoked when when the specified message is published
    * @returns {Subscription}
    * @example
    *
-   * TBD
+   * `TBD`
    *
    */
-  subscribeOnce(event, callback) {
-    let sub = this.subscribe(event, (a, b) => {
+  subscribeOnce(event: string, callback: EventCallback): Subscription {
+    let sub = this.subscribe(event, (a: any, b: any) => {
       sub.dispose();
       return callback(a, b);
     });
@@ -280,8 +272,11 @@ class EventAggregator {
   }
 }
 
+/** @ignore */
 export const eventAggregator = new EventAggregator();
-
+/** @ignore */
 export const subscribe = eventAggregator.subscribe.bind(eventAggregator);
+/** @ignore */
 export const subscribeOnce = eventAggregator.subscribeOnce.bind(eventAggregator);
+/** @ignore */
 export const publish = eventAggregator.publish.bind(eventAggregator);
