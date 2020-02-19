@@ -2,15 +2,19 @@ import {IRegion} from "./region";
 import {invariant, isNotNullNeitherEmpty} from "@uxland/functional-utilities";
 import {is, propSatisfies} from "ramda";
 
+export interface IRegionManager {
+    add(region: IRegion): RegionManager;
+    remove(region: IRegion): RegionManager;
+    clear(): RegionManager;
+}
 
 function validateRegion(region: IRegion) {
     invariant(isNotNullNeitherEmpty(region), 'region must be defined');
     invariant(propSatisfies(isNotNullNeitherEmpty, 'key', region), 'region key prop must be a non empty string');
     invariant(propSatisfies(is(String), 'key', region), 'region key prop must be a non empty string');
-
 }
 
-export class RegionManager {
+export class RegionManager implements IRegionManager{
     private regionsMap: Map<string, IRegion> = new Map<string, IRegion>();
 
     get regions(): IterableIterator<IRegion> {
@@ -28,6 +32,12 @@ export class RegionManager {
         this.regionsMap.delete(region.key);
         return this;
     }
+
+    registryViewWithRegion() {
+
+    }
+
+
 
     clear(): RegionManager {
         this.regionsMap.clear();
