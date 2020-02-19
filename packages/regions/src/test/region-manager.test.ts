@@ -1,5 +1,5 @@
-import {RegionManager} from "../region-manager";
-
+import {IRegionManager, RegionManager} from "../region-manager";
+import {IRegion} from '../region';
 describe(`add region feature`, ()=> {
    describe(`Scenario: a region is added to a region manager`, () => {
        it('should add the region to the region\'\s manager region list', function () {
@@ -72,5 +72,83 @@ describe(`add region feature`, ()=> {
 });
 
 describe(`remove region feature`, () => {
+    describe(`Scenario: a region included in a region manager is removed`, () => {
+        describe(`Given a region manager with a region`, () => {
+            let regionManager: IRegionManager;
+            let region: IRegion;
+            beforeEach(function () {
+                regionManager = new RegionManager();
+                region = <IRegion>{key: 'my-region'};
+                regionManager.add(region);
+            });
+            describe('when invoking remove on regionManager with a region with same region instance', () => {
+                it('should remove the region from the region manager region list', function () {
+                    //Act
+                    regionManager.remove(region);
 
+                    //Assert
+                    expect(regionManager.regions).not.toContain(region);
+                });
+                it(`should return true`, () => {
+                    const actual = regionManager.remove(region);
+
+                    expect(actual).toBe(true);
+                })
+            });
+            describe('when invoking remove on regionManager with a region withe same key ', () => {
+                let regionToRemove: IRegion;
+                beforeEach(function () {
+                    regionToRemove = <IRegion>{key: 'my-region'};
+                })
+                it('should remove the region from the region manager region list', function () {
+                    //Act
+                    regionManager.remove(regionToRemove);
+
+                    //Assert
+                    expect(regionManager.regions).not.toContain(regionToRemove);
+                });
+                it(`should return true`, () => {
+                    const actual = regionManager.remove(regionToRemove);
+
+                    expect(actual).toBe(true);
+                })
+            });
+            describe('when invoking remove on regionManager with an string with the region key ', () => {
+                const regionToRemoveKey = 'my-region';
+
+                it('should remove the region from the region manager region list', function () {
+                    //Act
+                    regionManager.remove(regionToRemoveKey);
+
+                    //Assert
+                    expect(regionManager.regions).not.toContain(regionToRemoveKey);
+                });
+                it(`should return true`, () => {
+                    const actual = regionManager.remove(regionToRemoveKey);
+
+                    expect(actual).toBe(true);
+                })
+            });
+            describe('When invoking remove on regionManager with a region having a key different the contained', () => {
+                it(`should return false and do not remove any region`, () => {
+                    //Act
+                    const result = regionManager.remove(<IRegion>{key: 'other region'});
+
+                    //Assert
+                    expect(result).toBe(false);
+                    expect(regionManager.regions).toContain(region);
+                })
+            });
+            describe('When invoking remove on regionManager with an string that does not match any region in regionManager', () => {
+                it(`should return false and do not remove any region`, () => {
+                    //Act
+                    const result = regionManager.remove('other region');
+
+                    //Assert
+                    expect(result).toBe(false);
+                    expect(regionManager.regions).toContain(region);
+                })
+            });
+        });
+    });
 });

@@ -1,5 +1,6 @@
 {
   "compilerOptions": { "rootDir": "src" },
   "extends": "../../config/tsconfig.json",
-  "include": ["src/**/*.ts"]
+  "include": ["src/**/*.ts"],
+  "exclude": ["src/**/test/**/*"]
 }
