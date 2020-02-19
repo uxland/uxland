@@ -1,7 +1,11 @@
 import { isNotNullNeitherEmpty } from '@uxland/functional-utilities';
 import * as R from 'ramda';
-import { isArray } from '.';
 import { SerializerInfo } from './model';
+
+export const isTrue = R.equals(true);
+export const isFalse = R.equals(false);
+export const isArray = R.is(Array);
+export const isObject = R.allPass([R.complement(isArray), R.is(Object)]);
 
 export const thrower = (message: string) => {
   throw new Error(message);
@@ -18,6 +22,10 @@ export const hasDeserializerFn = R.pipe(getDeserializerFn, isNotNullNeitherEmpty
 export const hasSerializers = R.pipe(getSerializers, isNotNullNeitherEmpty);
 export const noSerializers = R.complement(hasSerializers);
 export const hasFromTo = R.allPass([hasFrom, hasTo]);
+export const hasDeserializeProp = R.has('deserializeProp');
+export const hasBoth = R.allPass([hasDeserializeProp, hasSerializerFn]);
+export const hasInvalidStructure = R.allPass([hasSerializerFn, hasSerializers]);
+export const multipleSerializeProp = R.pipe(R.prop('serializeProp'), isArray);
 export const isPath = R.pipe(R.indexOf('.'), R.complement(R.equals(-1)));
 export const isSingleObject = R.allPass([isArray, R.pipe(R.length, R.equals(1))]);
 export const lensProp = (prop: string) =>

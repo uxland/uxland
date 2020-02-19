@@ -1,6 +1,5 @@
 import { isNullOrEmpty } from '@uxland/functional-utilities';
 import * as R from 'ramda';
-import { isArray, isObject } from '.';
 import { SerializerInfo } from './model';
 import {
   getFrom,
@@ -10,6 +9,8 @@ import {
   hasFromTo,
   hasSerializerFn,
   hasSerializers,
+  isArray,
+  isObject,
   isPath,
   isSingleObject,
   lensProp,

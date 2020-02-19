@@ -1,11 +1,12 @@
 import * as R from 'ramda';
-import { isArray, isObject } from '.';
 import { SerializerInfo } from './model';
 import {
   getFrom,
   getSerializerFn,
   getSerializers,
   getTo,
+  isArray,
+  isObject,
   isPath,
   isSingleObject,
   setProperty,
@@ -63,6 +64,7 @@ const serializeObject = <I, O>(i: I, serializers: SerializerInfo<I, O>[]): O =>
 
 /**
  * Serialize data using serializers
+ * @function
  * @param i Input data. Can be an object or an array
  * @param serializers Serializers array. Must contain at least a "from" property.
  */

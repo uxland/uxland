@@ -1,6 +1,5 @@
 import { isNullOrEmpty } from '@uxland/functional-utilities';
 import * as R from 'ramda';
-import { invalidPath, isArray, isObject, validSerializers } from '.';
 import { SerializerInfo } from './model';
 import {
   getDeserializerFn,
@@ -10,12 +9,15 @@ import {
   hasDeserializerFn,
   hasFromTo,
   hasSerializers,
+  isArray,
+  isObject,
   isPath,
   isSingleObject,
   lensProp,
   setProperty,
   thrower
 } from './utilities';
+import { invalidPath, validSerializers } from './validation';
 
 const buildFirstIndexPath = R.pipe(R.split('.'), (paths: string[]) => [paths[0], 0, ...R.remove(0, 1, paths)]);
 const getProp = (from: string | string[], data: any) =>

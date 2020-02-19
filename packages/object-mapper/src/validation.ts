@@ -1,5 +1,5 @@
-import { isArray } from '.';
 import { SerializerInfo } from './model';
+import { isArray } from './utilities';
 
 export const invalidSerializerFn = 'invalid-serializer-fn';
 export const requiredFrom = 'Serializer requires a from property';
