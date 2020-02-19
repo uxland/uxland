@@ -62,14 +62,16 @@ const serializeObject = <I, O>(i: I, serializers: SerializerInfo<I, O>[]): O =>
     {} as O
   );
 
-/**
- * Serialize data using serializers
- * @function
- * @param i Input data. Can be an object or an array
- * @param serializers Serializers array. Must contain at least a "from" property.
- */
 export function serialize<I, O>(i: I[], serializers?: SerializerInfo<I, O>[]): O[];
 export function serialize<I, O>(i: I, serializers?: SerializerInfo<I, O>[]): O;
+/**
+ * Serialize data using serializers
+ * @memberof ObjectMapper
+ * @function
+ * @name serialize
+ * @param {(*|Array.<*>)} i Input data or array data to be serialized
+ * @param {SerializerInfo=} serializers Serializers array. Must contain at least a "from" property.
+ */
 export function serialize<I, O>(i: I | I[], serializers?: SerializerInfo<I, O>[]): O | O[] {
   if (validSerializers(serializers))
     return isArray(i) ? serializeArray(i as I[], serializers) : serializeObject(i as I, serializers);

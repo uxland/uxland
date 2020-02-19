@@ -27,7 +27,7 @@
     "ncp": "^2.0.0"
   },
   "scripts": {
-    "build:clean": "rimraf packages/**/lib packages/**/es",
+    "build:clean": "lerna run build:clean",
     "build:test": "lerna run build:test",
     "build": "lerna run build --stream",
     "deps:clean": "rimraf node_modules yarn.lock packages/**/node_modules",

@@ -5,9 +5,9 @@
   "author": "UXLand <dev@uxland.es>",
   "homepage": "https://github.com/uxland/uxland/tree/master/packages/functional-utilities#readme",
   "license": "MIT",
-  "main": "lib/index.js",
+  "main": "lib/index",
   "module": "es/index.js",
-  "types": "lib/types.d.ts",
+  "types": "lib/index.d.ts",
   "files": [
     "lib",
     "es",
@@ -26,7 +26,7 @@
   "scripts": {
     "build:es": "tsc -p tsconfig.json --outDir es --module esnext --noEmit false",
     "build:cjs": "tsc -p tsconfig.json --outDir lib --noEmit false --declaration",
-    "build:cjs:docs": "yarn build:cjs --outDir tmp --removeComments false",
+    "build:cjs:docs": "tsc -p tsconfig.json --outDir tmp --noEmit false --declaration --removeComments false",
     "build:umd": "cross-env NODE_ENV=development rollup -c -o dist/index.js",
     "build:umd:min": "cross-env NODE_ENV=production rollup -c -o dist/index.min.js",
     "build:clean": "rimraf es lib dist tmp",

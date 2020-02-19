@@ -4,6 +4,7 @@ es/
 lib/
 dist/
 tmp/
+*.tsbuildinfo
 lerna-debug.log
 .buildstatus
 .idea/
