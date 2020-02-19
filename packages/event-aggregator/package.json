@@ -2,7 +2,7 @@
   "name": "@uxland/event-aggregator",
   "version": "1.0.0-alpha.4",
   "description": "Event Aggregator",
-  "author": "Alex Vizcaino <avizcaino@uxland.es>",
+  "author": "UXLand <dev@uxland.es>",
   "homepage": "https://github.com/uxland/uxland/tree/master/packages/event-aggregator#readme",
   "license": "ISC",
   "main": "lib/index",

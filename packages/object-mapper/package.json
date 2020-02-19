@@ -2,7 +2,7 @@
   "name": "@uxland/object-mapper",
   "version": "1.0.0-alpha.3",
   "description": "Object serializer-deserializer",
-  "author": "Alex Vizcaino <avizcaino@uxland.es>",
+  "author": "UXLand <dev@uxland.es>",
   "homepage": "https://github.com/uxland/uxland/tree/master/packages/object-mapper#readme",
   "license": "ISC",
   "main": "src/index.ts",

@@ -2,7 +2,7 @@
   "name": "@uxland/redux",
   "version": "1.0.0-alpha.5",
   "description": "Redux Utilities",
-  "author": "Alex Vizcaino <avizcaino@uxland.es>",
+  "author": "UXLand <dev@uxland.es>",
   "homepage": "https://github.com/uxland/uxland/tree/master/packages/redux#readme",
   "license": "ISC",
   "main": "src/index.ts",

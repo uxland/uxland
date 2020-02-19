@@ -2,7 +2,7 @@
   "name": "@uxland/utilities",
   "version": "1.0.0-alpha.4",
   "description": "Utilities library",
-  "author": "Alex Vizcaino <avizcaino@uxland.es>",
+  "author": "UXLand <dev@uxland.es>",
   "homepage": "https://github.com/uxland/uxland/tree/master/packages/utilities#readme",
   "license": "ISC",
   "main": "src/index.ts",

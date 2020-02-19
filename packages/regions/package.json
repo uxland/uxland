@@ -2,7 +2,7 @@
   "name": "@uxland/regions",
   "version": "1.0.0-alpha.8",
   "description": "Region manager",
-  "author": "Alex Vizcaino <avizcaino@uxland.es>",
+  "author": "UXLand <dev@uxland.es>",
   "homepage": "https://github.com/uxland/uxland/tree/master/packages/regions#readme",
   "license": "ISC",
   "main": "src/index.ts",

@@ -2,7 +2,7 @@
   "name": "@uxland/functional-utilities",
   "version": "0.0.0",
   "description": "Functional Utilities",
-  "author": "Alex Vizcaino <avizcaino@uxland.es>",
+  "author": "UXLand <dev@uxland.es>",
   "homepage": "https://github.com/uxland/uxland/tree/master/packages/functional-utilities#readme",
   "license": "ISC",
   "main": "lib/index.js",
