@@ -8,7 +8,7 @@ Business Need: Adding a view into a Region
 
   Scenario: A invalid view is added to a region
     Given A region
-    And A view not defined
+    And A view is not defined
     When Added to a region
     Then Should raise an error 'Invalid view object'
 

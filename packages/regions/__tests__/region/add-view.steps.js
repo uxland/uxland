@@ -26,7 +26,7 @@ defineFeature(feature, defineScenario => {
         given('A region', () => {
             region = new Region('my-region-1');
         });
-        and('A view not defined', () => {
+        and('A view is not defined', () => {
             view = undefined
         });
         when('Added to a region', () => {
