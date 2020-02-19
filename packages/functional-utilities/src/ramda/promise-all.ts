@@ -20,6 +20,32 @@
  * AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
+import { bind } from 'ramda';
 
-/** @namespace EventAggregator */
-export * from './event-aggregator';
+/**
+ * Resolves Promise.all
+ * @function promiseAll
+ * @memberof FunctionalUtilities.Ramda
+ * @since v1.0.0
+ * @param {Array.Promise} promises Array of promises to be resolved
+ * @returns {Array}
+ * @example
+ *
+ * TBD
+ *
+ */
+export const promiseAll = bind(Promise.all, Promise);
+
+/**
+ * Resolves a promse
+ * @function resolve
+ * @memberof FunctionalUtilities.Ramda
+ * @since v1.0.0
+ * @param {Promise} promise Promise to be resolved
+ * @returns {*}
+ * @example
+ *
+ * TBD
+ *
+ */
+export const resolve = bind(Promise.resolve, Promise);

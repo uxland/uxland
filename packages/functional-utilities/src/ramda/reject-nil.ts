@@ -20,6 +20,25 @@
  * AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
+import { isNil, reject } from 'ramda';
 
-/** @namespace EventAggregator */
-export * from './event-aggregator';
+/**
+ * Filters out input null or undefined values/items
+ * @function rejectNil
+ * @memberof FunctionalUtilities.Ramda
+ * @since v1.0.0
+ * @param {!Array} input Input to filter empty or null values/items
+ * @returns {*|void}
+ * @example
+ *
+ * rejectNil(1) //=>
+ * rejectNil("1") //=> 1
+ * rejectNil("") //=>
+ * rejectNil([]) //=>
+ * rejectNil(["foo"]) //=> foo
+ * rejectNil(["foo","",{},{"foo":"bar"}]) //=> foo,,[object Object],[object Object]
+ * rejectNil({}) //=> [object Object]
+ * rejectNil({"foo":"bar"}) //=> [object Object]
+ *
+ */
+export const rejectNil = reject(isNil);

@@ -2,6 +2,8 @@ node_modules/
 coverage/
 es/
 lib/
+dist/
 lerna-debug.log
 .buildstatus
 .idea/
+packages/test-packages/

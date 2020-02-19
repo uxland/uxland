@@ -21,5 +21,7 @@
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-/** @namespace EventAggregator */
-export * from './event-aggregator';
+/** @namespace FunctionalUtilities */
+export * from './invariant';
+export * from './nop';
+export * from './ramda/index.js';

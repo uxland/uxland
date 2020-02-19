@@ -21,5 +21,14 @@
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-/** @namespace EventAggregator */
-export * from './event-aggregator';
+/**
+ * Defines an empty function
+ * @function nop
+ * @memberof FunctionalUtilities
+ * @since v1.0.0
+ * @returns {void}
+ * @example
+ *
+ *  nop() //=> undefined
+ */
+export const nop = (): void => {};

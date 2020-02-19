@@ -20,6 +20,31 @@
  * AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
+import { toDictionaryBy } from './to-dictionary-by';
 
-/** @namespace EventAggregator */
-export * from './event-aggregator';
+/**
+ * Entity interface
+ * @interface Entity
+ */
+/**
+ * Entity id
+ * @name Entity#id
+ * @constant
+ * @type string
+ */
+
+/**
+ * Check if condition is fulfilled, otherwise throws supplied message error
+ * @function toDictionary
+ * @memberof FunctionalUtilities.Ramda
+ * @since v1.0.0
+ * @param {T[]} items Items to be converted into dictionary
+ * @returns {Entity}
+ * @throws Will throw an error with the message supplied if condition is not fulfilled.
+ * @see FunctionalUtilities.toDictionaryBy
+ * @example
+ *
+ * toDictionary([{id: 1, foo: 'bar'}, {id: 2, foo: 'bar'}]) //=> {1: {foo: 'bar'}, 2: {foo: 'bar'}}
+ *
+ */
+export const toDictionary = toDictionaryBy('id');

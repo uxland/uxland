@@ -21,5 +21,17 @@
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-/** @namespace EventAggregator */
-export * from './event-aggregator';
+/** @namespace FunctionalUtilities.Ramda */
+export * from './id';
+export * from './id-eq';
+export * from './is-not-empty';
+export * from './is-not-nil';
+export * from './is-not-nil-neither-empty';
+export * from './is-null-or-empty';
+export * from './promise-all';
+export * from './reject-empty';
+export * from './reject-nil';
+export * from './reject-nil-or-empty';
+export * from './to-dictionary';
+export * from './to-dictionary-by';
+export * from './to-path';

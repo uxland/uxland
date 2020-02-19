@@ -20,6 +20,19 @@
  * AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
+import { propEq } from 'ramda';
 
-/** @namespace EventAggregator */
-export * from './event-aggregator';
+/**
+ * Checks if property is 'id'
+ * @function idEq
+ * @memberof FunctionalUtilities.Ramda
+ * @since v1.0.0
+ * @param {string} key Property to be checked
+ * @returns {void}
+ * @example
+ *
+ * idEq('id') //=> true
+ * idEq('foo') //=> false
+ */
+
+export const idEq = propEq('id');

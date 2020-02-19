@@ -20,6 +20,26 @@
  * AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
+import { reject } from 'ramda';
+import { isNullOrEmpty } from './is-null-or-empty';
 
-/** @namespace EventAggregator */
-export * from './event-aggregator';
+/**
+ * Filters out input of empty or null values/items
+ * @function rejectNilOrEmpty
+ * @memberof FunctionalUtilities.Ramda
+ * @since v1.0.0
+ * @param {!Array} input Input to filter empty or null values/items
+ * @returns {*|void}
+ * @example
+ *
+ * rejectNilOrEmpty(1) //=>
+ * rejectNilOrEmpty("1") //=>
+ * rejectNilOrEmpty("") //=>
+ * rejectNilOrEmpty([]) //=>
+ * rejectNilOrEmpty(["foo"]) //=>
+ * rejectNilOrEmpty(["foo","",{},{"foo":"bar"}]) //=>
+ * rejectNilOrEmpty({}) //=> [object Object]
+ * rejectNilOrEmpty({"foo":"bar"}) //=> [object Object]
+ *
+ */
+export const rejectNilOrEmpty = reject(isNullOrEmpty);

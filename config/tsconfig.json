@@ -23,6 +23,5 @@
       "@uxland/*": ["../packages/*/src"]
     }
   },
-  "include": ["../packages/**/*.d.ts", "src/**/*", "test/**/*"],
   "exclude": ["node_modules", "es"]
 }

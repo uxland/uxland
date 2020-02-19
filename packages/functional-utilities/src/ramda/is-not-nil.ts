@@ -20,6 +20,25 @@
  * AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
+import { complement, isNil } from 'ramda';
 
-/** @namespace EventAggregator */
-export * from './event-aggregator';
+/**
+ * Checks whether input is undefined or null
+ * @function isNotNil
+ * @memberof FunctionalUtilities.Ramda
+ * @since v1.0.0
+ * @param {*} input Input to check nullity
+ * @returns {boolean}
+ * @example
+ *
+ * isNotNil(undefined) //=> false
+ * isNotNil(1) //=> true
+ * isNotNil("1") //=> true
+ * isNotNil("") //=> true
+ * isNotNil([]) //=> true
+ * isNotNil(["foo"]) //=> true
+ * isNotNil({}) //=> true
+ * isNotNil({"foo":"bar"}) //=> true
+ *
+ */
+export const isNotNil = complement(isNil);

@@ -20,6 +20,19 @@
  * AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
+import { reduce } from 'ramda';
 
-/** @namespace EventAggregator */
-export * from './event-aggregator';
+/**
+ * Converts an array to dictionary using provided key as reference
+ * @function toDictionaryBy
+ * @memberof FunctionalUtilities.Ramda
+ * @since v1.0.0
+ * @param {string} key Message error to be thrown in case condition is not fulfilled
+ * @returns {T}
+ * @throws Will throw an error with the message supplied if condition is not fulfilled.
+ * @example
+ *
+ * toDictionaryBy('id')([{id: 1, description: 'foo'}, {id: 2, description: 'bar'}]) //=> {1: {}}
+ *
+ */
+export const toDictionaryBy = key => items => reduce((acc, elem) => (acc[elem[key]] = elem), {})(items);
