@@ -31,13 +31,10 @@ import { isEmpty, reject } from 'ramda';
  * @returns {*|void}
  * @example
  *
- * rejectEmpty(1) //=>
- * rejectEmpty("1") //=> 1
- * rejectEmpty("") //=>
- * rejectEmpty([]) //=>
- * rejectEmpty(["foo","",{},{"foo":"bar"}]) //=> foo,[object Object]
- * rejectEmpty({}) //=> [object Object]
- * rejectEmpty({"foo":"bar"}) //=> [object Object]
+ * rejectEmpty([]) //=> []
+ * rejectEmpty(["foo","",{},{"foo":"bar"}, undefined]) //=> [foo,{"foo":"bar"}, undefined]
+ * rejectEmpty({}) //=> {}
+ * rejectEmpty({foo: 'bar', qux: '', quux: undefined}) //=> {foo: 'bar'}
  *
  */
 export const rejectEmpty = reject(isEmpty);

@@ -31,14 +31,10 @@ import { isNil, reject } from 'ramda';
  * @returns {*|void}
  * @example
  *
- * rejectNil(1) //=>
- * rejectNil("1") //=> 1
- * rejectNil("") //=>
- * rejectNil([]) //=>
- * rejectNil(["foo"]) //=> foo
- * rejectNil(["foo","",{},{"foo":"bar"}]) //=> foo,,[object Object],[object Object]
- * rejectNil({}) //=> [object Object]
- * rejectNil({"foo":"bar"}) //=> [object Object]
+ * rejectEmpty([]) //=> []
+ * rejectEmpty(["foo","",{},{"foo":"bar"}, undefined]) //=> [foo,'',{"foo":"bar"}]
+ * rejectEmpty({}) //=> {}
+ * rejectEmpty({foo: 'bar', qux: '', quux: undefined}) //=> {foo: 'bar', qux: ''}
  *
  */
 export const rejectNil = reject(isNil);

@@ -32,14 +32,10 @@ import { isNullOrEmpty } from './is-null-or-empty';
  * @returns {*|void}
  * @example
  *
- * rejectNilOrEmpty(1) //=>
- * rejectNilOrEmpty("1") //=>
- * rejectNilOrEmpty("") //=>
- * rejectNilOrEmpty([]) //=>
- * rejectNilOrEmpty(["foo"]) //=>
- * rejectNilOrEmpty(["foo","",{},{"foo":"bar"}]) //=>
- * rejectNilOrEmpty({}) //=> [object Object]
- * rejectNilOrEmpty({"foo":"bar"}) //=> [object Object]
+ * rejectEmpty([]) //=> []
+ * rejectEmpty(["foo","",{},{"foo":"bar"}, undefined]) //=> foo,{"foo":"bar"}
+ * rejectEmpty({}) //=> {}
+ * rejectEmpty({foo: 'bar', qux: '', quux: undefined}) //=> {foo: 'bar'}
  *
  */
 export const rejectNilOrEmpty = reject(isNullOrEmpty);

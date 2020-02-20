@@ -28,11 +28,11 @@ import { reduce } from 'ramda';
  * @memberof FunctionalUtilities.Ramda
  * @since v1.0.0
  * @param {string} key Message error to be thrown in case condition is not fulfilled
- * @returns {T}
+ * @returns {object}
  * @throws Will throw an error with the message supplied if condition is not fulfilled.
  * @example
  *
- * toDictionaryBy('id')([{id: 1, description: 'foo'}, {id: 2, description: 'bar'}]) //=> {1: {}}
+ * toDictionaryBy('id')([{id: 1, description: 'foo'}, {id: 2, description: 'bar'}]) //=> {1: {id: 1, description: 'foo'}, 2: {id: 2, description: 'bar'}}
  *
  */
-export const toDictionaryBy = key => items => reduce((acc, elem) => (acc[elem[key]] = elem), {})(items);
+export const toDictionaryBy = (key: string) => (input: any[]) => reduce((acc, elem) => ({...acc, [elem[key]]: elem}), {})(input);

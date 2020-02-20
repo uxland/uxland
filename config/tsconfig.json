@@ -23,11 +23,5 @@
       "@uxland/*": ["../packages/*/src"]
     }
   },
-  "exclude": ["node_modules", "es"],
-  "references": [
-    { "path": "packages/event-aggregator" },
-    { "path": "packages/functional-utilities" },
-    { "path": "packages/object-mapper" },
-    { "path": "packages/fetch-client" }
-  ]
+  "exclude": ["node_modules", "es"]
 }

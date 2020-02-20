@@ -45,7 +45,7 @@ interface Entity {
  * @see FunctionalUtilities.toDictionaryBy
  * @example
  *
- * toDictionary([{id: 1, foo: 'bar'}, {id: 2, foo: 'bar'}]) //=> {1: {foo: 'bar'}, 2: {foo: 'bar'}}
+ * toDictionary([{id: 1, description: 'foo'}, {id: 2, description: 'bar'}]) //=> {1: {id: 1, description: 'foo'}, 2: {id: 2, description: 'bar'}}
  *
  */
 export const toDictionary = toDictionaryBy('id');

@@ -1,5 +1,6 @@
 {
   "compilerOptions": { "rootDir": "./src", "outDir": "./lib", "composite": true },
   "extends": "../../config/tsconfig.json",
-  "include": ["src/**/*.ts"]
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules", "es", "src/**/*.spec.ts", "src/**/*.steps.ts"]
 }
