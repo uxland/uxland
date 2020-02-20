@@ -40,9 +40,9 @@ interface Entity {
  * @memberof FunctionalUtilities.Ramda
  * @since v1.0.0
  * @param {T[]} items Items to be converted into dictionary
- * @returns {Entity}
+ * @returns {FunctionalUtilities.Entity}
  * @throws Will throw an error with the message supplied if condition is not fulfilled.
- * @see FunctionalUtilities.toDictionaryBy
+ * @see FunctionalUtilities.Ramda.toDictionaryBy
  * @example
  *
  * toDictionary([{id: 1, description: 'foo'}, {id: 2, description: 'bar'}]) //=> {1: {id: 1, description: 'foo'}, 2: {id: 2, description: 'bar'}}

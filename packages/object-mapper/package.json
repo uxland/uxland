@@ -25,8 +25,7 @@
   },
   "scripts": {
     "build:es": "tsc -p tsconfig.json --outDir es --module esnext --noEmit false",
-    "build:cjs": "tsc -p tsconfig.json --outDir lib --noEmit false --declaration",
-    "build:cjs:docs": "tsc -p tsconfig.json --outDir tmp --noEmit false --declaration --removeComments false",
+    "build:cjs": "tsc -p tsconfig.json --outDir lib --noEmit false --declaration  --removeComments false",
     "build:umd": "cross-env NODE_ENV=development rollup -c -o dist/index.js",
     "build:umd:min": "cross-env NODE_ENV=production rollup -c -o dist/index.min.js",
     "build:clean": "rimraf es lib dist tmp tsconfig.tsbuildinfo",
@@ -43,7 +42,10 @@
     "test:unit": "jest --collect-coverage",
     "test": "yarn test:unit",
     "help": "tsc -h",
-    "jsdoc": "yarn build:cjs:docs && rimraf docs && jsdoc -r ./tmp -c jsdoc.conf.js && rimraf tmp"
+    "jsdoc": "yarn build:cjs && rimraf docs && jsdoc -r ./lib -c jsdoc.conf.js",
+    "jsdoc:styles": "cat ../../resources/docs/custom.css >> ./docs/$npm_package_name/$npm_package_version/styles/jsdoc.css",
+    "jsdoc:mv": "mkdirp ../../docs/$npm_package_name/$npm_package_version && ncp docs/$npm_package_name/$npm_package_version ../../docs/$npm_package_name/$npm_package_version",
+    "postjsdoc": "yarn jsdoc:styles && yarn jsdoc:mv"
   },
   "bugs": {
     "url": "https://github.com/uxland/uxland/issues"
@@ -54,6 +56,7 @@
     "@olavoparno/jest-badges-readme": "^1.4.0",
     "@types/jest": "^25.1.0",
     "@types/ramda": "^0.26.41",
+    "cat": "^0.2.0",
     "cross-env": "^7.0.0",
     "cucumber": "^6.0.5",
     "jest": "^25.1.0",

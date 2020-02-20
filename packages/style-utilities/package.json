@@ -22,5 +22,6 @@
   "scripts": {},
   "bugs": {
     "url": "https://github.com/uxland/uxland/issues"
-  }
+  },
+  "devDependencies": {}
 }

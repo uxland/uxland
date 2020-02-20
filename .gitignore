@@ -9,3 +9,4 @@ lerna-debug.log
 .buildstatus
 .idea/
 packages/test-packages/
+packages/*/docs

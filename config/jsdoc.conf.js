@@ -13,13 +13,14 @@ module.exports = {
     cleverLinks: false,
     monospaceLinks: true,
     useLongnameInNav: false,
-    showInheritedInNav: true
+    showInheritedInNav: true,
+    default: { includeDate: false }
   },
   opts: {
     destination: './docs/',
     encoding: 'utf8',
     private: true,
     recurse: true,
-    template: '../node_modules/minami'
+    template: '../node_modules/docdash'
   }
 };

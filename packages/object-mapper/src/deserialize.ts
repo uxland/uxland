@@ -23,22 +23,7 @@
 import { isNullOrEmpty } from '@uxland/functional-utilities';
 import * as R from 'ramda';
 import { SerializerInfo } from './model';
-import {
-  getDeserializerFn,
-  getFrom,
-  getSerializers,
-  getTo,
-  hasDeserializerFn,
-  hasFromTo,
-  hasSerializers,
-  isArray,
-  isObject,
-  isPath,
-  isSingleObject,
-  lensProp,
-  setProperty,
-  thrower
-} from './utilities';
+import { getDeserializerFn, getFrom, getSerializers, getTo, hasDeserializerFn, hasFromTo, hasSerializers, isArray, isObject, isPath, isSingleObject, lensProp, setProperty, thrower } from './utilities';
 import { invalidPath, validSerializers } from './validation';
 
 const buildFirstIndexPath = R.pipe(R.split('.'), (paths: string[]) => [paths[0], 0, ...R.remove(0, 1, paths)]);
@@ -162,7 +147,7 @@ export function deserialize<I, O>(i: I, serializers?: SerializerInfo<I, O>[]): O
  * @function
  * @name deserialize
  * @param {(*|Array.<*>)} i Input data or array data to be deserialized
- * @param {SerializerInfo=} serializers Serializers array. Must contain at least a "from" property.
+ * @param {ObjectMapper.SerializerInfo=} serializers Serializers array. Must contain at least a "from" property.
  */
 export function deserialize<I, O>(i: I | I[], serializers?: SerializerInfo<I, O>[]): O | O[] {
   if (validSerializers(serializers))

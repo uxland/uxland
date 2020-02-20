@@ -167,8 +167,8 @@ export const eventAggregator = new EventAggregator();
  * @name subscribe
  * @since v1.0.0
  * @param {string} event The event channel or event data type
- * @param {EventCallback} callback The callback to be invoked when when the specified message is published
- * @returns {Subscription}
+ * @param {EventAggregator.EventCallback} callback The callback to be invoked when when the specified message is published
+ * @returns {EventAggregator.Subscription}
  * @throws Event channel/type is invalid
  * @example
  *
@@ -184,8 +184,8 @@ export const subscribe = eventAggregator.subscribe.bind(eventAggregator);
  * @name subscribeOnce
  * @since v1.0.0
  * @param {string} event The event channel or event data type
- * @param {EventCallback} callback The callback to be invoked when when the specified message is published
- * @returns {Subscription}
+ * @param {EventAggregator.EventCallback} callback The callback to be invoked when when the specified message is published
+ * @returns {EventAggregator.Subscription}
  * @example
  *
  * `TBD`
