@@ -7,8 +7,8 @@ const isPrereleaseBranch = branch => prereleaseBranches.indexOf(branch) > -1;
 const publish = async () => {
   let cmd;
   if (isPrereleaseBranch(branchName()))
-    cmd = spawn('lerna', ['version', '--conventional-prerelease', `--pre-dist-tag ${branchName()}`, '--yes']);
-  else cmd = spawn('lerna', ['version', '--conventional-commits']);
+    cmd = spawn('lerna', ['publish', '--conventional-prerelease' /*, `--pre-dist-tag ${branchName()}`*/]);
+  else cmd = spawn('lerna', ['publish', '--conventional-commits']);
 
   try {
     cmd.stdout && cmd.stdout.on('data', data => console.log(`stdout: ${data.toString()}`));
