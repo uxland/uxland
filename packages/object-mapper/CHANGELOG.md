@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.4](https://github.com/uxland/uxland/compare/@uxland/object-mapper@1.0.0-alpha.3...@uxland/object-mapper@1.0.0-alpha.4) (2020-02-20)
+
+
+### Bug Fixes
+
+* corrects publish script ([c24cde9](https://github.com/uxland/uxland/commit/c24cde99c1f66268c7f8cb9303954657bed4a87a))
+* reference build config + object-mapper jsdocs ([5b01902](https://github.com/uxland/uxland/commit/5b01902d900a4105f5a9d3f841ffe04bb7d3d984))
+* update author in packages ([db99c3c](https://github.com/uxland/uxland/commit/db99c3c8c54fd0d62dfb0d7894e0e8b0962751b0))
+* update eslint warnings and errors ([a82e1eb](https://github.com/uxland/uxland/commit/a82e1eb57b9c19b16639011f01449a5a14931e01))
+* update object-mapper new scaffolding + use functional-utilities ([64d118d](https://github.com/uxland/uxland/commit/64d118dd9a4fb2160244a8106bc6691b65fc2849))
+
+
+
+
+
 # [1.0.0-alpha.3](https://github.com/uxland/uxland/compare/@uxland/object-mapper@1.0.0-alpha.2...@uxland/object-mapper@1.0.0-alpha.3) (2020-02-13)
 
 

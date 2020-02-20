@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.5](https://github.com/uxland/uxland/compare/@uxland/fetch-client@1.0.0-alpha.4...@uxland/fetch-client@1.0.0-alpha.5) (2020-02-20)
+
+
+### Bug Fixes
+
+* reference build config + object-mapper jsdocs ([5b01902](https://github.com/uxland/uxland/commit/5b01902d900a4105f5a9d3f841ffe04bb7d3d984))
+* update author in packages ([db99c3c](https://github.com/uxland/uxland/commit/db99c3c8c54fd0d62dfb0d7894e0e8b0962751b0))
+* update eslint warnings and errors ([a82e1eb](https://github.com/uxland/uxland/commit/a82e1eb57b9c19b16639011f01449a5a14931e01))
+
+
+
+
+
 # [1.0.0-alpha.4](https://github.com/uxland/uxland/compare/@uxland/fetch-client@1.0.0-alpha.3...@uxland/fetch-client@1.0.0-alpha.4) (2020-02-13)
 
 

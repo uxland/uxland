@@ -1,6 +1,6 @@
 {
   "name": "@uxland/style-utilities",
-  "version": "1.0.0-alpha.3",
+  "version": "1.0.0-alpha.4",
   "description": "Style Utilities",
   "author": "UXLand <dev@uxland.es>",
   "homepage": "https://github.com/uxland/uxland/tree/master/packages/style-utilities#readme",
@@ -22,6 +22,5 @@
   "scripts": {},
   "bugs": {
     "url": "https://github.com/uxland/uxland/issues"
-  },
-  "devDependencies": {}
+  }
 }

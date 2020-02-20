@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.4](https://github.com/uxland/uxland/compare/@uxland/style-utilities@1.0.0-alpha.3...@uxland/style-utilities@1.0.0-alpha.4) (2020-02-20)
+
+
+### Bug Fixes
+
+* refactor scaffolding for style-utilities ([28ff38d](https://github.com/uxland/uxland/commit/28ff38d93e43f832ad48830a6c8b4d8b5a86de38))
+* update author in packages ([db99c3c](https://github.com/uxland/uxland/commit/db99c3c8c54fd0d62dfb0d7894e0e8b0962751b0))
+
+
+
+
+
 # [1.0.0-alpha.3](https://github.com/uxland/uxland/compare/@uxland/style-utilities@1.0.0-alpha.2...@uxland/style-utilities@1.0.0-alpha.3) (2020-02-13)
 
 
