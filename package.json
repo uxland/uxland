@@ -37,7 +37,7 @@
     "jsdoc": "lerna run build:cjs:docs --stream && rimraf docs && jsdoc -r ./packages/*/tmp -c config/jsdoc.conf.js",
     "readme:coverage": "lerna run readme:coverage",
     "release:dry-run": "lerna run semantic-release:dry-run",
-    "release": "yarn build && yarn test && yarn readme:coverage && node scripts/publish.js",
+    "release": "yarn build && yarn test && node scripts/publish.js",
     "test": "lerna run test",
     "precommit": "yarn test && yarn build:test && yarn readme:coverage && git add ."
   },
