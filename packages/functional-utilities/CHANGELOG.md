@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.1](https://github.com/uxland/uxland/compare/@uxland/functional-utilities@1.0.0-alpha.0...@uxland/functional-utilities@1.0.0-alpha.1) (2020-02-20)
+
+
+### Bug Fixes
+
+* complete testing for functional-utilities ([9990c88](https://github.com/uxland/uxland/commit/9990c88fed32c99a2781c86f34dc266e740da3b8))
+
+
+
+
+
 # 1.0.0-alpha.0 (2020-02-20)
 
 

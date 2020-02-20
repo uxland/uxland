@@ -1,6 +1,6 @@
 {
   "name": "@uxland/fetch-client",
-  "version": "1.0.0-alpha.5",
+  "version": "1.0.0-alpha.6",
   "description": "Fetch Client",
   "author": "UXLand <dev@uxland.es>",
   "homepage": "https://github.com/uxland/uxland/tree/master/packages/fetch-client#readme",
@@ -71,6 +71,6 @@
     "typescript": "^3.7.5"
   },
   "dependencies": {
-    "@uxland/event-aggregator": "^1.0.0-alpha.5"
+    "@uxland/event-aggregator": "^1.0.0-alpha.6"
   }
 }
