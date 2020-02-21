@@ -7,7 +7,7 @@
   "command": {
     "version": {
       "allowBranch": ["master", "alpha", "beta"],
-      "message": "chore(release): publish %v"
+      "message": "chore(release): publish new versions"
     },
     "publish": {
       "conventionalCommits": true
