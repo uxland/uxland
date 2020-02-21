@@ -3,7 +3,7 @@ import { SerializerInfo } from '../../src/model';
 import { serialize } from '../../src/serialize';
 import { invalidPath, invalidSerializerStructure, requiredFrom, requiredSerializeFn } from '../../src/validation';
 
-interface anySerializerInfo extends Array<SerializerInfo<any, any, any, any>> {}
+type anySerializerInfo = Array<SerializerInfo<any, any, any, any>>
 
 describe('Deserializer', () => {
   describe('When calling deserialization without serializers', () => {

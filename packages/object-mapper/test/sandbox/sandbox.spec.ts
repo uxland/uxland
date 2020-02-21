@@ -40,8 +40,8 @@ describe('Sandbox', () => {
     expect(serialize(input, serializers)).toStrictEqual(output);
   });
   it('Massive object serialization: object-mapper vs json-object-mapper', () => {
-    const nTests: number = 50;
-    let results = {
+    const nTests = 50;
+    const results = {
       uxl: [],
       set: [],
       json: []

@@ -133,7 +133,7 @@ class EventAggregator {
 
     return {
       dispose() {
-        let idx = subscribers.indexOf(handler);
+        const idx = subscribers.indexOf(handler);
         if (idx !== -1) {
           subscribers.splice(idx, 1);
         }
@@ -142,7 +142,7 @@ class EventAggregator {
   }
 
   subscribeOnce(event: string, callback: EventCallback): Subscription {
-    let sub = this.subscribe(event, (a: any, b: any) => {
+    const sub = this.subscribe(event, (a: any, b: any) => {
       sub.dispose();
       return callback(a, b);
     });

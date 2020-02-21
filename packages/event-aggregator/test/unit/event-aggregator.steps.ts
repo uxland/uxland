@@ -33,7 +33,7 @@ defineFeature(subscribeFeature, defineScenario => {
   });
   defineScenario('Unsubscribe an event', ({ given, and, when, then }) => {
     let EA;
-    let event = 'EVENT::DISPOSE';
+    const event = 'EVENT::DISPOSE';
     let subscription;
     given('An event aggregator', () => {
       EA = eventAggregator;

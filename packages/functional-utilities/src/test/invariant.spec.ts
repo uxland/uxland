@@ -26,14 +26,14 @@ describe('when invoking `invariant` method', () => {
   });
   describe('and a function is passed as first argument', () => {
     it('should invoke function', () => {
-      let stub = jest.fn();
+      const stub = jest.fn();
       try {
         invariant(stub);
       } catch (e) {}
       expect(stub).toHaveBeenCalledTimes(1);
     });
     it('should raise error if function returns falsy', () => {
-      let stub = jest
+      const stub = jest
         .fn()
         .mockReturnValueOnce(false)
         .mockReturnValueOnce(0)

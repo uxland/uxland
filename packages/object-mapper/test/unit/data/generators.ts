@@ -1,7 +1,7 @@
 import { Deserializer, JsonProperty, ObjectMapper } from 'json-object-mapper';
 
-const generateInput = (items: number, depth: number = 1): any[] => {
-  let data = [];
+const generateInput = (items: number, depth = 1): any[] => {
+  const data = [];
   for (let i = 0; i < items; i++) {
     let item = {
       pass: 'bar',
@@ -15,8 +15,8 @@ const generateInput = (items: number, depth: number = 1): any[] => {
   return data;
 };
 
-const generateOutput = (items: number, depth: number = 1): any[] => {
-  let data = [];
+const generateOutput = (items: number, depth = 1): any[] => {
+  const data = [];
   for (let i = 0; i < items; i++) {
     let item = {
       pass: 'bar',
@@ -30,7 +30,7 @@ const generateOutput = (items: number, depth: number = 1): any[] => {
   return data;
 };
 
-let serializers = [
+const serializers = [
   {
     from: 'pass',
     to: 'pass'
