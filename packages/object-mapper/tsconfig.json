@@ -1,6 +1,6 @@
 {
   "compilerOptions": { "rootDir": "./src", "outDir": "./" },
-  "extends": "../../config/tsconfig.json",
+  "extends": "../../config/build/tsconfig.json",
   "include": ["src/**/*.ts"],
   "references": [{ "path": "../functional-utilities" }]
 }

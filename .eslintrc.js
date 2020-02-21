@@ -9,7 +9,7 @@ module.exports = {
   ],
   parserOptions: {
     tsconfigRootDir: __dirname,
-    project: ['./config/tsconfig.eslint.json']
+    project: ['./config/build/tsconfig.eslint.json']
   },
   rules: {
     '@typescript-eslint/ban-ts-ignore': 'warn',
