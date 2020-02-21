@@ -1,0 +1,47 @@
+footer {
+  visibility: hidden;
+}
+
+h4.name {
+  background: #009788;
+}
+
+h4.name a {
+  color: #21d1cc;
+}
+
+h4.name a:hover {
+  border-bottom-color: #21d1cc;
+}
+
+.type-signature {
+  color: rgba(33, 209, 204, 0.5);
+}
+
+.signature {
+  color: #21d1cc;
+}
+
+a,
+a:active {
+  color: #009788;
+}
+
+span.param-type,
+.params td .param-type,
+.param-type dd {
+  color: #009788;
+}
+
+nav > ul > li > a {
+  color: #009788;
+}
+
+nav > h2 > a {
+  color: #009788 !important;
+}
+
+nav a:hover,
+nav a:active {
+  color: #009788;
+}
