@@ -1,3 +1,7 @@
+#main {
+  height: calc(100% - 47px);
+}
+
 h4.name {
   background: #009788;
 }
