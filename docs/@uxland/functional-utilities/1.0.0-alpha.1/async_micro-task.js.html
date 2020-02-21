@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>Entity - Documentation</title>
+    <title>async/micro-task.js - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -32,159 +32,76 @@
 
 <div id="main">
     
-    <h1 class="page-title">Entity</h1>
+    <h1 class="page-title">async/micro-task.js</h1>
     
 
     
 
 
 
-
-<section>
-
-<header>
     
-        <h2>
-            <span class="ancestors"><a href="FunctionalUtilities.html">FunctionalUtilities</a>.</span>
-        
-        Entity
-        </h2>
-        
-    
-</header>
-
-<article>
-    
-        <div class="container-overview">
-        
-            
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="ramda_to-dictionary.js.html">ramda/to-dictionary.js</a>, <a href="ramda_to-dictionary.js.html#line27">line 27</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-    <h5 class="subsection-title">Properties:</h5>
-
-    
-
-<table class="props">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>id</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Entity ID</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-            
-                <div class="description usertext"><p>Entity interface</p></div>
-            
-
-            
-        
-        </div>
-    
-
-    
-
-    
-
-    
-    
-    
-
-     
-
-    
-
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+let microtaskCurrHandle = 0;
+let microtaskLastHandle = 0;
+const microtaskCallbacks = [];
+let microtaskNodeContent = 0;
+const microtaskNode = document &amp;&amp; document.createTextNode('');
+function microtaskFlush() {
+    const len = microtaskCallbacks.length;
+    for (let i = 0; i &lt; len; i++) {
+        const cb = microtaskCallbacks[i];
+        if (cb) {
+            try {
+                cb();
+            }
+            catch (e) {
+                setTimeout(() => {
+                    throw e;
+                });
+            }
+        }
+    }
+    microtaskCallbacks.splice(0, len);
+    microtaskLastHandle += len;
+}
+if (MutationObserver)
+    new MutationObserver(microtaskFlush).observe(microtaskNode, { characterData: true });
+exports.microTask = {
+    /**
+     * Enqueues a function called at microtask timing.
+     *
+     * @memberof microTask
+     * @param {!Function=} callback Callback to run
+     * @return {number} Handle used for canceling task
+     */
+    run(callback) {
+        microtaskNode.textContent = (microtaskNodeContent++).toString();
+        microtaskCallbacks.push(callback);
+        return microtaskCurrHandle++;
+    },
+    /**
+     * Cancels a previously enqueued `microTask` callback.
+     *
+     * @memberof microTask
+     * @param {number} handle Handle returned from `run` of callback to cancel
+     * @return {void}
+     */
+    cancel(handle) {
+        const idx = handle - microtaskLastHandle;
+        if (idx >= 0) {
+            if (!microtaskCallbacks[idx]) {
+                throw new Error('invalid async handle: ' + handle);
+            }
+            microtaskCallbacks[idx] = null;
+        }
+    }
+};
+</code></pre>
+        </article>
+    </section>
 
 
 

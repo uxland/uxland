@@ -762,7 +762,11 @@ html[data-search-mode] .level-hide {
     font-weight: 300;
     font-style: normal;
 
-}h4.name {
+}footer {
+  visibility: hidden;
+}
+
+h4.name {
   background: #009788;
 }
 
