@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.2](https://github.com/uxland/uxland/compare/@uxland/functional-utilities@1.0.0-alpha.1...@uxland/functional-utilities@1.0.0-alpha.2) (2020-02-21)
+
+
+### Bug Fixes
+
+* functional-utilities async namespace ([ae549bc](https://github.com/uxland/uxland/commit/ae549bc8ac85086f7e8f7963141b75e6fa608179))
+* linter fixes ([0b4d460](https://github.com/uxland/uxland/commit/0b4d460b8d9942f2b0bbec65838ff2c53bdd67c3))
+* new functional-utilities + jsdom test configuration ([d2ed174](https://github.com/uxland/uxland/commit/d2ed1740139623a823371ce537a7198833c9e54c))
+
+
+
+
+
 # [1.0.0-alpha.1](https://github.com/uxland/uxland/compare/@uxland/functional-utilities@1.0.0-alpha.0...@uxland/functional-utilities@1.0.0-alpha.1) (2020-02-20)
 
 
