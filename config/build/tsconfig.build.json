@@ -15,26 +15,13 @@
     "noResolve": false,
     "strict": false,
     "suppressExcessPropertyErrors": true,
-    "lib": [
-      "es2018",
-      "dom"
-    ],
+    "lib": ["es2018", "dom"],
     "baseUrl": ".",
     "paths": {
-      "tslib": [
-        "node_modules/tslib/tslib.d.ts"
-      ],
-      "@uxland/*": [
-        "../packages/*/src"
-      ]
+      "tslib": ["node_modules/tslib/tslib.d.ts"],
+      "@uxland/*": ["../../packages/*/src"]
     }
   },
-  "include": [
-    "src/**/*"
-  ],
-  "exclude": [
-    "node_modules",
-    "es",
-    "test"
-  ]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "es", "test"]
 }

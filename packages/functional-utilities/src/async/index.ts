@@ -20,33 +20,11 @@
  * AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-import { AsyncInterface } from './async-interface';
-import { timeOut } from './time-out';
-type RequestIdleCallbackHandle = any;
-type RequestIdleCallbackOptions = {
-  timeout: number;
-};
-type RequestIdleCallbackDeadline = {
-  readonly didTimeout: boolean;
-  timeRemaining: () => number;
-};
-
-declare global {
-  interface Window {
-    requestIdleCallback: (
-      callback: (deadline: RequestIdleCallbackDeadline) => void,
-      opts?: RequestIdleCallbackOptions
-    ) => RequestIdleCallbackHandle;
-    cancelIdleCallback: (handle: RequestIdleCallbackHandle) => void;
-  }
-}
-const idlePeriodImpl: AsyncInterface = {
-  cancel: handle => window.cancelIdleCallback(handle),
-  run: fn => window.requestIdleCallback(fn as any)
-};
-const fakeImpl: AsyncInterface = {
-  run: callback => timeOut.run(callback, 16),
-  cancel: handle => timeOut.cancel(handle)
-};
-export const idlePeriod: AsyncInterface =
-  window && window.requestIdleCallback && window.cancelIdleCallback ? idlePeriodImpl : fakeImpl;
+/** @namespace FunctionalUtilities.Async */
+export * from './animation-frame';
+export * from './async-interface';
+export * from './async-queue';
+export * from './debounce';
+export * from './idle-period';
+export * from './micro-task';
+export * from './time-out';
