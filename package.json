@@ -39,7 +39,8 @@
     "release": "yarn build && yarn test && node scripts/publish.js",
     "postrelease": "yarn docgen && git add . && git commit -m 'docs: update documentation'",
     "test": "lerna run test",
-    "precommit": "yarn test && yarn build:test && yarn readme:coverage && git add ."
+    "precommit": "yarn test && yarn build:test && yarn readme:coverage && git add .",
+    "postpublish": "yarn docgen && git add docs && git commit -m 'docs: new version documentation' && git push"
   },
   "workspaces": [
     "packages/*"
