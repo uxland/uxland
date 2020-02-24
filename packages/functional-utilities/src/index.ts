@@ -22,6 +22,7 @@
  */
 
 /** @namespace FunctionalUtilities */
+export * from './constant-builder';
 export * from './invariant';
 export * from './nop';
 export * from './ramda';
