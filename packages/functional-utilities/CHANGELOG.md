@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.3](https://github.com/uxland/uxland/compare/@uxland/functional-utilities@1.0.0-alpha.2...@uxland/functional-utilities@1.0.0-alpha.3) (2020-02-24)
+
+
+### Bug Fixes
+
+* add constant builder to functional-utilities ([b8f5075](https://github.com/uxland/uxland/commit/b8f5075aa6b8b1409b49070f5b54bcbabf32a9fc))
+
+
+
+
+
 # [1.0.0-alpha.2](https://github.com/uxland/uxland/compare/@uxland/functional-utilities@1.0.0-alpha.1...@uxland/functional-utilities@1.0.0-alpha.2) (2020-02-21)
 
 
