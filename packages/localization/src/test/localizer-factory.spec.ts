@@ -1,3 +1,4 @@
+import IntlMessageFormat from 'intl-messageformat';
 import { localizerFactory } from '../localizer-factory';
 
 describe('Localizer Factory', () => {
@@ -61,6 +62,9 @@ describe('Localizer Factory', () => {
     it('should return localized message using provided argument object', () => {
       expect(lf('greeting', { name: 'Charlie' })).toEqual('Hi Charlie');
     });
+    it('should return localized message using provided argument array', () => {
+      expect(lf('greeting', ['name', 'Charlie'])).toEqual('Hi Charlie');
+    });
     describe('If locale message is pluralized', () => {
       const locales = {
         en: {
@@ -85,8 +89,16 @@ describe('Localizer Factory', () => {
         expect(lf('cats', { cats: '2' })).toEqual('2 cats');
       });
       it('should crash if provided value has no corresponding plural', () => {
-        const fn = () => lf('dogs', { dogs: 2 });
+        const fn = (): string | IntlMessageFormat => lf('dogs', { dogs: 2 });
         expect(fn).toThrow();
+      });
+    });
+    describe('If custom formatter is provided', () => {
+      const locales = { en: { salary: 'Your salary is {salary, number, EUR}' } };
+      const formats = { number: { EUR: { style: 'currency', currency: 'EUR' } } };
+      const lf = localizerFactory(language, locales, formats);
+      it('should return formatted message', () => {
+        expect(lf('salary', { salary: 2000 })).toEqual('Your salary is €2,000.00');
       });
     });
   });

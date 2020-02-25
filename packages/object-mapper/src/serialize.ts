@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2020 ${company}
+ * Copyright (c) 2020 UXLand
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of
  * this software and associated documentation files (the "Software"), to deal in
@@ -22,7 +22,18 @@
  */
 import * as R from 'ramda';
 import { SerializerInfo } from './model';
-import { getFrom, getSerializerFn, getSerializers, getTo, isArray, isObject, isPath, isSingleObject, setProperty, thrower } from './utilities';
+import {
+  getFrom,
+  getSerializerFn,
+  getSerializers,
+  getTo,
+  isArray,
+  isObject,
+  isPath,
+  isSingleObject,
+  setProperty,
+  thrower
+} from './utilities';
 import { invalidPath, validSerializers } from './validation';
 
 const buildFirstIndexPath = R.pipe(R.split('.'), (paths: string[]) => [paths[0], 0, ...R.remove(0, 1, paths)]);
