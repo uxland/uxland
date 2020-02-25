@@ -25,6 +25,7 @@ let STUB = 1;
 /**
  * Subscription interface
  * @memberof EventAggregator
+ * @since v1.0.0
  * @interface Subscription
  * @property {function} dispose Subscription disposer
  */
@@ -36,6 +37,7 @@ export interface Subscription {
 /**
  * EventCallback type
  * @memberof EventAggregator
+ * @since v1.0.0
  * @typedef {function} EventCallback
  * @param {*=} data Event payload
  * @param {string=} event Event ID
