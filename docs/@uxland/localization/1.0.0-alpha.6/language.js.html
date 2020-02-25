@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>localize.js - Documentation</title>
+    <title>language.js - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -32,7 +32,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">localize.js</h1>
+    <h1 class="page-title">language.js</h1>
     
 
     
@@ -44,56 +44,84 @@
         <article>
             <pre class="prettyprint source linenums"><code>"use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-let internalLocalizer;
-/**
- * Default localizer initializer
- * @function
- * @name initializeLocalizer
- * @memberof Localization
- * @since v1.0.0
- * @param {Localization.Localizer} localizer LocalizerFactory
- * @returns {Localization.Localizer}
- * @example
+/*
+ * MIT License
  *
- * const localizer = localizerFactory('en', {en: {foo: 'bar'}}, {number: {EUR: {style: 'currency', currency: 'EUR'}}}, true);
- * const defaultLocalizer = initializeLocalizer(localizer);
+ * Copyright (c) 2020 UXLand
  *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of
+ * this software and associated documentation files (the "Software"), to deal in
+ * the Software without restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the
+ * Software, and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+ * FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+ * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN
+ * AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH
+ * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-exports.initializeLocalizer = (localizer) => (internalLocalizer = localizer);
+const event_aggregator_1 = require("@uxland/event-aggregator");
+const events_1 = require("./events");
 /**
- * Dispose default localizer
- * @function
- * @name disposeLocalizer
+ * Default language
+ * @constant {string}
  * @memberof Localization
+ * @name DEFAULT_LANGUAGE
  * @since v1.0.0
+ */
+exports.DEFAULT_LANGUAGE = 'en';
+let defaultLanguage = exports.DEFAULT_LANGUAGE;
+/**
+ * Set new default language from provided value. Publishes an event `LANGUAGE_UPDATED` in order to inform all listeners of the language change
+ * @function
+ * @memberof Localization
+ * @name setLanguage
+ * @since v1.0.0
+ * @param {string} language New default language
  * @returns {void}
  * @example
  *
- * disposeLocalizer();
+ * setLocales({en: {foo: 'bar'}})
  *
  */
-exports.disposeLocalizer = () => (internalLocalizer = undefined);
+exports.setLanguage = (language) => {
+    defaultLanguage = language;
+    event_aggregator_1.publish(events_1.LANGUAGE_UPDATED, language);
+};
 /**
- * Localizer
+ * Return default language
+ * @function
  * @memberof Localization
- * @type {Localization.Localizer}
- * @name localize
+ * @name getDefaultLanguage
  * @since v1.0.0
- * @param {string} key Message key of locale dictionary depending on default language
- * @param {...*} args Arguments to be used when calling IntlMessageFormat
- * @returns {(string | IntlMessageFormat)}
- * @throws Default localizer has not been initialized. Please, call initializeLocalizer firsT in order to create a default localizer
- * @throws Error propagated from IntlMessageFormat
- * @example
- *
- * const lf = localizerFactory('en', {en: {foo: 'bar'}}, {number: {EUR: {style: 'currency', currency: 'EUR'}}}, true);
- * lf('foo') //=> 'bar'
- * lf('qux') //=> ''
+ * @returns {string}
  */
-exports.localize = (key, ...args) => {
-    if (!internalLocalizer)
-        throw new Error('Default localizer has not been initialized. Please, call initializeLocalizer firsT in order to create a default localizer');
-    return internalLocalizer(key, ...args);
+exports.getDefaultLanguage = () => exports.DEFAULT_LANGUAGE;
+/**
+ * Returns current default language
+ * @function
+ * @memberof Localization
+ * @name getLanguage
+ * @since v1.0.0
+ * @returns {string}
+ */
+exports.getLanguage = () => defaultLanguage;
+/**
+ * Reset language to default language. Publishes an event `LANGUAGE_RESET` in order to inform all listeners of the language reset
+ * @function
+ * @memberof Localization
+ * @name resetLanguage
+ * @since v1.0.0
+ */
+exports.resetLanguage = () => {
+    defaultLanguage = exports.DEFAULT_LANGUAGE;
+    event_aggregator_1.publish(events_1.LANGUAGE_RESET, exports.DEFAULT_LANGUAGE);
 };
 </code></pre>
         </article>

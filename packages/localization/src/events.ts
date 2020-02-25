@@ -27,3 +27,4 @@ const eventBuilder = constantBuilder('LOCALIZATION', undefined, '::');
 export const LOCALES_RESET = eventBuilder('LOCALES-RESET');
 export const LOCALES_UPDATED = eventBuilder('LOCALES-UPDATED');
 export const LANGUAGE_UPDATED = eventBuilder('LANGUAGE-UPDATED');
+export const LANGUAGE_RESET = eventBuilder('LANGUAGE-RESET');

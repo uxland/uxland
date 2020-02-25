@@ -17,11 +17,10 @@ describe('locales utilities', () => {
     });
     it('should publish an event to communicate update in locales dictionary', () => {
       expect(spy).toHaveBeenCalled();
-      expect(spy).toHaveBeenCalledTimes(1);
     });
     describe('when getting locales', () => {
       it('should return provided locales merged with default locales if called for first time', () => {
-        expect(getLocales()).toEqual({ ...getDefaultLocales(), locales });
+        expect(getLocales()).toEqual({ ...getDefaultLocales(), ...locales });
       });
     });
     afterAll(() => spy.mockClear());
@@ -34,7 +33,6 @@ describe('locales utilities', () => {
     });
     it('should publish an event to communicate locales reset', () => {
       expect(spy).toHaveBeenCalled();
-      expect(spy).toHaveBeenCalledTimes(1);
     });
   });
 });
