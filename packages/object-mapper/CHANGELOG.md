@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.8](https://github.com/uxland/uxland/compare/@uxland/object-mapper@1.0.0-alpha.7...@uxland/object-mapper@1.0.0-alpha.8) (2020-02-25)
+
+
+### Bug Fixes
+
+* localization package ([6a0dfaf](https://github.com/uxland/uxland/commit/6a0dfaf7d9ca7c2a05385b2c9b970b372ce6d751))
+
+
+
+
+
 # [1.0.0-alpha.7](https://github.com/uxland/uxland/compare/@uxland/object-mapper@1.0.0-alpha.6...@uxland/object-mapper@1.0.0-alpha.7) (2020-02-24)
 
 **Note:** Version bump only for package @uxland/object-mapper

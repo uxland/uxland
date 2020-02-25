@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.4](https://github.com/uxland/uxland/compare/@uxland/functional-utilities@1.0.0-alpha.3...@uxland/functional-utilities@1.0.0-alpha.4) (2020-02-25)
+
+
+### Bug Fixes
+
+* export constant-builder in functional-utilities ([cc14a53](https://github.com/uxland/uxland/commit/cc14a539e907bb5fcb5c8570480cd28b2e58f328))
+* localization package ([6a0dfaf](https://github.com/uxland/uxland/commit/6a0dfaf7d9ca7c2a05385b2c9b970b372ce6d751))
+
+
+
+
+
 # [1.0.0-alpha.3](https://github.com/uxland/uxland/compare/@uxland/functional-utilities@1.0.0-alpha.2...@uxland/functional-utilities@1.0.0-alpha.3) (2020-02-24)
 
 
