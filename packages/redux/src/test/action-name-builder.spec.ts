@@ -1,8 +1,8 @@
-import {actionNameBuilder} from "../../src";
+import { actionNameBuilder } from '../../src';
 
 describe('constant builder', () => {
-    it('action', () => {
-        const action = actionNameBuilder("prefix")('my-action');
-        expect(action).toBe('prefix:my-action:action');
-    });
+  it('action', () => {
+    const action = actionNameBuilder('prefix')('my-action');
+    expect(action).toBe('prefix:my-action:ACTION');
+  });
 });

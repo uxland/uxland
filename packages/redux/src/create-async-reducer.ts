@@ -66,7 +66,7 @@ const actionsCreator = (base: string): any => {
 
 const extractExceptions = (action: Action): any =>
   action.payload ? (is(Array, action.payload) ? action.payload : { exceptions: [action.payload] }) : {};
-const extractErrorDescription = (action: Action): void | string =>
+const extractErrorDescription = (action: Action): ((payload: any) => void | string) =>
   ifElse(
     isNil,
     nop,
