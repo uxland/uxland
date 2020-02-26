@@ -27,7 +27,7 @@
 
 <nav >
     
-    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="FunctionalUtilities.html">FunctionalUtilities</a><ul class='methods'><li data-type='method'><a href="FunctionalUtilities.html#.exports.constantBuilder">exports.constantBuilder</a></li><li data-type='method'><a href="FunctionalUtilities.html#.invariant">invariant</a></li><li data-type='method'><a href="FunctionalUtilities.html#.nop">nop</a></li></ul></li><li><a href="FunctionalUtilities.Async.html">Async</a></li><li><a href="FunctionalUtilities.Ramda.html">Ramda</a><ul class='methods'><li data-type='method'><a href="FunctionalUtilities.Ramda.html#.id">id</a></li><li data-type='method'><a href="FunctionalUtilities.Ramda.html#.idEq">idEq</a></li><li data-type='method'><a href="FunctionalUtilities.Ramda.html#.isNotEmpty">isNotEmpty</a></li><li data-type='method'><a href="FunctionalUtilities.Ramda.html#.isNotNil">isNotNil</a></li><li data-type='method'><a href="FunctionalUtilities.Ramda.html#.isNotNullNeitherEmpty">isNotNullNeitherEmpty</a></li><li data-type='method'><a href="FunctionalUtilities.Ramda.html#.isNullOrEmpty">isNullOrEmpty</a></li><li data-type='method'><a href="FunctionalUtilities.Ramda.html#.promiseAll">promiseAll</a></li><li data-type='method'><a href="FunctionalUtilities.Ramda.html#.rejectEmpty">rejectEmpty</a></li><li data-type='method'><a href="FunctionalUtilities.Ramda.html#.rejectNil">rejectNil</a></li><li data-type='method'><a href="FunctionalUtilities.Ramda.html#.rejectNilOrEmpty">rejectNilOrEmpty</a></li><li data-type='method'><a href="FunctionalUtilities.Ramda.html#.resolve">resolve</a></li><li data-type='method'><a href="FunctionalUtilities.Ramda.html#.toDictionary">toDictionary</a></li><li data-type='method'><a href="FunctionalUtilities.Ramda.html#.toDictionaryBy">toDictionaryBy</a></li><li data-type='method'><a href="FunctionalUtilities.Ramda.html#.toPath">toPath</a></li></ul></li></ul><h3>Interfaces</h3><ul><li><a href="FunctionalUtilities.Entity.html">Entity</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="FunctionalUtilities.html">FunctionalUtilities</a><ul class='methods'><li data-type='method'><a href="FunctionalUtilities.html#.constantBuilder">constantBuilder</a></li><li data-type='method'><a href="FunctionalUtilities.html#.invariant">invariant</a></li><li data-type='method'><a href="FunctionalUtilities.html#.nop">nop</a></li></ul></li><li><a href="FunctionalUtilities.Async.html">Async</a></li><li><a href="FunctionalUtilities.Ramda.html">Ramda</a><ul class='methods'><li data-type='method'><a href="FunctionalUtilities.Ramda.html#.id">id</a></li><li data-type='method'><a href="FunctionalUtilities.Ramda.html#.idEq">idEq</a></li><li data-type='method'><a href="FunctionalUtilities.Ramda.html#.isNotEmpty">isNotEmpty</a></li><li data-type='method'><a href="FunctionalUtilities.Ramda.html#.isNotNil">isNotNil</a></li><li data-type='method'><a href="FunctionalUtilities.Ramda.html#.isNotNullNeitherEmpty">isNotNullNeitherEmpty</a></li><li data-type='method'><a href="FunctionalUtilities.Ramda.html#.isNullOrEmpty">isNullOrEmpty</a></li><li data-type='method'><a href="FunctionalUtilities.Ramda.html#.promiseAll">promiseAll</a></li><li data-type='method'><a href="FunctionalUtilities.Ramda.html#.rejectEmpty">rejectEmpty</a></li><li data-type='method'><a href="FunctionalUtilities.Ramda.html#.rejectNil">rejectNil</a></li><li data-type='method'><a href="FunctionalUtilities.Ramda.html#.rejectNilOrEmpty">rejectNilOrEmpty</a></li><li data-type='method'><a href="FunctionalUtilities.Ramda.html#.resolve">resolve</a></li><li data-type='method'><a href="FunctionalUtilities.Ramda.html#.toDictionary">toDictionary</a></li><li data-type='method'><a href="FunctionalUtilities.Ramda.html#.toDictionaryBy">toDictionaryBy</a></li><li data-type='method'><a href="FunctionalUtilities.Ramda.html#.toPath">toPath</a></li></ul></li></ul><h3>Interfaces</h3><ul><li><a href="FunctionalUtilities.Entity.html">Entity</a></li></ul>
 </nav>
 
 <div id="main">
@@ -47,16 +47,26 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const tslib_1 = require("tslib");
 const R = tslib_1.__importStar(require("ramda"));
 const ramda_1 = require("./ramda");
+let STUB = 1;
+/**
+ * Returns a string from provided prefix, suffix, separator and using constant input
+ * @typedef {function} ConstantComposer
+ * @memberof FunctionalUtilities
+ * @since v1.0.0
+ * @param {string} constant Constant to be prefixed and suffixed
+ * @returns {string}
+ */
+STUB = 1;
 /**
  * Constant Builder
  * @function
+ * @name constantBuilder
  * @memberof FunctionalUtilities
  * @since v1.0.0
  * @param {string} prefix String prefix to appended at the beginning of the constant provided
  * @param {string=} suffix String suffix to be appended at the end of the constant provided
  * @param {string} separator String to separate prefix/suffix from the constant
- * @param {string} name Constant to be prefixed/suffixed
- * @returns {string}
+ * @returns {FunctionalUtilities.ConstantComposer}
  * @throws Throws error if prefix is not provided
  * @example
  *
