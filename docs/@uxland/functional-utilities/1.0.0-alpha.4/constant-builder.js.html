@@ -50,7 +50,7 @@ const ramda_1 = require("./ramda");
 let STUB = 1;
 /**
  * Returns a string from provided prefix, suffix, separator and using constant input
- * @typedef {function} ConstantComposer
+ * @typedef {function} ConstantBuilder
  * @memberof FunctionalUtilities
  * @since v1.0.0
  * @param {string} constant Constant to be prefixed and suffixed
@@ -66,7 +66,7 @@ STUB = 1;
  * @param {string} prefix String prefix to appended at the beginning of the constant provided
  * @param {string=} suffix String suffix to be appended at the end of the constant provided
  * @param {string} separator String to separate prefix/suffix from the constant
- * @returns {FunctionalUtilities.ConstantComposer}
+ * @returns {FunctionalUtilities.ConstantBuilder}
  * @throws Throws error if prefix is not provided
  * @example
  *
@@ -75,15 +75,15 @@ STUB = 1;
  * constantBuilder('PREFIX', 'SUFFIX', '$$')('CONSTANT') //=> 'PREFIX$$CONSTANT$$SUFFIX'
  *
  */
-exports.constantBuilder = (prefix, suffix, separator = ':') => (name) => R.cond([
+exports.constantBuilder = (prefix, suffix, separator = ':') => (constant) => R.cond([
     [
         () => R.isNil(prefix),
         () => {
             throw new Error('prefix is needed');
         }
     ],
-    [() => ramda_1.isNotNil(suffix), () => `${prefix}${separator}${name}${separator}${suffix}`],
-    [R.T, () => `${prefix}${separator}${name}`]
+    [() => ramda_1.isNotNil(suffix), () => `${prefix}${separator}${constant}${separator}${suffix}`],
+    [R.T, () => `${prefix}${separator}${constant}`]
 ])();
 </code></pre>
         </article>

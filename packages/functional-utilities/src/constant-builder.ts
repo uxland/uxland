@@ -4,14 +4,14 @@ import { isNotNil } from './ramda';
 let STUB = 1;
 /**
  * Returns a string from provided prefix, suffix, separator and using constant input
- * @typedef {function} ConstantComposer
+ * @typedef {function} ConstantBuilder
  * @memberof FunctionalUtilities
  * @since v1.0.0
  * @param {string} constant Constant to be prefixed and suffixed
  * @returns {string}
  */
 STUB = 1;
-type ConstantComposer = (constant: string) => string;
+export type ConstantBuilder = (constant: string) => string;
 
 /**
  * Constant Builder
@@ -22,7 +22,7 @@ type ConstantComposer = (constant: string) => string;
  * @param {string} prefix String prefix to appended at the beginning of the constant provided
  * @param {string=} suffix String suffix to be appended at the end of the constant provided
  * @param {string} separator String to separate prefix/suffix from the constant
- * @returns {FunctionalUtilities.ConstantComposer}
+ * @returns {FunctionalUtilities.ConstantBuilder}
  * @throws Throws error if prefix is not provided
  * @example
  *
@@ -31,7 +31,7 @@ type ConstantComposer = (constant: string) => string;
  * constantBuilder('PREFIX', 'SUFFIX', '$$')('CONSTANT') //=> 'PREFIX$$CONSTANT$$SUFFIX'
  *
  */
-export const constantBuilder = (prefix: string, suffix?: string, separator = ':'): ConstantComposer => (
+export const constantBuilder = (prefix: string, suffix?: string, separator = ':'): ConstantBuilder => (
   constant: string
 ): string =>
   R.cond([
