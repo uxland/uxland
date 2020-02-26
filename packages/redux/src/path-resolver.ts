@@ -20,9 +20,16 @@
  * AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-import { constantBuilder, ConstantBuilder } from '@uxland/functional-utilities';
+import { identity, ifElse, is, Lens } from 'ramda';
+import 'reflect-metadata';
+import { Action } from './create-action';
 
-export const actionNameBuilder = (prefix: string, separator?: string): ConstantBuilder => {
-  const builder = constantBuilder(prefix, 'action', separator);
-  return (name: string): string => builder(name);
-};
+export interface PathResolver {
+  resolver: (action: Action) => Lens;
+}
+
+export type Resolver = (action: Action) => Lens;
+export const factory = (resolver: Resolver): PathResolver => ({ resolver } as PathResolver);
+
+export const resolvePath: (path: Lens | PathResolver, action?: Action) => Lens = (path, action) =>
+  ifElse(is(Function), identity, (pr: PathResolver) => pr.resolver(action))(path);

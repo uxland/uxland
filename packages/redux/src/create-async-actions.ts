@@ -20,9 +20,25 @@
  * AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-import { constantBuilder, ConstantBuilder } from '@uxland/functional-utilities';
+export interface AsyncActions {
+  started: string;
+  failed: string;
+  succeeded: string;
+  ended: string;
+  invalidated: string;
+}
 
-export const actionNameBuilder = (prefix: string, separator?: string): ConstantBuilder => {
-  const builder = constantBuilder(prefix, 'action', separator);
-  return (name: string): string => builder(name);
+export const ENDED_SUFFIX = '_ENDED';
+export const FAILED_SUFFIX = '_FAILED';
+export const STARTED_SUFFIX = '_STARTED';
+export const SUCCEEDED_SUFFIX = '_SUCCEEDED';
+export const INVALIDATED_SUFFIX = '_INVALIDATED';
+export const createAsyncActions: (actionName: string) => AsyncActions = actionName => {
+  return {
+    failed: `${actionName}${FAILED_SUFFIX}`,
+    started: `${actionName}${STARTED_SUFFIX}`,
+    ended: `${actionName}${ENDED_SUFFIX}`,
+    succeeded: `${actionName}${SUCCEEDED_SUFFIX}`,
+    invalidated: `${actionName}${INVALIDATED_SUFFIX}`
+  };
 };

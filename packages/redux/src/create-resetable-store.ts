@@ -20,9 +20,17 @@
  * AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-import { constantBuilder, ConstantBuilder } from '@uxland/functional-utilities';
+import { Action, applyMiddleware, createStore, Middleware, Reducer, Store } from 'redux';
+import { resetableReducer } from './resetable-reducer';
 
-export const actionNameBuilder = (prefix: string, separator?: string): ConstantBuilder => {
-  const builder = constantBuilder(prefix, 'action', separator);
-  return (name: string): string => builder(name);
-};
+export const createResetableStore: <S = any, A extends Action<any> = Action<any>>(
+  mainReducer: Reducer<any, any>,
+  middleware: Middleware<any, any, any>,
+  defaultState?: S,
+  preloadState?: S
+) => Store<S, A> = (mainReducer, middleware, defaultState, preloadState) =>
+  createStore<any, any, any, any>(
+    resetableReducer(mainReducer, defaultState),
+    preloadState,
+    applyMiddleware(middleware)
+  );

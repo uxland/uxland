@@ -20,9 +20,21 @@
  * AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-import { constantBuilder, ConstantBuilder } from '@uxland/functional-utilities';
+import { Lens, set } from 'ramda';
+import { Reducer } from 'redux';
+import { Action } from './create-action';
+import { PathResolver, resolvePath } from './path-resolver';
 
-export const actionNameBuilder = (prefix: string, separator?: string): ConstantBuilder => {
-  const builder = constantBuilder(prefix, 'action', separator);
-  return (name: string): string => builder(name);
-};
+export interface BasicOptions<T = any> {
+  defValue?: T;
+  path?: Lens | PathResolver;
+}
+
+const setState = (state: any, action: Action, path: Lens | PathResolver): any =>
+  path ? set(resolvePath(path, action), action.payload, state) : action.payload;
+
+export const createBasicReducer: <T = any>(actionName: string, options?: BasicOptions<T>) => Reducer<T> = (
+  actionName,
+  options = { defValue: null }
+) => (state = options.defValue, action: Action): any =>
+  action.type === actionName ? setState(state, action, options.path) : state;
