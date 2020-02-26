@@ -34,19 +34,56 @@ export interface Action<Payload = any, Meta = any> extends ReduxAction {
   elapsed?: number;
 }
 
+let STUB = 1;
+/**
+ * Payload creator
+ * @typedef {function} PayloadCreator
+ * @memberof Redux
+ * @since v1.0.0
+ * @param {...*} args Action arguments
+ * @returns {Payload}
+ */
+STUB = 1;
 export type PayloadCreator<Payload = any> = (...args: any[]) => Payload;
-export type MetaCreator<Meta = any> = (...args: any) => Meta;
-export type ActionCreator<Payload = any, Meta = any> = (...args: any[]) => Action<Payload, Meta>;
-export type ActionCreatorFactory = <Payload = any, Meta = any>(
-  type: string,
-  payloadCreator?: PayloadCreator<Payload>,
-  metaCreator?: MetaCreator<Meta>
-) => ActionCreator<Payload, Meta>;
 
+/**
+ * Meta creator
+ * @typedef {function} MetaCreator
+ * @memberof Redux
+ * @since v1.0.0
+ * @param {...*} args Action arguments
+ * @returns {Meta}
+ */
+STUB = 1;
+export type MetaCreator<Meta = any> = (...args: any[]) => Meta;
+
+/**
+ * Action creator
+ * @typedef {function} ActionCreator
+ * @memberof Redux
+ * @since v1.0.0
+ * @param {...*} args Action arguments
+ * @returns {Action<Payload, Meta>}
+ */
+STUB = 1;
+export type ActionCreator<Payload = any, Meta = any> = (...args: any[]) => Action<Payload, Meta>;
+
+/**
+ * Action creator
+ * @function
+ * @memberof Redux
+ * @name createAction
+ * @since v1.0.0
+ * @param {string} type Action identificator
+ * @param {Redux.PayloadCreator=} payloadCreator Function to transform payload
+ * @param {Redux.MetaCreator=} metaCreator Function to transform meta
+ * @returns {Redux.ActionCreator}
+ * @throws Throws error if payloadCreator is not a function, undefined or null
+ */
 export const createAction: <Payload = any, Meta = any>(
   type: string,
   payloadCreator?: PayloadCreator<Payload>,
-  metaCreator?: (...args: any[]) => Meta
+  metaCreator?: MetaCreator<Meta>
 ) => ActionCreator = (type, payloadCreator = identity, metaCreator) => {
   invariant(
     is(Function, payloadCreator) || isNil(payloadCreator),

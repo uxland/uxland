@@ -51,9 +51,9 @@ const defaultState: AsyncState = {
 };
 
 const fetchingState = { ...defaultState, isFetching: true };
-export const getDefaultState = () => ({ ...defaultState });
-const actionCreator = (base: string) => (action: string) => `${base}_${action}`;
-const actionsCreator = (base: string) => {
+export const getDefaultState = (): AsyncState => ({ ...defaultState });
+const actionCreator = (base: string) => (action: string): string => `${base}_${action}`;
+const actionsCreator = (base: string): any => {
   const creator = actionCreator(base);
   return {
     startedAction: creator('STARTED'),
@@ -64,9 +64,9 @@ const actionsCreator = (base: string) => {
   };
 };
 
-const extractExceptions = (action: Action) =>
+const extractExceptions = (action: Action): any =>
   action.payload ? (is(Array, action.payload) ? action.payload : { exceptions: [action.payload] }) : {};
-const extractErrorDescription = (action: Action) =>
+const extractErrorDescription = (action: Action): void | string =>
   ifElse(
     isNil,
     nop,
@@ -76,11 +76,11 @@ const extractErrorDescription = (action: Action) =>
 type StateFactory = (state: any, action: Action) => any;
 const typeEqual = propEq('type');
 type CurrentStateGetter = (options: Options) => (state: any, action: Action) => any;
-const getState: CurrentStateGetter = options => (state, action) =>
+const getState: CurrentStateGetter = options => (state, action): any =>
   options.pathResolver ? view(resolvePath(options.pathResolver, action), state) : state;
 const keepPreviousStateGetter: (defState: any) => CurrentStateGetter = (defState = defaultState) => options => {
   const getter = getState(options);
-  return (state, action) => (options.keepPreviousStateOnStarted ? getter(state, action) : defState);
+  return (state, action): any => (options.keepPreviousStateOnStarted ? getter(state, action) : defState);
 };
 export const createAsyncReducer = <T>(actionName: string, options: Options<T> = {}) => {
   const initialValue: any = isNil(options.defValue)

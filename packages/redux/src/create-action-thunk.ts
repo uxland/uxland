@@ -24,8 +24,41 @@ import { always, drop, ifElse, is } from 'ramda';
 import { ActionCreator, createAction, MetaCreator } from './create-action';
 
 const createMeta = (mc: MetaCreator) => (...args: any): any => mc(...drop(1, args));
+
+let STUB = 1;
+/**
+ * @typedef {function} ActionThunkFactoryFnFn
+ * @memberof Redux
+ * @since v1.0.0
+ * @param {*} dispatch Redux dispatcher
+ * @param {*=} getState Redux state getter
+ * @param {*=} extra
+ */
+/**
+ * description
+ * @typedef {function} ActionThunkFactoryFn
+ * @memberof Redux
+ * @since v1.0.0
+ * @param {...*} args Arguments
+ * @returns {ActionThunkFactoryFnFn}
+ */
 type ActionThunkFactoryFn = (...args: any[]) => (dispatch: any, getState?: any, extra?: any) => Promise<any> | never;
+
+/**
+ * Async action factory
+ * @interface ActionThunkFactory
+ * @augments Redux.ActionThunkFactoryFn
+ * @memberof Redux
+ * @since v1.0.0
+ * @property {string} NAME Action name
+ * @property {string} START Action started id
+ * @property {string} SUCCEEDED Action succeeded id
+ * @property {string} FAILED Action failed id
+ * @property {string} ENDED Action ended id
+ */
+STUB = 1;
 interface ActionThunkFactory extends ActionThunkFactoryFn {
+  (...args: any[]): (dispatch: any, getState?: any, extra?: any) => Promise<any> | never;
   NAME: string;
   START: string;
   SUCCEEDED: string;
@@ -33,6 +66,20 @@ interface ActionThunkFactory extends ActionThunkFactoryFn {
   ENDED: string;
 }
 
+/**
+ * Async action creator
+ * @function
+ * @name createActionThunk
+ * @memberof Redux
+ * @since v1.0.0
+ * @param {string} type Action ID
+ * @returns {Redux.ActionThunkFactory}
+ * @throws Describe throw condition
+ * @example
+ *
+ * createActionThunk('ACTION', () => true, (id, child) => ({id, child}))
+ *
+ */
 export const createActionThunk = (
   type: string,
   fn: Function,
