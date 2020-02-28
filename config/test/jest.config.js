@@ -1,5 +1,6 @@
 module.exports = {
   testEnvironment: 'node',
+  setupFilesAfterEnv: ['../../config/test/setup.ts'],
   transformIgnorePatterns: [],
   transform: {
     '^.+\\.ts$': 'ts-jest',

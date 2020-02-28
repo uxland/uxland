@@ -4,6 +4,5 @@ const pack = require('./package');
 module.exports = {
   ...config,
   name: pack.name,
-  displayName: pack.name,
-  setupFilesAfterEnv: ['../../config/test/setup.ts']
+  displayName: pack.name
 };
