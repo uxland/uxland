@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.6](https://github.com/uxland/uxland/compare/@uxland/functional-utilities@1.0.0-alpha.5...@uxland/functional-utilities@1.0.0-alpha.6) (2020-02-28)
+
+
+### Bug Fixes
+
+* add collect and expose async functions for functional-utilities ([b6d539d](https://github.com/uxland/uxland/commit/b6d539d3e7581b20eedb25adfd5e29f84558001d))
+
+
+
+
+
 # [1.0.0-alpha.5](https://github.com/uxland/uxland/compare/@uxland/functional-utilities@1.0.0-alpha.4...@uxland/functional-utilities@1.0.0-alpha.5) (2020-02-26)
 
 **Note:** Version bump only for package @uxland/functional-utilities

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.7](https://github.com/uxland/uxland/compare/@uxland/redux@1.0.0-alpha.6...@uxland/redux@1.0.0-alpha.7) (2020-02-28)
+
+
+### Bug Fixes
+
+* connect mixin ([d1f148f](https://github.com/uxland/uxland/commit/d1f148f779f0196705a9d2db356e4c8fffe85377))
+
+
+
+
+
 # [1.0.0-alpha.6](https://github.com/uxland/uxland/compare/@uxland/redux@1.0.0-alpha.5...@uxland/redux@1.0.0-alpha.6) (2020-02-26)
 
 
