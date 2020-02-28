@@ -17,7 +17,7 @@ describe('locale mixin', () => {
       testClass = new TestClass();
     });
     it('should be instance of both Base and Test', () => {
-      expect(base).toBeInstanceOf(BaseClass);
+      expect(testClass).toBeInstanceOf(BaseClass);
       expect(testClass).toBeInstanceOf(TestClass);
     });
     it('should have a "baseProp" constant from Base class defined', () => expect(testClass.baseProp).toBeDefined());

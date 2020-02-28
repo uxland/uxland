@@ -23,6 +23,7 @@
 /** @namespace Redux */
 if (window && !window['process']) Object.assign(window, { process: { env: { NODE_ENV: 'production' } } });
 export * from './action-name-builder';
+export * from './connect';
 export * from './create-action';
 export * from './create-action-thunk';
 export * from './create-async-actions';
@@ -34,3 +35,5 @@ export * from './path-resolver';
 export * from './perform-async-action';
 export * from './reset-store';
 export * from './resetable-reducer';
+export * from './watch';
+export * from './watched-redux-property';

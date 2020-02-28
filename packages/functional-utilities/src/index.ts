@@ -22,6 +22,8 @@
  */
 
 /** @namespace FunctionalUtilities */
+export * from './async';
+export * from './collect';
 export * from './constant-builder';
 export * from './invariant';
 export * from './nop';
