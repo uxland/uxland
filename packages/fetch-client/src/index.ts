@@ -138,7 +138,7 @@ const getError = (r: any): InvalidRequestPayload => {
 
 const responseHandlers: ResponseHandler[] = [];
 
-const defaultResponseHandler = <T>(result: T) => {
+const defaultResponseHandler = <T>(result: T): T => {
   if (isUnauthorizedResponse(result)) {
     publish(INVALID_CREDENTIALS_EVENT, result);
     throw getError(result);
@@ -163,7 +163,7 @@ export const handleResponse = <T>(response: Response): Promise<T> => {
 };
 
 export const handleErrors = async (response: Response): Promise<Response | never> => {
-  const microTask = () => new Promise(resolve => resolve());
+  const microTask = (): Promise<void> => new Promise(resolve => resolve());
   if (!response.ok) {
     let error;
     try {
