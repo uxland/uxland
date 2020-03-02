@@ -14,6 +14,7 @@ module.exports = {
   rules: {
     '@typescript-eslint/ban-ts-ignore': 'warn',
     '@typescript-eslint/interface-name-prefix': 'off',
-    'no-prototype-builtins': 'off'
+    // '@typescript-eslint/no-explicit-any': 'off',
+    'no-prototype-builtins': 'off' // this is needed in order to use Object.prototype
   }
 };
