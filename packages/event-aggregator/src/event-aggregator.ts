@@ -55,7 +55,7 @@ class Handler {
     this.callback = callback;
   }
 
-  handle(message: any) {
+  handle(message: any): void {
     if (message instanceof this.messageType) {
       this.callback.call(null, message);
     }
@@ -134,7 +134,7 @@ class EventAggregator {
     subscribers.push(handler);
 
     return {
-      dispose() {
+      dispose(): void {
         const idx = subscribers.indexOf(handler);
         if (idx !== -1) {
           subscribers.splice(idx, 1);
