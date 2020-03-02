@@ -37,13 +37,13 @@ export const performAsyncAction: <T = any>(
   actionType: string,
   fn: Executor,
   errorHandler?: ErrorHandler
-) => (meta?: any) => (...args: any[]) => Promise<T> = dispatch => (actionType, fn, errorHandler) => {
+) => (meta?: any) => (...args: any[]) => Promise<T> = dispatch => (actionType, fn, errorHandler): any => {
   const actions = createAsyncActions(actionType);
-  return meta => async (...args: any) => {
-    let started = window.performance.now();
+  return meta => async (...args: any): Promise<any> => {
+    const started = window.performance.now();
     try {
       dispatch({ type: actions.started, meta });
-      let payload = await fn.apply(this, args);
+      const payload = await fn.apply(this, args);
       dispatch({ type: actions.succeeded, payload, meta, timestamp: new Date() });
       return payload;
     } catch (e) {

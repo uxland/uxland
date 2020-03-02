@@ -22,7 +22,7 @@
  */
 import { isNotNil } from '@uxland/functional-utilities';
 import { addDays, addHours, addMinutes, addSeconds, isBefore, isValid } from 'date-fns';
-import { allPass, always, both, cond, either, equals, isNil, propEq, T } from 'ramda';
+import { allPass, always, both, cond, either, equals, isNil, Pred, propEq, T } from 'ramda';
 import { AsyncState, getDefaultState } from './create-async-reducer';
 
 const defaultState = getDefaultState();
@@ -42,10 +42,10 @@ export type DurationUnitType = 'seconds' | 'minutes' | 'hours' | 'days';
 const nilOrDefault = either(isNil, equals(defaultState));
 const isFetching = propEq('isFetching', true);
 const invalidatedOrError = either(propEq('didInvalidate', true), propEq('error', true));
-const validStaleInterval = staleInterval => () => !isNil(staleInterval);
-const validTimestamp = (state: AsyncState) => both(isNotNil, isValid)(state.timestamp);
+const validStaleInterval = staleInterval => (): boolean => !isNil(staleInterval);
+const validTimestamp = (state: AsyncState): boolean => both(isNotNil, isValid)(state.timestamp);
 
-const validStaleInfo = (staleInterval: Duration) => allPass([validStaleInterval(staleInterval), validTimestamp]);
+const validStaleInfo = (staleInterval: Duration): Pred => allPass([validStaleInterval(staleInterval), validTimestamp]);
 export const isAsyncStateStale = <TIn>(state: AsyncState<TIn>, staleInterval?: Duration): boolean =>
   cond([
     [nilOrDefault, always(true)],
@@ -53,7 +53,7 @@ export const isAsyncStateStale = <TIn>(state: AsyncState<TIn>, staleInterval?: D
     [invalidatedOrError, always(true)],
     [
       validStaleInfo(staleInterval),
-      () => isBefore(Date.now(), durationAdders[staleInterval.unit](state.timestamp, staleInterval.amount))
+      (): boolean => isBefore(Date.now(), durationAdders[staleInterval.unit](state.timestamp, staleInterval.amount))
     ],
     [T, always(false)]
   ])(state);

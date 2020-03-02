@@ -6,12 +6,12 @@ import { getWatchedProperties } from './watched-redux-property';
 
 const getAllStores = (watchers: { [key: string]: PropertyWatch }): Store<any, any>[] =>
   uniq(map(x => x.store, values(watchers)));
-const mapWatchers = (watchersMap: { [key: string]: PropertyWatch }) => values(watchersMap);
+const mapWatchers = (watchersMap: { [key: string]: PropertyWatch }): any => values(watchersMap);
 const getWatchersByStore: (store: Store) => (watchers: PropertyWatch[]) => PropertyWatch[] = store =>
   filter<PropertyWatch>(propEq('store', store));
-const getStoreWatchers = (context: any) => (store: Store<any, any>) =>
+const getStoreWatchers = (context: any) => (store: Store<any, any>): any =>
   pipe(getWatchedProperties, mapWatchers, getWatchersByStore(store))(context);
-const initializeValues = (context: any) => (stores: Store<any, any>[]) => {
+const initializeValues = (context: any) => (stores: Store<any, any>[]): any => {
   const storeWatchers = map(getStoreWatchers(context), stores);
   storeWatchers.forEach((watcher: any[]) =>
     watcher.forEach(x => (context[x.name] = x.selector.call(context, x.store.getState())))

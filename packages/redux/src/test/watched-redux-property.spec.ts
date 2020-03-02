@@ -40,8 +40,6 @@ describe('watched redux property fixture', () => {
     let store;
     const UPDATE_ACTION = 'UPDATE';
     const initialState = { foo: 'bar' };
-    const WATCHED_PROPERTIES_PROPERTY = 'WATCHED-PROPERTIES-PROPERTY';
-    const watchedProperty = 'foo';
 
     beforeAll(() => {
       store = createStore(createBasicReducer(UPDATE_ACTION), initialState);

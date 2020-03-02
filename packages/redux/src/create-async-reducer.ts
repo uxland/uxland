@@ -78,11 +78,13 @@ const typeEqual = propEq('type');
 type CurrentStateGetter = (options: Options) => (state: any, action: Action) => any;
 const getState: CurrentStateGetter = options => (state, action): any =>
   options.pathResolver ? view(resolvePath(options.pathResolver, action), state) : state;
-const keepPreviousStateGetter: (defState: any) => CurrentStateGetter = (defState = defaultState) => options => {
+const keepPreviousStateGetter: (defState: any) => CurrentStateGetter = (defState = defaultState) => (
+  options: any
+): ((state, action) => any) => {
   const getter = getState(options);
   return (state, action): any => (options.keepPreviousStateOnStarted ? getter(state, action) : defState);
 };
-export const createAsyncReducer = <T>(actionName: string, options: Options<T> = {}) => {
+export const createAsyncReducer = <T>(actionName: string, options: Options<T> = {}): any => {
   const initialValue: any = isNil(options.defValue)
     ? { ...defaultState }
     : { ...defaultState, state: options.defValue };
@@ -103,8 +105,9 @@ export const createAsyncReducer = <T>(actionName: string, options: Options<T> = 
       : fetchingState
   )(options);
   const failedStateGetter = keepPreviousStateGetter(defaultState)(options);
-  const getPayload = (action: Action) => (options.payloadAccessor ? options.payloadAccessor(action) : action.payload);
-  const setTimestamp = (action: Action) => (state: AsyncState<T>) => {
+  const getPayload = (action: Action): any =>
+    options.payloadAccessor ? options.payloadAccessor(action) : action.payload;
+  const setTimestamp = (action: Action) => (state: AsyncState<T>): any => {
     const timestamp = options.timestampAccessor ? options.timestampAccessor(action) : action.timestamp;
     return timestamp ? set(lensProp('timestamp'), timestamp, state) : state;
   };
@@ -137,19 +140,19 @@ export const createAsyncReducer = <T>(actionName: string, options: Options<T> = 
   const invalidatedFactory: StateFactory = (state, action) =>
     set(lensProp('didInvalidate'), true, stateGetter(state, action));
 
-  const updateState = (state, action, newState) => () =>
+  const updateState = (state, action, newState) => (): any =>
     options.pathResolver ? set(resolvePath(options.pathResolver, action), newState, state) : newState;
-  const setState = (state, action) => newState =>
+  const setState = (state, action) => (newState: any): any =>
     pipe(stateGetter, ifElse(equals(newState), always(state), updateState(state, action, newState)))(state, action);
-  const stateFactory = (factory: StateFactory) => state => action =>
+  const stateFactory = (factory: StateFactory) => state => (action: any): any =>
     pipe(factory, setTimestamp(action), setState(state, action))(state, action);
-  return (state = defValue, action: Action) =>
+  return (state = defValue, action: Action): any =>
     cond([
       [isStarted, stateFactory(startedStateFactory)(state)],
       [isSucceeded, stateFactory(succeedFactory)(state)],
       [isFailed, stateFactory(failedFactory)(state)],
       [isEnded, stateFactory(endedFactory)(state)],
       [isInvalidated, stateFactory(invalidatedFactory)(state)],
-      [Tr, () => state]
+      [Tr, (): any => state]
     ])(action);
 };

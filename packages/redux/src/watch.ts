@@ -8,7 +8,7 @@ export interface WatchOptions<> {
   propertyOptions?: any;
 }
 
-const toLensSelector = (path: string) => view(lensPath(path.split('.')));
+const toLensSelector = (path: string): any => view(lensPath(path.split('.')));
 const getSelector = (selector: Selector | string): any => when(is(String), toLensSelector)(selector);
 const getStore = (store: Store, proto: any): Store =>
   when(isNil, always((proto.constructor as ConnectAddOn).reduxDefaultStore))(store);

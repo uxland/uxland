@@ -8,7 +8,7 @@ import { watch } from '../watch';
 
 describe('connect fixture', () => {
   describe('given a class that uses connectMixin', () => {
-    let connect, baseClass, testClass, defaultStore: Store;
+    let connect, testClass, defaultStore: Store;
     let BaseClass, TestClass;
     const initialState = { foo: 'bar' };
     const UPDATE_ACTION = 'UPDATE';
@@ -18,14 +18,6 @@ describe('connect fixture', () => {
       BaseClass = class Base {
         baseProp = 'foo';
       };
-      baseClass = new BaseClass();
-      const selector = createSelector(
-        state => state,
-        (state: any) => {
-          console.log('selector', state);
-          return state.foo;
-        }
-      );
       TestClass = class Test extends connect(BaseClass) {};
       testClass = new TestClass();
     });

@@ -26,7 +26,9 @@ export interface ConnectMixinConstructor {
 interface MixinFunction<T> {}
 export type ConnectMixinFunction = MixinFunction<ConnectMixinConstructor>;
 
-export const connectMixin: (defaultStore?: Store<any, any>) => ConnectMixinFunction = defaultStore => superClass => {
+export const connectMixin: (defaultStore?: Store<any, any>) => ConnectMixinFunction = defaultStore => (
+  superClass: any
+): ConnectMixinConstructor => {
   class ConnectMixin extends superClass implements ConnectMixin {
     __reduxStoreSubscriptions__: Unsubscribe[];
 
