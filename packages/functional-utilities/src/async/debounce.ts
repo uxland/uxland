@@ -121,6 +121,6 @@ export class Debouncer {
 export const debounce: (delay: number) => MethodDecorator = delay => (target, propertyKey, descriptor): void => {
   const desc = descriptor as any;
   const originalCall: Function = desc.value;
-  desc.value = (...args: any[]) =>
+  desc.value = (...args: any[]): Debouncer =>
     (this.debouncer = Debouncer.debounce(this.debouncer, timeOut.after(delay), originalCall.apply(args)));
 };

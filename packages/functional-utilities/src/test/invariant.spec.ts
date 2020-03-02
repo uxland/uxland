@@ -29,7 +29,9 @@ describe('when invoking `invariant` method', () => {
       const stub = jest.fn();
       try {
         invariant(stub);
-      } catch (e) {}
+      } catch (e) {
+        console.log(e);
+      }
       expect(stub).toHaveBeenCalledTimes(1);
     });
     it('should raise error if function returns falsy', () => {
@@ -59,7 +61,9 @@ describe('when invoking `invariant` method', () => {
     });
     it('should return undefined is function returns truthy', () => {
       const obj = {};
-      const func = function() {};
+      const func = function(): void {
+        console.log('function');
+      };
       expect(invariant(() => true)).toBeUndefined();
       expect(invariant(() => 1));
       expect(invariant(() => 'a'));

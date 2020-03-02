@@ -35,4 +35,5 @@ import { reduce } from 'ramda';
  * toDictionaryBy('id')([{id: 1, description: 'foo'}, {id: 2, description: 'bar'}]) //=> {1: {id: 1, description: 'foo'}, 2: {id: 2, description: 'bar'}}
  *
  */
-export const toDictionaryBy = (key: string) => (input: any[]) => reduce((acc, elem) => ({...acc, [elem[key]]: elem}), {})(input);
+export const toDictionaryBy = (key: string) => (input: any[]): any =>
+  reduce((acc, elem) => ({ ...acc, [elem[key]]: elem }), {})(input);
