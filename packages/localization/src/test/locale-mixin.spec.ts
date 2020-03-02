@@ -5,14 +5,13 @@ import { localizerFactory } from '../localizer-factory';
 
 describe('locale mixin', () => {
   describe('given a class that is using localeMixin', () => {
-    let locale, testClass, base;
+    let locale, testClass;
     let BaseClass, TestClass;
     beforeAll(() => {
       locale = localeMixin(localizerFactory);
       BaseClass = class Base {
         baseProp = 'foo';
       };
-      base = new BaseClass();
       TestClass = class Test extends locale(BaseClass) {};
       testClass = new TestClass();
     });
