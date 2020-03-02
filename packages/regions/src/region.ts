@@ -38,6 +38,7 @@ export class Region implements IRegion{
         return this.regionViews.values();
     }
     add(view: IView): IRegion{
+        validateView(view);
         invariant(!this.regionViews.has(view.key), `A view with key '${view.key}' already exists`);
         this.regionViews.set(view.key, view);
         return this;
