@@ -34,7 +34,7 @@
     "deps:install": "yarn install",
     "deps:refresh": "yarn deps:clean && yarn deps:install",
     "docgen": "lerna run jsdoc",
-    "lint": "eslint 'packages/*/src/**/*' --fix-dry-run",
+    "lint": "eslint 'packages/*/src/**/*' --fix",
     "readme:coverage": "lerna run readme:coverage --parallel",
     "release:dry-run": "lerna run semantic-release:dry-run",
     "release": "yarn build && yarn test && yarn readme:coverage && node scripts/publish.js",

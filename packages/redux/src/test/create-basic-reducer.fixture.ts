@@ -17,14 +17,14 @@ describe('create basic reducer fixture', () =>{
     it('basic reducer should be immutable', () =>{
         const state = {myValue: 10};
         const reducer = createBasicReducer(action);
-        const newState:any = reducer(state, {type: action, payload: {myValue: 11}});
+        const newState: any = reducer(state, {type: action, payload: {myValue: 11}});
         expect(newState.myValue).toBe(11);
         expect(newState).not.toBe(state);
     });
     it('basic reducer should return state if action type is different', () =>{
         const state = {myValue: 10};
         const reducer = createBasicReducer(action);
-        const newState:any = reducer(state, {type: "OTHER-ACTION", payload: {myValue: 11}});
+        const newState: any = reducer(state, {type: "OTHER-ACTION", payload: {myValue: 11}});
         expect(newState).toBe(state);
         expect(newState.myValue).toBe(10);
     });

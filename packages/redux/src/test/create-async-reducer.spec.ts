@@ -109,7 +109,7 @@ describe('create async reducer fixture', () => {
       state: 34,
       timestamp: new Date()
     };
-    let newState = reducer(state, { type: endedAction, payload: 65 });
+    const newState = reducer(state, { type: endedAction, payload: 65 });
     expect(state).not.toBe(newState);
     expect(newState).toEqual({ ...state, elapsed: 65 });
   });
@@ -124,7 +124,7 @@ describe('create async reducer fixture', () => {
       state: 34,
       timestamp: new Date()
     };
-    let newState = reducer(state, { type: endedAction });
+    const newState = reducer(state, { type: endedAction });
     expect(state).toBe(newState);
     expect(newState).toEqual({ ...state });
   });
@@ -218,7 +218,7 @@ describe('create async reducer fixture', () => {
     });
   });
   test('invalidate action should set didInvalidate property', () => {
-    let reducer = createAsyncReducer(action);
+    const reducer = createAsyncReducer(action);
     const state: AsyncState = { isFetching: false, didInvalidate: false, error: false, state: { value: 15 } };
     const newState = reducer(state, { type: invalidatedAction, payload: { value: 18 } });
     expect(newState).not.toBe(state);
