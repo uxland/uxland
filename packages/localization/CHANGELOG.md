@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.10](https://github.com/uxland/uxland/compare/@uxland/localization@1.0.0-alpha.9...@uxland/localization@1.0.0-alpha.10) (2020-03-02)
+
+
+### Bug Fixes
+
+* **localization:** lint corrections ([b1738d1](https://github.com/uxland/uxland/commit/b1738d12f6a8f2e86b1f665ce8f4dc7fda15166f))
+
+
+
+
+
 # [1.0.0-alpha.9](https://github.com/uxland/uxland/compare/@uxland/localization@1.0.0-alpha.8...@uxland/localization@1.0.0-alpha.9) (2020-02-28)
 
 **Note:** Version bump only for package @uxland/localization

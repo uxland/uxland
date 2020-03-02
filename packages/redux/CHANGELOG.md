@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.8](https://github.com/uxland/uxland/compare/@uxland/redux@1.0.0-alpha.7...@uxland/redux@1.0.0-alpha.8) (2020-03-02)
+
+
+### Bug Fixes
+
+* **redux:** lint corrections ([e0158cc](https://github.com/uxland/uxland/commit/e0158ccda81e820309db8b3772b720c964b74789))
+
+
+
+
+
 # [1.0.0-alpha.7](https://github.com/uxland/uxland/compare/@uxland/redux@1.0.0-alpha.6...@uxland/redux@1.0.0-alpha.7) (2020-02-28)
 
 
