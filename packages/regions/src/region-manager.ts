@@ -1,12 +1,12 @@
-import {IRegion} from "./region";
-import {invariant, isNotNullNeitherEmpty} from "@uxland/functional-utilities";
-import {is, prop, propSatisfies, when} from "ramda";
+import { IRegion } from './region';
+import { invariant, isNotNullNeitherEmpty } from '@uxland/functional-utilities';
+import { is, prop, propSatisfies, when } from 'ramda';
 
 export interface IRegionManager {
     add(region: IRegion): IRegionManager;
     remove(region: IRegion | string): boolean;
     clear(): IRegionManager;
-    readonly regions: IterableIterator<IRegion>
+    readonly regions: IterableIterator<IRegion>;
 }
 
 function validateRegion(region: IRegion) {
@@ -15,7 +15,7 @@ function validateRegion(region: IRegion) {
     invariant(propSatisfies(is(String), 'key', region), 'region key prop must be a non empty string');
 }
 
-export class RegionManager implements IRegionManager{
+export class RegionManager implements IRegionManager {
     private regionsMap: Map<string, IRegion> = new Map<string, IRegion>();
 
     get regions(): IterableIterator<IRegion> {
@@ -33,11 +33,8 @@ export class RegionManager implements IRegionManager{
         return this.regionsMap.delete(when<IRegion | string, string>(is(Object), <any>prop('key'))(region));
     }
 
-
-
     clear(): IRegionManager {
         this.regionsMap.clear();
         return this;
     }
-
 }

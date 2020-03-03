@@ -4,13 +4,20 @@
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^8.3.4",
+    "@typescript-eslint/eslint-plugin": "^2.21.0",
+    "@typescript-eslint/parser": "^2.21.0",
     "current-git-branch": "^1.1.0",
     "docdash": "^1.2.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-jest": "^23.8.0",
+    "eslint-plugin-prettier": "^3.1.2",
     "husky": "^4.2.1",
     "jsdoc": "^3.6.3",
     "lerna": "^3.16.4",
     "minami": "^1.2.3",
-    "ncp": "^2.0.0"
+    "ncp": "^2.0.0",
+    "prettier": "^1.19.1"
   },
   "description": "UXLand Libraries",
   "main": "index.js",
