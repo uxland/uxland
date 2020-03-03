@@ -1,6 +1,6 @@
-import {IView, ViewComponent} from './view-definition';
+import { IView, ViewComponent } from './view-definition';
 import { IRegionManager } from './region-manager';
-import { is, prop, propSatisfies, when } from 'ramda';
+import { bind, is, isNil, pipe, prop, propSatisfies, tap, then, when } from 'ramda';
 import { invariant, isNotNullNeitherEmpty } from '@uxland/functional-utilities';
 import { RegionAdapter } from './region-adapter';
 
@@ -39,6 +39,7 @@ async function createComponentForRegion(view: IView, parentRegion: IRegion): Pro
 
 export class Region implements IRegion {
     private regionViews: Map<string, IView> = new Map<string, IView>();
+    private regionComponents: WeakMap<IView, ViewComponent> = new WeakMap<IView, ViewComponent>();
     constructor(public options: RegionOptions) {}
 
     get views(): IterableIterator<IView> {
@@ -62,14 +63,21 @@ export class Region implements IRegion {
         return this;
     }
     async activate(view: string | IView): Promise<IRegion> {
-        const viewDefinition = this.regionViews.get(getViewKey(view));
-        const component = await createComponentForRegion(viewDefinition, this);
-        await this.options.adapter.componentCreated(component);
+        const component = await this.getViewComponent(view);
         await this.options.adapter.componentActivated(component);
         component.active = true;
         return this;
     }
-
+    private async getViewComponent(view: IView | string): Promise<ViewComponent> {
+        const viewDefinition = this.regionViews.get(getViewKey(view));
+        let component = this.regionComponents.get(viewDefinition);
+        if (isNil(component)) {
+            component = await createComponentForRegion(viewDefinition, this);
+            await this.options.adapter.componentCreated(component);
+            this.regionComponents.set(viewDefinition, component);
+        }
+        return component;
+    }
     deactivate(view: string | IView): IRegion {
         /*for (const item of Array.from(this.regionViews.values())) {
             if (is(String, view)) {
