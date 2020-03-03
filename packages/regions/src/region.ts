@@ -21,7 +21,7 @@ export interface IRegion {
 function validateView(view: IView) {
     invariant(isNotNullNeitherEmpty(view), 'view must be defined');
     invariant(propSatisfies(isNotNullNeitherEmpty, 'key', view), 'view key prop must be a non empty string');
-    invariant(propSatisfies(is(String), 'key', view), 'view key prop must be a non empty string');
+    invariant(propSatisfies(is(String), 'key', view), 'view key prop must be a string');
 }
 
 export class Region implements IRegion{
@@ -44,40 +44,51 @@ export class Region implements IRegion{
         return this;
     }
     remove(view: string | IView): IRegion{
-        if(is(String, view))
+        if(is(String, view)){
+            invariant(this.regionViews.has(view as string), `view not exist on region ${this.key}`);
             this.regionViews.delete(view as string);
-        else
+        }
+        else {
+            validateView(view as IView);
+            invariant(this.regionViews.has((view as IView).key), `view not exist on region ${this.key}`);
             this.regionViews.delete((view as IView).key);
+        }
         return this;
     };
     activate(view: string | IView): IRegion{
-        this.regionViews.forEach( (v:IView) => {
-            if(is(String, view)) {
-                if ((view as string) === v.key)
-                    v = {...v, active: true}
-            }
-            else {
-                if ((view as IView).key === v.key) {
-                    v = {...v, active: true}
-                }
-            }
-        });
+       for(let item of Array.from(this.regionViews.values())){
+           if(is(String, view)) {
+               if ((view as string) === (item as IView).key) {
+                   invariant(!this.isViewActive(item.key), `View ${item.key} is already active`);
+                   (item as IView).active = true
+               }
+           }
+           else {
+               if ((view as IView).key === (item as IView).key) {
+                   invariant(!this.isViewActive(item.key), `View ${item.key} is already active`);
+                   (item as IView).active = true
+               }
+           }
+       }
         return this;
     };
 
     deactivate(view: string | IView): IRegion{
-        this.regionViews.forEach( (v:IView) => {
+        for(let item of Array.from(this.regionViews.values())){
             if(is(String, view)) {
-                if ((view as string) === v.key)
-                    v = {...v, active: true}
-            }
-            else {
-                if ((view as IView).key === v.key) {
-                    v = {...v, active: false}
+                if ((view as string) === (item as IView).key) {
+                    invariant(this.isViewActive(item.key), `View ${item.key} is already inactive`);
+                    (item as IView).active = false;
                 }
             }
-        });
-        return this
+            else {
+                if ((view as IView).key === (item as IView).key) {
+                    invariant(this.isViewActive(item.key), `View ${item.key} is already inactive`);
+                    (item as IView).active = false;
+                }
+            }
+        }
+        return this;
     };
     getView(key: string): IView{
         return this.regionViews.get(key);
