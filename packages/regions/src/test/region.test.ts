@@ -102,11 +102,11 @@ describe('activate view feature', () => {
     const component: ViewComponent = {};
     const regionKey = 'my-region';
     const viewKey = 'my-view';
+    let region: IRegion;
+    const viewFactory = jest.fn().mockResolvedValue(component);
+    const view: IView = { key: viewKey, viewFactory };
     describe(`Scenario: a view is activated for first time`, () => {
         describe(`Given a region with a view not yet activated`, () => {
-            let region: IRegion;
-            const viewFactory = jest.fn().mockResolvedValue(component);
-            const view: IView = { key: viewKey, viewFactory };
             beforeEach(async () => {
                 createdNotify.mockReset();
                 activatedNotify.mockReset();
@@ -118,7 +118,6 @@ describe('activate view feature', () => {
                 }).add(view);
                 await region.activate(viewKey);
             });
-
             it(`should create a new ViewComponent`, () => {
                 expect(viewFactory).toBeCalledTimes(1);
                 expect(viewFactory).toBeCalledWith(view);
@@ -133,7 +132,7 @@ describe('activate view feature', () => {
                 expect(component.view).toBe(view);
                 expect(component.viewKey).toBe(viewKey);
             });
-            it(`should activate component and call componentActivated on adapter`, async () => {
+            it(`should call componentActivated on adapter and  activate component`, () => {
                 expect(component.active).toBe(true);
                 expect(activatedNotify).toBeCalledWith(component);
                 expect(activatedNotify).toBeCalledTimes(1);
@@ -141,8 +140,6 @@ describe('activate view feature', () => {
         });
     });
     describe(`Scenario: a view is activated for any other time`, () => {
-        const viewFactory = jest.fn().mockResolvedValue(component);
-        const view: IView = { key: viewKey, viewFactory };
         let region: IRegion;
         beforeEach(async () => {
             createdNotify.mockReset();
@@ -161,15 +158,93 @@ describe('activate view feature', () => {
                 expect(activatedNotify).toBeCalledWith(component);
                 expect(activatedNotify).toBeCalledTimes(1);
             });
+            it(`Should not notify adapter a new component is created twice`, async () => {
+                await region.activate(viewKey);
+                expect(createdNotify).toBeCalledWith(component);
+                expect(createdNotify).toBeCalledTimes(1);
+                expect(createdNotify).not.toBeCalledTimes(2);
+            });
         });
         describe(`Given a region with a view already activated`,  () => {
             it(`should do nothing and return the region`, async () => {
+                //reactivate the same region
                 await region.activate(viewKey);
                 expect(component.active).toBe(true);
                 expect(activatedNotify).toBeCalledWith(component);
                 expect(activatedNotify).toBeCalledTimes(1);
                 expect(activatedNotify).not.toBeCalledTimes(2);
             });
+        });
+    });
+});
+
+describe('deactivate view feature', () => {
+    const component: ViewComponent = { viewKey: 'my-view'};
+    const regionKey = 'my-region';
+    const viewKey = 'my-view';
+    let region: IRegion;
+    const viewFactory = jest.fn().mockResolvedValue(component);
+    const view: IView = { key: viewKey, viewFactory };
+    const createdNotify = jest.fn().mockResolvedValue(undefined);
+    const activatedNotify = jest.fn().mockResolvedValue(undefined);
+    const deactivatedNotify = jest.fn().mockResolvedValue(undefined);
+    const regionAdapter: RegionAdapter = {
+        componentCreated: createdNotify,
+        componentActivated: activatedNotify,
+        componentDeactivated:  deactivatedNotify };
+    describe('Scenario: when view is already activate', () => {
+        beforeEach( async () => {
+            createdNotify.mockReset();
+            activatedNotify.mockReset();
+            deactivatedNotify.mockReset();
+            region = new Region({
+                key: regionKey,
+                adapter: regionAdapter,
+                host: undefined,
+                regionManager: new RegionManager(),
+            }).add(view);
+            await region.activate(view);
+        });
+        it('should be the component activated yet', async () => {
+            const spyActive = jest.spyOn(region, 'isViewActive');
+            await region.deactivate(view);
+            expect(spyActive).toBeCalledTimes(1);
+            expect(spyActive).lastReturnedWith(true);
+        });
+        it(`Should call componentDeactivated on adapter and deactivate component`, async () => {
+            await region.deactivate(view);
+            expect(deactivatedNotify).toBeCalledWith(component);
+            expect(deactivatedNotify).toBeCalledTimes(1);
+            expect(component.active).toBe(false);
+        });
+    });
+    describe(`Scenario: when the view is not activated yet`, () => {
+        beforeEach( async () => {
+            createdNotify.mockReset();
+            activatedNotify.mockReset();
+            deactivatedNotify.mockReset();
+            region = new Region({
+                key: regionKey,
+                adapter: regionAdapter,
+                host: undefined,
+                regionManager: new RegionManager(),
+            }).add(view);
+        });
+        it(`Should call also isActivated method`, async () => {
+            const spyActive = jest.spyOn(region, 'isViewActive');
+            await region.deactivate(view);
+            expect(spyActive).toBeCalledTimes(1);
+            expect(spyActive).lastReturnedWith(false);
+        });
+        it(`Should not call componentDeactivated on adapter`, async () => {
+            await region.deactivate(view);
+            expect(deactivatedNotify).toBeCalledTimes(0);
+            expect(component.active).toBe(false);
+        });
+        it(`Should do nothing and return the region himself`, async () => {
+            await region.deactivate(view);
+            expect(deactivatedNotify).not.toBeCalled();
+            expect(component.active).toBe(false);
         });
     });
 });
