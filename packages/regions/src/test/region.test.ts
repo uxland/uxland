@@ -2,6 +2,8 @@ import { Region, IRegion } from '../region';
 import { RegionManager } from '../region-manager';
 import { IView, ViewComponent } from '../view-definition';
 import { RegionAdapter } from '../region-adapter';
+import {is} from "ramda";
+import {resolve} from "@uxland/functional-utilities";
 
 describe('add view feature', () => {
     describe('Scenario: a view is added to a region', () => {
@@ -253,32 +255,39 @@ describe('remove view feature', () => {
     describe('Scenario: a view is removed from a region', () => {
         const view1 = <IView>{ key: 'view-1' };
         const view2 = <IView>{ key: 'view-2' };
-        it('should remove a view from region list', () => {
-            //Arrange
-            const regionManager = new RegionManager();
-            const region: Region = new Region({ regionManager, key: 'region-1', host: undefined, adapter: undefined });
-            region.add(view1);
-            region.add(view2);
-            //Action
-            region.remove('view-1');
-            //Assert
-            expect(region.views).toContain(view2);
+        const regionManager = new RegionManager();
+        let region: Region;
+        const view: IView = <any>{ key: 'view-1' };
+        beforeEach(() => {
+            region =  new Region({ regionManager, key: 'region-1', host: undefined, adapter: undefined });
+            const view1 = <IView>{ key: 'view-1' };
+            const view2 = <IView>{ key: 'view-2' };
+            region.add(view1).add(view2);
+
+        });
+        it('should remove a view from region list', async () => {
+            await region.remove(view);
+            expect(region.views).toContainEqual(view2);
             expect(region.views).not.toContain(view1);
         });
-        it('should return him self', () => {
-            //Arrange
-            const regionManager = new RegionManager();
-            const region: Region = new Region({ regionManager, key: 'region-1', host: undefined, adapter: undefined });
-            const view: IView = <any>{ key: 'view-1' };
-            //Act
-            region.add(view);
-            //Assert
-            expect(region.remove(view)).toBe(region);
+        it('should return him self', async () => {
+            expect(await region.remove(view)).toBe(region);
         });
+        it('should also deactivate view component', async () => {
+            const deactivateSpy = jest.spyOn(region, 'deactivate');
+            await region.remove(view);
+            expect(deactivateSpy).toBeCalled();
+            expect(deactivateSpy).toBeCalledTimes(1);
+        });
+        it(`should eliminate view from regionViews Map`, async () => {
+            await region.remove(view);
+            expect(region.containsView(view)).toBe(false);
+        })
     });
+
     describe('Scenario: an invalid view is removed', () => {
         describe('view is nil or empty', () => {
-            it(`should raise and error 'view must be defined'`, () => {
+            it(`should raise and error 'view must be defined'`, async () => {
                 //Arrange
                 const regionManager = new RegionManager();
                 const region: Region = new Region({
@@ -288,13 +297,20 @@ describe('remove view feature', () => {
                     adapter: undefined,
                 });
 
-                //Act + Assert
-                expect(() => region.remove(undefined)).toThrow(`view must be defined`);
-                expect(() => region.remove(null)).toThrow(`view must be defined`);
+                try{
+                    await region.remove(undefined);
+                }catch(e){
+                    expect(e.message).toEqual(`view must be defined`);
+                }
+                try{
+                    await region.remove(null);
+                }catch(e) {
+                    expect(e.message).toEqual(`view must be defined`);
+                }
             });
         });
         describe('key view is not defined', () => {
-            it(`should raise an error 'view key prop must be a non empty string'`, () => {
+            it(`should raise an error 'view key prop must be a non empty string'`, async () => {
                 //Arrange
                 const regionManager = new RegionManager();
                 const region: Region = new Region({
@@ -303,16 +319,26 @@ describe('remove view feature', () => {
                     host: undefined,
                     adapter: undefined,
                 });
-
-                //Act + Assert
-                expect(() => region.remove(<any>{ key: undefined })).toThrow(
-                    `view key prop must be a non empty string`,
-                );
-                expect(() => region.remove(<any>{ key: null })).toThrow(`view key prop must be a non empty string`);
-            });
+                let error1, error2
+                try{
+                    await region.remove(<IView>{ key: undefined })
+                }catch(e){
+                    error1 = e
+                }
+                try{
+                    await region.remove(<IView>{ key: null })
+                }catch(e){
+                    error2 = e
+                }
+                expect(is(Error,error1)).toBe(true);
+                expect(is(Error,error2)).toBe(true);
+                expect(error1.message).toEqual(
+                    `view key prop must be a non empty string`);
+                expect(error2.message).toEqual(
+                    `view key prop must be a non empty string`);           });
         });
         describe('key view is not a string', () => {
-            it(`should raise an error 'view key prop must be a string'`, () => {
+            it(`should raise an error 'view key prop must be a string'`, async () => {
                 //Arrange
                 const regionManager = new RegionManager();
                 const region: Region = new Region({
@@ -323,13 +349,13 @@ describe('remove view feature', () => {
                 });
 
                 //Act + Assert
-                expect(() => region.remove(<any>{ key: 1 })).toThrow(`view key prop must be a string`);
-                expect(() => region.remove(<any>{ key: false })).toThrow(`view key prop must be a string`);
-                expect(() => region.remove(<any>{ key: 'someView' })).not.toThrow(`view key prop must be a string`);
+                await region.remove(<any>{ key: 1 }).then().catch(data => expect(data.message).toEqual(`view key prop must be a string`));
+                await region.remove(<any>{ key: false }).then().catch(data => expect(data.message).toEqual(`view key prop must be a string`));
+                await region.remove(<any>{ key: 'someView' }).then().catch(data=> expect(data.message).not.toEqual(`view key prop must be a string`));
             });
         });
         describe('a no existing view is tried to remove', () => {
-            it(`should raise an error 'view not exist on region'`, () => {
+            it(`should raise an error 'view not exist on region'`,  async() => {
                 const regionManager = new RegionManager();
                 const region: Region = new Region({
                     regionManager,
@@ -337,10 +363,84 @@ describe('remove view feature', () => {
                     host: undefined,
                     adapter: undefined,
                 });
+                let error;
+                try{
+                    await region.remove(<any>{ key: 'someView' })
+                }catch(e){
+                    error = e;
+                }
 
-                //Act + Assert
-                expect(() => region.remove(<any>{ key: 'someView' })).toThrow(`view not exist on region ${region.options.key}`);
+                expect(error.message).toEqual(`view not exist on regions ${region.options.key}`);
+                expect(is(Error, error)).toBe(true);
             });
         });
+    });
+});
+
+describe('region contains view feature', () => {
+    describe('Scenario: when a view exist in a region', () => {
+        it(`should return true`, () => {
+            let region = new Region(<any>{key: 'my-region'});
+            let view: IView = {key: 'my-view', viewFactory: undefined}
+            region.add(view);
+            expect(region.containsView(view)).toBe(true);
+        });
+    });
+
+    describe('Scenario: when a view not exist in a region', () => {
+        it(`should return false`, () => {
+            let region = new Region(<any>{key: 'my-region'});
+            let view: IView = { key: 'my-view', viewFactory: undefined };
+            let otherView = { key: 'other', viewFactory: undefined };
+            region.add(view);
+            expect(region.containsView(otherView)).toBe(false);
+        });
+    });
+});
+
+describe('Is view activated feature', () => {
+    let region;
+    let component: ViewComponent = {};
+    beforeEach(() => {
+        const regionAdapter: RegionAdapter = {
+            componentCreated: jest.fn().mockResolvedValue(undefined),
+            componentActivated: jest.fn().mockResolvedValue(undefined),
+            componentDeactivated:  jest.fn().mockResolvedValue(undefined) };
+        region = new Region(<any>{key: 'my-region', adapter: regionAdapter});
+    });
+    describe('Scenario: when a view is already active', () => {
+        it('should return true', async () => {
+            let view: IView = { key: 'my-view', viewFactory: jest.fn().mockResolvedValue(component) };
+            region.add(view);
+            await region.activate(view);
+            expect(region.isViewActive(view)).toBe(true);
+        });
+    });
+
+    describe('Scenario: when a view is not active', () => {
+        it('should return false', () => {
+            let view: IView = { key: 'my-view', viewFactory: jest.fn().mockResolvedValue(component) };
+            region.add(view);
+            expect(region.isViewActive(view)).toBe(false);
+        });
+    });
+});
+
+describe('clear all from a region', () => {
+    describe('when invoking method clear from a region', () => {
+        let region: Region;
+        beforeEach(() => {
+            region = new Region(<any>{key: 'my-region'});
+            region.clear();
+        });
+       it('should reset region views', () => {
+           expect(region.views).toMatchObject({});
+       });
+       it('should reset views actives', () => {
+           expect(region.viewsActive).toMatchObject({});
+       });
+       it('should reset region components', () => {
+           expect(region.components).toEqual(new WeakMap<IView, ViewComponent>())
+       });
     });
 });

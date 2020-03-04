@@ -3,6 +3,7 @@ import { IRegionManager } from './region-manager';
 import {bind, is, isNil, path, pipe, prop, propSatisfies, tap, then, when} from 'ramda';
 import {invariant, isNotNil, isNotNullNeitherEmpty} from '@uxland/functional-utilities';
 import { RegionAdapter } from './region-adapter';
+import validate = WebAssembly.validate;
 
 export interface IRegionHost {
     uxland: IRegion;
@@ -49,9 +50,15 @@ export class Region implements IRegion {
     get views(): IterableIterator<IView> {
         return this.regionViews.values();
     }
+    get viewsActive(): IterableIterator<IView> {
+        return this.activeViews.values();
+    }
+    get components(): WeakMap<IView, ViewComponent>{
+        return this.regionComponents;
+    }
 
     isViewActive(view: IView): boolean {
-        return this.activeViews.has(view.key)
+        return this.activeViews.has(getViewKey(view))
     }
 
     add(view: IView): IRegion {
@@ -61,14 +68,17 @@ export class Region implements IRegion {
         return this;
     }
 
-    async remove(view: string | IView): Promise<IRegion> {
+    async remove(view: IView): Promise<IRegion> {
+        validateView(view);
         const viewDefinition: IView = this.regionViews.get(getViewKey(view));
         if(isNotNil(viewDefinition)){
+            await this.deactivate(viewDefinition);
             this.regionViews.delete(viewDefinition.key);
-            if(await this.deactivate(viewDefinition)){
-                let component = this.regionComponents.get(viewDefinition);
+            let component = this.regionComponents.get(viewDefinition);
+            if(isNotNil(component))
                 this.regionComponents.delete(component.view);
-            }
+        }else{
+            invariant(this.containsView(view),`view not exist on regions ${this.options.key}`)
         }
         return this;
     }
