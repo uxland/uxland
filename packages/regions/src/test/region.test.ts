@@ -92,17 +92,21 @@ describe('add view feature', () => {
 });
 
 describe('activate view feature', () => {
+    const createdNotify = jest.fn().mockResolvedValue(undefined);
+    const activatedNotify = jest.fn().mockResolvedValue(undefined);
+    const deactivatedNotify = jest.fn().mockResolvedValue(undefined);
+    const regionAdapter: RegionAdapter = {
+        componentCreated: createdNotify,
+        componentActivated: activatedNotify,
+        componentDeactivated:  deactivatedNotify };
+    const component: ViewComponent = {};
+    const regionKey = 'my-region';
+    const viewKey = 'my-view';
     describe(`Scenario: a view is activated for first time`, () => {
         describe(`Given a region with a view not yet activated`, () => {
-            const regionKey = 'my-region';
-            const viewKey = 'my-view';
             let region: IRegion;
-            const component: ViewComponent = {};
             const viewFactory = jest.fn().mockResolvedValue(component);
             const view: IView = { key: viewKey, viewFactory };
-            const createdNotify = jest.fn().mockResolvedValue(undefined);
-            const activatedNotify = jest.fn().mockResolvedValue(undefined);
-            const regionAdapter: RegionAdapter = { componentCreated: createdNotify, componentActivated: activatedNotify };
             beforeEach(async () => {
                 createdNotify.mockReset();
                 activatedNotify.mockReset();
@@ -136,43 +140,36 @@ describe('activate view feature', () => {
             });
         });
     });
-    /*describe('Scenario: a view is being activated', () => {
-        it('should activate the view informed', () => {
-            //Arrange
-            const regionManager = new RegionManager();
-            const region: Region = new Region('region-1', regionManager, undefined);
-            const view = <IView>{ key: 'view-1', active: false };
-
-            //Act
-            region.add(view);
-            region.activate('view-1');
-            //Assert
-
-            expect(region.isViewActive('view-1')).toEqual(true);
+    describe(`Scenario: a view is activated for any other time`, () => {
+        const viewFactory = jest.fn().mockResolvedValue(component);
+        const view: IView = { key: viewKey, viewFactory };
+        let region: IRegion;
+        beforeEach(async () => {
+            createdNotify.mockReset();
+            activatedNotify.mockReset();
+            region = new Region({
+                key: regionKey,
+                adapter: regionAdapter,
+                host: undefined,
+                regionManager: new RegionManager(),
+            }).add(view);
+            await region.activate(viewKey);
         });
-        it('should return himself', () => {
-            //Arrange
-            const regionManager = new RegionManager();
-            const region: Region = new Region('region-1', regionManager, undefined);
-            const view = <IView>{ key: 'view-1', active: false };
-
-            //Act
-            region.add(view);
-            //Assert
-
-            expect(region.activate('view-1')).toBe(region);
+        describe(`Given a region with a view not yet activated`, () => {
+            it(`should activate component and call componentActivated on adapter`, () => {
+                expect(component.active).toBe(true);
+                expect(activatedNotify).toBeCalledWith(component);
+                expect(activatedNotify).toBeCalledTimes(1);
+            });
         });
-    });*/
-    describe('Scenario: a view is already active', () => {
-        it(`should raise an error 'View is already active'`, () => {
-            //Arrange
-            const regionManager = new RegionManager();
-            const region: Region = new Region({ regionManager, key: 'region-1', host: undefined, adapter: undefined });
-            const view = <IView>{ key: 'view-1' };
-            //Act
-            region.add(view);
-            //Assert
-            expect(() => region.activate('view-1')).toThrow(`View ${view.key} is already active`);
+        describe(`Given a region with a view already activated`,  () => {
+            it(`should do nothing and return the region`, async () => {
+                await region.activate(viewKey);
+                expect(component.active).toBe(true);
+                expect(activatedNotify).toBeCalledWith(component);
+                expect(activatedNotify).toBeCalledTimes(1);
+                expect(activatedNotify).not.toBeCalledTimes(2);
+            });
         });
     });
 });

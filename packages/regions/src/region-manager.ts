@@ -1,6 +1,6 @@
 import { IRegion } from './region';
 import { invariant, isNotNullNeitherEmpty } from '@uxland/functional-utilities';
-import { is, prop, propSatisfies, when } from 'ramda';
+import {is, path, propSatisfies, when} from 'ramda';
 
 export interface IRegionManager {
     add(region: IRegion): IRegionManager;
@@ -11,8 +11,8 @@ export interface IRegionManager {
 
 function validateRegion(region: IRegion) {
     invariant(isNotNullNeitherEmpty(region), 'region must be defined');
-    invariant(propSatisfies(isNotNullNeitherEmpty, 'key', region), 'region key prop must be a non empty string');
-    invariant(propSatisfies(is(String), 'key', region), 'region key prop must be a non empty string');
+    invariant(propSatisfies(isNotNullNeitherEmpty, 'key', region.options), 'region key prop must be a non empty string');
+    invariant(propSatisfies(is(String), 'key', region.options), 'region key prop must be a non empty string');
 }
 
 export class RegionManager implements IRegionManager {
@@ -24,13 +24,13 @@ export class RegionManager implements IRegionManager {
 
     add(region: IRegion): IRegionManager {
         validateRegion(region);
-        invariant(!this.regionsMap.has(region.key), `A region with key '${region.key}' already exists`);
-        this.regionsMap.set(region.key, region);
+        invariant(!this.regionsMap.has(region.options.key), `A region with key '${region.options.key}' already exists`);
+        this.regionsMap.set(region.options.key, region);
         return this;
     }
 
     remove(region: IRegion | string): boolean {
-        return this.regionsMap.delete(when<IRegion | string, string>(is(Object), <any>prop('key'))(region));
+        return this.regionsMap.delete(when<IRegion | string, string>(is(Object), <any>path(['options','key']))(region));
     }
 
     clear(): IRegionManager {

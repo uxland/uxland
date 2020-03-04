@@ -6,8 +6,8 @@ describe(`add region feature`, () => {
         it("should add the region to the region's manager region list", function() {
             //Arrange
             const regionManager = new RegionManager();
-            regionManager.add(<IRegion>{ key: 'initial-region' });
-            const region = <IRegion>{ key: 'region1' };
+            regionManager.add(<IRegion>{ options: { key: 'initial-region' }});
+            const region = <IRegion>{ options: { key: 'region1' }};
             //Act
             regionManager.add(region);
 
@@ -17,8 +17,8 @@ describe(`add region feature`, () => {
         it(`should return an instance of the self region manager`, () => {
             //Arrange
             const regionManager = new RegionManager();
-            regionManager.add(<IRegion>{ key: 'initial-region' });
-            const region = <IRegion>{ key: 'region1' };
+            regionManager.add(<IRegion>{ options: {key: 'initial-region' }});
+            const region = <IRegion>{ options: { key: 'region1' }};
             expect(regionManager.add(region)).toBe(regionManager);
         });
     });
@@ -26,11 +26,11 @@ describe(`add region feature`, () => {
         it(`should raise a 'duplicated region' error`, () => {
             //Arrange
             const regionManager = new RegionManager();
-            regionManager.add(<IRegion>{ key: 'region1' }).add(<IRegion>{ key: 'region2' });
-            expect(() => regionManager.add(<IRegion>{ key: 'region1' })).toThrow(
+            regionManager.add(<IRegion>{ options: { key: 'region1' }}).add(<IRegion>{ options: { key: 'region2' }});
+            expect(() => regionManager.add(<IRegion>{ options: {key: 'region1' }})).toThrow(
                 `A region with key 'region1' already exists`,
             );
-            expect(() => regionManager.add(<IRegion>{ key: 'region2' })).toThrow(
+            expect(() => regionManager.add(<IRegion>{ options: {key: 'region2' }})).toThrow(
                 `A region with key 'region2' already exists`,
             );
         });
@@ -52,13 +52,13 @@ describe(`add region feature`, () => {
                 const regionManager = new RegionManager();
 
                 //Act&Assert
-                expect(() => regionManager.add(<IRegion>{ key: undefined })).toThrow(
+                expect(() => regionManager.add(<IRegion>{ options: { key: undefined }})).toThrow(
                     'region key prop must be a non empty string',
                 );
-                expect(() => regionManager.add(<IRegion>{ key: '' })).toThrow(
+                expect(() => regionManager.add(<IRegion>{ options: { key: '' }})).toThrow(
                     'region key prop must be a non empty string',
                 );
-                expect(() => regionManager.add(<IRegion>{ key: null })).toThrow(
+                expect(() => regionManager.add(<IRegion>{ options: { key: null }})).toThrow(
                     'region key prop must be a non empty string',
                 );
             });
@@ -69,12 +69,12 @@ describe(`add region feature`, () => {
                 const regionManager = new RegionManager();
 
                 //Act&Assert
-                expect(() => regionManager.add(<any>{ key: 10 })).toThrow('region key prop must be a non empty string');
-                expect(() => regionManager.add(<any>{ key: new Date() })).toThrow(
+                expect(() => regionManager.add(<any>{ options: { key: 10 }})).toThrow('region key prop must be a non empty string');
+                expect(() => regionManager.add(<any>{ options: { key: new Date() }})).toThrow(
                     'region key prop must be a non empty string',
                 );
-                expect(() => regionManager.add(<any>{ key: {} })).toThrow('region key prop must be a non empty string');
-                expect(() => regionManager.add(<any>{ key: true })).toThrow(
+                expect(() => regionManager.add(<any>{ options: { key: {} }})).toThrow('region key prop must be a non empty string');
+                expect(() => regionManager.add(<any>{ options: { key: true }})).toThrow(
                     'region key prop must be a non empty string',
                 );
             });
@@ -89,7 +89,7 @@ describe(`remove region feature`, () => {
             let region: IRegion;
             beforeEach(function() {
                 regionManager = new RegionManager();
-                region = <IRegion>{ key: 'my-region' };
+                region = <IRegion>{ options: { key: 'my-region' }};
                 regionManager.add(region);
             });
             describe('when invoking remove on regionManager with a region with same region instance', () => {
@@ -109,7 +109,7 @@ describe(`remove region feature`, () => {
             describe('when invoking remove on regionManager with a region withe same key ', () => {
                 let regionToRemove: IRegion;
                 beforeEach(function() {
-                    regionToRemove = <IRegion>{ key: 'my-region' };
+                    regionToRemove = <IRegion>{ options: { key: 'my-region' }};
                 });
                 it('should remove the region from the region manager region list', function() {
                     //Act
@@ -143,7 +143,7 @@ describe(`remove region feature`, () => {
             describe('When invoking remove on regionManager with a region having a key different the contained', () => {
                 it(`should return false and do not remove any region`, () => {
                     //Act
-                    const result = regionManager.remove(<IRegion>{ key: 'other region' });
+                    const result = regionManager.remove(<IRegion>{ options: { key: 'other region' }});
 
                     //Assert
                     expect(result).toBe(false);

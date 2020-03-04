@@ -40,6 +40,7 @@ async function createComponentForRegion(view: IView, parentRegion: IRegion): Pro
 export class Region implements IRegion {
     private regionViews: Map<string, IView> = new Map<string, IView>();
     private regionComponents: WeakMap<IView, ViewComponent> = new WeakMap<IView, ViewComponent>();
+    private activeViews: Map<string, IView> = new Map<string, IView>();
     constructor(public options: RegionOptions) {}
 
     get views(): IterableIterator<IView> {
@@ -63,13 +64,16 @@ export class Region implements IRegion {
         return this;
     }
     async activate(view: string | IView): Promise<IRegion> {
-        const component = await this.getViewComponent(view);
-        await this.options.adapter.componentActivated(component);
-        component.active = true;
+        const viewDefinition: IView = this.regionViews.get(getViewKey(view));
+        const component = await this.getViewComponent(viewDefinition);
+        if(!this.activeViews.has(viewDefinition.key)){
+            await this.options.adapter.componentActivated(component);
+            this.activeViews.set(viewDefinition.key, viewDefinition);
+            component.active = true;
+        }
         return this;
     }
-    private async getViewComponent(view: IView | string): Promise<ViewComponent> {
-        const viewDefinition = this.regionViews.get(getViewKey(view));
+    private async getViewComponent(viewDefinition: IView): Promise<ViewComponent> {
         let component = this.regionComponents.get(viewDefinition);
         if (isNil(component)) {
             component = await createComponentForRegion(viewDefinition, this);
@@ -78,21 +82,14 @@ export class Region implements IRegion {
         }
         return component;
     }
-    deactivate(view: string | IView): IRegion {
-        /*for (const item of Array.from(this.regionViews.values())) {
-            if (is(String, view)) {
-                if ((view as string) === (item as IView).key) {
-                    invariant(this.isViewActive(item.key), `View ${item.key} is already inactive`);
-                    (item as IView).active = false;
-                }
-            } else {
-                if ((view as IView).key === (item as IView).key) {
-                    invariant(this.isViewActive(item.key), `View ${item.key} is already inactive`);
-                    (item as IView).active = false;
-                }
-            }
+    async deactivate(view: string | IView): Promise<IRegion> {
+        const viewDefinition: IView = this.regionViews.get(getViewKey(view));
+        if(this.activeViews.has(viewDefinition.key)){
+            const component = await this.getViewComponent(viewDefinition);
+            await this.options.adapter.componentDeactivated(component);
+            this.activeViews.delete(viewDefinition.key);
+            component.active = false;
         }
-        return this;*/
         return this;
     }
 }

@@ -15,4 +15,4 @@ module.exports = {
         "@typescript-eslint/consistent-type-assertions": ["error", { "assertionStyle": "angle-bracket" }],
         "@typescript-eslint/interface-name-prefix": "off"
     },
-};
+}
