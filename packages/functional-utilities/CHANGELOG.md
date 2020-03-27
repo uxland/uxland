@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.8](https://github.com/uxland/uxland/compare/@uxland/functional-utilities@1.0.0-alpha.7...@uxland/functional-utilities@1.0.0-alpha.8) (2020-03-27)
+
+
+### Bug Fixes
+
+* **functional-utilities:** add curried typings ([90f4475](https://github.com/uxland/uxland/commit/90f44755d1757aceecff1f011f7e24072db97342))
+
+
+
+
+
 # [1.0.0-alpha.7](https://github.com/uxland/uxland/compare/@uxland/functional-utilities@1.0.0-alpha.6...@uxland/functional-utilities@1.0.0-alpha.7) (2020-03-02)
 
 
