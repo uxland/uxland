@@ -25,6 +25,7 @@
 export * from './async';
 export * from './collect';
 export * from './constant-builder';
+export * from './curried';
 export * from './invariant';
 export * from './nop';
 export * from './ramda';
