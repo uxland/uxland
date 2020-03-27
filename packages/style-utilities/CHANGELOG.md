@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.6](https://github.com/uxland/uxland/compare/@uxland/style-utilities@1.0.0-alpha.5...@uxland/style-utilities@1.0.0-alpha.6) (2020-03-27)
+
+
+### Bug Fixes
+
+* **style-utilities:** material colors ([0fdb819](https://github.com/uxland/uxland/commit/0fdb819f2b81a614294485b7c1741ba7c4a8fbd1))
+
+
+
+
+
 # [1.0.0-alpha.5](https://github.com/uxland/uxland/compare/@uxland/style-utilities@1.0.0-alpha.4...@uxland/style-utilities@1.0.0-alpha.5) (2020-02-20)
 
 **Note:** Version bump only for package @uxland/style-utilities
