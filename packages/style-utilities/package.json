@@ -9,6 +9,7 @@
     "flex-layout-styles.scss",
     "units-styles.scss",
     "mediaqueries-styles.scss",
+    "material-colors.scss",
     "animations.scss"
   ],
   "publishConfig": {
