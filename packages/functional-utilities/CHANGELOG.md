@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.10](https://github.com/uxland/uxland/compare/@uxland/functional-utilities@1.0.0-alpha.9...@uxland/functional-utilities@1.0.0-alpha.10) (2020-05-08)
+
+
+### Bug Fixes
+
+* update ramda dependency ([3a40731](https://github.com/uxland/uxland/commit/3a407313cf41c955f636c10d3c6b788d31cdbe83))
+
+
+
+
+
 # [1.0.0-alpha.9](https://github.com/uxland/uxland/compare/@uxland/functional-utilities@1.0.0-alpha.8...@uxland/functional-utilities@1.0.0-alpha.9) (2020-05-08)
 
 
