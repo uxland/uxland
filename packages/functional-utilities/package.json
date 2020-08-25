@@ -74,5 +74,6 @@
   },
   "dependencies": {
     "ramda": "^0.27.0"
-  }
+  },
+  "gitHead": "04056ab7301e2d6a2cb05dddc297ce3269399431"
 }

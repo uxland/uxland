@@ -77,5 +77,6 @@
     "@uxland/functional-utilities": "^1.0.0-alpha.10",
     "date-fns": "^2.9.0",
     "ramda": "^0.27.0"
-  }
+  },
+  "gitHead": "04056ab7301e2d6a2cb05dddc297ce3269399431"
 }

@@ -79,5 +79,6 @@
     "redux": "^4.0.5",
     "reflect-metadata": "^0.1.13",
     "reselect": "^4.0.0"
-  }
+  },
+  "gitHead": "04056ab7301e2d6a2cb05dddc297ce3269399431"
 }
