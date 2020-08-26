@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.2](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.0-alpha.1...@uxland/project-tools@1.0.0-alpha.2) (2020-08-26)
+
+
+### Bug Fixes
+
+* move project-tools files to upper directory ([baf03ec](https://github.com/uxland/uxland/commit/baf03ec5655f674b01a25757b1bcefce4ed71172))
+
+
+
+
+
 # [1.0.0-alpha.1](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.0-alpha.0...@uxland/project-tools@1.0.0-alpha.1) (2020-08-26)
 
 
