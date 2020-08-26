@@ -23,7 +23,7 @@ export const fuse = (entry: string, baseStyles: string, webIndex: string, devSer
     },
     stylesheet: {
       macros: {
-        '~': join(__dirname, '../../node_modules/'),
+        '~': join(__dirname, '../../../'),
       },
       autoImport: [{ file: baseStyles, capture: 'packages/*/src' }],
     },

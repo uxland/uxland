@@ -6,7 +6,9 @@
   "homepage": "https://github.com/uxland/uxland/tree/master/packages/project-tools#readme",
   "license": "MIT",
   "files": [
-    "config"
+    "build",
+    "fuse",
+    "lint"
   ],
   "publishConfig": {
     "access": "public",
