@@ -1,4 +1,4 @@
-import { timeOut } from '@uxland/functional-utilities/src';
+import { timeOut } from '@uxland/functional-utilities';
 import { createStore, Store } from 'redux';
 import { createSelector } from 'reselect';
 import { connectMixin } from '../connect';
@@ -37,7 +37,7 @@ describe('connect fixture', () => {
       beforeAll(() => {
         watcherStore = createStore(createBasicReducer(UPDATE_ACTION), { ...initialState });
         const selector = createSelector(
-          state => state,
+          (state) => state,
           (state: any) => state.foo
         );
         connect = connectMixin(watcherStore);
@@ -52,7 +52,7 @@ describe('connect fixture', () => {
       });
       it('should have default value corresponding to state value', () =>
         expect(watcherClass.foo).toEqual(initialState.foo));
-      it('should update value of property when action is dispatched', done => {
+      it('should update value of property when action is dispatched', (done) => {
         watcherStore.dispatch(createAction(UPDATE_ACTION)({ foo: 'test' }));
         expect(WatcherClass.reduxDefaultStore.getState()).toEqual({ foo: 'test' });
         timeOut.run(() => {

@@ -24,25 +24,25 @@ describe('create action thunk fixture', () => {
       },
       metaCreator
     );
-  const dispatchAsyncAction = factoryCreator => async (result?, meta?, ...args: any[]): Promise<any> => {
+  const dispatchAsyncAction = (factoryCreator) => async (result?, meta?, ...args: any[]): Promise<any> => {
     const factory = factoryCreator(result, meta);
     const thunk = factory(...args);
     const spy = jest.fn();
     try {
       await thunk(spy);
     } catch (e) {
-      console.log(e);
+      //console.log(e);
     }
     return spy;
   };
-  const dispatchAction = factoryCreator => (result?, meta?, ...args): any => {
+  const dispatchAction = (factoryCreator) => (result?, meta?, ...args): any => {
     const factory = factoryCreator(result, meta);
     const thunk = factory(...args);
     const spy = jest.fn();
     try {
       thunk(spy);
     } catch (e) {
-      console.log(e);
+      //console.log(e);
     }
     return spy;
   };
@@ -69,11 +69,11 @@ describe('create action thunk fixture', () => {
   });
   it('started action should contain meta if supplied', async () => {
     const meta = { id: 1 };
-    let spy = await dispatchAsyncSucceededActionThunk(undefined, meta => meta, meta);
+    let spy = await dispatchAsyncSucceededActionThunk(undefined, (meta) => meta, meta);
     let started: Action = spy.mock.calls[0][0];
     expect(started.meta).toBeDefined();
     expect(started.meta).toBe(meta);
-    spy = await dispatchAsyncFailedActionThunk(undefined, meta => meta, meta);
+    spy = await dispatchAsyncFailedActionThunk(undefined, (meta) => meta, meta);
     started = spy.mock.calls[0][0];
     expect(started.meta).toBeDefined();
     expect(started.meta).toBe(meta);
@@ -123,7 +123,7 @@ describe('create action thunk fixture', () => {
     expect(functionSpy).toHaveBeenCalledWith(param1, param2, param3, {
       getState: undefined,
       extra: undefined,
-      dispatch: spy
+      dispatch: spy,
     });
     expect(functionSpy).toHaveBeenCalledTimes(1);
   });
@@ -231,7 +231,7 @@ describe('create action thunk fixture', () => {
     expect(functionSpy).toHaveBeenCalledWith(param1, param2, param3, {
       getState: undefined,
       extra: undefined,
-      dispatch: spy
+      dispatch: spy,
     });
     expect(functionSpy).toHaveBeenCalledTimes(1);
   });
