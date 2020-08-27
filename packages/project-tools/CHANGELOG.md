@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.3](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.0-alpha.2...@uxland/project-tools@1.0.0-alpha.3) (2020-08-27)
+
+
+### Bug Fixes
+
+* add lint-staged package to project-tools ([225ba87](https://github.com/uxland/uxland/commit/225ba87e1344e510c876b37666ef14444e6f3e0d))
+
+
+
+
+
 # [1.0.0-alpha.2](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.0-alpha.1...@uxland/project-tools@1.0.0-alpha.2) (2020-08-26)
 
 
