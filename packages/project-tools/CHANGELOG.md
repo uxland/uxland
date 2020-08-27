@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.5](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.0-alpha.4...@uxland/project-tools@1.0.0-alpha.5) (2020-08-27)
+
+
+### Bug Fixes
+
+* add node-sass to project-tools ([aacad0f](https://github.com/uxland/uxland/commit/aacad0f06c02e6e24320581c8fc4dc0a41d01aad))
+
+
+
+
+
 # [1.0.0-alpha.4](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.0-alpha.3...@uxland/project-tools@1.0.0-alpha.4) (2020-08-27)
 
 
