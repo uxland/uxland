@@ -23,6 +23,7 @@
     "url": "https://github.com/uxland/uxland/issues"
   },
   "dependencies": {
+    "@commitlint/cli": "^9.1.2",
     "@commitlint/config-conventional": "^9.1.2",
     "@typescript-eslint/eslint-plugin": "^3.10.1",
     "@typescript-eslint/parser": "^3.10.1",
