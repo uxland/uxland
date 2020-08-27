@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.4](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.0-alpha.3...@uxland/project-tools@1.0.0-alpha.4) (2020-08-27)
+
+
+### Bug Fixes
+
+* add @commitlint/cli to project-tools ([d3071b9](https://github.com/uxland/uxland/commit/d3071b9c6449f935e35e49e186d10df282cd10ab))
+
+
+
+
+
 # [1.0.0-alpha.3](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.0-alpha.2...@uxland/project-tools@1.0.0-alpha.3) (2020-08-27)
 
 
