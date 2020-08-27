@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.6](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.0-alpha.5...@uxland/project-tools@1.0.0-alpha.6) (2020-08-27)
+
+
+### Bug Fixes
+
+* change workspace root in fuse ([c556a46](https://github.com/uxland/uxland/commit/c556a466254972d620994945a4c6ea6655e68102))
+
+
+
+
+
 # [1.0.0-alpha.5](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.0-alpha.4...@uxland/project-tools@1.0.0-alpha.5) (2020-08-27)
 
 
