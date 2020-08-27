@@ -2,7 +2,7 @@ import { fusebox, pluginSass, pluginLink, pluginReplace } from 'fuse-box';
 import { join, resolve } from 'path';
 // import { runUpdateSimulation } from './simulate';
 
-const workspaceRoot = join(__dirname, '../..');
+const workspaceRoot = join(__dirname, '../../../../');
 console.log('Workspace Root:', workspaceRoot);
 
 // set AUTOMOD to true to automatically update some files to trigger the watcher
