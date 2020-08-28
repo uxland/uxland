@@ -1,3 +1,3 @@
 module.exports = {
-    "*.ts": ["eslint -c config/lint/.eslintrc.js", "prettier --write"]
-}
+  '*.ts': ['eslint -c node_modules/@uxland/project-tools/lint/.eslintrc.js', 'prettier --write'],
+};
