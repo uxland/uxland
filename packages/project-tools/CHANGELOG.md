@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.7](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.0-alpha.6...@uxland/project-tools@1.0.0-alpha.7) (2020-08-28)
+
+
+### Bug Fixes
+
+* add env to fuse ([490653d](https://github.com/uxland/uxland/commit/490653d60cb56f1eda51a84497b8b338d392a619))
+
+
+
+
+
 # [1.0.0-alpha.6](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.0-alpha.5...@uxland/project-tools@1.0.0-alpha.6) (2020-08-27)
 
 
