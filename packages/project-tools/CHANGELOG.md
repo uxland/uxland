@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.8](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.0-alpha.7...@uxland/project-tools@1.0.0-alpha.8) (2020-08-28)
+
+
+### Bug Fixes
+
+* solves issue with lint-staged ([c23cf36](https://github.com/uxland/uxland/commit/c23cf368d5504e652615027144deef2183efcb49))
+
+
+
+
+
 # [1.0.0-alpha.7](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.0-alpha.6...@uxland/project-tools@1.0.0-alpha.7) (2020-08-28)
 
 
