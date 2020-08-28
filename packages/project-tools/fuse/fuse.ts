@@ -1,6 +1,7 @@
 import { fusebox, pluginSass, pluginLink, pluginReplace } from 'fuse-box';
 import { join, resolve } from 'path';
 // import { runUpdateSimulation } from './simulate';
+require('dotenv').config()
 
 const workspaceRoot = join(__dirname, '../../../../');
 console.log('Workspace Root:', workspaceRoot);
@@ -17,6 +18,7 @@ export const fuse = (entry: string, baseStyles: string, webIndex: string, devSer
     devServer,
     hmr: true,
     entry,
+    env: process.env,
     target: 'browser',
     watcher: {
       root: [workspaceRoot],
