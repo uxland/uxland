@@ -39,8 +39,8 @@ export const constantBuilder = (prefix: string, suffix?: string, separator = ':'
       (): boolean => R.isNil(prefix),
       (): never => {
         throw new Error('prefix is needed');
-      }
+      },
     ],
     [(): boolean => isNotNil(suffix), (): string => `${prefix}${separator}${constant}${separator}${suffix}`],
-    [R.T, (): string => `${prefix}${separator}${constant}`]
+    [R.T, (): string => `${prefix}${separator}${constant}`],
   ])();
