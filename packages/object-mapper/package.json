@@ -1,6 +1,6 @@
 {
   "name": "@uxland/object-mapper",
-  "version": "1.0.0-alpha.18",
+  "version": "1.0.0-alpha.19",
   "description": "Object serializer-deserializer",
   "author": "UXLand <dev@uxland.es>",
   "homepage": "https://github.com/uxland/uxland/tree/master/packages/object-mapper#readme",
@@ -74,7 +74,7 @@
     "typescript": "^3.7.5"
   },
   "dependencies": {
-    "@uxland/functional-utilities": "^1.0.0-alpha.14",
+    "@uxland/functional-utilities": "^1.0.0-alpha.15",
     "date-fns": "^2.9.0",
     "ramda": "^0.27.0"
   },
