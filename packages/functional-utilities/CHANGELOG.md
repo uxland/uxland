@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.12](https://github.com/uxland/uxland/compare/@uxland/functional-utilities@1.0.0-alpha.11...@uxland/functional-utilities@1.0.0-alpha.12) (2020-09-01)
+
+
+### Bug Fixes
+
+* add layout sizing utility ([6d2898e](https://github.com/uxland/uxland/commit/6d2898e0f044bde856677b73f74e0a2a7541b999))
+* add meta utility ([0c9099e](https://github.com/uxland/uxland/commit/0c9099edce91801b66a0ecbb00015deecb6c37c7))
+
+
+
+
+
 # [1.0.0-alpha.11](https://github.com/uxland/uxland/compare/@uxland/functional-utilities@1.0.0-alpha.10...@uxland/functional-utilities@1.0.0-alpha.11) (2020-08-26)
 
 **Note:** Version bump only for package @uxland/functional-utilities
