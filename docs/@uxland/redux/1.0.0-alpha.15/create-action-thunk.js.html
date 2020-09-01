@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>create-action-thunk.js - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="Redux.html">Redux</a><ul class='methods'><li data-type='method'><a href="Redux.html#.actionNameBuilder">actionNameBuilder</a></li><li data-type='method'><a href="Redux.html#.createAction">createAction</a></li><li data-type='method'><a href="Redux.html#.createActionThunk">createActionThunk</a></li><li data-type='method'><a href="Redux.html#.createAsyncActions">createAsyncActions</a></li></ul></li></ul><h3>Interfaces</h3><ul><li><a href="Redux.ActionThunkFactory.html">ActionThunkFactory</a></li><li><a href="Redux.AsyncActions.html">AsyncActions</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">create-action-thunk.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+/*
+ * MIT License
+ *
+ * Copyright (c) 2020 UXLand
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of
+ * this software and associated documentation files (the "Software"), to deal in
+ * the Software without restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the
+ * Software, and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+ * FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+ * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN
+ * AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH
+ * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+const ramda_1 = require("ramda");
+const create_action_1 = require("./create-action");
+const createMeta = (mc) => (...args) => mc(...ramda_1.drop(1, args));
+let STUB = 1;
+/**
+ * Async action factory
+ * @interface ActionThunkFactory
+ * @augments Redux.ActionThunkFactoryFn
+ * @memberof Redux
+ * @since v1.0.0
+ * @property {string} NAME Action name
+ * @property {string} START Action started id
+ * @property {string} SUCCEEDED Action succeeded id
+ * @property {string} FAILED Action failed id
+ * @property {string} ENDED Action ended id
+ */
+STUB = 1;
+/**
+ * Async action creator
+ * @function
+ * @name createActionThunk
+ * @memberof Redux
+ * @since v1.0.0
+ * @param {string} type Action ID
+ * @returns {Redux.ActionThunkFactory}
+ * @throws Describe throw condition
+ * @example
+ *
+ * createActionThunk('ACTION', () => true, (id, child) => ({id, child}))
+ *
+ */
+exports.createActionThunk = (type, fn, metaCreator) => {
+    const TYPE_START = `${type}_STARTED`;
+    const TYPE_SUCCEEDED = `${type}_SUCCEEDED`;
+    const TYPE_FAILED = `${type}_FAILED`;
+    const TYPE_ENDED = `${type}_ENDED`;
+    const finalMetaCreator = ramda_1.ifElse(ramda_1.is(Function), createMeta, ramda_1.always(undefined));
+    const actionCreators = {
+        [TYPE_START]: create_action_1.createAction(TYPE_START, () => undefined, metaCreator),
+        [TYPE_SUCCEEDED]: create_action_1.createAction(TYPE_SUCCEEDED, undefined, finalMetaCreator(metaCreator)),
+        [TYPE_FAILED]: create_action_1.createAction(TYPE_FAILED, undefined, finalMetaCreator(metaCreator)),
+        [TYPE_ENDED]: create_action_1.createAction(TYPE_ENDED, undefined, finalMetaCreator(metaCreator))
+    };
+    const factory = (...args) => (dispatch, getState, extra) => {
+        let result;
+        const startedAt = new Date().getTime();
+        dispatch(actionCreators[TYPE_START](...args));
+        const succeeded = (data) => {
+            dispatch(actionCreators[TYPE_SUCCEEDED](data, ...args));
+            const endedAt = new Date().getTime();
+            dispatch(actionCreators[TYPE_ENDED]({
+                elapsed: endedAt - startedAt
+            }, ...args));
+            return data;
+        };
+        const failed = (err) => {
+            const endedAt = new Date().getTime();
+            dispatch(actionCreators[TYPE_FAILED](err, ...args));
+            dispatch(actionCreators[TYPE_ENDED]({
+                elapsed: endedAt - startedAt
+            }, ...args));
+            throw err;
+        };
+        try {
+            result = fn(...args, { getState, dispatch, extra });
+        }
+        catch (error) {
+            failed(error);
+        }
+        // in case of async (promise), use success and fail callbacks.
+        if (result &amp;&amp; result.then) {
+            return result.then(succeeded, failed);
+        }
+        return succeeded(result);
+    };
+    factory.NAME = type;
+    factory.START = actionCreators[TYPE_START].toString();
+    factory.SUCCEEDED = actionCreators[TYPE_SUCCEEDED].toString();
+    factory.FAILED = actionCreators[TYPE_FAILED].toString();
+    factory.ENDED = actionCreators[TYPE_ENDED].toString();
+    return factory;
+};
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.4</a> using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>
