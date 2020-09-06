@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.16](https://github.com/uxland/uxland/compare/@uxland/functional-utilities@1.0.0-alpha.15...@uxland/functional-utilities@1.0.0-alpha.16) (2020-09-06)
+
+
+### Bug Fixes
+
+* add new utilities ([0cacce5](https://github.com/uxland/uxland/commit/0cacce565d2e9d1558f95c118b9dc511b76676df))
+
+
+
+
+
 # [1.0.0-alpha.15](https://github.com/uxland/uxland/compare/@uxland/functional-utilities@1.0.0-alpha.14...@uxland/functional-utilities@1.0.0-alpha.15) (2020-09-01)
 
 
