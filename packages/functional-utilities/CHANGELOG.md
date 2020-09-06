@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.17](https://github.com/uxland/uxland/compare/@uxland/functional-utilities@1.0.0-alpha.16...@uxland/functional-utilities@1.0.0-alpha.17) (2020-09-06)
+
+
+### Bug Fixes
+
+* force upgrade ([4694f87](https://github.com/uxland/uxland/commit/4694f87b60aa5b84e578f27ce4c7a3e6356675c7))
+
+
+
+
+
 # [1.0.0-alpha.16](https://github.com/uxland/uxland/compare/@uxland/functional-utilities@1.0.0-alpha.15...@uxland/functional-utilities@1.0.0-alpha.16) (2020-09-06)
 
 
