@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.23](https://github.com/uxland/uxland/compare/@uxland/object-mapper@1.0.0-alpha.22...@uxland/object-mapper@1.0.0-alpha.23) (2020-09-07)
+
+**Note:** Version bump only for package @uxland/object-mapper
+
+
+
+
+
 # [1.0.0-alpha.22](https://github.com/uxland/uxland/compare/@uxland/object-mapper@1.0.0-alpha.21...@uxland/object-mapper@1.0.0-alpha.22) (2020-09-06)
 
 **Note:** Version bump only for package @uxland/object-mapper
