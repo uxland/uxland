@@ -23,13 +23,13 @@
 
 /** @namespace FunctionalUtilities */
 export * from './async';
+export * from './browser';
 export * from './collect';
 export * from './constant-builder';
 export * from './curried';
+export * from './file';
 export * from './invariant';
 export * from './meta';
 export * from './nop';
 export * from './ramda';
 export * from './styles';
-export * from './browser';
-export * from './file';
