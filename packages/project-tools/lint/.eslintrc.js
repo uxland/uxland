@@ -1,14 +1,12 @@
 module.exports = {
-    root: true,
-    parser: '@typescript-eslint/parser',
-    plugins: [
-        '@typescript-eslint'
-    ],
-    extends: [
-        'eslint:recommended',
-        'plugin:@typescript-eslint/recommended'
-    ],
-    env: {
-        node: true
-    }
-}
+  root: true,
+  parser: '@typescript-eslint/parser',
+  plugins: ['@typescript-eslint', 'unused-imports'],
+  extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended'],
+  rules: {
+    'unused-imports/no-unused-imports-ts': 'warn',
+  },
+  env: {
+    node: true,
+  },
+};

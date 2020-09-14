@@ -18,7 +18,13 @@
     "type": "git",
     "url": "git+https://github.com/uxland/uxland.git"
   },
-  "scripts": {},
+  "scripts": {
+    "jsdoc": "yarn build:cjs && rimraf docs && jsdoc -r ./lib -c jsdoc.config.js",
+    "jsdoc:styles": "cat ../../resources/docs/custom.css >> ./docs/$npm_package_name/$npm_package_version/styles/jsdoc.css",
+    "jsdoc:mv": "mkdirp ../../docs/$npm_package_name/$npm_package_version && ncp docs/$npm_package_name/$npm_package_version ../../docs/$npm_package_name/$npm_package_version",
+    "postjsdoc": "yarn jsdoc:styles && yarn jsdoc:mv",
+    "readme:coverage": "node_modules/.bin/jest-badges-readme"
+  },
   "bugs": {
     "url": "https://github.com/uxland/uxland/issues"
   },
@@ -28,6 +34,7 @@
     "@typescript-eslint/eslint-plugin": "^3.10.1",
     "@typescript-eslint/parser": "^3.10.1",
     "eslint": "^7.7.0",
+    "eslint-plugin-unused-imports": "^0.1.3",
     "fuse-box": "^4.0.0-next.440",
     "lint-staged": "^10.2.13",
     "node-sass": "^4.14.1",
