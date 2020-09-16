@@ -1,50 +1,52 @@
-import { defineFeature, loadFeature } from 'jest-cucumber';
-import path from 'path';
-import { eventAggregator } from '../../src/event-aggregator';
+import { defineFeature, loadFeature } from "jest-cucumber";
+import { join } from "path";
+import { eventAggregator } from "../../src/event-aggregator";
 
-const subscribeFeature = loadFeature(path.join(__dirname, './event-aggregator.subscribe.feature'));
-defineFeature(subscribeFeature, defineScenario => {
-  defineScenario('An event is subscribed', ({ given, and, when, then }) => {
+const subscribeFeature = loadFeature(
+  join(__dirname, "./event-aggregator.subscribe.feature")
+);
+defineFeature(subscribeFeature, (defineScenario) => {
+  defineScenario("An event is subscribed", ({ given, and, when, then }) => {
     let EA;
     let event;
     let callback;
     let subscription;
-    given('An event aggregator', () => {
+    given("An event aggregator", () => {
       EA = eventAggregator;
     });
-    and('An event', () => {
-      event = 'EVENT::DUMMY';
+    and("An event", () => {
+      event = "EVENT::DUMMY";
     });
-    and('A callback', () => {
+    and("A callback", () => {
       callback = console.log;
     });
-    when('Subscribed with the event aggregator', () => {
+    when("Subscribed with the event aggregator", () => {
       subscription = EA.subscribe(event, callback);
     });
-    then('Event aggregator has the event registered', () => {
+    then("Event aggregator has the event registered", () => {
       expect(EA.eventLookup[event]).toBeDefined();
     });
-    then('The callback is associated to that event', () => {
+    then("The callback is associated to that event", () => {
       expect(EA.eventLookup[event][0]).toEqual(callback);
     });
-    then('A subscriber must be returned', () => {
+    then("A subscriber must be returned", () => {
       expect(subscription).toBeDefined();
     });
   });
-  defineScenario('Unsubscribe an event', ({ given, and, when, then }) => {
+  defineScenario("Unsubscribe an event", ({ given, and, when, then }) => {
     let EA;
-    const event = 'EVENT::DISPOSE';
+    const event = "EVENT::DISPOSE";
     let subscription;
-    given('An event aggregator', () => {
+    given("An event aggregator", () => {
       EA = eventAggregator;
     });
-    and('An event is subscribed', () => {
+    and("An event is subscribed", () => {
       subscription = EA.subscribe(event, console.log);
     });
-    when('Dispose is called', () => {
+    when("Dispose is called", () => {
       subscription.dispose();
     });
-    then('Event must be unsubscribed', () => {
+    then("Event must be unsubscribed", () => {
       expect(EA.eventLookup[event].length).toEqual(0);
     });
   });

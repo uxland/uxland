@@ -20,12 +20,12 @@
  * AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-import { AsyncInterface } from './async-interface';
-import { timeOut } from './time-out';
+import { AsyncInterface } from "./async-interface";
+import { timeOut } from "./time-out";
 export class Debouncer {
   constructor(
     private asyncModule: AsyncInterface = null,
-    private callback: Function = null,
+    private callback: () => void = null,
     private handle: number = null
   ) {}
   /**
@@ -37,7 +37,7 @@ export class Debouncer {
    * @param {function()} callback Callback to run.
    * @return {void}
    */
-  setConfig(asyncModule: AsyncInterface, callback: Function): void {
+  setConfig(asyncModule: AsyncInterface, callback: () => void): void {
     this.asyncModule = asyncModule;
     this.callback = callback;
     this.handle = this.asyncModule.run(() => {
@@ -108,7 +108,11 @@ export class Debouncer {
    * @param {function()} callback Callback to run.
    * @return {!Debouncer} Returns a debouncer object.
    */
-  static debounce(debouncer: Debouncer, asyncModule: AsyncInterface, callback: Function): Debouncer {
+  static debounce(
+    debouncer: Debouncer,
+    asyncModule: AsyncInterface,
+    callback: () => void
+  ): Debouncer {
     if (debouncer instanceof Debouncer) {
       debouncer.cancel();
     } else {
@@ -118,9 +122,20 @@ export class Debouncer {
     return debouncer;
   }
 }
-export const debounce: (delay: number) => MethodDecorator = delay => (target, propertyKey, descriptor): void => {
+export const debounce: (delay: number) => MethodDecorator = (delay) => (
+  target,
+  propertyKey,
+  descriptor
+): void => {
   const desc = descriptor as any;
-  const originalCall: Function = desc.value;
+  const originalCall: () => void = desc.value;
   desc.value = (...args: any[]): Debouncer =>
-    (this.debouncer = Debouncer.debounce(this.debouncer, timeOut.after(delay), originalCall.apply(args)));
+    F(
+      //@ts-ignore
+      (this.debouncer = Debouncer.debounce(
+        this.debouncer,
+        timeOut.after(delay),
+        originalCall.apply(args)
+      ))
+    );
 };

@@ -44,7 +44,6 @@
         <article>
             <pre class="prettyprint source linenums"><code>"use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const tslib_1 = require("tslib");
 /*
  * MIT License
  *
@@ -67,7 +66,7 @@ const tslib_1 = require("tslib");
  * AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-const intl_messageformat_1 = tslib_1.__importDefault(require("intl-messageformat"));
+const intl_messageformat_1 = require("intl-messageformat");
 const ramda_1 = require("ramda");
 const getArgs = (args) => {
     let result = args;

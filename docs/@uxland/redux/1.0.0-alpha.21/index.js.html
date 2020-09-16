@@ -43,8 +43,10 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>"use strict";
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
 Object.defineProperty(exports, "__esModule", { value: true });
-const tslib_1 = require("tslib");
 /*
  * MIT License
  *
@@ -70,21 +72,21 @@ const tslib_1 = require("tslib");
 /** @namespace Redux */
 if (window &amp;&amp; !window['process'])
     Object.assign(window, { process: { env: { NODE_ENV: 'production' } } });
-tslib_1.__exportStar(require("./action-name-builder"), exports);
-tslib_1.__exportStar(require("./connect"), exports);
-tslib_1.__exportStar(require("./create-action"), exports);
-tslib_1.__exportStar(require("./create-action-thunk"), exports);
-tslib_1.__exportStar(require("./create-async-actions"), exports);
-tslib_1.__exportStar(require("./create-async-reducer"), exports);
-tslib_1.__exportStar(require("./create-basic-reducer"), exports);
-tslib_1.__exportStar(require("./create-resetable-store"), exports);
-tslib_1.__exportStar(require("./is-async-stale"), exports);
-tslib_1.__exportStar(require("./path-resolver"), exports);
-tslib_1.__exportStar(require("./perform-async-action"), exports);
-tslib_1.__exportStar(require("./reset-store"), exports);
-tslib_1.__exportStar(require("./resetable-reducer"), exports);
-tslib_1.__exportStar(require("./watch"), exports);
-tslib_1.__exportStar(require("./watched-redux-property"), exports);
+__export(require("./action-name-builder"));
+__export(require("./connect"));
+__export(require("./create-action"));
+__export(require("./create-action-thunk"));
+__export(require("./create-async-actions"));
+__export(require("./create-async-reducer"));
+__export(require("./create-basic-reducer"));
+__export(require("./create-resetable-store"));
+__export(require("./is-async-stale"));
+__export(require("./path-resolver"));
+__export(require("./perform-async-action"));
+__export(require("./reset-store"));
+__export(require("./resetable-reducer"));
+__export(require("./watch"));
+__export(require("./watched-redux-property"));
 </code></pre>
         </article>
     </section>

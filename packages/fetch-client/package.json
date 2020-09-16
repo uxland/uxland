@@ -26,7 +26,7 @@
   "scripts": {
     "build:es": "tsc -p tsconfig.json --outDir es --module esnext --noEmit false",
     "build:cjs": "tsc -p tsconfig.json --outDir lib --noEmit false --declaration  --removeComments false",
-    "build:umd": "cross-env NODE_ENV=development rollup -c -o dist/index.js",
+    "build:umd": "cross-env NODE_ENV=development rollup -c ../project-tools/build/rollup.config.js -o dist/index.js",
     "build:umd:min": "cross-env NODE_ENV=production rollup -c -o dist/index.min.js",
     "build:clean": "rimraf es lib dist tmp tsconfig.tsbuildinfo",
     "build": "yarn build:clean && npm-run-all --parallel build:es build:cjs && npm-run-all --parallel build:umd build:umd:min",
@@ -54,13 +54,13 @@
     "@babel/plugin-proposal-optional-chaining": "^7.8.3",
     "@babel/preset-env": "^7.8.4",
     "@olavoparno/jest-badges-readme": "^1.4.0",
-    "@types/jest": "^25.1.0",
+    "@types/jest": "^26.0.14",
     "@types/ramda": "^0.26.41",
     "cat": "^0.2.0",
     "cross-env": "^7.0.0",
     "cucumber": "^6.0.5",
-    "jest": "^25.1.0",
-    "jest-cucumber": "^2.0.11",
+    "jest": "^26.4.2",
+    "jest-cucumber": "^3.0.0",
     "jsdoc": "^3.6.3",
     "mutation-observer": "^1.0.3",
     "npm-run-all": "^4.1.5",
@@ -68,8 +68,8 @@
     "rollup": "^1.31.1",
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-uglify": "^6.0.4",
-    "ts-jest": "^25.2.0",
-    "typescript": "^3.7.5"
+    "ts-jest": "^26.3.0",
+    "typescript": "^4.0.2"
   },
   "dependencies": {
     "@uxland/event-aggregator": "^1.0.0-alpha.10"

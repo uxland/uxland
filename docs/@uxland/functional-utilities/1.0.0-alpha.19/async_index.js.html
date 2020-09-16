@@ -43,8 +43,10 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>"use strict";
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
 Object.defineProperty(exports, "__esModule", { value: true });
-const tslib_1 = require("tslib");
 /*
  * MIT License
  *
@@ -68,12 +70,12 @@ const tslib_1 = require("tslib");
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 /** @namespace FunctionalUtilities.Async */
-tslib_1.__exportStar(require("./animation-frame"), exports);
-tslib_1.__exportStar(require("./async-queue"), exports);
-tslib_1.__exportStar(require("./debounce"), exports);
-tslib_1.__exportStar(require("./idle-period"), exports);
-tslib_1.__exportStar(require("./micro-task"), exports);
-tslib_1.__exportStar(require("./time-out"), exports);
+__export(require("./animation-frame"));
+__export(require("./async-queue"));
+__export(require("./debounce"));
+__export(require("./idle-period"));
+__export(require("./micro-task"));
+__export(require("./time-out"));
 </code></pre>
         </article>
     </section>

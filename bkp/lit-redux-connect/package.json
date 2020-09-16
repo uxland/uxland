@@ -58,14 +58,14 @@
     "@olavoparno/jest-badges-readme": "^1.4.0",
     "@skatejs/bore": "^5.0.2",
     "@skatejs/ssr": "^0.19.11",
-    "@types/jest": "^25.1.0",
+    "@types/jest": "^26.0.14",
     "@types/skatejs": "^5.0.1",
-    "jest": "^25.1.0",
+    "jest": "^26.4.2",
     "jsdom": "^16.1.0",
     "mutation-observer": "^1.0.3",
     "raf": "^3.4.1",
     "semantic-release": "^17.0.0",
-    "ts-jest": "^25.0.0",
+    "ts-jest": "^26.3.0",
     "typescript": "^3.7.5"
   },
   "dependencies": {

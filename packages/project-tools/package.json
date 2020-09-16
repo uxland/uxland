@@ -18,28 +18,30 @@
     "type": "git",
     "url": "git+https://github.com/uxland/uxland.git"
   },
-  "scripts": {
-    "jsdoc": "yarn build:cjs && rimraf docs && jsdoc -r ./lib -c jsdoc.config.js",
-    "jsdoc:styles": "cat ../../resources/docs/custom.css >> ./docs/$npm_package_name/$npm_package_version/styles/jsdoc.css",
-    "jsdoc:mv": "mkdirp ../../docs/$npm_package_name/$npm_package_version && ncp docs/$npm_package_name/$npm_package_version ../../docs/$npm_package_name/$npm_package_version",
-    "postjsdoc": "yarn jsdoc:styles && yarn jsdoc:mv",
-    "readme:coverage": "node_modules/.bin/jest-badges-readme"
-  },
+  "scripts": {},
   "bugs": {
     "url": "https://github.com/uxland/uxland/issues"
   },
   "dependencies": {
+    "@babel/plugin-proposal-decorators": "^7.10.5",
+    "@babel/plugin-proposal-optional-chaining": "^7.11.0",
+    "@babel/preset-env": "^7.11.5",
     "@commitlint/cli": "^9.1.2",
     "@commitlint/config-conventional": "^9.1.2",
     "@typescript-eslint/eslint-plugin": "^3.10.1",
     "@typescript-eslint/parser": "^3.10.1",
+    "docdash": "^1.2.0",
     "eslint": "^7.7.0",
     "eslint-plugin-unused-imports": "^0.1.3",
     "fuse-box": "^4.0.0-next.440",
+    "jsdom": "^16.4.0",
     "lint-staged": "^10.2.13",
     "node-sass": "^4.14.1",
     "prettier": "^2.1.1",
-    "ts-node": "^9.0.0"
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-uglify": "^6.0.4",
+    "ts-jest": "^26.3.0",
+    "typescript": "^4.0.2"
   },
   "gitHead": "8fd58668f97613a143f03d233b684227e4967a19"
 }

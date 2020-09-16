@@ -13,13 +13,10 @@
   },
   "homepage": "https://github.com/uxland/uxland#readme",
   "devDependencies": {
-    "@commitlint/cli": "^8.3.5",
-    "@commitlint/config-conventional": "^8.3.4",
-    "@typescript-eslint/eslint-plugin": "2",
-    "@typescript-eslint/parser": "^2.20.0",
+    "@commitlint/cli": "^9.1.2",
+    "@commitlint/config-conventional": "^9.1.2",
     "current-git-branch": "^1.1.0",
     "docdash": "^1.2.0",
-    "eslint": "^6.8.0",
     "husky": "^4.2.1",
     "jsdoc": "^3.6.3",
     "lerna": "^3.16.4",
@@ -34,7 +31,6 @@
     "deps:install": "yarn install",
     "deps:refresh": "yarn deps:clean && yarn deps:install",
     "docgen": "lerna run jsdoc",
-    "lint": "eslint 'packages/*/src/**/*' --fix",
     "readme:coverage": "lerna run readme:coverage --parallel",
     "release:dry-run": "lerna run semantic-release:dry-run",
     "release": "yarn build && yarn test && yarn readme:coverage && node scripts/publish.js",
@@ -48,8 +44,8 @@
   ],
   "husky": {
     "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-commit": "node ./scripts/pre-commit.js"
+      "commit-msg": "commitlint --config node_modules/@uxland/project-tools/lint/commitlint.config.js -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged -c node_modules/@uxland/project-tools/lint/lint-staged.config.js && node ./scripts/pre-commit.js"
     }
   }
 }
