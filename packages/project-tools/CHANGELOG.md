@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.9](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.0-alpha.8...@uxland/project-tools@1.0.0-alpha.9) (2020-09-16)
+
+
+### Bug Fixes
+
+* add new scripts and unusued-imports in eslint ([3af7034](https://github.com/uxland/uxland/commit/3af7034078205fcc2da3ff50563968b79e43f8af))
+* centralize configs ([8d84721](https://github.com/uxland/uxland/commit/8d84721bcec875272f05b4269ad978f0606e934b))
+* centralize test configs ([4599b48](https://github.com/uxland/uxland/commit/4599b488f82d5884bac6ee7dee33437c13bba054))
+
+
+
+
+
 # [1.0.0-alpha.8](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.0-alpha.7...@uxland/project-tools@1.0.0-alpha.8) (2020-08-28)
 
 

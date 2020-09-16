@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.20](https://github.com/uxland/uxland/compare/@uxland/functional-utilities@1.0.0-alpha.19...@uxland/functional-utilities@1.0.0-alpha.20) (2020-09-16)
+
+
+### Bug Fixes
+
+* centralize configs ([8d84721](https://github.com/uxland/uxland/commit/8d84721bcec875272f05b4269ad978f0606e934b))
+* centralize test configs ([4599b48](https://github.com/uxland/uxland/commit/4599b488f82d5884bac6ee7dee33437c13bba054))
+* typo ([ee26174](https://github.com/uxland/uxland/commit/ee2617453dd90480478e04e999df0ccf9c96ca4f))
+
+
+
+
+
 # [1.0.0-alpha.19](https://github.com/uxland/uxland/compare/@uxland/functional-utilities@1.0.0-alpha.18...@uxland/functional-utilities@1.0.0-alpha.19) (2020-09-07)
 
 
