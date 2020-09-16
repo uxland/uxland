@@ -5,6 +5,7 @@
     "noEmit": true,
     "experimentalDecorators": true,
     "moduleResolution": "node",
+    "importHelpers": true,
     "baseUrl": ".",
     "paths": {
       "@uxland/*": ["node_modules/@uxland/*/lib"]
