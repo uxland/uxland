@@ -65,19 +65,21 @@
  * AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
 Object.defineProperty(exports, "__esModule", { value: true });
-const tslib_1 = require("tslib");
 /** @namespace FunctionalUtilities */
-tslib_1.__exportStar(require("./async"), exports);
-tslib_1.__exportStar(require("./browser"), exports);
-tslib_1.__exportStar(require("./collect"), exports);
-tslib_1.__exportStar(require("./constant-builder"), exports);
-tslib_1.__exportStar(require("./file"), exports);
-tslib_1.__exportStar(require("./invariant"), exports);
-tslib_1.__exportStar(require("./meta"), exports);
-tslib_1.__exportStar(require("./nop"), exports);
-tslib_1.__exportStar(require("./ramda"), exports);
-tslib_1.__exportStar(require("./styles"), exports);
+__export(require("./async"));
+__export(require("./browser"));
+__export(require("./collect"));
+__export(require("./constant-builder"));
+__export(require("./file"));
+__export(require("./invariant"));
+__export(require("./meta"));
+__export(require("./nop"));
+__export(require("./ramda"));
+__export(require("./styles"));
 </code></pre>
         </article>
     </section>

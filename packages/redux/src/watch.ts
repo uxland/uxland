@@ -4,7 +4,9 @@ import { ConnectAddOn, Selector } from './connect';
 import { createWatchedReduxProperty } from './watched-redux-property';
 
 export interface WatchOptions<> {
+  name?: string;
   store?: Store<any, any>;
+  selector?: any;
   propertyOptions?: any;
 }
 
@@ -21,7 +23,7 @@ export const watch = <T = any>(selector: Selector<T> | string, options: WatchOpt
     {
       name: String(name),
       selector: getSelector(selector),
-      store: getStore(options.store, proto)
+      store: getStore(options.store, proto),
     },
     proto,
     String(name)

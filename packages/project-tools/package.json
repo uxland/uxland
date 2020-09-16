@@ -18,13 +18,7 @@
     "type": "git",
     "url": "git+https://github.com/uxland/uxland.git"
   },
-  "scripts": {
-    "jsdoc": "yarn build:cjs && rimraf docs && jsdoc -r ./lib -c jsdoc.config.js",
-    "jsdoc:styles": "cat ../../resources/docs/custom.css >> ./docs/$npm_package_name/$npm_package_version/styles/jsdoc.css",
-    "jsdoc:mv": "mkdirp ../../docs/$npm_package_name/$npm_package_version && ncp docs/$npm_package_name/$npm_package_version ../../docs/$npm_package_name/$npm_package_version",
-    "postjsdoc": "yarn jsdoc:styles && yarn jsdoc:mv",
-    "readme:coverage": "node_modules/.bin/jest-badges-readme"
-  },
+  "scripts": {},
   "bugs": {
     "url": "https://github.com/uxland/uxland/issues"
   },

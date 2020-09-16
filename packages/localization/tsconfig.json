@@ -1,6 +1,6 @@
 {
   "compilerOptions": { "rootDir": "./src", "outDir": "./" },
-  "extends": "../../config/build/tsconfig.json",
+  "extends": "../project-tools/build/tsconfig.json",
   "include": ["src/**/*.ts"],
   "references": [{ "path": "../functional-utilities" }, { "path": "../event-aggregator" }]
 }
