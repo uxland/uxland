@@ -130,12 +130,11 @@ export const debounce: (delay: number) => MethodDecorator = (delay) => (
   const desc = descriptor as any;
   const originalCall: () => void = desc.value;
   desc.value = (...args: any[]): Debouncer =>
-    F(
+    //@ts-ignore
+    (this.debouncer = Debouncer.debounce(
       //@ts-ignore
-      (this.debouncer = Debouncer.debounce(
-        this.debouncer,
-        timeOut.after(delay),
-        originalCall.apply(args)
-      ))
-    );
+      this.debouncer,
+      timeOut.after(delay),
+      originalCall.apply(args)
+    ));
 };
