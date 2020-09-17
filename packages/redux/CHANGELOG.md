@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.23](https://github.com/uxland/uxland/compare/@uxland/redux@1.0.0-alpha.22...@uxland/redux@1.0.0-alpha.23) (2020-09-17)
+
+
+### Bug Fixes
+
+* correct issue with rollup config in scriopt ([90af2a9](https://github.com/uxland/uxland/commit/90af2a98dee24cc4ce4a379c52c95f0495b7934c))
+
+
+
+
+
 # [1.0.0-alpha.22](https://github.com/uxland/uxland/compare/@uxland/redux@1.0.0-alpha.21...@uxland/redux@1.0.0-alpha.22) (2020-09-16)
 
 
