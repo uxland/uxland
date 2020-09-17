@@ -8,7 +8,8 @@
   "files": [
     "build",
     "fuse",
-    "lint"
+    "lint",
+    "test"
   ],
   "publishConfig": {
     "access": "public",
