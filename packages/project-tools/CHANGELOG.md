@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.11](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.0-alpha.10...@uxland/project-tools@1.0.0-alpha.11) (2020-09-17)
+
+
+### Bug Fixes
+
+* add mutation-observer dependency to project-tools ([209cd8b](https://github.com/uxland/uxland/commit/209cd8be288720a4e9e4345ec2205e8bbb2e353c))
+
+
+
+
+
 # [1.0.0-alpha.10](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.0-alpha.9...@uxland/project-tools@1.0.0-alpha.10) (2020-09-17)
 
 
