@@ -6,3 +6,4 @@ coverage
 packages/*/*.config.js
 packages/*/docs/
 config/*
+bkp/
