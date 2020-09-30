@@ -30,6 +30,12 @@ router.registerRoutes({route: 'bar'});
 router.registerRoutes([{route: 'qux'}]);
 ```
 
+#### Get registered routes
+```typescript
+const router = new Router([{route: 'dummy'}]);
+console.log(router.routes); //=> [{route: 'dummy'}]
+```
+
 #### Dynamic routes
 It is possible to define dynamic routes with parameters:
 
@@ -76,4 +82,25 @@ Use navigate method to change location:
 ```typescript
 router.navigate('dummy');
 router.navigate('http://localhost/dummy')
+```
+
+#### Last resolved url
+After navigation happens (successfully or not), last resolved url is stored
+```typescript
+const router = new Router([{route: 'dummy'}]);
+router.navigate('dummy');
+console.log(router.lastResolvedUrl); //=> 'dummy'
+```
+
+### Destroy
+Resets router instance by emptying registered routes and last resolved url
+
+```typescript
+const router = new Router([{route: 'dummy'}, {route: 'foo'}]);
+router.getRoutes() //=> [{route: 'dummy'}, {route: 'foo'}]
+router.navigate('dummy');
+router.lastResolvedUrl //=> 'dummy'
+router.destroy();
+router.getRoutes() //=> []
+router.lastResolvedUrl //=> ''
 ```
