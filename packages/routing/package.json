@@ -1,6 +1,6 @@
 {
   "name": "@uxland/routing",
-  "version": "0.0.0",
+  "version": "1.0.0-alpha.6",
   "description": "Routing library",
   "author": "UXLand <dev@uxland.es>",
   "homepage": "https://github.com/uxland/uxland/tree/master/packages/routing#readme",
