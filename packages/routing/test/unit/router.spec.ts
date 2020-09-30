@@ -1,13 +1,5 @@
-import { when } from "ramda";
 import { clean } from "../../src/helpers/clean";
-import { root } from "../../src/helpers/root";
-import {
-  duplicateRoutes,
-  existingRoute,
-  MatchingRoute,
-  previousNavigationCancelled,
-  Router,
-} from "../../src/router";
+import { duplicateRoutes, existingRoute, Router } from "../../src/router";
 
 const defaultWindow = window;
 const defaultLocation = location.href;
@@ -456,6 +448,19 @@ describe("Given an instance of Routing", () => {
           expect(navigations[1]).toBeTruthy();
           router.destroy();
           done();
+        });
+      });
+
+      describe("when trying to navigate and route is not found", () => {
+        describe("when notFound handler is provided", () => {
+          it("should call provided handler", async (done) => {
+            const notFoundHandler = jest.fn();
+            router.notFound(notFoundHandler);
+            const result = await router.navigate("qux");
+            expect(result).toBeFalsy();
+            expect(notFoundHandler).toBeCalled();
+            done();
+          });
         });
       });
     });

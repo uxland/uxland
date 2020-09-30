@@ -134,7 +134,8 @@ function* navigate(
   last: string,
   current: string,
   routes: Route[],
-  router: Router
+  router: Router,
+  notFoundHandler: () => void
 ) {
   yield;
   let result = last;
@@ -174,7 +175,7 @@ function* navigate(
     } finally {
       router.resolving = false;
     }
-  }
+  } else if (notFoundHandler) notFoundHandler();
   return { success: result === current };
 }
 
@@ -190,6 +191,7 @@ export class Router {
   private readonly usePushState: boolean;
   private generator: Generator;
   private _lastResolvedUrl: string = null;
+  private notFoundHandler = null;
 
   /**
    * Indicates if router is currently updating location
@@ -333,6 +335,10 @@ export class Router {
     }
   }
 
+  private routesToDeactivate(last: string, current: string): Route[] {
+    return routesToDeactivate(last, current, this._routes);
+  }
+
   private cancelPrevious() {
     try {
       this.generator?.throw(previousNavigationCancelled);
@@ -356,7 +362,8 @@ export class Router {
         this._lastResolvedUrl,
         url,
         this._routes,
-        this
+        this,
+        this.notFoundHandler
       );
       this.generator = task.generator;
       const result = await task;
@@ -370,10 +377,11 @@ export class Router {
   }
 
   /**
-   * TODO: implement notFound
+   * Handler to be executed when a route is not defined in router's routes collection
+   * @param {function} handler Callback function to be called
    */
-  notFound() {
-    console.log("TODO");
+  notFound(handler: () => void) {
+    this.notFoundHandler = handler;
   }
 
   // private listen() {
