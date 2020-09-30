@@ -14,24 +14,65 @@ declare global {
   }
 }
 
+let STUB = 1;
+/**
+ * Collection of route parameters
+ * @memberof Routing
+ * @since v1.0.0
+ * @typedef {Object} RouteParams
+ */
+STUB = 1;
 export type RouteParams = { [key: string]: string };
+
+/**
+ * Collection of query string parameters
+ * @memberof Routing
+ * @since v1.0.0
+ * @typedef {Object} RouteQueryString
+ */
+STUB = 1;
 export type RouteQueryString = { [key: string]: string };
-export type RouteHandler = () => Promise<void>;
+// export type RouteHandler = () => Promise<void>;
+
+/**
+ * Route interface
+ * @memberof Routing
+ * @since v1.0.0
+ * @interface Route
+ * @property {string} route URL route segment
+ * @property {Routing.RouterHooks} hooks Actions to be executed before and after routing
+ */
+STUB = 1;
 export interface Route {
   route: string;
-  handler?: RouteHandler;
+  // handler?: RouteHandler;
   hooks?: RouterHooks;
 }
-export interface MatchingRoute {
-  match: RegExpMatchArray;
-  route: Route;
-  params: any;
-}
 
+/**
+ * Duplicate routes exception
+ * @memberof Routing
+ * @since v1.0.0
+ * @param {string} duplicateRoutes='You are trying to register multiple equal routes'
+ */
 export const duplicateRoutes =
   "You are trying to register multiple equal routes";
+
+/**
+ * Existing route exception
+ * @memberof Routing
+ * @since v1.0.0
+ * @param {string} existingRoute='You are trying to register a route that already exists'
+ */
 export const existingRoute =
   "You are trying to register a route that already exists";
+
+/**
+ * Previous navigation action cancelled
+ * @memberof Routing
+ * @since v1.0.0
+ * @param {string} previousNavigationCancelled='Previous navigation action has been cancelled due to a new one'
+ */
 export const previousNavigationCancelled =
   "Previous navigation action has been cancelled due to a new one";
 
@@ -43,8 +84,7 @@ const hasDuplicatedRoutes = (routes: Route[]): boolean => {
 const hasExistingRoute = (route: Route, routes: Route[]): boolean =>
   routes.find((r) => r.route == route.route) != undefined;
 
-const isHashChangeAPIAvailable = () =>
-  typeof window !== "undefined" && "onhashchange" in window;
+// const isHashChangeAPIAvailable = () => typeof window !== 'undefined' && 'onhashchange' in window;
 
 const routerHooksDefinedSpec = propSatisfies(isNotNil, "hooks");
 const canNavigateFromSpec = allPass([
@@ -54,10 +94,6 @@ const canNavigateFromSpec = allPass([
 const canNavigateToSpec = allPass([
   routerHooksDefinedSpec,
   pathSatisfies(isNotNil, toPath("hooks.canNavigateTo")),
-]);
-const navigatedFromSpec = allPass([
-  routerHooksDefinedSpec,
-  pathSatisfies(isNotNil, toPath("hooks.navigatedFrom")),
 ]);
 
 const routesToDeactivate = (
@@ -94,13 +130,6 @@ function toAsync(makeGenerator) {
   };
 }
 
-/**
- * Navigate cancellable function. The execution can be stopped any time
- * @param last
- * @param current
- * @param routes
- * @param router
- */
 function* navigate(
   last: string,
   current: string,
@@ -149,14 +178,41 @@ function* navigate(
   return { success: result === current };
 }
 
+/**
+ * Router
+ * @memberof Routing
+ * @since v1.0.0
+ */
 export class Router {
-  private _routes: Route[] = [];
-  private readonly usePushState: boolean;
-  public resolving = false;
   // private readonly locationChangeHandler: any;
   // private listeningInterval: any;
+  private _routes: Route[] = [];
+  private readonly usePushState: boolean;
   private generator: Generator;
+  private _lastResolvedUrl: string = null;
 
+  /**
+   * Indicates if router is currently updating location
+   * @param {boolean} resolving=false
+   */
+  public resolving = false;
+
+  /**
+   * Indicates if router is currently routing
+   * @param {boolean} routing=false
+   */
+  public routing = false;
+
+  /**
+   * Router constructor
+   * @param {Routing.Route[]} routes Routes collection
+   * @param {string} [root] Router root segment
+   * @param {string} hash='' Router hash to be added after root and before route path
+   * @example
+   *
+   * const router = new Router([{route: 'dummy'}])
+   *
+   */
   constructor(
     routes: Route[] = [],
     private root?: string,
@@ -178,7 +234,18 @@ export class Router {
     // this.listen();
   }
 
-  registerRoutes(routes: Route | Route[]) {
+  /**
+   * Registers routes collection in router
+   * @param {(Routing.Route | Routing.Route[])} routes Routes collection
+   * @throws You are trying to register multiple equal routes
+   * @throws You are trying to register a route that already exists
+   * @example
+   *
+   * router.registerRoutes({route: 'foo'});
+   * router.registerRoutes([{route: 'foo'}, {route: 'bar'}])
+   *
+   */
+  registerRoutes(routes: Route | Route[]): void {
     if (routes instanceof Array) {
       if (hasDuplicatedRoutes(routes)) throw new Error(duplicateRoutes);
       else this._routes.push(...routes);
@@ -189,17 +256,36 @@ export class Router {
     }
   }
 
+  /**
+   * Returns router registered routes
+   * @returns {Routing.Route[]}
+   */
   get routes(): Route[] {
     return this._routes;
   }
 
-  destroy() {
-    this._routes = [];
+  /**
+   * Returns router's last resolved url
+   * @returns {string}
+   */
+  get lastResolvedUrl(): string {
+    return this._lastResolvedUrl;
   }
 
-  public routing = false;
-
-  private lastResolvedUrl: string = null;
+  /**
+   * Resets current router to its initial state, emptying routes collection and last resolved url
+   * @example
+   *
+   * const router = new Router([{route: 'dummy'}]);
+   * console.log(router.routes) //=> [{route: 'dummy'}]
+   * router.destroy();
+   * console.log(router.routes) //=> []
+   *
+   */
+  destroy(): void {
+    this._routes = [];
+    this._lastResolvedUrl = "";
+  }
 
   private static _currentLocation() {
     if (typeof window !== "undefined") {
@@ -211,7 +297,11 @@ export class Router {
     return "";
   }
 
-  get currentLocation() {
+  /**
+   * Returns router current location
+   * @returns {(string|RegExp)}
+   */
+  get currentLocation(): string | RegExp {
     return Router._currentLocation();
   }
 
@@ -223,10 +313,6 @@ export class Router {
 
   private getRouteUrl(path = "") {
     return path.replace(this.getRoot(), "");
-  }
-
-  private routesToDeactivate(last: string, current: string): Route[] {
-    return routesToDeactivate(last, current, this._routes);
   }
 
   updateLocation(location: string, replaceState = false) {
@@ -255,27 +341,39 @@ export class Router {
     }
   }
 
-  async navigate(route: string) {
+  /**
+   * Navigates to specified route. Provided route can be a full url or only a path
+   * @param {string} route Route path to navigate to
+   * @returns {Promise<boolean>} Specifies if routing has been successfull
+   */
+  async navigate(route: string): Promise<boolean> {
     try {
       const url = this.getRouteUrl(route);
-      if (url === this.lastResolvedUrl) return false;
+      if (url === this._lastResolvedUrl) return false;
       this.routing = true;
       this.cancelPrevious();
       const task = toAsync(navigate)(
-        this.lastResolvedUrl,
+        this._lastResolvedUrl,
         url,
         this._routes,
         this
       );
       this.generator = task.generator;
       const result = await task;
-      this.lastResolvedUrl = route;
+      this._lastResolvedUrl = route;
       return result.success;
     } catch (e) {
       return false;
     } finally {
       this.routing = false;
     }
+  }
+
+  /**
+   * TODO: implement notFound
+   */
+  notFound() {
+    console.log("TODO");
   }
 
   // private listen() {
@@ -306,7 +404,7 @@ export class Router {
   //     let result = await this.navigate(Router._currentLocation() as string);
   //     if (!result) {
   //       this.resolving = true;
-  //       this.updateLocation(this.lastResolvedUrl, true);
+  //       this.updateLocation(this._lastResolvedUrl, true);
   //       this.resolving = false;
   //     }
   //   }
