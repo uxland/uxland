@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.12](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.0-alpha.11...@uxland/project-tools@1.0.0-alpha.12) (2020-09-30)
+
+
+### Features
+
+* routing package ([1b25d86](https://github.com/uxland/uxland/commit/1b25d8654bf0726922b007db7ce613c7e7da8a74))
+
+
+### BREAKING CHANGES
+
+* new routing package added to uxland libraries
+
+
+
+
+
 # [1.0.0-alpha.11](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.0-alpha.10...@uxland/project-tools@1.0.0-alpha.11) (2020-09-17)
 
 

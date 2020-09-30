@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.22](https://github.com/uxland/uxland/compare/@uxland/functional-utilities@1.0.0-alpha.21...@uxland/functional-utilities@1.0.0-alpha.22) (2020-09-30)
+
+
+### Features
+
+* routing package ([1b25d86](https://github.com/uxland/uxland/commit/1b25d8654bf0726922b007db7ce613c7e7da8a74))
+
+
+### BREAKING CHANGES
+
+* new routing package added to uxland libraries
+
+
+
+
+
 # [1.0.0-alpha.21](https://github.com/uxland/uxland/compare/@uxland/functional-utilities@1.0.0-alpha.20...@uxland/functional-utilities@1.0.0-alpha.21) (2020-09-17)
 
 
