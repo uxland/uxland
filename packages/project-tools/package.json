@@ -32,6 +32,7 @@
     "@typescript-eslint/eslint-plugin": "^3.10.1",
     "@typescript-eslint/parser": "^3.10.1",
     "docdash": "^1.2.0",
+    "dotenv": "^8.2.0",
     "eslint": "^7.7.0",
     "eslint-plugin-unused-imports": "^0.1.3",
     "fuse-box": "^4.0.0-next.440",
@@ -43,6 +44,7 @@
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-uglify": "^6.0.4",
     "ts-jest": "^26.3.0",
+    "ts-node": "^9.0.0",
     "typescript": "^4.0.2"
   },
   "gitHead": "b3842ff0ee456fd81e8cc5750331f1ced9bb1d68"
