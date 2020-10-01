@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.13](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.0-alpha.12...@uxland/project-tools@1.0.0-alpha.13) (2020-10-01)
+
+
+### Bug Fixes
+
+* add dependencies to project-tools project ([b00fca3](https://github.com/uxland/uxland/commit/b00fca33746523cb4e75353a86481068dd4d8156))
+
+
+
+
+
 # [1.0.0-alpha.12](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.0-alpha.11...@uxland/project-tools@1.0.0-alpha.12) (2020-09-30)
 
 
