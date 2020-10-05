@@ -37,8 +37,6 @@
     "tdd:benchmark": "jest --watch test/unit/benchmark.spec.ts --collect-coverage=false --testPathIgnorePatterns []",
     "tdd:sandbox": "jest --watch test/unit/sandbox.spec.ts --testPathIgnorePatterns []",
     "test:benchmark": "jest test/unit/benchmark.spec.ts --collect-coverage=false --testPathIgnorePatterns []",
-    "test:ui:watch": "nodemon --watch test --watch src -x \"polymer test --config-file wct.config.json\"",
-    "test:ui": "polymer test --config-file wct.config.json",
     "test:unit": "jest --collect-coverage",
     "test": "yarn test:unit",
     "help": "tsc -h",
