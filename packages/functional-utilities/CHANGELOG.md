@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.23](https://github.com/uxland/uxland/compare/@uxland/functional-utilities@1.0.0-alpha.22...@uxland/functional-utilities@1.0.0-alpha.23) (2020-10-06)
+
+
+### Bug Fixes
+
+* delete test:ui with polymer dependency ([3e32235](https://github.com/uxland/uxland/commit/3e3223503c2ef62273288bdb64482331f8b97ff9))
+
+
+
+
+
 # [1.0.0-alpha.22](https://github.com/uxland/uxland/compare/@uxland/functional-utilities@1.0.0-alpha.21...@uxland/functional-utilities@1.0.0-alpha.22) (2020-09-30)
 
 

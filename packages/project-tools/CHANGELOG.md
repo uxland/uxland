@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.14](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.0-alpha.13...@uxland/project-tools@1.0.0-alpha.14) (2020-10-06)
+
+
+### Bug Fixes
+
+* add env as parameter in fuse ([05e9261](https://github.com/uxland/uxland/commit/05e9261bbf2f0762b65280e72118de467b71673e))
+
+
+
+
+
 # [1.0.0-alpha.13](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.0-alpha.12...@uxland/project-tools@1.0.0-alpha.13) (2020-10-01)
 
 

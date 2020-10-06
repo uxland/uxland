@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.8](https://github.com/uxland/uxland/compare/@uxland/routing@1.0.0-alpha.7...@uxland/routing@1.0.0-alpha.8) (2020-10-06)
+
+
+### Bug Fixes
+
+* add license disclaimer ([1f018b5](https://github.com/uxland/uxland/commit/1f018b5d5688f0514963e45a15d20b6a4e3013b9))
+* delete test:ui with polymer dependency ([3e32235](https://github.com/uxland/uxland/commit/3e3223503c2ef62273288bdb64482331f8b97ff9))
+* update routing README ([3b03bcb](https://github.com/uxland/uxland/commit/3b03bcb1335d9a3b14159436ac1c0d0179586512))
+
+
+
+
+
 # [1.0.0-alpha.7](https://github.com/uxland/uxland/compare/@uxland/routing@1.0.0-alpha.6...@uxland/routing@1.0.0-alpha.7) (2020-09-30)
 
 

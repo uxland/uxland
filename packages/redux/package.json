@@ -1,6 +1,6 @@
 {
   "name": "@uxland/redux",
-  "version": "1.0.0-alpha.24",
+  "version": "1.0.0-alpha.25",
   "description": "Redux",
   "author": "UXLand <dev@uxland.es>",
   "homepage": "https://github.com/uxland/uxland/tree/master/packages/redux#readme",
@@ -71,7 +71,7 @@
     "typescript": "^4.0.2"
   },
   "dependencies": {
-    "@uxland/functional-utilities": "^1.0.0-alpha.22",
+    "@uxland/functional-utilities": "^1.0.0-alpha.23",
     "date-fns": "^2.10.0",
     "ramda": "^0.27.0",
     "redux": "^4.0.5",
