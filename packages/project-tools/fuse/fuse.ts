@@ -1,36 +1,42 @@
-import { fusebox, pluginSass, pluginLink, pluginReplace } from 'fuse-box';
-import { join, resolve } from 'path';
+import { fusebox, pluginSass, pluginLink, pluginReplace } from "fuse-box";
+import { join, resolve } from "path";
 // import { runUpdateSimulation } from './simulate';
-require('dotenv').config()
+require("dotenv").config();
 
-const workspaceRoot = join(__dirname, '../../../../');
-console.log('Workspace Root:', workspaceRoot);
+const workspaceRoot = join(__dirname, "../../../../");
+console.log("Workspace Root:", workspaceRoot);
 
 // set AUTOMOD to true to automatically update some files to trigger the watcher
 // runUpdateSimulation(!!process.env.AUTOMOD);
 
-export const fuse = (entry: string, baseStyles: string, webIndex: string, devServer: boolean) =>
+export const fuse = (
+  entry: string,
+  baseStyles: string,
+  webIndex: string,
+  devServer: boolean,
+  env: any = {}
+) =>
   fusebox({
     cache: false,
     compilerOptions: {
-      tsConfig: 'tsconfig.json',
+      tsConfig: "tsconfig.json",
     },
     devServer,
     hmr: true,
     entry,
-    env: process.env,
-    target: 'browser',
+    env: { ...process.env, ...env },
+    target: "browser",
     watcher: {
       root: [workspaceRoot],
     },
     stylesheet: {
       macros: {
-        '~': join(__dirname, '../../../'),
+        "~": join(__dirname, "../../../"),
       },
-      autoImport: [{ file: baseStyles, capture: 'packages/*/src' }],
+      autoImport: [{ file: baseStyles, capture: "packages/*/src" }],
     },
     plugins: [
-      pluginSass('*.scss', { asText: true }),
+      pluginSass("*.scss", { asText: true }),
       pluginLink(/.+\.png/, { useDefault: true }),
       pluginLink(/.+\.svg/, { useDefault: true }),
     ],
