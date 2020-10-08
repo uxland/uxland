@@ -1,6 +1,19 @@
 import { publish } from "@uxland/event-aggregator";
 
+/**
+ * Event indicating that credentials are invalid
+ * @memberof FetchClient
+ * @since v1.0.0
+ * @param {string} INVALID_CREDENTIALS_EVENT='UXL-FETCH:INVALID_CREDENTIALS_EVENT'
+ */
 export const INVALID_CREDENTIALS_EVENT = "UXL-FETCH:INVALID_CREDENTIALS_EVENT";
+
+/**
+ * Event indicating that fetch has failed
+ * @memberof FetchClient
+ * @since v1.0.0
+ * @param {string} INVALID_REQUEST_EVENT='UXL-FETCH:INVALID_REQUEST_EVENT'
+ */
 export const INVALID_REQUEST_EVENT = "UXL-FETCH:INVALID_REQUEST_EVENT";
 
 export const handleErrors = async (
