@@ -77,7 +77,7 @@ describe("Given a fetch client", () => {
       );
       it("it should throw an exception with received status and statusText", async (done) => {
         try {
-          await FC.uxlFetch("dummy");
+          await FC.fetchClient("dummy");
         } catch (error) {
           expect(error).toEqual({
             ...new Error(),
@@ -99,7 +99,7 @@ describe("Given a fetch client", () => {
       );
       it("should return data", async (done) => {
         try {
-          const data = await FC.uxlFetch("dummy");
+          const data = await FC.fetchClient("dummy");
           expect(data).toEqual({ foo: "bar" });
         } finally {
           done();
