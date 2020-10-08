@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.14](https://github.com/uxland/uxland/compare/@uxland/fetch-client@1.0.0-alpha.13...@uxland/fetch-client@1.0.0-alpha.14) (2020-10-08)
+
+
+### Bug Fixes
+
+* **fetch-client:** update documentation ([df89d3f](https://github.com/uxland/uxland/commit/df89d3f005eafb11b8090899135ff182658bd325))
+* new fetch client ([a260d77](https://github.com/uxland/uxland/commit/a260d7799105a0806b908584a39dc526acc36514))
+* refactor fetch-client ([4d1a29d](https://github.com/uxland/uxland/commit/4d1a29d49d29d9125d07d039ebb8e8063c2b2f93))
+* update fetch-client docs ([53fa4e0](https://github.com/uxland/uxland/commit/53fa4e0353548d78205fb7b53ec34d57eafa626d))
+
+
+
+
+
 # [1.0.0-alpha.13](https://github.com/uxland/uxland/compare/@uxland/fetch-client@1.0.0-alpha.12...@uxland/fetch-client@1.0.0-alpha.13) (2020-10-06)
 
 
