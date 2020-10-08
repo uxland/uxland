@@ -2,7 +2,7 @@
 
 | Build Status                                    | Statements                                    | Branches                                  | Functions                                   | Lines                               |
 | ----------------------------------------------- | --------------------------------------------- | ----------------------------------------- | ------------------------------------------- | ----------------------------------- |
-| ![BuildStatus](https://img.shields.io/badge/Build-Passing-brightgreen.svg "Building Status") | ![Statements](https://img.shields.io/badge/Coverage-58.33%25-red.svg "Make me better!") | ![Branches](https://img.shields.io/badge/Coverage-37.14%25-red.svg "Make me better!") | ![Functions](https://img.shields.io/badge/Coverage-32.5%25-red.svg "Make me better!") | ![Lines](https://img.shields.io/badge/Coverage-58.11%25-red.svg "Make me better!") |
+| ![BuildStatus](https://img.shields.io/badge/Build-Passing-brightgreen.svg "Building Status") | ![Statements](https://img.shields.io/badge/Coverage-86.17%25-yellow.svg "Make me better!") | ![Branches](https://img.shields.io/badge/Coverage-37.14%25-red.svg "Make me better!") | ![Functions](https://img.shields.io/badge/Coverage-85.32%25-yellow.svg "Make me better!") | ![Lines](https://img.shields.io/badge/Coverage-86.15%25-yellow.svg "Make me better!") |
 
 ## Installation
 

@@ -27,7 +27,7 @@
 
 <nav >
     
-    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="FetchClient.html">FetchClient</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="FetchClient.html">FetchClient</a><ul class='methods'><li data-type='method'><a href="FetchClient.html#.configure">configure</a></li><li data-type='method'><a href="FetchClient.html#.doFetch">doFetch</a></li><li data-type='method'><a href="FetchClient.html#.registerResponseHandler">registerResponseHandler</a></li><li data-type='method'><a href="FetchClient.html#.removeHeader">removeHeader</a></li><li data-type='method'><a href="FetchClient.html#.resetHeaders">resetHeaders</a></li><li data-type='method'><a href="FetchClient.html#.setBaseUrl">setBaseUrl</a></li><li data-type='method'><a href="FetchClient.html#.setHeaders">setHeaders</a></li></ul></li></ul><h3>Interfaces</h3><ul><li><a href="FetchClient.Configuration.html">Configuration</a></li></ul>
 </nav>
 
 <div id="main">
@@ -71,16 +71,54 @@
 <tbody>
 <tr>
 <td><img src="https://img.shields.io/badge/Build-Passing-brightgreen.svg" alt="BuildStatus" title="Building Status"></td>
-<td><img src="https://img.shields.io/badge/Coverage-30.83%25-red.svg" alt="Statements" title="Make me better!"></td>
-<td><img src="https://img.shields.io/badge/Coverage-0%25-red.svg" alt="Branches" title="Make me better!"></td>
-<td><img src="https://img.shields.io/badge/Coverage-6.67%25-red.svg" alt="Functions" title="Make me better!"></td>
-<td><img src="https://img.shields.io/badge/Coverage-32.46%25-red.svg" alt="Lines" title="Make me better!"></td>
+<td><img src="https://img.shields.io/badge/Coverage-100%25-brightgreen.svg" alt="Statements" title="Make me better!"></td>
+<td><img src="https://img.shields.io/badge/Coverage-96.43%25-brightgreen.svg" alt="Branches" title="Make me better!"></td>
+<td><img src="https://img.shields.io/badge/Coverage-100%25-brightgreen.svg" alt="Functions" title="Make me better!"></td>
+<td><img src="https://img.shields.io/badge/Coverage-100%25-brightgreen.svg" alt="Lines" title="Make me better!"></td>
 </tr>
 </tbody>
 </table>
 <h2>Installation</h2>
 <p><code>npm i @uxland/fetch-client</code></p>
-<h2>Usage</h2></article>
+<h2>Usage</h2>
+<h3>Configuration</h3>
+<h4><em>Set Base URL</em></h4>
+<p>All relative fetch will use provided url as its own base URL. If using absolute uri when fetching, this will not be taken into account.</p>
+<pre class="prettyprint source lang-typescript"><code>import { setBaseUrl } from '@uxland/fetch-client';
+setBaseUrl('http://localhost');
+</code></pre>
+<h4><em>Register response handlers</em></h4>
+<p>Register a response handler to manipulate result.</p>
+<pre class="prettyprint source lang-typescript"><code>import { registerResponseHandler } from '@uxland/fetch-client';
+registerResponseHandler((response) => JSON.stringify(response));
+</code></pre>
+<h4><em>Change fetch client configuration</em></h4>
+<p>Change configuration globally. All fetch requests will use this configuration.</p>
+<pre class="prettyprint source lang-typescript"><code>import { configure } from '@uxland/fetch-client';
+configure({mode: 'no-cors',{ headers: {authorization: 'Bearer &lt;token>' }}});
+</code></pre>
+<h4><em>Change fetch client headers</em></h4>
+<p>Change headers globally. All fetch requests will use specified headers.</p>
+<pre class="prettyprint source lang-typescript"><code>import { setHeaders } from '@uxland/fetch-client';
+setHeaders({ authorization: 'Bearer &lt;token>' });
+</code></pre>
+<h4><em>Delete specific header</em></h4>
+<p>Remove a header from global headers using provided id.</p>
+<pre class="prettyprint source lang-typescript"><code>import { removeHeader } from '@uxland/fetch-client';
+removeHeader('authorization');
+</code></pre>
+<h4><em>Reset fetch client headers</em></h4>
+<p>Reset global headers to default.</p>
+<pre class="prettyprint source lang-typescript"><code>import { resetHeaders } from '@uxland/fetch-client';
+resetHeaders();
+</code></pre>
+<h3>Fetch data</h3>
+<pre class="prettyprint source lang-typescript"><code>import { doFetch } from '@uxland/fetch-client';
+const response = doFetch('/dummy', { mode: 'no-cors' }, { foo: 'bar' })
+  .then((r) => r)
+  .catch((e) => e);
+</code></pre>
+<p>In addition, fetchClient also publishes (via <code>@uxland/event-aggregator</code>) two events INVALID_CREDENTIALS_EVENT and INVALID_REQUEST_EVENT when credentials are invalid or request has failed.</p></article>
     </section>
 
 
