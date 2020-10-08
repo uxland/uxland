@@ -33,8 +33,10 @@ describe("Given an object to be serialized", () => {
         });
       });
       describe("and a property is an object", () => {
-        it("", () =>
-          expect(toQueryParams({ foo: { bar: "dummy" } })).toEqual("foo=bar"));
+        it("should stringify object", () =>
+          expect(toQueryParams({ foo: { bar: "dummy" } })).toEqual(
+            'foo={"bar":"dummy"}'
+          ));
       });
     });
   });

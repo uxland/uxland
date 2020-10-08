@@ -37,7 +37,6 @@ export type QueryParams = { [key: string]: any };
  * @since v1.0.0
  * @typedef {function} ResponseHandler
  * @param {*=} response Fetch response
- * @returns {void|never}
  */
 STUB = 1;
 export type ResponseHandler = <T>(response) => T;
