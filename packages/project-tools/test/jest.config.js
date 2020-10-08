@@ -14,7 +14,11 @@ module.exports = {
     'ts-jest': {
       babelConfig: {
         comments: false,
-        plugins: ['@babel/plugin-proposal-optional-chaining', ['@babel/plugin-proposal-decorators', { legacy: true }]],
+        plugins: [
+          '@babel/plugin-proposal-optional-chaining',
+          ['@babel/plugin-proposal-decorators', { legacy: true }],
+          'istanbul',
+        ],
       },
     },
   },

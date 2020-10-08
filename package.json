@@ -33,7 +33,7 @@
     "docgen": "lerna run jsdoc",
     "readme:coverage": "lerna run readme:coverage --parallel",
     "release:dry-run": "lerna run semantic-release:dry-run",
-    "release": "yarn build && yarn test && yarn readme:coverage && node scripts/publish.js",
+    "release": "yarn build && yarn test && yarn readme:coverage",
     "postrelease": "yarn docgen && git add . && git commit -m 'docs: update documentation'",
     "test": "lerna run test --parallel",
     "precommit": "yarn test && yarn build:test && yarn readme:coverage && git add .",
