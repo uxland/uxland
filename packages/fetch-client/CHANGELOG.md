@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.15](https://github.com/uxland/uxland/compare/@uxland/fetch-client@1.0.0-alpha.14...@uxland/fetch-client@1.0.0-alpha.15) (2020-10-13)
+
+
+### Bug Fixes
+
+* solves issue with build in fetch-client ([e5b3f35](https://github.com/uxland/uxland/commit/e5b3f35931f31e46b90a747d3aaf3f757ead03b4))
+
+
+
+
+
 # [1.0.0-alpha.14](https://github.com/uxland/uxland/compare/@uxland/fetch-client@1.0.0-alpha.13...@uxland/fetch-client@1.0.0-alpha.14) (2020-10-08)
 
 
