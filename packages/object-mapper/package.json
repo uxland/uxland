@@ -24,7 +24,7 @@
     "url": "git+https://github.com/uxland/uxland.git"
   },
   "scripts": {
-    "build:es": "tsc -p tsconfig.json --outDir es --module esnext --noEmit false",
+    "build:es": "tsc -p tsconfig.json --outDir es --module esnext --target es2018 --noEmit false",
     "build:cjs": "tsc -p tsconfig.json --outDir lib --noEmit false --declaration  --removeComments false",
     "build:umd": "cross-env NODE_ENV=development rollup -c -o dist/index.js",
     "build:umd:min": "cross-env NODE_ENV=production rollup -c -o dist/index.min.js",
