@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.14](https://github.com/uxland/uxland/compare/@uxland/event-aggregator@1.0.0-alpha.13...@uxland/event-aggregator@1.0.0-alpha.14) (2020-10-13)
+
+
+### Bug Fixes
+
+* change build:es to add target es2018 and avoid optional-chaining errors ([eaee7f7](https://github.com/uxland/uxland/commit/eaee7f79aecc91010963cb79fc4e95a70c5c9c74))
+
+
+
+
+
 # [1.0.0-alpha.13](https://github.com/uxland/uxland/compare/@uxland/event-aggregator@1.0.0-alpha.12...@uxland/event-aggregator@1.0.0-alpha.13) (2020-10-06)
 
 

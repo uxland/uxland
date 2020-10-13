@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.9](https://github.com/uxland/uxland/compare/@uxland/routing@1.0.0-alpha.8...@uxland/routing@1.0.0-alpha.9) (2020-10-13)
+
+
+### Bug Fixes
+
+* change build:es to add target es2018 and avoid optional-chaining errors ([eaee7f7](https://github.com/uxland/uxland/commit/eaee7f79aecc91010963cb79fc4e95a70c5c9c74))
+* **routing:** change tsconfig to avoid build errors ([f80bd6f](https://github.com/uxland/uxland/commit/f80bd6f4103e4dc4eab48cf97db252c87fddda10))
+
+
+
+
+
 # [1.0.0-alpha.8](https://github.com/uxland/uxland/compare/@uxland/routing@1.0.0-alpha.7...@uxland/routing@1.0.0-alpha.8) (2020-10-06)
 
 

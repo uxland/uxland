@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.26](https://github.com/uxland/uxland/compare/@uxland/redux@1.0.0-alpha.25...@uxland/redux@1.0.0-alpha.26) (2020-10-13)
+
+
+### Bug Fixes
+
+* change build:es to add target es2018 and avoid optional-chaining errors ([eaee7f7](https://github.com/uxland/uxland/commit/eaee7f79aecc91010963cb79fc4e95a70c5c9c74))
+
+
+
+
+
 # [1.0.0-alpha.25](https://github.com/uxland/uxland/compare/@uxland/redux@1.0.0-alpha.24...@uxland/redux@1.0.0-alpha.25) (2020-10-06)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.16](https://github.com/uxland/uxland/compare/@uxland/fetch-client@1.0.0-alpha.15...@uxland/fetch-client@1.0.0-alpha.16) (2020-10-13)
+
+
+### Bug Fixes
+
+* **fetch-client:** change target build to es2018 ([152bc59](https://github.com/uxland/uxland/commit/152bc59add88f5dfd4b15976cadbd8d9bd12780c))
+
+
+
+
+
 # [1.0.0-alpha.15](https://github.com/uxland/uxland/compare/@uxland/fetch-client@1.0.0-alpha.14...@uxland/fetch-client@1.0.0-alpha.15) (2020-10-13)
 
 
