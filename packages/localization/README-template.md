@@ -10,34 +10,64 @@
 
 ## Usage
 
+A mixin is provided in order to be able to use localization functionalities and subscribe to language and locales changes.
+
 ```typescript
-const locales = ca: {
-		[moduleName]: {}
-	},
-	en: {
-		[moduleName]: {}
-	},
-	es: {
-        [moduleName]: {
-            key:  'Esto es la cadena'
-        }
-    }
-props.localize(`${moduleName}.key`)
+export class Klass implements locale(BaseKlass) {}
 ```
 
-With arguments
+### Update current language
+
+Set the current language that will be used in order to retrieve proper localization. Each time locales are updated, the event `LANGUAGE_UPDATED` will be published in order to inform all subscribers that the locales dictionary has changed
 
 ```typescript
-const locales = ca: {
-		[moduleName]: {}
-	},
-	en: {
-		[moduleName]: {}
-	},
-	es: {
-        [moduleName]: {
-            order:  'Pedido con id {id}'
-        }
-    }
-props.localize(`${moduleName}.key`, 'id', '12345');
+setLanguage('en');
+```
+
+### Set locales dictionary
+
+Locales must follow the next format:
+
+```typescript
+const locales = [language]: {
+		foo: {
+			title: 'Title',
+			subtitle: 'Subtitle'
+		}
+	};
+```
+
+Each time locales are updated, the event `LOCALES_UPDATED` will be published in order to inform all subscribers that the locales dictionary has changed.
+
+```typescript
+setLocales(locales);
+```
+
+### Localize
+
+When localizing, the current language is used to retrieve language's locales. Providing a path to the `localize` function, this will return the corresponding string defined in locales dictonary.
+
+```typescript
+const locales = [language]: {
+		foo: {
+			title: 'Title',
+			subtitle: 'Subtitle',
+			greetings: 'Hi!'
+		}
+	};
+setLocales(locales);
+localize(`foo.title`); // => "Title"
+```
+
+Arguments can also be provided to `localize` in order to get dynamic locales as it is specified bellow:
+
+```typescript
+const locales = [language]: {
+		foo: {
+			title: 'Title',
+			subtitle: 'Subtitle',
+			greetings: 'Hi {name}!'
+		}
+setLocales(locales);
+localize(`foo.greetings`, 'id', 'John Doe'); // => "Hello John Doe"
 ```

@@ -20,7 +20,7 @@
  * AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-import { Localizer } from './localizer-factory';
+import { Localizer } from "./localizer-factory";
 
 let internalLocalizer: Localizer;
 /**
@@ -37,7 +37,8 @@ let internalLocalizer: Localizer;
  * const defaultLocalizer = initializeLocalizer(localizer);
  *
  */
-export const initializeLocalizer = (localizer: Localizer): Localizer => (internalLocalizer = localizer);
+export const initializeLocalizer = (localizer: Localizer): Localizer =>
+  (internalLocalizer = localizer);
 
 /**
  * Dispose default localizer
@@ -51,7 +52,8 @@ export const initializeLocalizer = (localizer: Localizer): Localizer => (interna
  * disposeLocalizer();
  *
  */
-export const disposeLocalizer = (): undefined => (internalLocalizer = undefined);
+export const disposeLocalizer = (): undefined =>
+  (internalLocalizer = undefined);
 
 /**
  * Localizer
@@ -73,7 +75,7 @@ export const disposeLocalizer = (): undefined => (internalLocalizer = undefined)
 export const localize: Localizer | never = (key, ...args) => {
   if (!internalLocalizer)
     throw new Error(
-      'Default localizer has not been initialized. Please, call initializeLocalizer firsT in order to create a default localizer'
+      "Default localizer has not been initialized. Please, call initializeLocalizer first in order to create a default localizer"
     );
   return internalLocalizer(key, ...args);
 };

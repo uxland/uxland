@@ -20,9 +20,13 @@
  * AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-import { subscribe } from '@uxland/event-aggregator';
-import { LANGUAGE_UPDATED, LOCALES_UPDATED } from './events';
-import { Localizer, LocalizerFactory } from './localizer-factory';
+import { subscribe } from "@uxland/event-aggregator";
+import { LANGUAGE_UPDATED, LOCALES_UPDATED } from "./events";
+import {
+  Localizer,
+  localizerFactory,
+  LocalizerFactory,
+} from "./localizer-factory";
 
 interface LocalizationMixin {
   localize: Localizer;
@@ -41,26 +45,45 @@ interface MixinFunction<T> {}
 type LocaleMixinFunction = MixinFunction<LocalizationMixinConstructor>;
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-export const localeMixin: (factory: LocalizerFactory) => LocaleMixinFunction = factory => (superClass: any) =>
+export const localeMixin: (factory: LocalizerFactory) => LocaleMixinFunction = (
+  factory
+) => (superClass: any) =>
   class LocaleMixin extends superClass implements LocalizationMixin {
     localize: Localizer;
     useKeyIfMissing: boolean;
     formats: any;
-    language = 'en';
+    language = "en";
     locales: Record<string, any> = {};
     constructor() {
       super();
       subscribe(LOCALES_UPDATED, this.localesChanged.bind(this));
       subscribe(LANGUAGE_UPDATED, this.languageChanged.bind(this));
-      this.localize = factory(this.language, this.locales, this.formats, this.useKeyIfMissing);
+      this.localize = factory(
+        this.language,
+        this.locales,
+        this.formats,
+        this.useKeyIfMissing
+      );
     }
 
     private localesChanged(locales: Record<string, any>): void {
       this.locales = locales;
-      this.localize = factory(this.language, this.locales, this.formats, this.useKeyIfMissing);
+      this.localize = factory(
+        this.language,
+        this.locales,
+        this.formats,
+        this.useKeyIfMissing
+      );
     }
     public languageChanged(language: string): void {
       this.language = language;
-      this.localize = factory(this.language, this.locales, this.formats, this.useKeyIfMissing);
+      this.localize = factory(
+        this.language,
+        this.locales,
+        this.formats,
+        this.useKeyIfMissing
+      );
     }
   };
+
+export const locale = localeMixin(localizerFactory);
