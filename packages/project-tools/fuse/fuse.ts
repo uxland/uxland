@@ -9,6 +9,14 @@ console.log("Workspace Root:", workspaceRoot);
 // set AUTOMOD to true to automatically update some files to trigger the watcher
 // runUpdateSimulation(!!process.env.AUTOMOD);
 
+/**
+ * Fuse base constructor
+ * @param {string} entry Demo entry point
+ * @param {string} baseStyles Base scss styles path
+ * @param {string} webIndex Demo entry html
+ * @param {boolean} devServer Run server
+ * @param {*} env Environment variables
+ */
 export const fuse = (
   entry: string,
   baseStyles: string,
