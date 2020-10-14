@@ -83,7 +83,7 @@ const invokeHandler = (handler: Handler, data: any): void | never => {
 };
 
 class EventAggregator {
-  eventLookup: Record<string, unknown>;
+  eventLookup: Record<string, any[]>;
   messageHandlers: Array<any>;
 
   constructor() {
