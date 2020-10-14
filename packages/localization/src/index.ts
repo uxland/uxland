@@ -22,8 +22,10 @@
  */
 
 /** @namespace Localization */
-export * from './events';
-export * from './locale-mixin';
-export * from './locales';
-export * from './localize';
-export * from './localizer-factory';
+export * from "./events";
+export * from "./locale-mixin";
+export * from "./locales";
+export * from "./language";
+export * from "./format";
+export * from "./localize";
+export * from "./localizer-factory";

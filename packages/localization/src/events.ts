@@ -20,11 +20,13 @@
  * AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-import { constantBuilder } from '@uxland/functional-utilities';
+import { constantBuilder } from "@uxland/functional-utilities";
 
-const eventBuilder = constantBuilder('LOCALIZATION', undefined, '::');
+const eventBuilder = constantBuilder("LOCALIZATION", undefined, "::");
 
-export const LOCALES_RESET = eventBuilder('LOCALES-RESET');
-export const LOCALES_UPDATED = eventBuilder('LOCALES-UPDATED');
-export const LANGUAGE_UPDATED = eventBuilder('LANGUAGE-UPDATED');
-export const LANGUAGE_RESET = eventBuilder('LANGUAGE-RESET');
+export const LOCALES_RESET = eventBuilder("LOCALES-RESET");
+export const LOCALES_UPDATED = eventBuilder("LOCALES-UPDATED");
+export const LANGUAGE_UPDATED = eventBuilder("LANGUAGE-UPDATED");
+export const LANGUAGE_RESET = eventBuilder("LANGUAGE-RESET");
+export const FORMATTERS_UPDATED = eventBuilder("FORMATERS-UPDATED");
+export const FORMATTERS_RESET = eventBuilder("FORMATERS-RESET");

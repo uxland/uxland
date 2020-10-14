@@ -20,8 +20,8 @@
  * AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-import { publish } from '@uxland/event-aggregator';
-import { LANGUAGE_RESET, LANGUAGE_UPDATED } from './events';
+import { publish } from "@uxland/event-aggregator";
+import { LANGUAGE_RESET, LANGUAGE_UPDATED } from "./events";
 
 /**
  * Default language
@@ -30,9 +30,9 @@ import { LANGUAGE_RESET, LANGUAGE_UPDATED } from './events';
  * @name DEFAULT_LANGUAGE
  * @since v1.0.0
  */
-export const DEFAULT_LANGUAGE = 'en';
+export const DEFAULT_LANGUAGE = "en";
 
-let defaultLanguage = DEFAULT_LANGUAGE;
+let currentLanguage = DEFAULT_LANGUAGE;
 
 /**
  * Set new default language from provided value. Publishes an event `LANGUAGE_UPDATED` in order to inform all listeners of the language change
@@ -48,7 +48,7 @@ let defaultLanguage = DEFAULT_LANGUAGE;
  *
  */
 export const setLanguage = (language: string): void => {
-  defaultLanguage = language;
+  currentLanguage = language;
   publish(LANGUAGE_UPDATED, language);
 };
 
@@ -70,7 +70,7 @@ export const getDefaultLanguage = (): string => DEFAULT_LANGUAGE;
  * @since v1.0.0
  * @returns {string}
  */
-export const getLanguage = (): string => defaultLanguage;
+export const getLanguage = (): string => currentLanguage;
 
 /**
  * Reset language to default language. Publishes an event `LANGUAGE_RESET` in order to inform all listeners of the language reset
@@ -80,6 +80,6 @@ export const getLanguage = (): string => defaultLanguage;
  * @since v1.0.0
  */
 export const resetLanguage = (): void => {
-  defaultLanguage = DEFAULT_LANGUAGE;
+  currentLanguage = DEFAULT_LANGUAGE;
   publish(LANGUAGE_RESET, DEFAULT_LANGUAGE);
 };

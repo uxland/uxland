@@ -21,7 +21,14 @@
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 import { subscribe } from "@uxland/event-aggregator";
-import { LANGUAGE_UPDATED, LOCALES_UPDATED } from "./events";
+import {
+  FORMATTERS_RESET,
+  FORMATTERS_UPDATED,
+  LANGUAGE_RESET,
+  LANGUAGE_UPDATED,
+  LOCALES_RESET,
+  LOCALES_UPDATED,
+} from "./events";
 import {
   Localizer,
   localizerFactory,
@@ -44,6 +51,22 @@ interface LocalizationMixinConstructor extends LocalizationMixin {
 interface MixinFunction<T> {}
 type LocaleMixinFunction = MixinFunction<LocalizationMixinConstructor>;
 
+/**
+ * Mixin in order to give localization capabilities and to subscribe to locales and language changes
+ * @function
+ * @memberof Localization
+ * @name localeMixin
+ * @since v1.0.0
+ * @param factory
+ * @returns {Object}
+ * @example
+ *
+ * ```typescript
+ * const locale = localeMixin(() => localizerFactory('en', {en: {foo: 'bar'}}));
+ *
+ * export class Klass implements locale(BaseKlass){}
+ * ```
+ */
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export const localeMixin: (factory: LocalizerFactory) => LocaleMixinFunction = (
   factory
@@ -51,13 +74,17 @@ export const localeMixin: (factory: LocalizerFactory) => LocaleMixinFunction = (
   class LocaleMixin extends superClass implements LocalizationMixin {
     localize: Localizer;
     useKeyIfMissing: boolean;
-    formats: any;
+    formats: any = {};
     language = "en";
     locales: Record<string, any> = {};
     constructor() {
       super();
       subscribe(LOCALES_UPDATED, this.localesChanged.bind(this));
+      subscribe(LOCALES_RESET, this.localesChanged.bind(this));
       subscribe(LANGUAGE_UPDATED, this.languageChanged.bind(this));
+      subscribe(LANGUAGE_RESET, this.languageChanged.bind(this));
+      subscribe(FORMATTERS_UPDATED, this.formattersChanged.bind(this));
+      subscribe(FORMATTERS_RESET, this.formattersChanged.bind(this));
       this.localize = factory(
         this.language,
         this.locales,
@@ -84,6 +111,23 @@ export const localeMixin: (factory: LocalizerFactory) => LocaleMixinFunction = (
         this.useKeyIfMissing
       );
     }
+    public formattersChanged(formats: string): void {
+      this.formats = formats;
+      this.localize = factory(
+        this.language,
+        this.locales,
+        this.formats,
+        this.useKeyIfMissing
+      );
+    }
   };
 
+/**
+ * Default mixin in order to give localization capabilities and to subscribe to locales and language changes
+ * @function
+ * @memberof Localization
+ * @name locale
+ * @since v1.0.0
+ * @returns {Object}
+ */
 export const locale = localeMixin(localizerFactory);

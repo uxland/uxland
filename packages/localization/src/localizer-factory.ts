@@ -20,24 +20,28 @@
  * AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-import IntlMessageFormat from 'intl-messageformat';
-import { Lens, lensPath, view } from 'ramda';
+import IntlMessageFormat from "intl-messageformat";
+import { Lens, lensPath, view } from "ramda";
 
 const getArgs = (args: any[]): any[] => {
   let result = args;
   if (args && args.length == 1) {
-    if (Object.prototype.toString.call(args[0]) === '[object Array]') result = args[0];
-    else if (typeof args[0] === 'object') {
+    if (Object.prototype.toString.call(args[0]) === "[object Array]")
+      result = args[0];
+    else if (typeof args[0] === "object") {
       const argObj = args[0];
-      result = Object.keys(argObj).reduce((previous: any[], currentKey: string) => {
-        return previous.concat(currentKey, argObj[currentKey]);
-      }, []);
+      result = Object.keys(argObj).reduce(
+        (previous: any[], currentKey: string) => {
+          return previous.concat(currentKey, argObj[currentKey]);
+        },
+        []
+      );
     }
   }
 
   return result;
 };
-const getLens = (key: string): Lens => lensPath(String(key).split('.'));
+const getLens = (key: string): Lens => lensPath(String(key).split("."));
 let STUB = 1;
 /**
  * Localizer
@@ -55,7 +59,10 @@ let STUB = 1;
  * lf('qux') //=> ''
  */
 STUB = 1;
-export type Localizer = (key: string, ...args: any[]) => IntlMessageFormat | string;
+export type Localizer = (
+  key: string,
+  ...args: any[]
+) => IntlMessageFormat | string;
 export type LocalizerFactory = (
   language: string,
   locales: Record<string, any>,
@@ -64,7 +71,7 @@ export type LocalizerFactory = (
 ) => Localizer;
 
 /**
- * Localizer Factory
+ * Localizer Factory. Use this factory in order to use localization capabilities without the need of a mixin
  * @name localizerFactory
  * @function
  * @memberof Localization
@@ -87,16 +94,20 @@ export const localizerFactory: LocalizerFactory = (
   useKeyIfMissing = false
 ) =>
   function localize(key: string, ...args: any[]): IntlMessageFormat | string {
-    if (!key || !locales || !language || !locales[language]) return '';
+    if (!key || !locales || !language || !locales[language]) return "";
     const translatedValue: string = view(getLens(key), locales[language]);
-    if (!translatedValue) return useKeyIfMissing ? key : '';
+    if (!translatedValue) return useKeyIfMissing ? key : "";
     if (!args || !args.length) return translatedValue;
 
     const cachedMessages: Record<string, IntlMessageFormat> = {};
     const messageKey = `${key}${translatedValue}`;
     let translatedMessage = cachedMessages[messageKey];
     if (!translatedMessage) {
-      translatedMessage = new IntlMessageFormat(translatedValue, language, formats);
+      translatedMessage = new IntlMessageFormat(
+        translatedValue,
+        language,
+        formats
+      );
       cachedMessages[messageKey] = translatedMessage;
     }
 

@@ -5,8 +5,7 @@ import {
   getLanguage,
   resetLanguage,
   setLanguage,
-} from "../language";
-console.log(EA);
+} from "../src/language";
 
 describe("language utilities", () => {
   describe("when getting language", () => {

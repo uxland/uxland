@@ -20,8 +20,9 @@
  * AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-import { publish } from '@uxland/event-aggregator';
-import { LOCALES_RESET, LOCALES_UPDATED } from './events';
+import { publish } from "@uxland/event-aggregator";
+import { mergeDeepRight } from "ramda";
+import { LOCALES_RESET, LOCALES_UPDATED } from "./events";
 
 const defaultLocales: Record<string, any> = {};
 let localesCollection: Record<string, any> = {};
@@ -40,7 +41,9 @@ let localesCollection: Record<string, any> = {};
  *
  */
 export const setLocales = (locales: Record<string, any>): void => {
-  localesCollection = { ...defaultLocales, ...localesCollection, ...locales };
+  // localesCollection = { ...defaultLocales, ...localesCollection, ...locales };
+  localesCollection = mergeDeepRight(defaultLocales, localesCollection);
+  localesCollection = mergeDeepRight(localesCollection, locales);
   publish(LOCALES_UPDATED, localesCollection);
 };
 
@@ -52,7 +55,9 @@ export const setLocales = (locales: Record<string, any>): void => {
  * @since v1.0.0
  * @returns {Object}
  */
-export const getDefaultLocales = (): Record<string, any> => ({ ...defaultLocales });
+export const getDefaultLocales = (): Record<string, any> => ({
+  ...defaultLocales,
+});
 
 /**
  * Returns current locales collection
