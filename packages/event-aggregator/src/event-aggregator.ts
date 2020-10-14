@@ -62,7 +62,11 @@ class Handler {
   }
 }
 
-const invokeCallback = (callback: EventCallback, data: any, event: string): void | never => {
+const invokeCallback = (
+  callback: EventCallback,
+  data: any,
+  event: string
+): void | never => {
   try {
     callback(data, event);
   } catch (e) {
@@ -79,7 +83,7 @@ const invokeHandler = (handler: Handler, data: any): void | never => {
 };
 
 class EventAggregator {
-  eventLookup: object;
+  eventLookup: Record<string, unknown>;
   messageHandlers: Array<any>;
 
   constructor() {
@@ -92,10 +96,10 @@ class EventAggregator {
     let i: number;
 
     if (!event) {
-      throw new Error('Event channel/type is invalid.');
+      throw new Error("Event channel/type is invalid.");
     }
 
-    if (typeof event === 'string') {
+    if (typeof event === "string") {
       subscribers = this.eventLookup[event];
       if (subscribers) {
         subscribers = subscribers.slice();
@@ -120,10 +124,10 @@ class EventAggregator {
     let subscribers: any[];
 
     if (!event) {
-      throw new Error('Event channel/type is invalid.');
+      throw new Error("Event channel/type is invalid.");
     }
 
-    if (typeof event === 'string') {
+    if (typeof event === "string") {
       handler = callback;
       subscribers = this.eventLookup[event] || (this.eventLookup[event] = []);
     } else {
@@ -139,7 +143,7 @@ class EventAggregator {
         if (idx !== -1) {
           subscribers.splice(idx, 1);
         }
-      }
+      },
     };
   }
 
@@ -174,7 +178,10 @@ export const eventAggregator = new EventAggregator();
  * @throws Event channel/type is invalid
  * @example
  *
- * `TBD`
+ * ```
+ * const callback = (payload: any): void => {};
+ * subscribe('EVENT-ID', callback);
+ * ```
  *
  */
 export const subscribe = eventAggregator.subscribe.bind(eventAggregator);
@@ -190,10 +197,15 @@ export const subscribe = eventAggregator.subscribe.bind(eventAggregator);
  * @returns {EventAggregator.Subscription}
  * @example
  *
- * `TBD`
+ * ```
+ * const callback = (payload: any): void => {};
+ * subscribeOnce('EVENT-ID', callback);
+ * ```
  *
  */
-export const subscribeOnce = eventAggregator.subscribeOnce.bind(eventAggregator);
+export const subscribeOnce = eventAggregator.subscribeOnce.bind(
+  eventAggregator
+);
 
 /**
  * Publishes a message
@@ -207,7 +219,8 @@ export const subscribeOnce = eventAggregator.subscribeOnce.bind(eventAggregator)
  * @throws Event channel/type is invalid
  * @example
  *
- * `TBD`
+ * const payload = { foo: 'bar' };
+ * publish('EVENT-ID', payload);
  *
  */
 export const publish = eventAggregator.publish.bind(eventAggregator);
