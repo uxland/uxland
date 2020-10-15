@@ -15,6 +15,7 @@ console.log("Workspace Root:", workspaceRoot);
  * @param {string} baseStyles Base scss styles path
  * @param {string} webIndex Demo entry html
  * @param {boolean} devServer Run server
+ * @param {string} publicPath Public path
  * @param {*} env Environment variables
  */
 export const fuse = (
@@ -22,6 +23,7 @@ export const fuse = (
   baseStyles: string,
   webIndex: string,
   devServer: boolean,
+  publicPath = "/",
   env: any = {}
 ) =>
   fusebox({
@@ -48,5 +50,8 @@ export const fuse = (
       pluginLink(/.+\.png/, { useDefault: true }),
       pluginLink(/.+\.svg/, { useDefault: true }),
     ],
-    webIndex: { template: webIndex },
+    webIndex: { template: webIndex, publicPath },
+    resources: {
+      resourcePublicRoot: `${publicPath}resources/`,
+    },
   });
