@@ -122,9 +122,9 @@ class EventAggregator {
         let subscribers;
         let i;
         if (!event) {
-            throw new Error('Event channel/type is invalid.');
+            throw new Error("Event channel/type is invalid.");
         }
-        if (typeof event === 'string') {
+        if (typeof event === "string") {
             subscribers = this.eventLookup[event];
             if (subscribers) {
                 subscribers = subscribers.slice();
@@ -146,9 +146,9 @@ class EventAggregator {
         let handler;
         let subscribers;
         if (!event) {
-            throw new Error('Event channel/type is invalid.');
+            throw new Error("Event channel/type is invalid.");
         }
-        if (typeof event === 'string') {
+        if (typeof event === "string") {
             handler = callback;
             subscribers = this.eventLookup[event] || (this.eventLookup[event] = []);
         }
@@ -163,7 +163,7 @@ class EventAggregator {
                 if (idx !== -1) {
                     subscribers.splice(idx, 1);
                 }
-            }
+            },
         };
     }
     subscribeOnce(event, callback) {
@@ -194,7 +194,10 @@ exports.eventAggregator = new EventAggregator();
  * @throws Event channel/type is invalid
  * @example
  *
- * `TBD`
+ * ```
+ * const callback = (payload: any): void => {};
+ * subscribe('EVENT-ID', callback);
+ * ```
  *
  */
 exports.subscribe = exports.eventAggregator.subscribe.bind(exports.eventAggregator);
@@ -209,7 +212,10 @@ exports.subscribe = exports.eventAggregator.subscribe.bind(exports.eventAggregat
  * @returns {EventAggregator.Subscription}
  * @example
  *
- * `TBD`
+ * ```
+ * const callback = (payload: any): void => {};
+ * subscribeOnce('EVENT-ID', callback);
+ * ```
  *
  */
 exports.subscribeOnce = exports.eventAggregator.subscribeOnce.bind(exports.eventAggregator);
@@ -225,7 +231,8 @@ exports.subscribeOnce = exports.eventAggregator.subscribeOnce.bind(exports.event
  * @throws Event channel/type is invalid
  * @example
  *
- * `TBD`
+ * const payload = { foo: 'bar' };
+ * publish('EVENT-ID', payload);
  *
  */
 exports.publish = exports.eventAggregator.publish.bind(exports.eventAggregator);

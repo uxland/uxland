@@ -27,7 +27,7 @@
 
 <nav >
     
-    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="Localization.html">Localization</a><ul class='methods'><li data-type='method'><a href="Localization.html#.disposeLocalizer">disposeLocalizer</a></li><li data-type='method'><a href="Localization.html#.getDefaultLanguage">getDefaultLanguage</a></li><li data-type='method'><a href="Localization.html#.getDefaultLocales">getDefaultLocales</a></li><li data-type='method'><a href="Localization.html#.getLanguage">getLanguage</a></li><li data-type='method'><a href="Localization.html#.getLocales">getLocales</a></li><li data-type='method'><a href="Localization.html#.initializeLocalizer">initializeLocalizer</a></li><li data-type='method'><a href="Localization.html#.localizerFactory">localizerFactory</a></li><li data-type='method'><a href="Localization.html#.resetLanguage">resetLanguage</a></li><li data-type='method'><a href="Localization.html#.resetLocales">resetLocales</a></li><li data-type='method'><a href="Localization.html#.setLanguage">setLanguage</a></li><li data-type='method'><a href="Localization.html#.setLocales">setLocales</a></li></ul></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="Localization.html">Localization</a><ul class='methods'><li data-type='method'><a href="Localization.html#.disposeLocalizer">disposeLocalizer</a></li><li data-type='method'><a href="Localization.html#.getDefaultLanguage">getDefaultLanguage</a></li><li data-type='method'><a href="Localization.html#.getDefaultLocales">getDefaultLocales</a></li><li data-type='method'><a href="Localization.html#.getFormatters">getFormatters</a></li><li data-type='method'><a href="Localization.html#.getLanguage">getLanguage</a></li><li data-type='method'><a href="Localization.html#.getLocales">getLocales</a></li><li data-type='method'><a href="Localization.html#.initializeLocalizer">initializeLocalizer</a></li><li data-type='method'><a href="Localization.html#.locale">locale</a></li><li data-type='method'><a href="Localization.html#.localeMixin">localeMixin</a></li><li data-type='method'><a href="Localization.html#.localizerFactory">localizerFactory</a></li><li data-type='method'><a href="Localization.html#.resetFormatters">resetFormatters</a></li><li data-type='method'><a href="Localization.html#.resetLanguage">resetLanguage</a></li><li data-type='method'><a href="Localization.html#.resetLocales">resetLocales</a></li><li data-type='method'><a href="Localization.html#.setFormatters">setFormatters</a></li><li data-type='method'><a href="Localization.html#.setLanguage">setLanguage</a></li><li data-type='method'><a href="Localization.html#.setLocales">setLocales</a></li></ul></li></ul>
 </nav>
 
 <div id="main">
@@ -68,6 +68,7 @@ exports.resetLocales = exports.getLocales = exports.getDefaultLocales = exports.
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 const event_aggregator_1 = require("@uxland/event-aggregator");
+const ramda_1 = require("ramda");
 const events_1 = require("./events");
 const defaultLocales = {};
 let localesCollection = {};
@@ -85,7 +86,9 @@ let localesCollection = {};
  *
  */
 exports.setLocales = (locales) => {
-    localesCollection = { ...defaultLocales, ...localesCollection, ...locales };
+    // localesCollection = { ...defaultLocales, ...localesCollection, ...locales };
+    localesCollection = ramda_1.mergeDeepRight(defaultLocales, localesCollection);
+    localesCollection = ramda_1.mergeDeepRight(localesCollection, locales);
     event_aggregator_1.publish(events_1.LOCALES_UPDATED, localesCollection);
 };
 /**
@@ -96,7 +99,9 @@ exports.setLocales = (locales) => {
  * @since v1.0.0
  * @returns {Object}
  */
-exports.getDefaultLocales = () => ({ ...defaultLocales });
+exports.getDefaultLocales = () => ({
+    ...defaultLocales,
+});
 /**
  * Returns current locales collection
  * @function

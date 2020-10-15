@@ -218,7 +218,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="event-aggregator.js.html">event-aggregator.js</a>, <a href="event-aggregator.js.html#line172">line 172</a>
+        <a href="event-aggregator.js.html">event-aggregator.js</a>, <a href="event-aggregator.js.html#line178">line 178</a>
     </li></ul></dd>
     
 
@@ -274,7 +274,8 @@
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>`TBD`</code></pre>
+    <pre class="prettyprint"><code>const payload = { foo: 'bar' };
+publish('EVENT-ID', payload);</code></pre>
 
 
 
@@ -474,7 +475,10 @@
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>`TBD`</code></pre>
+    <pre class="prettyprint"><code>```
+const callback = (payload: any): void => {};
+subscribe('EVENT-ID', callback);
+```</code></pre>
 
 
 
@@ -615,7 +619,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="event-aggregator.js.html">event-aggregator.js</a>, <a href="event-aggregator.js.html#line157">line 157</a>
+        <a href="event-aggregator.js.html">event-aggregator.js</a>, <a href="event-aggregator.js.html#line160">line 160</a>
     </li></ul></dd>
     
 
@@ -671,7 +675,10 @@
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>`TBD`</code></pre>
+    <pre class="prettyprint"><code>```
+const callback = (payload: any): void => {};
+subscribeOnce('EVENT-ID', callback);
+```</code></pre>
 
 
 

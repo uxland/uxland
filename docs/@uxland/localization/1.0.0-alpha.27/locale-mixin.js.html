@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>localizer-factory.js - Documentation</title>
+    <title>locale-mixin.js - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -32,7 +32,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">localizer-factory.js</h1>
+    <h1 class="page-title">locale-mixin.js</h1>
     
 
     
@@ -44,11 +44,11 @@
         <article>
             <pre class="prettyprint source linenums"><code>"use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.localizerFactory = void 0;
+exports.locale = exports.localeMixin = void 0;
 /*
  * MIT License
  *
- * Copyright (c) 2020 UXLand
+ * Copyright (c) 2020 ${company}
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of
  * this software and associated documentation files (the "Software"), to deal in
@@ -67,78 +67,62 @@ exports.localizerFactory = void 0;
  * AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-const intl_messageformat_1 = require("intl-messageformat");
-const ramda_1 = require("ramda");
-const getArgs = (args) => {
-    let result = args;
-    if (args &amp;&amp; args.length == 1) {
-        if (Object.prototype.toString.call(args[0]) === "[object Array]")
-            result = args[0];
-        else if (typeof args[0] === "object") {
-            const argObj = args[0];
-            result = Object.keys(argObj).reduce((previous, currentKey) => {
-                return previous.concat(currentKey, argObj[currentKey]);
-            }, []);
-        }
-    }
-    return result;
-};
-const getLens = (key) => ramda_1.lensPath(String(key).split("."));
-let STUB = 1;
+const event_aggregator_1 = require("@uxland/event-aggregator");
+const events_1 = require("./events");
+const localizer_factory_1 = require("./localizer-factory");
 /**
- * Localizer
- * @memberof Localization
- * @typedef {function} Localizer
- * @since v1.0.0
- * @param {string} key Message key of locale dictionary depending on default language
- * @param {...*} args Arguments to be used when calling IntlMessageFormat
- * @returns {(string | IntlMessageFormat)}
- * @throws Error propagated from IntlMessageFormat
- * @example
- *
- * const lf = localizerFactory('en', {en: {foo: 'bar'}}, {number: {EUR: {style: 'currency', currency: 'EUR'}}}, true);
- * lf('foo') //=> 'bar'
- * lf('qux') //=> ''
- */
-STUB = 1;
-/**
- * Localizer Factory. Use this factory in order to use localization capabilities without the need of a mixin
- * @name localizerFactory
+ * Mixin in order to give localization capabilities and to subscribe to locales and language changes
  * @function
  * @memberof Localization
+ * @name localeMixin
  * @since v1.0.0
- * @param {string} language Default language
- * @param {object} locales Locales collection
- * @param {object=} formats Custom defined formats
- * @param {boolean=} useKeyIfMissing Return key if locale is not defined
- * @returns {Localization.Localizer}
- * @throws Describe throw condition
+ * @param factory
+ * @returns {Object}
  * @example
  *
- * localizerFactory('en', {en: {foo: 'bar'}}, {number: {EUR: {style: 'currency', currency: 'EUR'}}}, true)
+ * ```typescript
+ * const locale = localeMixin(() => localizerFactory('en', {en: {foo: 'bar'}}));
  *
+ * export class Klass implements locale(BaseKlass){}
+ * ```
  */
-exports.localizerFactory = (language, locales, formats = {}, useKeyIfMissing = false) => function localize(key, ...args) {
-    if (!key || !locales || !language || !locales[language])
-        return "";
-    const translatedValue = ramda_1.view(getLens(key), locales[language]);
-    if (!translatedValue)
-        return useKeyIfMissing ? key : "";
-    if (!args || !args.length)
-        return translatedValue;
-    const cachedMessages = {};
-    const messageKey = `${key}${translatedValue}`;
-    let translatedMessage = cachedMessages[messageKey];
-    if (!translatedMessage) {
-        translatedMessage = new intl_messageformat_1.default(translatedValue, language, formats);
-        cachedMessages[messageKey] = translatedMessage;
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+exports.localeMixin = (factory) => (superClass) => class LocaleMixin extends superClass {
+    constructor() {
+        super();
+        this.formats = {};
+        this.language = "en";
+        this.locales = {};
+        event_aggregator_1.subscribe(events_1.LOCALES_UPDATED, this.localesChanged.bind(this));
+        event_aggregator_1.subscribe(events_1.LOCALES_RESET, this.localesChanged.bind(this));
+        event_aggregator_1.subscribe(events_1.LANGUAGE_UPDATED, this.languageChanged.bind(this));
+        event_aggregator_1.subscribe(events_1.LANGUAGE_RESET, this.languageChanged.bind(this));
+        event_aggregator_1.subscribe(events_1.FORMATTERS_UPDATED, this.formattersChanged.bind(this));
+        event_aggregator_1.subscribe(events_1.FORMATTERS_RESET, this.formattersChanged.bind(this));
+        this.localize = factory(this.language, this.locales, this.formats, this.useKeyIfMissing);
     }
-    args = getArgs(args);
-    const arg = {};
-    for (let i = 0; i &lt; args.length; i += 2)
-        arg[args[i]] = args[i + 1];
-    return translatedMessage.format(arg);
+    localesChanged(locales) {
+        this.locales = locales;
+        this.localize = factory(this.language, this.locales, this.formats, this.useKeyIfMissing);
+    }
+    languageChanged(language) {
+        this.language = language;
+        this.localize = factory(this.language, this.locales, this.formats, this.useKeyIfMissing);
+    }
+    formattersChanged(formats) {
+        this.formats = formats;
+        this.localize = factory(this.language, this.locales, this.formats, this.useKeyIfMissing);
+    }
 };
+/**
+ * Default mixin in order to give localization capabilities and to subscribe to locales and language changes
+ * @function
+ * @memberof Localization
+ * @name locale
+ * @since v1.0.0
+ * @returns {Object}
+ */
+exports.locale = exports.localeMixin(localizer_factory_1.localizerFactory);
 </code></pre>
         </article>
     </section>

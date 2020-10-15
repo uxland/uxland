@@ -80,7 +80,22 @@
 </table>
 <h2>Installation</h2>
 <p><code>npm i @uxland/event-aggregator</code></p>
-<h2>Usage</h2></article>
+<h2>Usage</h2>
+<h3>Event publish</h3>
+<p>To publish an event you must specify an eventId and an optional payload that will be collected by subscriber.</p>
+<pre class="prettyprint source lang-typescript"><code>const payload = { foo: 'bar' };
+publish('EVENT-ID', payload);
+</code></pre>
+<h3>Event subscription</h3>
+<p>In order to subscribe to an event you must specify an eventId and a callback function that will be called when that event is received.</p>
+<pre class="prettyprint source lang-typescript"><code>const callback = (payload: any): void => {};
+subscribe('EVENT-ID', callback);
+</code></pre>
+<h3>Event subscription (only once)</h3>
+<p>In order to subscribe to an event, only once, you must specify an eventId and a callback function that will be called when that event is received. For the next publishes of that event, this subscriber will not receive that event.</p>
+<pre class="prettyprint source lang-typescript"><code>const callback = (payload: any): void => {};
+subscribeOnce('EVENT-ID', callback);
+</code></pre></article>
     </section>
 
 

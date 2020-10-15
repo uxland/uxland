@@ -27,7 +27,7 @@
 
 <nav >
     
-    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="Localization.html">Localization</a><ul class='methods'><li data-type='method'><a href="Localization.html#.disposeLocalizer">disposeLocalizer</a></li><li data-type='method'><a href="Localization.html#.getDefaultLanguage">getDefaultLanguage</a></li><li data-type='method'><a href="Localization.html#.getDefaultLocales">getDefaultLocales</a></li><li data-type='method'><a href="Localization.html#.getLanguage">getLanguage</a></li><li data-type='method'><a href="Localization.html#.getLocales">getLocales</a></li><li data-type='method'><a href="Localization.html#.initializeLocalizer">initializeLocalizer</a></li><li data-type='method'><a href="Localization.html#.localizerFactory">localizerFactory</a></li><li data-type='method'><a href="Localization.html#.resetLanguage">resetLanguage</a></li><li data-type='method'><a href="Localization.html#.resetLocales">resetLocales</a></li><li data-type='method'><a href="Localization.html#.setLanguage">setLanguage</a></li><li data-type='method'><a href="Localization.html#.setLocales">setLocales</a></li></ul></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="Localization.html">Localization</a><ul class='methods'><li data-type='method'><a href="Localization.html#.disposeLocalizer">disposeLocalizer</a></li><li data-type='method'><a href="Localization.html#.getDefaultLanguage">getDefaultLanguage</a></li><li data-type='method'><a href="Localization.html#.getDefaultLocales">getDefaultLocales</a></li><li data-type='method'><a href="Localization.html#.getFormatters">getFormatters</a></li><li data-type='method'><a href="Localization.html#.getLanguage">getLanguage</a></li><li data-type='method'><a href="Localization.html#.getLocales">getLocales</a></li><li data-type='method'><a href="Localization.html#.initializeLocalizer">initializeLocalizer</a></li><li data-type='method'><a href="Localization.html#.locale">locale</a></li><li data-type='method'><a href="Localization.html#.localeMixin">localeMixin</a></li><li data-type='method'><a href="Localization.html#.localizerFactory">localizerFactory</a></li><li data-type='method'><a href="Localization.html#.resetFormatters">resetFormatters</a></li><li data-type='method'><a href="Localization.html#.resetLanguage">resetLanguage</a></li><li data-type='method'><a href="Localization.html#.resetLocales">resetLocales</a></li><li data-type='method'><a href="Localization.html#.setFormatters">setFormatters</a></li><li data-type='method'><a href="Localization.html#.setLanguage">setLanguage</a></li><li data-type='method'><a href="Localization.html#.setLocales">setLocales</a></li></ul></li></ul>
 </nav>
 
 <div id="main">
@@ -81,32 +81,110 @@
 <h2>Installation</h2>
 <p><code>npm i @uxland/localization</code></p>
 <h2>Usage</h2>
-<pre class="prettyprint source lang-typescript"><code>const locales = ca: {
-		[moduleName]: {}
-	},
-	en: {
-		[moduleName]: {}
-	},
-	es: {
-        [moduleName]: {
-            key:  'Esto es la cadena'
-        }
-    }
-props.localize(`${moduleName}.key`)
+<p>A default mixin is provided in order to be able to use localization functionalities and subscribe to language and locales changes.</p>
+<pre class="prettyprint source lang-typescript"><code>export class Klass implements locale(BaseKlass) {}
 </code></pre>
-<p>With arguments</p>
-<pre class="prettyprint source lang-typescript"><code>const locales = ca: {
-		[moduleName]: {}
-	},
-	en: {
-		[moduleName]: {}
-	},
-	es: {
-        [moduleName]: {
-            order:  'Pedido con id {id}'
-        }
-    }
-props.localize(`${moduleName}.key`, 'id', '12345');
+<p>In order to use custom formats in localization, define a new mixin provinding a factory including the desired formats.</p>
+<pre class="prettyprint source lang-typescript"><code>const customLocale = localeMixin(() =>
+  localizerFactory('en', {}, { number: { EUR: { style: 'currency', currency: 'EUR' } } })
+);
+
+export class Klass implements customLocale(BaseKlass) {}
+</code></pre>
+<h3>Update current language</h3>
+<p>Set the current language that will be used in order to retrieve proper localization. Each time locales are updated, the event <code>LANGUAGE_UPDATED</code> will be published in order to inform all subscribers that the language has changed</p>
+<pre class="prettyprint source lang-typescript"><code>setLanguage('en');
+</code></pre>
+<p>To retrieve current language from anywhere in the code, use:</p>
+<pre class="prettyprint source lang-typescript"><code>getLanguage();
+</code></pre>
+<p>It is possible to reset locales to its default. This action will publish a <code>LANGUAGE_RESET</code> event.</p>
+<pre class="prettyprint source lang-typescript"><code>resetLanguage();
+</code></pre>
+<blockquote>
+<p>By default, language is set to english <code>en</code>.</p>
+</blockquote>
+<h3>Update current formatters</h3>
+<p>Set the current formatters that will be used in order to retrieve proper localization. Each time locales are updated, the event <code>FORMATTERS_UPDATED</code> will be published in order to inform all subscribers that the formatters has changed.</p>
+<blockquote>
+<p>Formatters must follow</p>
+</blockquote>
+<pre class="prettyprint source lang-typescript"><code>setFormatters({ number: { EUR: { style: 'currency', currency: 'EUR' } } });
+</code></pre>
+<p>To retrieve current formatters from anywhere in the code, use:</p>
+<pre class="prettyprint source lang-typescript"><code>getFormatters();
+</code></pre>
+<p>It is possible to reset locales to its default. This action will publish a <code>FORMATTERS_RESET</code> event.</p>
+<pre class="prettyprint source lang-typescript"><code>resetFormatters();
+</code></pre>
+<h3>Set locales dictionary</h3>
+<p>Locales must follow the next format:</p>
+<pre class="prettyprint source lang-typescript"><code>const locales = [language]: {
+		foo: {
+			title: 'Title',
+			subtitle: 'Subtitle'
+		}
+	};
+</code></pre>
+<p>Each time locales are updated, the event <code>LOCALES_UPDATED</code> will be published in order to inform all subscribers that the locales dictionary has changed.</p>
+<pre class="prettyprint source lang-typescript"><code>setLocales(locales);
+</code></pre>
+<p>To retrieve current locales dictionary, use:</p>
+<pre class="prettyprint source lang-typescript"><code>getLocales();
+</code></pre>
+<p>It is possible to reset locales to its default dictionary. This action will publish a <code>LOCALES_RESET</code> event.</p>
+<pre class="prettyprint source lang-typescript"><code>resetLocales();
+</code></pre>
+<h3>Localize</h3>
+<p>When localizing, the current language is used to retrieve language's locales. Providing a path to the <code>localize</code> function, this will return the corresponding string defined in locales dictonary.</p>
+<pre class="prettyprint source lang-typescript"><code>const locales = [language]: {
+		foo: {
+			title: 'Title',
+			subtitle: 'Subtitle',
+			greetings: 'Hi!'
+		}
+	};
+setLocales(locales);
+localize(`foo.title`); // => &quot;Title&quot;
+</code></pre>
+<p>Arguments can also be provided to <code>localize</code> in order to get dynamic locales as it is specified bellow:</p>
+<pre class="prettyprint source lang-typescript"><code>const locales = [language]: {
+		foo: {
+			title: 'Title',
+			subtitle: 'Subtitle',
+			greetings: 'Hi {name}!'
+		}
+setLocales(locales);
+localize(`foo.greetings`, 'id', 'John Doe'); // => &quot;Hello John Doe&quot;
+localize(`foo.greetings`, {id: 'John Doe'}); // => &quot;Hello John Doe&quot;
+</code></pre>
+<p>It is also possible to use pluralization as follows:</p>
+<pre class="prettyprint source lang-typescript"><code>const locales = [language]: {
+		foo: {
+			title: 'Title',
+			subtitle: 'Subtitle',
+			greetings: 'Hi {name}!',
+			cats: '{cats, plural, =0 {No cats} =1 {A cat} other {# cats}}'
+		}
+setLocales(locales);
+localize(`foo.cats`, 'cats', 0); // => &quot;No cats&quot;
+localize(`foo.cats`, 'cats', 1); // => &quot;A cat&quot;
+localize(`foo.cats`, 'cats', 3); // => &quot;3 cats&quot;
+</code></pre>
+<p>Also currency can be localized as follows:</p>
+<pre class="prettyprint source lang-typescript"><code>const locales = [language]: {
+		foo: {
+			title: 'Title',
+			subtitle: 'Subtitle',
+			greetings: 'Hi {name}!',
+			cats: '{cats, plural, =0 {No cats} =1 {A cat} other {# cats}}',
+			salary: 'Your salary is {salary, number, EUR}'
+		}
+setLocales(locales);
+setFormatters({
+        number: { EUR: { style: 'currency', currency: 'EUR' } },
+      });
+localize(`foo.salary`, { salary: 2000 }); // => &quot;Your salary is €2,000.00&quot;
 </code></pre></article>
     </section>
 
