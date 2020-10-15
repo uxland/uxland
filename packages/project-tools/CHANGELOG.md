@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.15](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.0-alpha.14...@uxland/project-tools@1.0.0-alpha.15) (2020-10-15)
+
+
+### Bug Fixes
+
+* **project-tools:** add publicPath parameter ([11270f6](https://github.com/uxland/uxland/commit/11270f6e0746ef49110f243d0c04e55115390ba8))
+* **project-tools:** update documentation ([fc238f8](https://github.com/uxland/uxland/commit/fc238f869634fa4d3ad6bc0dd30e90d79c9b1871))
+* **project-tools:** update documentation ([2cf57bd](https://github.com/uxland/uxland/commit/2cf57bd5fd592e46b3d4bdc21b99f05b88e7bb6e))
+* add instanbul plugin for ts-jest ([c02f97a](https://github.com/uxland/uxland/commit/c02f97ae0bada9c71b373bd8a45e50e2f5dc197f))
+
+
+
+
+
 # [1.0.0-alpha.14](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.0-alpha.13...@uxland/project-tools@1.0.0-alpha.14) (2020-10-06)
 
 

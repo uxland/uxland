@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.28](https://github.com/uxland/uxland/compare/@uxland/localization@1.0.0-alpha.27...@uxland/localization@1.0.0-alpha.28) (2020-10-15)
+
+
+### Bug Fixes
+
+* **localization:** improve testing and documentation. Add formatters ([d41ef97](https://github.com/uxland/uxland/commit/d41ef9749b43494bc22496a7544fd80b8b0fa3d5))
+* **localization:** update readme ([d72a8eb](https://github.com/uxland/uxland/commit/d72a8ebd433f7e9548e8a8d527f5efe67e53e781))
+
+
+
+
+
 # [1.0.0-alpha.27](https://github.com/uxland/uxland/compare/@uxland/localization@1.0.0-alpha.26...@uxland/localization@1.0.0-alpha.27) (2020-10-13)
 
 

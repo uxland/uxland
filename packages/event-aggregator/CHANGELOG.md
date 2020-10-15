@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.15](https://github.com/uxland/uxland/compare/@uxland/event-aggregator@1.0.0-alpha.14...@uxland/event-aggregator@1.0.0-alpha.15) (2020-10-15)
+
+
+### Bug Fixes
+
+* **event-aggregator:** solves typo ([aaa8241](https://github.com/uxland/uxland/commit/aaa82410df9b43ccb9e2ebce8b5a796a44b36ce9))
+* **event-aggregator:** update documentation ([5a505e2](https://github.com/uxland/uxland/commit/5a505e2bf0435bc991212195bf86b7d0cdafe157))
+
+
+
+
+
 # [1.0.0-alpha.14](https://github.com/uxland/uxland/compare/@uxland/event-aggregator@1.0.0-alpha.13...@uxland/event-aggregator@1.0.0-alpha.14) (2020-10-13)
 
 
