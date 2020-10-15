@@ -53,5 +53,6 @@ export const fuse = (
     webIndex: { template: webIndex, publicPath },
     resources: {
       resourcePublicRoot: `${publicPath}resources/`,
+      resourceFolder: `resources/`,
     },
   });
