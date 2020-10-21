@@ -34,7 +34,7 @@ export const fuse = (
     devServer,
     hmr: true,
     entry,
-    env: { ...process.env, ...env },
+    env,
     target: "browser",
     watcher: {
       root: [workspaceRoot],
