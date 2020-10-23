@@ -6,6 +6,7 @@ module.exports = {
     '^.+\\.ts$': 'ts-jest',
     '^.+.ts$': 'ts-jest',
   },
+  maxWorkers: 1,
   testPathIgnorePatterns: ['/node_modules/', '<rootDir>/test/benchmark/', '<rootDir>/test/sandbox/'],
   testMatch: ['**/*.steps.ts', '**/*.spec.ts'],
   coverageReporters: ['json-summary', 'text', 'lcov'],

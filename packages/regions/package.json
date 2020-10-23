@@ -1,0 +1,50 @@
+{
+  "name": "@uxland/regions",
+  "version": "1.0.0",
+  "description": "> TODO: description",
+  "author": "dpinart <dpinart@uxland.cat>",
+  "homepage": "https://github.com/uxland/uxland/tree/master/packages/regions#readme",
+  "license": "ISC",
+  "main": "lib/index",
+  "module": "es/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib",
+    "es",
+    "dist",
+    "README.md",
+    "package.json"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "http://registry.npmjs.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uxland/uxland.git"
+  },
+  "scripts": {
+    "build:es": "tsc -p tsconfig.json --outDir es --module esnext --target es2018 --noEmit false",
+    "build:cjs": "tsc -p tsconfig.json --outDir lib --noEmit false --declaration  --removeComments false",
+    "build:umd": "cross-env NODE_ENV=development rollup -c -o dist/index.js",
+    "build:umd:min": "cross-env NODE_ENV=production rollup -c -o dist/index.min.js",
+    "build:clean": "rimraf es lib dist tmp tsconfig.tsbuildinfo",
+    "build": "yarn build:clean && npm-run-all --parallel build:es build:cjs && npm-run-all --parallel build:umd build:umd:min",
+    "prebuild": "echo nok > .buildstatus",
+    "postbuild": "echo ok > .buildstatus",
+    "readme:coverage": "node_modules/.bin/jest-badges-readme",
+    "tdd": "jest --watch --collect-coverage",
+    "tdd:benchmark": "jest --watch test/unit/benchmark.spec.ts --collect-coverage=false --testPathIgnorePatterns []",
+    "tdd:sandbox": "jest --watch test/unit/sandbox.spec.ts --testPathIgnorePatterns []",
+    "test:benchmark": "jest test/unit/benchmark.spec.ts --collect-coverage=false --testPathIgnorePatterns []",
+    "test:unit": "jest --collect-coverage",
+    "test": "yarn test:unit",
+    "jsdoc": "yarn build:cjs && rimraf docs && jsdoc -r ./lib -c jsdoc.config.js",
+    "jsdoc:styles": "cat ../../resources/docs/custom.css >> ./docs/$npm_package_name/$npm_package_version/styles/jsdoc.css",
+    "jsdoc:mv": "mkdirp ../../docs/$npm_package_name/$npm_package_version && ncp docs/$npm_package_name/$npm_package_version ../../docs/$npm_package_name/$npm_package_version",
+    "postjsdoc": "yarn jsdoc:styles && yarn jsdoc:mv"
+  },
+  "bugs": {
+    "url": "https://github.com/uxland/uxland/issues"
+  }
+}

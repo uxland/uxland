@@ -21,33 +21,44 @@
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+import {View} from "./view";
+
 let STUB = 1;
-/**
- * Condition Factory type definition
- * @typedef {function} ConditionFactory
- * @memberof FunctionalUtilities
- * @since v1.0.0
- * @returns {*}
- */
-STUB = 1;
-export type ConditionFactory = () => any;
 
 /**
- * Check if condition is fulfilled, otherwise throws supplied message error
- * @function invariant
- * @memberof FunctionalUtilities
+ * sdafasasfds
+ */
+STUB = 1
+
+/**
+ * Interface that holds the properties of a Region
+ * @memberOf Regions
  * @since v1.0.0
- * @param {ConditionFactory} condition Condition that must be complied
- * @param {string=} message Message error to be thrown in case condition is not fulfilled
- * @returns {void| never}
- * @throws Will throw an error with the message supplied if condition is not fulfilled.
- * @example
+ * @interface RegionOptions
  *
- * invariant(R.is('number')(3), 'Supplied value is not a number'); //=> undefined
- * invariant(R.is('number')('3'), 'Supplied value is not a number'); //=> 'Supplied value is not a number'
+ * @property {String} name Region's name. It must be unique within a RegionManager
+ */
+export interface RegionOptions{
+    name: string;
+}
+
+/**
+ * Region interface
+ * @memberOf Regions
+ * @since v1.0.0
+ * @interface Region
+ *
+ * @property {String} name of the region. It must be unique within a RegionManager
  *
  */
-export const invariant = (condition: any | ConditionFactory, message?: string): void | never => {
-  condition = typeof condition === 'function' ? condition() : condition;
-  if (!condition) throw new Error(message);
-};
+export interface Region{
+    options: RegionOptions;
+    addView<T = any>(view: View<T>);
+}
+
+
+export class RegionBase implements Region{
+    addView<T = any>(view: View<T>) {
+    }
+
+}
