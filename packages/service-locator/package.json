@@ -1,8 +1,8 @@
 {
   "name": "@uxland/service-locator",
-  "version": "1.0.0",
-  "description": "> TODO: description",
-  "author": "dpinart <dpinart@uxland.cat>",
+  "version": "0.0.0",
+  "description": "Service Locator",
+  "author": "UXLand <dev@uxland.es>",
   "homepage": "https://github.com/uxland/uxland/tree/master/packages/service-locator#readme",
   "license": "ISC",
   "main": "lib/service-locator.js",
