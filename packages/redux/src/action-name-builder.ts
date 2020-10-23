@@ -20,7 +20,7 @@
  * AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-import { constantBuilder, ConstantBuilder } from '@uxland/functional-utilities';
+import { constantBuilder, ConstantBuilder } from "@uxland/utilities";
 
 /**
  * Action name builder
@@ -37,7 +37,10 @@ import { constantBuilder, ConstantBuilder } from '@uxland/functional-utilities';
  * actionNameBuilder('PREFIX', '@@')('NAME') //=> 'PREFIX@@NAME@@ACTION'
  *
  */
-export const actionNameBuilder = (prefix: string, separator?: string): ConstantBuilder => {
-  const builder = constantBuilder(prefix, 'ACTION', separator);
+export const actionNameBuilder = (
+  prefix: string,
+  separator?: string
+): ConstantBuilder => {
+  const builder = constantBuilder(prefix, "ACTION", separator);
   return (name: string): string => builder(name);
 };

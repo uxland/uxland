@@ -7,6 +7,7 @@ module.exports = {
     'unused-imports/no-unused-imports-ts': 'warn',
     '@typescript-eslint/ban-ts-comment': 'warn',
     '@typescript-eslint/no-var-requires': 'warn',
+    'no-useless-escape': 'warn'
   },
   env: {
     node: true,

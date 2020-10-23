@@ -20,9 +20,9 @@
  * AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-import { isNotNullNeitherEmpty } from '@uxland/functional-utilities';
-import * as R from 'ramda';
-import { SerializerInfo } from './model';
+import { isNotNullNeitherEmpty } from "@uxland/ramda-extensions";
+import * as R from "ramda";
+import { SerializerInfo } from "./model";
 
 export const isTrue = R.equals(true);
 export const isFalse = R.equals(false);
@@ -32,39 +32,51 @@ export const isObject = R.allPass([R.complement(isArray), R.is(Object)]);
 export const thrower = (message: string): never => {
   throw new Error(message);
 };
-export const getFrom = (serializer?: any): string | string[] => serializer?.from;
+export const getFrom = (serializer?: any): string | string[] =>
+  serializer?.from;
 export const getTo = (serializer?: any): string | string[] => serializer?.to;
-export const getSerializerFn = (serializer?: any): Function => serializer?.serializerFn;
-export const getDeserializerFn = (serializer?: any): Function => serializer?.deserializerFn;
-export const getSerializers = (serializer?: any): SerializerInfo<any, any>[] => serializer?.serializers;
+export const getSerializerFn = (serializer?: any): (() => any) =>
+  serializer?.serializerFn;
+export const getDeserializerFn = (serializer?: any): (() => any) =>
+  serializer?.deserializerFn;
+export const getSerializers = (serializer?: any): SerializerInfo<any, any>[] =>
+  serializer?.serializers;
 export const hasFrom = R.pipe(getFrom, isNotNullNeitherEmpty);
 export const hasTo = R.pipe(getTo, isNotNullNeitherEmpty);
 export const hasSerializerFn = R.pipe(getSerializerFn, isNotNullNeitherEmpty);
-export const hasDeserializerFn = R.pipe(getDeserializerFn, isNotNullNeitherEmpty);
+export const hasDeserializerFn = R.pipe(
+  getDeserializerFn,
+  isNotNullNeitherEmpty
+);
 export const hasSerializers = R.pipe(getSerializers, isNotNullNeitherEmpty);
 export const noSerializers = R.complement(hasSerializers);
 export const hasFromTo = R.allPass([hasFrom, hasTo]);
-export const hasDeserializeProp = R.has('deserializeProp');
+export const hasDeserializeProp = R.has("deserializeProp");
 export const hasBoth = R.allPass([hasDeserializeProp, hasSerializerFn]);
 export const hasInvalidStructure = R.allPass([hasSerializerFn, hasSerializers]);
-export const multipleSerializeProp = R.pipe(R.prop('serializeProp'), isArray);
-export const isPath = R.pipe(R.indexOf('.'), R.complement(R.equals(-1)));
-export const isSingleObject = R.allPass([isArray, R.pipe(R.length, R.equals(1))]);
+export const multipleSerializeProp = R.pipe(R.prop("serializeProp"), isArray);
+export const isPath = R.pipe(R.indexOf("."), R.complement(R.equals(-1)));
+export const isSingleObject = R.allPass([
+  isArray,
+  R.pipe(R.length, R.equals(1)),
+]);
 export const lensProp = (prop: string): any =>
   R.ifElse(
     isPath,
-    () => R.lensPath(R.split('.')(prop)),
+    () => R.lensPath(R.split(".")(prop)),
     () => R.lensProp(prop)
   )(prop);
 
 export const getPath = (prop: string): string =>
   R.ifElse(
     isPath,
-    () => R.split('.')(prop),
+    () => R.split(".")(prop),
     () => prop
   )(prop);
 
-export const setProperty = (from: string, to: string, value: any) => (obj: any = {}): any => {
+export const setProperty = (from: string, to: string, value: any) => (
+  obj: any = {}
+): any => {
   const path = getPath(to || from);
   const parsedValue = R.isNil(value) ? undefined : value;
   return R.ifElse(

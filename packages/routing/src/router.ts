@@ -21,7 +21,7 @@
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { isNotNil, toPath } from "@uxland/functional-utilities";
+import { isNotNil, toPath } from "@uxland/ramda-extensions";
 import { allPass, difference, pathSatisfies, propSatisfies } from "ramda";
 import { clean } from "./helpers/clean";
 import { findMatchingRoutes } from "./helpers/finding-matching-routes";

@@ -44,7 +44,7 @@
   "scripts": {
     "build:clean": "lerna run build:clean",
     "build:test": "lerna run build:test",
-    "build": "lerna run build --stream",
+    "build": "lerna run build --stream --parallel",
     "deps:clean": "rimraf node_modules yarn.lock packages/**/node_modules",
     "deps:install": "yarn install",
     "deps:refresh": "yarn deps:clean && yarn deps:install",

@@ -1,6 +1,6 @@
-import { microTask } from '@uxland/functional-utilities';
-import { Store, Unsubscribe } from 'redux';
-import { bind } from './bind';
+import { microTask } from "@uxland/browser-utilities";
+import { Store, Unsubscribe } from "redux";
+import { bind } from "./bind";
 
 export type Selector<T = any> = (state: any) => T;
 export interface PropertyWatch {
@@ -26,7 +26,9 @@ export interface ConnectMixinConstructor {
 interface MixinFunction<T> {}
 export type ConnectMixinFunction = MixinFunction<ConnectMixinConstructor>;
 
-export const connectMixin: (defaultStore?: Store<any, any>) => ConnectMixinFunction = defaultStore => (
+export const connectMixin: (
+  defaultStore?: Store<any, any>
+) => ConnectMixinFunction = (defaultStore) => (
   superClass: any
 ): ConnectMixinConstructor => {
   class ConnectMixin extends superClass implements ConnectMixin {
