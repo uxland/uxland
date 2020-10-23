@@ -1,8 +1,8 @@
 {
   "name": "@uxland/regions",
-  "version": "1.0.0",
-  "description": "> TODO: description",
-  "author": "dpinart <dpinart@uxland.cat>",
+  "version": "0.0.0",
+  "description": "Regions",
+  "author": "UXLand <dev@uxland.es>",
   "homepage": "https://github.com/uxland/uxland/tree/master/packages/regions#readme",
   "license": "ISC",
   "main": "lib/index",
