@@ -35,6 +35,38 @@ export interface Subscription {
 }
 
 /**
+ * Subscribe interface
+ * @memberOf EventAggregator
+ * @since v1.0.0
+ * @interface
+ */
+export interface Subscribe{
+  /**
+   * Subscribes to an event
+   * @param event {String} Name of the event to subscribe to
+   * @param callback {EventAggregator.EventCallback} callback where the notifications will be sent to
+   *
+   * @returns {EventAggregator.Subscription} The subscription instance
+   */
+  <T = any>(event: string, callback: EventCallback<T>): Subscription
+}
+
+/**
+ * Publishes a message to a topic
+ * @memberOf EventAggregator
+ * @since v1.0.0
+ * @interface
+ */
+export interface Publish{
+  /**
+   * Publishes a message into a topic
+   * @param event {String} name of the topic/event
+   * @param data message payload
+   */
+  <T = any>(event: string, data: T): void | never;
+}
+
+/**
  * EventCallback type
  * @memberof EventAggregator
  * @since v1.0.0
@@ -44,18 +76,18 @@ export interface Subscription {
  * @returns {void|never}
  */
 STUB = 1;
-export type EventCallback = (data: any, event?: string) => void;
+export type EventCallback<T = any> = (data: T, event?: string) => void;
 
-class Handler {
+class Handler<T = any> {
   private messageType: any;
-  private callback: EventCallback;
+  private callback: EventCallback<T>;
 
-  constructor(messageType: any, callback: EventCallback) {
+  constructor(messageType: any, callback: EventCallback<T>) {
     this.messageType = messageType;
     this.callback = callback;
   }
 
-  handle(message: any): void {
+  handle(message: T): void {
     if (message instanceof this.messageType) {
       this.callback.call(null, message);
     }
@@ -91,7 +123,7 @@ class EventAggregator {
     this.messageHandlers = [];
   }
 
-  publish(event: string, data: any): void | never {
+  publish<T = any>(event: string, data: T): void | never {
     let subscribers: string | any[];
     let i: number;
 
@@ -119,7 +151,7 @@ class EventAggregator {
     }
   }
 
-  subscribe(event: string, callback: EventCallback): Subscription {
+  subscribe<T = any>(event: string, callback: EventCallback<T>): Subscription {
     let handler: EventCallback | Handler;
     let subscribers: any[];
 
@@ -147,7 +179,7 @@ class EventAggregator {
     };
   }
 
-  subscribeOnce(event: string, callback: EventCallback): Subscription {
+  subscribeOnce<T = any>(event: string, callback: EventCallback<T>): Subscription {
     const sub = this.subscribe(event, (a: any, b: any) => {
       sub.dispose();
       return callback(a, b);
@@ -184,7 +216,7 @@ export const eventAggregator = new EventAggregator();
  * ```
  *
  */
-export const subscribe = eventAggregator.subscribe.bind(eventAggregator);
+export const subscribe: Subscribe = eventAggregator.subscribe.bind(eventAggregator);
 
 /**
  * Subscribes to a message channel or message type, then disposes the subscription automatically after the first message is received
@@ -203,7 +235,7 @@ export const subscribe = eventAggregator.subscribe.bind(eventAggregator);
  * ```
  *
  */
-export const subscribeOnce = eventAggregator.subscribeOnce.bind(
+export const subscribeOnce: Subscribe = eventAggregator.subscribeOnce.bind(
   eventAggregator
 );
 
@@ -223,4 +255,4 @@ export const subscribeOnce = eventAggregator.subscribeOnce.bind(
  * publish('EVENT-ID', payload);
  *
  */
-export const publish = eventAggregator.publish.bind(eventAggregator);
+export const publish: Publish = eventAggregator.publish.bind(eventAggregator);

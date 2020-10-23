@@ -60,5 +60,5 @@ describe("Given a region manager", ()=> {
                expect(sut.addToRegion(region.options.name, view)).toBe(sut);
            });
        });
-   })
+   });
 });

@@ -38,14 +38,13 @@ export interface RegionManager{
      * @param region {Regions.Region}
      * @returns {Regions.RegionManager} The region manager itself to achieve fluent api
      */
-
     add(region: Region): RegionManager;
 
     /**
      * Gets a region
      * @param regionName {String} name of the region to be retrieved
+     *
      */
-
     getRegion(regionName: string): Region | undefined;
 }
 

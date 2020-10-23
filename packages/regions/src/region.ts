@@ -57,7 +57,9 @@ export interface Region{
 }
 
 
-export class RegionBase implements Region{
+export class RegionImpl implements Region{
+    constructor(public options: RegionOptions) {
+    }
     addView<T = any>(view: View<T>) {
     }
 
