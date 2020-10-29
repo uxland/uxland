@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.19](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.0-alpha.17...@uxland/project-tools@1.0.0-alpha.19) (2020-10-29)
+
+
+### Bug Fixes
+
+* **project-tools:** if no baseStyles are provided in fuse, skip autoImport segment ([56be681](https://github.com/uxland/uxland/commit/56be681d8a8403cd7070f209f597a17754f9186c))
+
+
+
+
+
 # [1.0.0-alpha.18](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.0-alpha.17...@uxland/project-tools@1.0.0-alpha.18) (2020-10-29)
 
 
