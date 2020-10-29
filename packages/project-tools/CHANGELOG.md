@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.20](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.0-alpha.19...@uxland/project-tools@1.0.0-alpha.20) (2020-10-29)
+
+
+### Bug Fixes
+
+* **project-tools:** rename fuse exported index ([cb2a537](https://github.com/uxland/uxland/commit/cb2a537f97476c40d56a95ce0db07f64fb18ed51))
+
+
+
+
+
 # [1.0.0-alpha.19](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.0-alpha.17...@uxland/project-tools@1.0.0-alpha.19) (2020-10-29)
 
 
