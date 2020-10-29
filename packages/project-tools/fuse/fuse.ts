@@ -43,7 +43,9 @@ export const fuse = (
       macros: {
         "~": join(__dirname, "../../../"),
       },
-      autoImport: [{ file: baseStyles, capture: "packages/*/src" }],
+      autoImport: baseStyles
+        ? [{ file: baseStyles, capture: "packages/*/src" }]
+        : undefined,
     },
     plugins: [
       pluginSass("*.scss", { asText: true }),
