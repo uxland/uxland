@@ -9,7 +9,7 @@
       "name": "vscode-jest-tests",
       "request": "launch",
       "args": ["--runInBand"],
-      "cwd": "${workspaceFolder}/packages/event-aggregator/test/unit",
+      "cwd": "${workspaceFolder}/packages/fetch-client/test/unit",
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen",
       "disableOptimisticBPs": true,

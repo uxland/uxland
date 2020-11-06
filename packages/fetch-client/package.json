@@ -71,6 +71,7 @@
   },
   "dependencies": {
     "@uxland/event-aggregator": "^1.0.0-alpha.15",
+    "axios": "^0.21.0",
     "ramda": "^0.27.1"
   },
   "gitHead": "dadaf3d855eb9871da1054ec7b3c77156540c7bd"

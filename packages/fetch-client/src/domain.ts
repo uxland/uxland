@@ -32,6 +32,15 @@ STUB = 1;
 export type QueryParams = { [key: string]: any };
 
 /**
+ * Collection of headers
+ * @memberof FetchClient
+ * @since v1.0.0
+ * @typedef {Object} Headers
+ */
+STUB = 1;
+export type Headers = { [key: string]: any };
+
+/**
  * Handler function to manage fetch response
  * @memberof FetchClient
  * @since v1.0.0

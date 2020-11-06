@@ -20,23 +20,31 @@
  * AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-import { Configuration, QueryParams, ResponseHandler } from "./domain";
+import { Configuration, QueryParams, ResponseHandler, Headers } from "./domain";
 import { handleErrors } from "./handlers/handle-errors";
 import { handleResponse } from "./handlers/handle-response";
 import { getRequestUrl } from "./helpers/get-request-url";
 import { mergeRequest } from "./helpers/merge-request";
+import Axios, { AxiosRequestConfig } from "axios";
 
 const CONTENT_TYPE_JSON = "application/json";
+export const METHOD_NOT_IMPLEMENTED = new Error(
+  "Specified method is not implemented"
+);
 
-let baseUrl: string;
-const responseHandlers: ResponseHandler[] = [];
 const defaultHeaders = {
   "Content-Type": CONTENT_TYPE_JSON,
 };
-let configuration: Configuration = {
+Axios.defaults.headers.common = { ...defaultHeaders };
+Axios.interceptors.response.use(
+  (response) => handleResponse(response, responseHandlers),
+  handleErrors
+);
+
+const responseHandlers: ResponseHandler[] = [];
+
+let configuration: AxiosRequestConfig = {
   headers: { ...defaultHeaders },
-  credentials: "include",
-  mode: "cors",
 };
 
 /**
@@ -54,10 +62,10 @@ let configuration: Configuration = {
  * ```
  *
  */
-export const setBaseUrl = (base: string) => (baseUrl = base);
+export const setBaseUrl = (base: string) => (Axios.defaults.baseURL = base);
 
 /* istanbul ignore next */
-export const getBaseUrl = (): string => baseUrl;
+export const getBaseUrl = (): string => Axios.defaults.baseURL;
 
 /**
  * Adds a response handler
@@ -76,6 +84,10 @@ export const getBaseUrl = (): string => baseUrl;
  */
 export const registerResponseHandler = (handler: ResponseHandler): void => {
   responseHandlers.push(handler);
+  Axios.interceptors.response.use(
+    (response) => handleResponse(response, responseHandlers),
+    handleErrors
+  );
 };
 
 /* istanbul ignore next */
@@ -96,12 +108,12 @@ export const getResponseHandlers = () => responseHandlers;
  * ```
  *
  */
-export const configure = (config: Configuration): void => {
+export const configure = (config: AxiosRequestConfig): void => {
   configuration = { ...configuration, ...config };
 };
 
 /* istanbul ignore next */
-export const getConfiguration = (): Configuration => configuration;
+export const getConfiguration = (): AxiosRequestConfig => configuration;
 
 /**
  * Updates fetch client's headers globally
@@ -118,15 +130,14 @@ export const getConfiguration = (): Configuration => configuration;
  * ```
  *
  */
-export const setHeaders = (headers: any): void => {
-  configuration = {
-    ...configuration,
-    headers: { ...configuration.headers, ...headers },
-  };
-};
+export const setHeaders = (headers: Headers): void =>
+  (Axios.defaults.headers.common = {
+    ...Axios.defaults.headers.common,
+    ...headers,
+  });
 
 /* istanbul ignore next */
-export const getHeaders = (): any => configuration?.headers;
+export const getHeaders = (): any => Axios.defaults.headers.common;
 
 /**
  * Removes provided header by ID
@@ -144,7 +155,8 @@ export const getHeaders = (): any => configuration?.headers;
  *
  */
 export const removeHeader = (key: string): void => {
-  if (configuration?.headers[key]) delete configuration.headers[key];
+  if (Axios.defaults?.headers?.common[key])
+    delete Axios.defaults.headers.common[key];
 };
 
 /**
@@ -162,7 +174,7 @@ export const removeHeader = (key: string): void => {
  *
  */
 export const resetHeaders = (): void => {
-  configuration = { ...configuration, headers: { ...defaultHeaders } };
+  Axios.defaults.headers.common = { ...defaultHeaders };
 };
 
 /**
@@ -188,11 +200,32 @@ export const doFetch = async <T>(
   requestInit?: RequestInit,
   queryParams?: QueryParams
 ): Promise<T> => {
-  const result = await fetch(
-    getRequestUrl(baseUrl, uri, queryParams),
-    mergeRequest(requestInit, configuration)
-  );
-  const response = await handleErrors(result);
-  const data = await handleResponse<T>(response, responseHandlers);
-  return data;
+  if (!requestInit?.method || requestInit?.method == "GET")
+    return doGet(uri, queryParams);
+  if (requestInit?.method == "POST")
+    return doPost(uri, queryParams, requestInit.body);
+  return Promise.reject(METHOD_NOT_IMPLEMENTED);
+  // const result = await fetch(
+  //   getRequestUrl(baseUrl, uri, queryParams),
+  //   mergeRequest(requestInit, configuration)
+  // );
+  // const response = await handleErrors(result);
+  // const data = await handleResponse<T>(response, responseHandlers);
+  // return data;
 };
+
+const doGet = async <T>(uri: string, queryParams: QueryParams): Promise<T> => {
+  const result = await Axios.get(uri, {
+    ...configuration,
+    params: queryParams,
+  });
+  console.log(result);
+  return result as any;
+};
+
+const doPost = async <T>(
+  uri: string,
+  queryParams: QueryParams,
+  payload: any
+): Promise<T> =>
+  await Axios.post(uri, payload, { ...configuration, params: queryParams });

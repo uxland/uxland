@@ -1,4 +1,7 @@
+import Axios from "axios";
 import * as FC from "../../src";
+jest.mock("Axios");
+
 describe("Given a fetch client", () => {
   const defaultHeaders = {
     "Content-Type": "application/json",
@@ -16,16 +19,13 @@ describe("Given a fetch client", () => {
         headers: {
           "Content-Type": "application/json",
         },
-        credentials: "include",
-        mode: "cors",
       });
-      FC.configure({ mode: "no-cors" });
+      FC.configure({ auth: { username: "admin", password: "admin" } });
       expect(FC.getConfiguration()).toEqual({
         headers: {
           "Content-Type": "application/json",
         },
-        credentials: "include",
-        mode: "no-cors",
+        auth: { username: "admin", password: "admin" },
       });
     });
   });
@@ -65,47 +65,64 @@ describe("Given a fetch client", () => {
       dummyHandler.mockClear();
     });
   });
-  describe("when using fetch", () => {
-    beforeEach(() => (fetch as any).mockClear());
-    // describe('and fetch fails', () => {
-    //   (global as any).fetch = jest.fn(() =>
-    //     Promise.resolve({
-    //       ok: false,
-    //       status: 401,
-    //       statusText: 'Credentials invalid',
-    //       json: () => Promise.reject(),
-    //     })
-    //   );
-    //   it('it should throw an exception with received status and statusText', async (done) => {
+  describe("when calling doFetch", () => {
+    // beforeEach(() => {
+    //   (Axios as any).mockClear();
+    // });
+    describe("and a handler has been registered", () => {
+      it("should call handler", async () => {
+        const dummyHandler = jest.fn();
+        FC.registerResponseHandler(dummyHandler);
+        (Axios.get as any).mockResolvedValue({
+          data: { foo: "bar" },
+          status: 200,
+        });
+        await FC.doFetch("/dummy");
+        expect(dummyHandler).toHaveBeenCalled();
+      });
+    });
+    // describe("and not specifying method", () => {
+    //   it("should call GET and return data", async (done) => {
+    //     (Axios.get as any) = jest.fn(() =>
+    //       Promise.resolve({
+    //         status: 200,
+    //         statusText: "ok",
+    //         data: { foo: "bar" },
+    //       })
+    //     );
     //     try {
-    //       await FC.doFetch('dummy');
+    //       const result = await FC.doFetch("/dummy");
+    //       expect(result).toEqual({ foo: "bar" });
     //     } catch (error) {
-    //       expect(error).toEqual({
-    //         ...new Error(),
-    //         status: 401,
-    //         statusText: 'Credentials invalid',
-    //       });
     //     } finally {
     //       done();
     //     }
     //   });
     // });
-    describe("and fetch is successfull", () => {
-      (global as any).fetch = jest.fn(() =>
-        Promise.resolve({
-          ok: true,
-          status: 200,
-          json: () => Promise.resolve({ foo: "bar" }),
-        })
-      );
-      it("should return data", async (done) => {
-        try {
-          const data = await FC.doFetch("dummy");
-          expect(data).toEqual({ foo: "bar" });
-        } finally {
-          done();
-        }
-      });
-    });
+    // describe("and specifying POST method", () => {
+    //   it("should return data", async (done) => {
+    //     (Axios.post as any) = jest.fn(() =>
+    //       Promise.resolve({
+    //         status: 200,
+    //         statusText: "ok",
+    //         data: { foo: "bar" },
+    //       })
+    //     );
+    //     try {
+    //       const result = await FC.doFetch("/dummy", { method: "POST" });
+    //       expect(result).toEqual({ foo: "bar" });
+    //     } catch (error) {
+    //     } finally {
+    //       done();
+    //     }
+    //   });
+    // });
+    // describe("and specifying custom method", () => {
+    //   it("should throw error", async (done) => {
+    //     FC.doFetch("/dummy", { method: "CUSTOM" })
+    //       .catch((e) => expect(e).toEqual(FC.METHOD_NOT_IMPLEMENTED))
+    //       .finally(done);
+    //   });
+    // });
   });
 });
