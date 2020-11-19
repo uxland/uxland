@@ -1,5 +1,5 @@
 import { fusebox, pluginSass, pluginLink, pluginCSS } from "fuse-box";
-import { join, resolve } from "path";
+import { join } from "path";
 // import { runUpdateSimulation } from './simulate';
 require("dotenv").config();
 
