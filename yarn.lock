@@ -5060,10 +5060,10 @@ functional-red-black-tree@^1.0.1:
   resolved "https://registry.yarnpkg.com/functional-red-black-tree/-/functional-red-black-tree-1.0.1.tgz#1b0ab3bd553b2a0d6399d29c0e3ea0b252078327"
   integrity sha1-GwqzvVU7Kg1jmdKcDj6gslIHgyc=
 
-fuse-box@^4.0.0-next.440:
-  version "4.0.0-next.444"
-  resolved "https://registry.yarnpkg.com/fuse-box/-/fuse-box-4.0.0-next.444.tgz#e940032b27dfc4ce261823c32e50048d455d75b5"
-  integrity sha512-zzVyxE+byoz1LEFAXBm8bt2bND7jN01iVZv36yq6+FS8aSHAp7jkE8UmeObXwqiPt/8W3415yHNLIJP5HEO+CA==
+fuse-box@4.0.0-next.445:
+  version "4.0.0-next.445"
+  resolved "https://registry.yarnpkg.com/fuse-box/-/fuse-box-4.0.0-next.445.tgz#2129e0c3425f1f82bfbebef19202a06654ecef1c"
+  integrity sha512-gGNmE4X/YO4M58n+KslAKcjuwAMUFNgXj+iqCRjH8MoqOSi7pWQxyVL1rJY108hwVXRZTM3dAd26rPwNRFzjaw==
   dependencies:
     "@typescript-eslint/typescript-estree" "^4.0.1"
     app-root-path "^3.0.0"

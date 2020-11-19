@@ -1,4 +1,4 @@
-import { fusebox, pluginSass, pluginLink, pluginReplace } from "fuse-box";
+import { fusebox, pluginSass, pluginLink, pluginCSS } from "fuse-box";
 import { join, resolve } from "path";
 // import { runUpdateSimulation } from './simulate';
 require("dotenv").config();
@@ -49,6 +49,7 @@ export const fuse = (
     },
     plugins: [
       pluginSass("*.scss", { asText: true }),
+      pluginCSS("*.css", { asText: true }),
       pluginLink(/.+\.png/, { useDefault: true }),
       pluginLink(/.+\.svg/, { useDefault: true }),
     ],
