@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.22](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.0-alpha.21...@uxland/project-tools@1.0.0-alpha.22) (2020-11-19)
+
+
+### Bug Fixes
+
+* force publish ([e0ca933](https://github.com/uxland/uxland/commit/e0ca93347cf1f6dc6e12ff9e9da78d6efb1300a1))
+
+
+
+
+
 # [1.0.0-alpha.21](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.0-alpha.20...@uxland/project-tools@1.0.0-alpha.21) (2020-11-19)
 
 
