@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.21](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.0-alpha.20...@uxland/project-tools@1.0.0-alpha.21) (2020-11-19)
+
+
+### Bug Fixes
+
+* add pluginCSS and fix fuse version ([ef2ed62](https://github.com/uxland/uxland/commit/ef2ed628baf089c86033419520533f091982522d))
+
+
+
+
+
 # [1.0.0-alpha.20](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.0-alpha.19...@uxland/project-tools@1.0.0-alpha.20) (2020-10-29)
 
 
