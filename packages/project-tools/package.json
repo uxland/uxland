@@ -35,7 +35,7 @@
     "dotenv": "^8.2.0",
     "eslint": "^7.7.0",
     "eslint-plugin-unused-imports": "^0.1.3",
-    "fuse-box": "4.0.0-next.445",
+    "fuse-box": "^4.0.0-next.446",
     "jsdom": "^16.4.0",
     "lint-staged": "^10.2.13",
     "mutation-observer": "^1.0.3",
@@ -47,5 +47,5 @@
     "ts-node": "^9.0.0",
     "typescript": "^4.0.2"
   },
-  "gitHead": "09938408e38379953235731c13b63cbb1287e090"
+  "gitHead": "779339a2bf1949d5c7bc5e11875d2e9523d45cf8"
 }
