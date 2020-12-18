@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.27](https://github.com/uxland/uxland/compare/@uxland/redux@1.0.0-alpha.26...@uxland/redux@1.0.0-alpha.27) (2020-12-18)
+
+
+### Bug Fixes
+
+* replace build:cjs script to replace optional-chaining ([b3a8b8e](https://github.com/uxland/uxland/commit/b3a8b8e06843d92ee7b11d5c021758a4ba016820))
+
+
+
+
+
 # [1.0.0-alpha.26](https://github.com/uxland/uxland/compare/@uxland/redux@1.0.0-alpha.25...@uxland/redux@1.0.0-alpha.26) (2020-10-13)
 
 

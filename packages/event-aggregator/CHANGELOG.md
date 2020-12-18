@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.16](https://github.com/uxland/uxland/compare/@uxland/event-aggregator@1.0.0-alpha.15...@uxland/event-aggregator@1.0.0-alpha.16) (2020-12-18)
+
+
+### Bug Fixes
+
+* replace build:cjs script to replace optional-chaining ([b3a8b8e](https://github.com/uxland/uxland/commit/b3a8b8e06843d92ee7b11d5c021758a4ba016820))
+
+
+
+
+
 # [1.0.0-alpha.15](https://github.com/uxland/uxland/compare/@uxland/event-aggregator@1.0.0-alpha.14...@uxland/event-aggregator@1.0.0-alpha.15) (2020-10-15)
 
 
