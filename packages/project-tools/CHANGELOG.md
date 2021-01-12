@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.24](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.0-alpha.23...@uxland/project-tools@1.0.0-alpha.24) (2021-01-12)
+
+
+### Bug Fixes
+
+* change fuse configuration parameters ([f520904](https://github.com/uxland/uxland/commit/f5209047320b3455557c89f2f84367716d0cce15))
+
+
+
+
+
 # [1.0.0-alpha.23](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.0-alpha.22...@uxland/project-tools@1.0.0-alpha.23) (2020-11-24)
 
 
