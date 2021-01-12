@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.25](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.0-alpha.24...@uxland/project-tools@1.0.0-alpha.25) (2021-01-12)
+
+
+### Bug Fixes
+
+* cache in fuse and update watcher roots ([05a5579](https://github.com/uxland/uxland/commit/05a5579d98c7dc42425b4b47981738e52b08fa25))
+
+
+
+
+
 # [1.0.0-alpha.24](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.0-alpha.23...@uxland/project-tools@1.0.0-alpha.24) (2021-01-12)
 
 
