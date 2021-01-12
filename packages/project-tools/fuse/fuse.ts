@@ -11,21 +11,24 @@ console.log("Workspace Root:", workspaceRoot);
 
 /**
  * Fuse base constructor
- * @param {string} entry Demo entry point
- * @param {string} baseStyles Base scss styles path
- * @param {string} webIndex Demo entry html
- * @param {boolean} devServer Run server
- * @param {string} publicPath Public path
- * @param {*} env Environment variables
+ * @param {Object} config Fuse configuration
+ * @param {string} config.entry Demo entry point
+ * @param {string} config.baseStyles Base scss styles path
+ * @param {string} config.webIndex Demo entry html
+ * @param {boolean} config.devServer Run server
+ * @param {string=} config.publicPath Public path
+ * @param {string[]=} config.workspaces Workspaces ids
+ * @param {*=} config.env Environment variables
  */
-export const fuse = (
-  entry: string,
-  baseStyles: string,
-  webIndex: string,
-  devServer: boolean,
+export const fuse = ({
+  entry,
+  baseStyles,
+  webIndex,
+  devServer,
   publicPath = "/",
-  env: any = {}
-) =>
+  workspaces = ["packages"],
+  env = {},
+}) =>
   fusebox({
     cache: false,
     compilerOptions: {
@@ -44,7 +47,7 @@ export const fuse = (
         "~": join(__dirname, "../../../"),
       },
       autoImport: baseStyles
-        ? [{ file: baseStyles, capture: "packages/*/src" }]
+        ? workspaces.map((w) => ({ file: baseStyles, capture: `${w}/*/src` }))
         : undefined,
     },
     plugins: [
