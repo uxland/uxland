@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.26](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.0-alpha.25...@uxland/project-tools@1.0.0-alpha.26) (2021-01-13)
+
+
+### Bug Fixes
+
+* **project-tools:** adapt autoimport to use custom baseStyles ([0a0770b](https://github.com/uxland/uxland/commit/0a0770b6702240c01882da5947ba0bce91006218))
+
+
+
+
+
 # [1.0.0-alpha.25](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.0-alpha.24...@uxland/project-tools@1.0.0-alpha.25) (2021-01-12)
 
 
