@@ -30,7 +30,7 @@ interface FuseConfig {
   webIndex: string;
   devServer: boolean | IDevServerProps;
   publicPath?: string;
-  workspaces?: string[];
+  workspaces?: any[];
   env?: any;
 }
 STUB = 1;
@@ -44,6 +44,15 @@ STUB = 1;
  
  */
 export function fuse(config: FuseConfig) {
+  const workspaces = (config.workspaces || ["packages"]).reduce(
+    (collection, w) => {
+      if (w.name)
+        collection.push({ name: w.name, baseStyles: config.baseStyles }, w);
+      else collection.push({ name: w, baseStyles: config.baseStyles });
+      return collection;
+    },
+    []
+  );
   return fusebox({
     cache: true,
     compilerOptions: {
@@ -55,18 +64,16 @@ export function fuse(config: FuseConfig) {
     env: config.env || {},
     target: "browser",
     watcher: {
-      root: (config.workspaces || ["packages"]).map((w) =>
-        join(workspaceRoot, w)
-      ),
+      root: workspaces.map((w) => join(workspaceRoot, w.name)),
     },
     stylesheet: {
       macros: {
         "~": join(__dirname, "../../../"),
       },
       autoImport: config.baseStyles
-        ? (config.workspaces || ["packages"]).map((w) => ({
-            file: config.baseStyles,
-            capture: `${w}/*/src`,
+        ? workspaces.map((w) => ({
+            file: w.baseStyles,
+            capture: `${w.name}/*/src`,
           }))
         : undefined,
     },
