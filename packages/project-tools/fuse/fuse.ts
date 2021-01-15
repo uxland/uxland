@@ -59,7 +59,12 @@ export function fuse(config: FuseConfig) {
       tsConfig: "tsconfig.json",
     },
     devServer: config.devServer,
-    hmr: true,
+    hmr: {
+      plugin: join(
+        workspaceRoot,
+        "node_modules/@uxland/project-tools/fuse/hmr-plugin.ts"
+      ),
+    },
     entry: config.entry,
     env: config.env || {},
     target: "browser",
@@ -68,7 +73,7 @@ export function fuse(config: FuseConfig) {
     },
     stylesheet: {
       macros: {
-        "~": join(__dirname, "../../../"),
+        "~": join(workspaceRoot, "node_modules/"),
       },
       autoImport: config.baseStyles
         ? workspaces.map((w) => ({
