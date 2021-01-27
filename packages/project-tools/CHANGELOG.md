@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.29](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.0-alpha.28...@uxland/project-tools@1.0.0-alpha.29) (2021-01-27)
+
+
+### Features
+
+* **project-tools:** add airbnb prettier config ([5d1003c](https://github.com/uxland/uxland/commit/5d1003c80f396b5fb1436f811e43f17a60c205c8))
+
+
+
+
+
 # [1.0.0-alpha.28](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.0-alpha.27...@uxland/project-tools@1.0.0-alpha.28) (2021-01-26)
 
 
