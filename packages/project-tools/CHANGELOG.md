@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.30](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.0-alpha.29...@uxland/project-tools@1.0.0-alpha.30) (2021-01-28)
+
+
+### Bug Fixes
+
+* **project-tools:** add prettierignore to lint-staged config ([68d0682](https://github.com/uxland/uxland/commit/68d06826f1f2b205e430b9bd19860be8bc5cdbe3))
+
+
+
+
+
 # [1.0.0-alpha.29](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.0-alpha.28...@uxland/project-tools@1.0.0-alpha.29) (2021-01-27)
 
 
