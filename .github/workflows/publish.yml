@@ -21,7 +21,7 @@ jobs:
     name: Release
     needs: build
     runs-on: ubuntu-latest
-    if: contains(github.ref, "release")
+    if: contains(github.ref, "alpha")
     steps:
       - name: Publish
         run: lerna publish --conventional-commits --conventional-prerelease --yes
