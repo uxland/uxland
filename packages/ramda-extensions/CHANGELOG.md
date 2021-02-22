@@ -1,0 +1,21 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# 1.0.0-alpha.0 (2021-02-22)
+
+
+### Bug Fixes
+
+* update readme ([b1b49a0](https://github.com/uxland/uxland/commit/b1b49a06feaa531d7163f958e898d188e972c77c))
+
+
+### Features
+
+* refactor functional-utilities ([0aaf0da](https://github.com/uxland/uxland/commit/0aaf0da5d1804f9e7892dc04c63ab2bb57f9f3f9))
+
+
+### BREAKING CHANGES
+
+* Split functional-utilities library into three depending on purpose classification
