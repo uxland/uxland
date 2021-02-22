@@ -1,12 +1,17 @@
 {
   "packages": ["packages/*"],
-  "ignoreChanges": ["packages/*/test/**", "**/*.md", "**/*.mdx", "packages/*-bkp/**/*"],
+  "ignoreChanges": [
+    "packages/*/test/**",
+    "**/*.md",
+    "**/*.mdx",
+    "packages/*-bkp/**/*"
+  ],
   "version": "independent",
   "npmClient": "yarn",
   "useWorkspaces": true,
   "command": {
     "version": {
-      "allowBranch": ["master", "alpha", "beta"],
+      "allowBranch": ["master", "alpha", "beta", "alpha-utilities"],
       "message": "chore(release): publish new versions"
     },
     "publish": {
