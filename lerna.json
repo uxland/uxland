@@ -11,7 +11,7 @@
   "useWorkspaces": true,
   "command": {
     "version": {
-      "allowBranch": ["master", "alpha", "beta", "refactor-utilities"],
+      "allowBranch": ["master", "alpha", "beta"],
       "message": "chore(release): publish new versions"
     },
     "publish": {
