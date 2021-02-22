@@ -17,14 +17,14 @@ jobs:
         run: yarn install && yarn test
       - name: Build
         run: yarn build && yarn readme:coverage
-  release: 
+  release:
     name: Release
     needs: build
     runs-on: ubuntu-latest
     if: contains(github.ref, "release")
-    steps: 
+    steps:
       - name: Publish
         run: lerna publish --conventional-commits --conventional-prerelease --yes
-      env:
-        GH_TOKEN: ${{ secrets.GH_TOKEN }}
-        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+    env:
+      GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
