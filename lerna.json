@@ -1,6 +1,11 @@
 {
   "packages": ["packages/*"],
-  "ignoreChanges": ["packages/*/test/**", "**/*.md", "**/*.mdx", "packages/*-bkp/**/*"],
+  "ignoreChanges": [
+    "packages/*/test/**",
+    "**/*.md",
+    "**/*.mdx",
+    "packages/*-bkp/**/*"
+  ],
   "version": "independent",
   "npmClient": "yarn",
   "useWorkspaces": true,
