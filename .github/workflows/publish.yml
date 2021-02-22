@@ -8,8 +8,8 @@ on:
       - beta
 
 jobs:
-  build:
-    name: Build
+  build-n-publish:
+    name: Build and Publish
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -17,13 +17,8 @@ jobs:
         run: yarn install && yarn test
       - name: Build
         run: yarn build && yarn readme:coverage
-  release:
-    name: Release
-    needs: build
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/alpha'
-    steps:
       - name: Publish
+        if: github.ref == 'refs/heads/alpha'
         run: lerna publish --conventional-commits --conventional-prerelease --yes
     env:
       GH_TOKEN: ${{ secrets.GH_TOKEN }}
