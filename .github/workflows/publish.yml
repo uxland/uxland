@@ -14,12 +14,12 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Install and test
-        run: yarn global add lerna && lerna bootstrap && yarn test
+        run: yarn install && yarn test
       - name: Build
         run: yarn build && yarn readme:coverage
       - name: Publish
         if: github.ref == 'refs/heads/alpha'
-        run: lerna publish --conventional-commits --conventional-prerelease --yes
+        run: npx lerna publish --conventional-commits --conventional-prerelease --yes
     env:
       GH_TOKEN: ${{ secrets.GH_TOKEN }}
       NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
