@@ -71,7 +71,9 @@
     "typescript": "^4.0.2"
   },
   "dependencies": {
-    "@uxland/functional-utilities": "^1.0.0-alpha.25",
+    "@uxland/browser-utilities": "^1.0.0-alpha.0",
+    "@uxland/ramda-extensions": "^1.0.0-alpha.0",
+    "@uxland/utilities": "^1.0.0-alpha.5",
     "date-fns": "^2.10.0",
     "ramda": "^0.27.0",
     "redux": "^4.0.5",

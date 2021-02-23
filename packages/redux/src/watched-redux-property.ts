@@ -1,19 +1,27 @@
-import { collect } from '@uxland/functional-utilities';
-import { WatchOptions } from './watch';
+import {collect} from '@uxland/utilities';
+import {WatchOptions} from './watch';
 
 const WATCHED_PROPERTIES_PROPERTY = 'WATCHED-PROPERTIES-PROPERTY';
 
-export const createWatchedReduxProperty = (propConfig: WatchOptions, proto: any, propName: string): void => {
+export const createWatchedReduxProperty = (
+  propConfig: WatchOptions,
+  proto: any,
+  propName: string
+): void => {
   const properties = Object.keys(Object.assign({}, proto.constructor.watchedReduxProperties))
     .filter(
       key =>
-        !proto.__proto__.constructor.watchedReduxProperties || !proto.__proto__.constructor.watchedReduxProperties[key]
+        !proto.__proto__.constructor.watchedReduxProperties ||
+        !proto.__proto__.constructor.watchedReduxProperties[key]
     )
     .reduce(
       (previousValue, currentValue) => {
-        return { ...previousValue, [currentValue]: proto.constructor.watchedReduxProperties[currentValue] };
+        return {
+          ...previousValue,
+          [currentValue]: proto.constructor.watchedReduxProperties[currentValue],
+        };
       },
-      { [propName]: propConfig }
+      {[propName]: propConfig}
     );
 
   Object.defineProperty(proto.constructor, WATCHED_PROPERTIES_PROPERTY, {
@@ -21,7 +29,8 @@ export const createWatchedReduxProperty = (propConfig: WatchOptions, proto: any,
       return properties;
     },
     enumerable: true,
-    configurable: true
+    configurable: true,
   });
 };
-export const getWatchedProperties = (proto: any): any => collect(proto.constructor, WATCHED_PROPERTIES_PROPERTY);
+export const getWatchedProperties = (proto: any): any =>
+  collect(proto.constructor, WATCHED_PROPERTIES_PROPERTY);

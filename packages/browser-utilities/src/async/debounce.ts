@@ -83,7 +83,7 @@ export class Debouncer {
    * called once. Add this method to a custom element:
    *
    * ```js
-   * import {microTask, debouncer} from '@uxland/functional-utilities';
+   * import {microTask, debouncer} from '@uxland/browser-utilities';
    * // ...
    *
    * _debounceWork() {

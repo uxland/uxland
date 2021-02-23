@@ -20,9 +20,9 @@
  * AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-import { invariant } from '@uxland/functional-utilities';
-import { identity, is, isNil } from 'ramda';
-import { Action as ReduxAction } from 'redux';
+import {invariant} from '@uxland/utilities';
+import {identity, is, isNil} from 'ramda';
+import {Action as ReduxAction} from 'redux';
 
 export type ActionFunctionAny<R> = (...args: any[]) => R;
 
@@ -94,9 +94,10 @@ export const createAction: <Payload = any, Meta = any>(
   const finalPayloadCreator: (...args: any[]) => any =
     isNil(payloadCreator) || payloadCreator === identity
       ? identity
-      : (head, ...args): Error | Record<string, any> => (head instanceof Error ? head : payloadCreator(head, ...args));
+      : (head, ...args): Error | Record<string, any> =>
+          head instanceof Error ? head : payloadCreator(head, ...args);
   const actionCreator = (...args: any[]): Action => {
-    const action = { type } as Action;
+    const action = {type} as Action;
     const payload = args.length ? finalPayloadCreator(...args) : finalPayloadCreator(null);
     if (!isNil(payload)) action.payload = payload;
     if (hasMeta) action.meta = metaCreator(...args);

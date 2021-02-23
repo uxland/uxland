@@ -21,9 +21,9 @@
  * AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-import { isNullOrEmpty } from '@uxland/functional-utilities';
+import {isNullOrEmpty} from '@uxland/ramda-extensions';
 import * as R from 'ramda';
-import { SerializerInfo } from './model';
+import {SerializerInfo} from './model';
 import {
   getFrom,
   getSerializerFn,
@@ -37,17 +37,25 @@ import {
   isPath,
   isSingleObject,
   lensProp,
-  thrower
+  thrower,
 } from './utilities';
-import { invalidPath, invalidSerializers } from './validation';
+import {invalidPath, invalidSerializers} from './validation';
 
-const buildFirstIndexPath = R.pipe(R.split('.'), (paths: string[]) => [paths[0], 0, ...R.remove(0, 1, paths)]);
+const buildFirstIndexPath = R.pipe(R.split('.'), (paths: string[]) => [
+  paths[0],
+  0,
+  ...R.remove(0, 1, paths),
+]);
 const getProp = (from: string | string[], data: any) =>
   R.cond([
     [
       isArray,
       () =>
-        R.reduce((collection, fromK: string) => collection.concat(data ? data[fromK] : undefined), [], from as string[])
+        R.reduce(
+          (collection, fromK: string) => collection.concat(data ? data[fromK] : undefined),
+          [],
+          from as string[]
+        ),
     ],
     [
       isPath,
@@ -55,17 +63,23 @@ const getProp = (from: string | string[], data: any) =>
         R.cond([
           [isObject, () => R.path(R.split('.', from as string), data)],
           [isSingleObject, () => R.path(buildFirstIndexPath(from as string), data)],
-          [R.T, () => thrower(invalidPath)]
-        ])(R.prop(R.split('.', from as string)[0], data))
+          [R.T, () => thrower(invalidPath)],
+        ])(R.prop(R.split('.', from as string)[0], data)),
     ],
-    [R.T, () => R.prop(from as string, data)]
+    [R.T, () => R.prop(from as string, data)],
   ])(from);
 const setOutput = (from: string, to: string, value: any) =>
   R.set(lensProp(to || from), R.isNil(value) ? undefined : value);
 const multipleTo = (data: any, from: string | string[], to: string[], fn: Function) =>
   R.cond([
-    [R.equals, () => R.reduce((collection, toK: string) => inToOut(data, toK, toK, fn)(collection), {}, to)],
-    [R.T, () => R.reduce((collection, toK: string) => inToOut(data, from, toK, fn)(collection), {}, to)]
+    [
+      R.equals,
+      () => R.reduce((collection, toK: string) => inToOut(data, toK, toK, fn)(collection), {}, to),
+    ],
+    [
+      R.T,
+      () => R.reduce((collection, toK: string) => inToOut(data, from, toK, fn)(collection), {}, to),
+    ],
   ])(from, to);
 const executeFn = (data: any, from: string | string[], fn: Function) =>
   R.ifElse(
@@ -86,31 +100,42 @@ const assignInputToOutput = (
   serializers?: any[]
 ) => (output: any) =>
   R.cond([
-    [hasSerializerFn, () => setOutput(from as string, to, executeFn(data, from, serializerFn))(output)],
+    [
+      hasSerializerFn,
+      () => setOutput(from as string, to, executeFn(data, from, serializerFn))(output),
+    ],
     [hasSerializers, () => setOutput(from as string, to, serialize(data, serializers))(output)],
-    [R.T, () => setOutput(from as string, to, data)(output)]
+    [R.T, () => setOutput(from as string, to, data)(output)],
   ])({
     serializerFn,
-    serializers
+    serializers,
   });
-const inToOut = (data: any, from: string | string[], to?: string | string[], fn?: Function, serializers?: any) => (
-  output: any
-) =>
+const inToOut = (
+  data: any,
+  from: string | string[],
+  to?: string | string[],
+  fn?: Function,
+  serializers?: any
+) => (output: any) =>
   R.cond([
     [
       hasFromTo,
       () =>
         R.cond([
           [isArray, () => multipleTo(data, from, to as string[], fn)],
-          [R.T, () => assignInputToOutput(getProp(from, data), from, to as string, fn, serializers)(output)]
+          [
+            R.T,
+            () =>
+              assignInputToOutput(getProp(from, data), from, to as string, fn, serializers)(output),
+          ],
           // [R.T, R.always(assignInputToOutput(getProp(from, data), from, to as string, fn, serializers)(output))]
-        ])(to)
+        ])(to),
     ],
-    [R.T, () => assignInputToOutput(getProp(from, data), from, undefined, fn, serializers)(output)]
+    [R.T, () => assignInputToOutput(getProp(from, data), from, undefined, fn, serializers)(output)],
     // [R.T, R.always(assignInputToOutput(getProp(from, data), from, undefined, fn, serializers)(output))]
   ])({
     from,
-    to
+    to,
   });
 
 const serializeArray = <I, O>(i: I[], serializers: SerializerInfo<I, O>[]): O[] =>
@@ -118,7 +143,13 @@ const serializeArray = <I, O>(i: I[], serializers: SerializerInfo<I, O>[]): O[] 
 const serializeObject = <I, O>(i: I, serializers: SerializerInfo<I, O>[]): O =>
   R.reduce<SerializerInfo<I, O>, O>(
     (o, s) =>
-      inToOut(i, getFrom(s) as string | string[], getTo(s), getSerializerFn(s as any), getSerializers(s as any))(o),
+      inToOut(
+        i,
+        getFrom(s) as string | string[],
+        getTo(s),
+        getSerializerFn(s as any),
+        getSerializers(s as any)
+      )(o),
     {} as O,
     serializers
   );
@@ -141,8 +172,8 @@ export function serialize<I, O>(i: I | I[], serializers?: SerializerInfo<I, O>[]
           isArray,
           () => serializeArray(i as I[], serializers),
           () => serializeObject(i as I, serializers)
-        )(i)
-    ]
+        )(i),
+    ],
   ])(serializers);
 }
 

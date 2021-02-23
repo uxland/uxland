@@ -20,9 +20,9 @@
  * AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-import { isNotNullNeitherEmpty } from '@uxland/functional-utilities';
+import {isNotNullNeitherEmpty} from '@uxland/ramda-extensions';
 import * as R from 'ramda';
-import { SerializerInfo } from './model';
+import {SerializerInfo} from './model';
 
 export const isTrue = R.equals(true);
 export const isFalse = R.equals(false);
@@ -34,9 +34,10 @@ export const thrower = (message: string): never => {
 };
 export const getFrom = (serializer?: any): string | string[] => serializer?.from;
 export const getTo = (serializer?: any): string | string[] => serializer?.to;
-export const getSerializerFn = (serializer?: any): Function => serializer?.serializerFn;
-export const getDeserializerFn = (serializer?: any): Function => serializer?.deserializerFn;
-export const getSerializers = (serializer?: any): SerializerInfo<any, any>[] => serializer?.serializers;
+export const getSerializerFn = (serializer?: any): (() => any) => serializer?.serializerFn;
+export const getDeserializerFn = (serializer?: any): (() => any) => serializer?.deserializerFn;
+export const getSerializers = (serializer?: any): SerializerInfo<any, any>[] =>
+  serializer?.serializers;
 export const hasFrom = R.pipe(getFrom, isNotNullNeitherEmpty);
 export const hasTo = R.pipe(getTo, isNotNullNeitherEmpty);
 export const hasSerializerFn = R.pipe(getSerializerFn, isNotNullNeitherEmpty);
@@ -73,7 +74,7 @@ export const setProperty = (from: string, to: string, value: any) => (obj: any =
       for (let i = path.length - 1; i >= 0; i--) {
         const prop = path[i];
         if (i == path.length - 1) obj[prop] = parsedValue;
-        else obj = { [prop]: obj };
+        else obj = {[prop]: obj};
       }
       return obj;
     },

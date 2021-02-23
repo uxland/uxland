@@ -20,11 +20,26 @@
  * AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-import { nop } from '@uxland/functional-utilities';
-import { always, cond, equals, ifElse, is, isNil, Lens, lensProp, pipe, propEq, set, T as Tr, view, when } from 'ramda';
-import { Action } from './create-action';
-import { BasicOptions } from './create-basic-reducer';
-import { PathResolver, resolvePath } from './path-resolver';
+import {nop} from '@uxland/utilities';
+import {
+  always,
+  cond,
+  equals,
+  ifElse,
+  is,
+  isNil,
+  Lens,
+  lensProp,
+  pipe,
+  propEq,
+  set,
+  T as Tr,
+  view,
+  when,
+} from 'ramda';
+import {Action} from './create-action';
+import {BasicOptions} from './create-basic-reducer';
+import {PathResolver, resolvePath} from './path-resolver';
 
 export interface Options<T = any> extends BasicOptions<T> {
   timestampAccessor?: (action: Action) => Date;
@@ -47,11 +62,11 @@ export interface AsyncState<TState = any> {
 const defaultState: AsyncState = {
   error: false,
   didInvalidate: false,
-  isFetching: false
+  isFetching: false,
 };
 
-const fetchingState = { ...defaultState, isFetching: true };
-export const getDefaultState = (): AsyncState => ({ ...defaultState });
+const fetchingState = {...defaultState, isFetching: true};
+export const getDefaultState = (): AsyncState => ({...defaultState});
 const actionCreator = (base: string) => (action: string): string => `${base}_${action}`;
 const actionsCreator = (base: string): any => {
   const creator = actionCreator(base);
@@ -60,17 +75,24 @@ const actionsCreator = (base: string): any => {
     succeededAction: creator('SUCCEEDED'),
     failedAction: creator('FAILED'),
     endedAction: creator('ENDED'),
-    invalidatedAction: creator('INVALIDATED')
+    invalidatedAction: creator('INVALIDATED'),
   };
 };
 
 const extractExceptions = (action: Action): any =>
-  action.payload ? (is(Array, action.payload) ? action.payload : { exceptions: [action.payload] }) : {};
+  action.payload
+    ? is(Array, action.payload)
+      ? action.payload
+      : {exceptions: [action.payload]}
+    : {};
 const extractErrorDescription = (action: Action): ((payload: any) => void | string) =>
   ifElse(
     isNil,
     nop,
-    payload => ({ errorDescription: isNil(payload.message) ? String(payload) : payload.message } as AsyncState)
+    payload =>
+      ({
+        errorDescription: isNil(payload.message) ? String(payload) : payload.message,
+      } as AsyncState)
   )(action.payload);
 
 type StateFactory = (state: any, action: Action) => any;
@@ -78,18 +100,25 @@ const typeEqual = propEq('type');
 type CurrentStateGetter = (options: Options) => (state: any, action: Action) => any;
 const getState: CurrentStateGetter = options => (state, action): any =>
   options.pathResolver ? view(resolvePath(options.pathResolver, action), state) : state;
-const keepPreviousStateGetter: (defState: any) => CurrentStateGetter = (defState = defaultState) => (
-  options: any
-): ((state, action) => any) => {
+const keepPreviousStateGetter: (defState: any) => CurrentStateGetter = (
+  defState = defaultState
+) => (options: any): ((state, action) => any) => {
   const getter = getState(options);
-  return (state, action): any => (options.keepPreviousStateOnStarted ? getter(state, action) : defState);
+  return (state, action): any =>
+    options.keepPreviousStateOnStarted ? getter(state, action) : defState;
 };
 export const createAsyncReducer = <T>(actionName: string, options: Options<T> = {}): any => {
   const initialValue: any = isNil(options.defValue)
-    ? { ...defaultState }
-    : { ...defaultState, state: options.defValue };
+    ? {...defaultState}
+    : {...defaultState, state: options.defValue};
   const defValue: any = options.pathResolver ? {} : initialValue;
-  const { startedAction, succeededAction, failedAction, endedAction, invalidatedAction } = actionsCreator(actionName);
+  const {
+    startedAction,
+    succeededAction,
+    failedAction,
+    endedAction,
+    invalidatedAction,
+  } = actionsCreator(actionName);
   const isStarted = typeEqual(startedAction),
     isFailed = typeEqual(failedAction),
     isSucceeded = typeEqual(succeededAction),
@@ -100,7 +129,7 @@ export const createAsyncReducer = <T>(actionName: string, options: Options<T> = 
     options.defValue
       ? {
           ...initialValue,
-          isFetching: true
+          isFetching: true,
         }
       : fetchingState
   )(options);
@@ -108,7 +137,9 @@ export const createAsyncReducer = <T>(actionName: string, options: Options<T> = 
   const getPayload = (action: Action): any =>
     options.payloadAccessor ? options.payloadAccessor(action) : action.payload;
   const setTimestamp = (action: Action) => (state: AsyncState<T>): any => {
-    const timestamp = options.timestampAccessor ? options.timestampAccessor(action) : action.timestamp;
+    const timestamp = options.timestampAccessor
+      ? options.timestampAccessor(action)
+      : action.timestamp;
     return timestamp ? set(lensProp('timestamp'), timestamp, state) : state;
   };
   const startedStateFactory: StateFactory = pipe(
@@ -117,33 +148,39 @@ export const createAsyncReducer = <T>(actionName: string, options: Options<T> = 
       () => options.keepPreviousStateOnStarted,
       s => ({
         ...fetchingState,
-        state: s.state
+        state: s.state,
       })
     )
   );
-  const succeedFactory: StateFactory = (state, action) => set(lensProp('state'), getPayload(action), defaultState);
+  const succeedFactory: StateFactory = (state, action) =>
+    set(lensProp('state'), getPayload(action), defaultState);
   const failedFactory: StateFactory = (state, action) =>
     pipe(failedStateGetter, s => ({
       ...s,
       ...defaultState,
       ...extractExceptions(action),
       ...extractErrorDescription(action),
-      error: true
+      error: true,
     }))(state, action);
   const endedFactory: StateFactory = (state, action) =>
     action.elapsed || action.payload
       ? {
           ...stateGetter(state, action),
-          elapsed: action.elapsed || action.payload
+          elapsed: action.elapsed || action.payload,
         }
       : stateGetter(state, action);
   const invalidatedFactory: StateFactory = (state, action) =>
     set(lensProp('didInvalidate'), true, stateGetter(state, action));
 
   const updateState = (state, action, newState) => (): any =>
-    options.pathResolver ? set(resolvePath(options.pathResolver, action), newState, state) : newState;
+    options.pathResolver
+      ? set(resolvePath(options.pathResolver, action), newState, state)
+      : newState;
   const setState = (state, action) => (newState: any): any =>
-    pipe(stateGetter, ifElse(equals(newState), always(state), updateState(state, action, newState)))(state, action);
+    pipe(
+      stateGetter,
+      ifElse(equals(newState), always(state), updateState(state, action, newState))
+    )(state, action);
   const stateFactory = (factory: StateFactory) => state => (action: any): any =>
     pipe(factory, setTimestamp(action), setState(state, action))(state, action);
   return (state = defValue, action: Action): any =>
@@ -153,6 +190,6 @@ export const createAsyncReducer = <T>(actionName: string, options: Options<T> = 
       [isFailed, stateFactory(failedFactory)(state)],
       [isEnded, stateFactory(endedFactory)(state)],
       [isInvalidated, stateFactory(invalidatedFactory)(state)],
-      [Tr, (): any => state]
+      [Tr, (): any => state],
     ])(action);
 };

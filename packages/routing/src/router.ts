@@ -21,15 +21,15 @@
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { isNotNil, toPath } from "@uxland/functional-utilities";
-import { allPass, difference, pathSatisfies, propSatisfies } from "ramda";
-import { clean } from "./helpers/clean";
-import { findMatchingRoutes } from "./helpers/finding-matching-routes";
-import { getOnlyUrl } from "./helpers/get-only-url";
-import { getQueryParametersFromUrl } from "./helpers/get-query-params-from-url";
-import { isPushStateAvailable } from "./helpers/is-push-state-available";
-import { root } from "./helpers/root";
-import { RouterHooks } from "./hooks";
+import {isNotNil, toPath} from '@uxland/ramda-extensions';
+import {allPass, difference, pathSatisfies, propSatisfies} from 'ramda';
+import {clean} from './helpers/clean';
+import {findMatchingRoutes} from './helpers/finding-matching-routes';
+import {getOnlyUrl} from './helpers/get-only-url';
+import {getQueryParametersFromUrl} from './helpers/get-query-params-from-url';
+import {isPushStateAvailable} from './helpers/is-push-state-available';
+import {root} from './helpers/root';
+import {RouterHooks} from './hooks';
 
 declare global {
   interface Window {
@@ -45,7 +45,7 @@ let STUB = 1;
  * @typedef {Object} RouteParams
  */
 STUB = 1;
-export type RouteParams = { [key: string]: string };
+export type RouteParams = {[key: string]: string};
 
 /**
  * Collection of query string parameters
@@ -54,7 +54,7 @@ export type RouteParams = { [key: string]: string };
  * @typedef {Object} RouteQueryString
  */
 STUB = 1;
-export type RouteQueryString = { [key: string]: string };
+export type RouteQueryString = {[key: string]: string};
 // export type RouteHandler = () => Promise<void>;
 
 /**
@@ -78,8 +78,7 @@ export interface Route {
  * @since v1.0.0
  * @param {string} duplicateRoutes='You are trying to register multiple equal routes'
  */
-export const duplicateRoutes =
-  "You are trying to register multiple equal routes";
+export const duplicateRoutes = 'You are trying to register multiple equal routes';
 
 /**
  * Existing route exception
@@ -87,8 +86,7 @@ export const duplicateRoutes =
  * @since v1.0.0
  * @param {string} existingRoute='You are trying to register a route that already exists'
  */
-export const existingRoute =
-  "You are trying to register a route that already exists";
+export const existingRoute = 'You are trying to register a route that already exists';
 
 /**
  * Previous navigation action cancelled
@@ -97,35 +95,31 @@ export const existingRoute =
  * @param {string} previousNavigationCancelled='Previous navigation action has been cancelled due to a new one'
  */
 export const previousNavigationCancelled =
-  "Previous navigation action has been cancelled due to a new one";
+  'Previous navigation action has been cancelled due to a new one';
 
 const hasDuplicatedRoutes = (routes: Route[]): boolean => {
-  const urls = routes.map((r) => r.route);
+  const urls = routes.map(r => r.route);
   return new Set(urls).size != urls.length;
 };
 
 const hasExistingRoute = (route: Route, routes: Route[]): boolean =>
-  routes.find((r) => r.route == route.route) != undefined;
+  routes.find(r => r.route == route.route) != undefined;
 
 // const isHashChangeAPIAvailable = () => typeof window !== 'undefined' && 'onhashchange' in window;
 
-const routerHooksDefinedSpec = propSatisfies(isNotNil, "hooks");
+const routerHooksDefinedSpec = propSatisfies(isNotNil, 'hooks');
 const canNavigateFromSpec = allPass([
   routerHooksDefinedSpec,
-  pathSatisfies(isNotNil, toPath("hooks.canNavigateFrom")),
+  pathSatisfies(isNotNil, toPath('hooks.canNavigateFrom')),
 ]);
 const canNavigateToSpec = allPass([
   routerHooksDefinedSpec,
-  pathSatisfies(isNotNil, toPath("hooks.canNavigateTo")),
+  pathSatisfies(isNotNil, toPath('hooks.canNavigateTo')),
 ]);
 
-const routesToDeactivate = (
-  last: string,
-  current: string,
-  routes: Route[]
-): Route[] => {
-  const lastRoutes = findMatchingRoutes(last, routes).map((m) => m.route);
-  const currentRoutes = findMatchingRoutes(current, routes).map((m) => m.route);
+const routesToDeactivate = (last: string, current: string, routes: Route[]): Route[] => {
+  const lastRoutes = findMatchingRoutes(last, routes).map(m => m.route);
+  const currentRoutes = findMatchingRoutes(current, routes).map(m => m.route);
   return difference(lastRoutes, currentRoutes);
 };
 
@@ -145,7 +139,7 @@ function toAsync(makeGenerator) {
     }
     try {
       const p = handle(generator.next);
-      p["generator"] = generator;
+      p['generator'] = generator;
       return p;
     } catch (ex) {
       return Promise.reject(ex);
@@ -171,35 +165,25 @@ function* navigate(
       const canNavigateFromResults = yield Promise.all(
         toDeactivate
           .filter(canNavigateFromSpec)
-          .map((r) =>
-            r.hooks.canNavigateFrom(current, matchingRoute.params, query)
-          )
+          .map(r => r.hooks.canNavigateFrom(current, matchingRoute.params, query))
       );
       const canNavigateToResults = yield Promise.all(
         toDeactivate
           .filter(canNavigateToSpec)
-          .map((r) =>
-            r.hooks.canNavigateTo(current, matchingRoute.params, query)
-          )
+          .map(r => r.hooks.canNavigateTo(current, matchingRoute.params, query))
       );
-      if (
-        [...canNavigateFromResults, ...canNavigateToResults].every((x) => x)
-      ) {
+      if ([...canNavigateFromResults, ...canNavigateToResults].every(x => x)) {
         result = current;
         router.resolving = true;
         router.updateLocation(current);
         if (matchingRoute.route.hooks?.navigatedFrom)
-          matchingRoute.route.hooks?.navigatedFrom(
-            last,
-            matchingRoute.params,
-            query
-          );
+          matchingRoute.route.hooks?.navigatedFrom(last, matchingRoute.params, query);
       }
     } finally {
       router.resolving = false;
     }
   } else if (notFoundHandler) notFoundHandler();
-  return { success: result === current };
+  return {success: result === current};
 }
 
 /**
@@ -241,7 +225,7 @@ export class Router {
   constructor(
     routes: Route[] = [],
     private root?: string,
-    private hash = "" /*private useHash = false, private hash = '#'*/
+    private hash = '' /*private useHash = false, private hash = '#'*/
   ) {
     this.usePushState = isPushStateAvailable();
     // this.locationChangeHandler = this.locationChange.bind(this);
@@ -251,7 +235,7 @@ export class Router {
     }
     if (root) {
       // this.root = useHash ? root.replace(/\/$/, '/' + this.hash) : root.replace(/\/$/, '');
-      this.root = root.replace(/\/$/, "");
+      this.root = root.replace(/\/$/, '');
     }
     // else if (useHash) {
     //   this.root = (Router._currentLocation() as string).split(this.hash)[0].replace(/\/$/, '');
@@ -275,8 +259,7 @@ export class Router {
       if (hasDuplicatedRoutes(routes)) throw new Error(duplicateRoutes);
       else this._routes.push(...routes);
     } else {
-      if (hasExistingRoute(routes, this._routes))
-        throw new Error(existingRoute);
+      if (hasExistingRoute(routes, this._routes)) throw new Error(existingRoute);
       else this._routes.push(routes);
     }
   }
@@ -309,17 +292,17 @@ export class Router {
    */
   destroy(): void {
     this._routes = [];
-    this._lastResolvedUrl = "";
+    this._lastResolvedUrl = '';
   }
 
   private static _currentLocation() {
-    if (typeof window !== "undefined") {
-      if (typeof window.__NAVIGO_WINDOW_LOCATION_MOCK__ !== "undefined") {
+    if (typeof window !== 'undefined') {
+      if (typeof window.__NAVIGO_WINDOW_LOCATION_MOCK__ !== 'undefined') {
         return window.__NAVIGO_WINDOW_LOCATION_MOCK__;
       }
       return clean(window.location.href);
     }
-    return "";
+    return '';
   }
 
   /**
@@ -333,26 +316,24 @@ export class Router {
   private getRoot() {
     return isNotNil(this.root)
       ? this.root
-      : root((Router._currentLocation() as string).split("?")[0], this._routes);
+      : root((Router._currentLocation() as string).split('?')[0], this._routes);
   }
 
-  private getRouteUrl(path = "") {
-    return path.replace(this.getRoot(), "");
+  private getRouteUrl(path = '') {
+    return path.replace(this.getRoot(), '');
   }
 
   updateLocation(location: string, replaceState = false) {
     if (this.usePushState) {
       // let to = `${this.getRoot() || ''}${this.useHash ? '/#' : '/'}${location}`;
-      let to = `${this.getRoot() || ""}/${location}`;
-      to = to.replace(/([^:])(\/{2,})/g, "$1/");
-      const method = replaceState ? "replaceState" : "pushState";
-      history[method]({}, "", to);
-    } else if (typeof window != "undefined") {
-      const path = location.replace(new RegExp("^" + this.hash), "");
+      let to = `${this.getRoot() || ''}/${location}`;
+      to = to.replace(/([^:])(\/{2,})/g, '$1/');
+      const method = replaceState ? 'replaceState' : 'pushState';
+      history[method]({}, '', to);
+    } else if (typeof window != 'undefined') {
+      const path = location.replace(new RegExp('^' + this.hash), '');
       window.location.href =
-        window.location.href
-          .replace(/#$/, "")
-          .replace(new RegExp(this.hash + ".*$"), "") +
+        window.location.href.replace(/#$/, '').replace(new RegExp(this.hash + '.*$'), '') +
         this.hash +
         path;
     }

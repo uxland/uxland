@@ -1,13 +1,16 @@
-import { Debouncer, nop, timeOut } from '@uxland/functional-utilities';
-import { filter, map, pipe, propEq, reject, uniq, values } from 'ramda';
-import { Store, Unsubscribe } from 'redux';
-import { PropertyWatch } from './connect';
-import { getWatchedProperties } from './watched-redux-property';
+import {Debouncer, timeOut} from '@uxland/browser-utilities';
+import {nop} from '@uxland/utilities';
+import {filter, map, pipe, propEq, reject, uniq, values} from 'ramda';
+import {Store, Unsubscribe} from 'redux';
+import {PropertyWatch} from './connect';
+import {getWatchedProperties} from './watched-redux-property';
 
-const getAllStores = (watchers: { [key: string]: PropertyWatch }): Store<any, any>[] =>
+const getAllStores = (watchers: {[key: string]: PropertyWatch}): Store<any, any>[] =>
   uniq(map(x => x.store, values(watchers)));
-const mapWatchers = (watchersMap: { [key: string]: PropertyWatch }): any => values(watchersMap);
-const getWatchersByStore: (store: Store) => (watchers: PropertyWatch[]) => PropertyWatch[] = store =>
+const mapWatchers = (watchersMap: {[key: string]: PropertyWatch}): any => values(watchersMap);
+const getWatchersByStore: (
+  store: Store
+) => (watchers: PropertyWatch[]) => PropertyWatch[] = store =>
   filter<PropertyWatch>(propEq('store', store));
 const getStoreWatchers = (context: any) => (store: Store<any, any>): any =>
   pipe(getWatchedProperties, mapWatchers, getWatchersByStore(store))(context);
@@ -27,7 +30,7 @@ const getProperties = (state: any, context: any): any =>
   map<PropertyWatch, PropertyState>(x => ({
     name: x.name,
     old: context[x.name],
-    current: x.selector.call(context, state)
+    current: x.selector.call(context, state),
   }));
 const rejectUnchanged: (changes: PropertyState[]) => PropertyState[] = reject<PropertyState>(
   x => x?.old === x?.current
@@ -46,7 +49,8 @@ const listen = (context: any, store: Store): (() => Debouncer) => {
     )(watchers);
   return (): Debouncer => Debouncer.debounce(debounceJob, timeOut.after(16), update);
 };
-const listener = (context: any) => (store: Store): Unsubscribe => store.subscribe(listen(context, store));
+const listener = (context: any) => (store: Store): Unsubscribe =>
+  store.subscribe(listen(context, store));
 const subscribe = (context: any): any => map<Store, Unsubscribe>(listener(context));
 const storeSubscriptions = (context: any) => (subscriptions: Unsubscribe[]): any =>
   Object.defineProperty(context, '__reduxStoreSubscriptions__', {
@@ -54,7 +58,7 @@ const storeSubscriptions = (context: any) => (subscriptions: Unsubscribe[]): any
       return subscriptions;
     },
     configurable: true,
-    enumerable: true
+    enumerable: true,
   });
 export const bind: (context: any) => void = context =>
   pipe(
