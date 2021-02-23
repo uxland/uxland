@@ -26,7 +26,7 @@ jobs:
       - name: Install and test
         run: yarn install && yarn test
       - name: Build
-        run: yarn build && yarn readme:coverage
+        run: yarn build && yarn readme:coverage:commit
       - name: Publish Prerelease
         if: github.ref == 'refs/heads/alpha'
         run: npx lerna publish --conventional-commits --conventional-prerelease --yes

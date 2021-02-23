@@ -32,6 +32,7 @@
     "deps:refresh": "yarn deps:clean && yarn deps:install",
     "docgen": "lerna run jsdoc",
     "readme:coverage": "lerna run readme:coverage --parallel",
+    "readme:coverage:commit": "yarn readme:coverage && git add *.md && git commit -m 'docs: update README'",
     "release:dry-run": "lerna run semantic-release:dry-run",
     "release": "yarn build && yarn test && yarn readme:coverage",
     "postrelease": "yarn docgen && git add . && git commit -m 'docs: update documentation'",
