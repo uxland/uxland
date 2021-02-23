@@ -30,6 +30,8 @@ jobs:
       - name: Publish
         if: github.ref == 'refs/heads/alpha'
         run: npx lerna publish --conventional-commits --conventional-prerelease --yes
+        if: github.ref == 'refs/heads/master'
+        run: npx lerna publish --conventional-commits --conventional-graduate --create-release github --yes
     env:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
