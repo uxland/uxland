@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.11](https://github.com/uxland/uxland/compare/@uxland/routing@1.0.0-alpha.10...@uxland/routing@1.0.0-alpha.11) (2021-02-23)
+
+
+### Bug Fixes
+
+* replace all functional-utilities dependencies ([58bc705](https://github.com/uxland/uxland/commit/58bc7052d3c59fdeac3bad13b8f43b11b611b29b))
+
+
+
+
+
 # [1.0.0-alpha.10](https://github.com/uxland/uxland/compare/@uxland/routing@1.0.0-alpha.9...@uxland/routing@1.0.0-alpha.10) (2020-12-18)
 
 
