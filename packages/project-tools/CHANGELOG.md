@@ -3,6 +3,150 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.30](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.0-alpha.29...@uxland/project-tools@1.0.0-alpha.30) (2021-01-28)
+
+
+### Bug Fixes
+
+* **project-tools:** add prettierignore to lint-staged config ([68d0682](https://github.com/uxland/uxland/commit/68d06826f1f2b205e430b9bd19860be8bc5cdbe3))
+
+
+
+
+
+# [1.0.0-alpha.29](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.0-alpha.28...@uxland/project-tools@1.0.0-alpha.29) (2021-01-27)
+
+
+### Features
+
+* **project-tools:** add airbnb prettier config ([5d1003c](https://github.com/uxland/uxland/commit/5d1003c80f396b5fb1436f811e43f17a60c205c8))
+
+
+
+
+
+# [1.0.0-alpha.28](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.0-alpha.27...@uxland/project-tools@1.0.0-alpha.28) (2021-01-26)
+
+
+### Bug Fixes
+
+* **project-tools:** add documentation config as part of published files ([b047f7a](https://github.com/uxland/uxland/commit/b047f7a83287f9c728ae99799eb2cea1a2cdf2d3))
+
+
+
+
+
+# [1.0.0-alpha.27](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.0-alpha.26...@uxland/project-tools@1.0.0-alpha.27) (2021-01-15)
+
+
+### Bug Fixes
+
+* add hmr-plugin to reload on changes ([1b0bd86](https://github.com/uxland/uxland/commit/1b0bd86b0b298f5942fd8b5d3c084e93206de8b7))
+
+
+
+
+
+# [1.0.0-alpha.26](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.0-alpha.25...@uxland/project-tools@1.0.0-alpha.26) (2021-01-13)
+
+
+### Bug Fixes
+
+* **project-tools:** adapt autoimport to use custom baseStyles ([0a0770b](https://github.com/uxland/uxland/commit/0a0770b6702240c01882da5947ba0bce91006218))
+
+
+
+
+
+# [1.0.0-alpha.25](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.0-alpha.24...@uxland/project-tools@1.0.0-alpha.25) (2021-01-12)
+
+
+### Bug Fixes
+
+* cache in fuse and update watcher roots ([05a5579](https://github.com/uxland/uxland/commit/05a5579d98c7dc42425b4b47981738e52b08fa25))
+
+
+
+
+
+# [1.0.0-alpha.24](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.0-alpha.23...@uxland/project-tools@1.0.0-alpha.24) (2021-01-12)
+
+
+### Bug Fixes
+
+* change fuse configuration parameters ([f520904](https://github.com/uxland/uxland/commit/f5209047320b3455557c89f2f84367716d0cce15))
+
+
+
+
+
+# [1.0.0-alpha.23](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.0-alpha.22...@uxland/project-tools@1.0.0-alpha.23) (2020-11-24)
+
+
+### Bug Fixes
+
+* do not fix fuse version ([45c5953](https://github.com/uxland/uxland/commit/45c5953754704e0c508f14f5aeb087866ba48e15))
+
+
+
+
+
+# [1.0.0-alpha.22](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.0-alpha.21...@uxland/project-tools@1.0.0-alpha.22) (2020-11-19)
+
+
+### Bug Fixes
+
+* force publish ([e0ca933](https://github.com/uxland/uxland/commit/e0ca93347cf1f6dc6e12ff9e9da78d6efb1300a1))
+
+
+
+
+
+# [1.0.0-alpha.21](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.0-alpha.20...@uxland/project-tools@1.0.0-alpha.21) (2020-11-19)
+
+
+### Bug Fixes
+
+* add pluginCSS and fix fuse version ([ef2ed62](https://github.com/uxland/uxland/commit/ef2ed628baf089c86033419520533f091982522d))
+
+
+
+
+
+# [1.0.0-alpha.20](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.0-alpha.19...@uxland/project-tools@1.0.0-alpha.20) (2020-10-29)
+
+
+### Bug Fixes
+
+* **project-tools:** rename fuse exported index ([cb2a537](https://github.com/uxland/uxland/commit/cb2a537f97476c40d56a95ce0db07f64fb18ed51))
+
+
+
+
+
+# [1.0.0-alpha.19](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.0-alpha.17...@uxland/project-tools@1.0.0-alpha.19) (2020-10-29)
+
+
+### Bug Fixes
+
+* **project-tools:** if no baseStyles are provided in fuse, skip autoImport segment ([56be681](https://github.com/uxland/uxland/commit/56be681d8a8403cd7070f209f597a17754f9186c))
+
+
+
+
+
+# [1.0.0-alpha.18](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.0-alpha.17...@uxland/project-tools@1.0.0-alpha.18) (2020-10-29)
+
+
+### Bug Fixes
+
+* **project-tools:** if no baseStyles are provided in fuse, skip autoImport segment ([56be681](https://github.com/uxland/uxland/commit/56be681d8a8403cd7070f209f597a17754f9186c))
+
+
+
+
+
+
 # [1.0.0-alpha.17](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.0-alpha.16...@uxland/project-tools@1.0.0-alpha.17) (2020-10-21)
 
 

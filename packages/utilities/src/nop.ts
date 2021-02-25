@@ -24,7 +24,7 @@
 /**
  * Defines an empty function
  * @function nop
- * @memberof FunctionalUtilities
+ * @memberof Utilities
  * @since v1.0.0
  * @returns {void}
  * @example

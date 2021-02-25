@@ -1,10 +1,10 @@
 {
   "name": "@uxland/ramda-extensions",
-  "version": "0.0.0",
-  "description": "Ramda extensions",
+  "version": "1.0.0-alpha.0",
+  "description": "Ramda Extensions",
   "author": "UXLand <dev@uxland.es>",
   "homepage": "https://github.com/uxland/uxland/tree/master/packages/ramda-extensions#readme",
-  "license": "ISC",
+  "license": "MIT",
   "main": "lib/index",
   "module": "es/index.js",
   "types": "lib/index.d.ts",
@@ -25,7 +25,7 @@
   },
   "scripts": {
     "build:es": "tsc -p tsconfig.json --outDir es --module esnext --target es2018 --noEmit false",
-    "build:cjs": "tsc -p tsconfig.json --outDir lib --noEmit false --declaration  --removeComments false",
+    "build:cjs": "tsc -p tsconfig.json --outDir lib --target es2018 --noEmit false --declaration  --removeComments false",
     "build:umd": "cross-env NODE_ENV=development rollup -c -o dist/index.js",
     "build:umd:min": "cross-env NODE_ENV=production rollup -c -o dist/index.min.js",
     "build:clean": "rimraf es lib dist tmp tsconfig.tsbuildinfo",
@@ -71,6 +71,6 @@
     "typescript": "^4.0.2"
   },
   "dependencies": {
-    "ramda": "^0.27.0"
+    "ramda": "^0.27.1"
   }
 }

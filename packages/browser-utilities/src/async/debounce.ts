@@ -20,8 +20,8 @@
  * AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-import { AsyncInterface } from "./async-interface";
-import { timeOut } from "./time-out";
+import {AsyncInterface} from './async-interface';
+import {timeOut} from './time-out';
 export class Debouncer {
   constructor(
     private asyncModule: AsyncInterface = null,
@@ -122,7 +122,7 @@ export class Debouncer {
     return debouncer;
   }
 }
-export const debounce: (delay: number) => MethodDecorator = (delay) => (
+export const debounce: (delay: number) => MethodDecorator = delay => (
   target,
   propertyKey,
   descriptor

@@ -20,9 +20,9 @@
  * AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-import { invariant } from "@uxland/utilities";
-import { identity, is, isNil } from "ramda";
-import { Action as ReduxAction } from "redux";
+import {invariant} from '@uxland/utilities';
+import {identity, is, isNil} from 'ramda';
+import {Action as ReduxAction} from 'redux';
 
 export type ActionFunctionAny<R> = (...args: any[]) => R;
 
@@ -66,9 +66,7 @@ export type MetaCreator<Meta = any> = (...args: any[]) => Meta;
  * @returns {Action<Payload, Meta>}
  */
 STUB = 1;
-export type ActionCreator<Payload = any, Meta = any> = (
-  ...args: any[]
-) => Action<Payload, Meta>;
+export type ActionCreator<Payload = any, Meta = any> = (...args: any[]) => Action<Payload, Meta>;
 
 /**
  * Action creator
@@ -89,7 +87,7 @@ export const createAction: <Payload = any, Meta = any>(
 ) => ActionCreator = (type, payloadCreator = identity, metaCreator) => {
   invariant(
     is(Function, payloadCreator) || isNil(payloadCreator),
-    "Expected payloadCreator to be a function, undefined or null"
+    'Expected payloadCreator to be a function, undefined or null'
   );
   const hasMeta = is(Function, metaCreator);
 
@@ -99,10 +97,8 @@ export const createAction: <Payload = any, Meta = any>(
       : (head, ...args): Error | Record<string, any> =>
           head instanceof Error ? head : payloadCreator(head, ...args);
   const actionCreator = (...args: any[]): Action => {
-    const action = { type } as Action;
-    const payload = args.length
-      ? finalPayloadCreator(...args)
-      : finalPayloadCreator(null);
+    const action = {type} as Action;
+    const payload = args.length ? finalPayloadCreator(...args) : finalPayloadCreator(null);
     if (!isNil(payload)) action.payload = payload;
     if (hasMeta) action.meta = metaCreator(...args);
     if (action.payload instanceof Error) action.error = true;

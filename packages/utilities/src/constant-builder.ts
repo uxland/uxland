@@ -1,11 +1,11 @@
-import * as R from "ramda";
-import { isNotNil } from "@uxland/ramda-extensions";
+import {isNotNil} from '@uxland/ramda-extensions';
+import * as R from 'ramda';
 
 let STUB = 1;
 /**
  * Returns a string from provided prefix, suffix, separator and using constant input
  * @typedef {function} ConstantBuilder
- * @memberof FunctionalUtilities
+ * @memberof Utilities
  * @since v1.0.0
  * @param {string} constant Constant to be prefixed and suffixed
  * @returns {string}
@@ -17,12 +17,12 @@ export type ConstantBuilder = (constant: string) => string;
  * Constant Builder
  * @function
  * @name constantBuilder
- * @memberof FunctionalUtilities
+ * @memberof Utilities
  * @since v1.0.0
  * @param {string} prefix String prefix to appended at the beginning of the constant provided
  * @param {string=} suffix String suffix to be appended at the end of the constant provided
  * @param {string} separator String to separate prefix/suffix from the constant
- * @returns {FunctionalUtilities.ConstantBuilder}
+ * @returns {Utilities.ConstantBuilder}
  * @throws Throws error if prefix is not provided
  * @example
  *
@@ -34,13 +34,13 @@ export type ConstantBuilder = (constant: string) => string;
 export const constantBuilder = (
   prefix: string,
   suffix?: string,
-  separator = ":"
+  separator = ':'
 ): ConstantBuilder => (constant: string): string =>
   R.cond([
     [
       (): boolean => R.isNil(prefix),
       (): never => {
-        throw new Error("prefix is needed");
+        throw new Error('prefix is needed');
       },
     ],
     [

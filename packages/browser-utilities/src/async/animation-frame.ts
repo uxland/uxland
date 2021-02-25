@@ -20,9 +20,8 @@
  * AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-import { AsyncInterface } from "./async-interface";
+import {AsyncInterface} from './async-interface';
 export const animationFrame: AsyncInterface = {
-  cancel: (handle) => window.cancelAnimationFrame(handle),
-  run: (callback) =>
-    window.requestAnimationFrame(callback as FrameRequestCallback),
+  cancel: handle => window.cancelAnimationFrame(handle),
+  run: callback => window.requestAnimationFrame(callback as FrameRequestCallback),
 };

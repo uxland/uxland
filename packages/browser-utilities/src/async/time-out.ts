@@ -20,12 +20,11 @@
  * AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-import { AsyncInterface } from "./async-interface";
+import {AsyncInterface} from './async-interface';
 
-const run = (fn: (...args: any[]) => void, delay: number): number =>
-  setTimeout(fn, delay) as any;
+const run = (fn: (...args: any[]) => void, delay: number): number => setTimeout(fn, delay) as any;
 const cancel = (handle: number): void => clearTimeout(handle);
-const after: (delay: number) => AsyncInterface = (delay) =>
+const after: (delay: number) => AsyncInterface = delay =>
   ({
     run: (callback: (...args: any[]) => void) => run(callback, delay),
     cancel,

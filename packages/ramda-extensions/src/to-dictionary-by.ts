@@ -20,12 +20,12 @@
  * AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-import { reduce } from "ramda";
+import {reduce} from 'ramda';
 
 /**
  * Converts an array to dictionary using provided key as reference
  * @function toDictionaryBy
- * @memberof FunctionalUtilities.Ramda
+ * @memberof RamdaExtensions
  * @since v1.0.0
  * @param {string} key Message error to be thrown in case condition is not fulfilled
  * @returns {object}
@@ -36,4 +36,4 @@ import { reduce } from "ramda";
  *
  */
 export const toDictionaryBy = (key: string) => (input: any[]): any =>
-  reduce((acc, elem) => ({ ...acc, [elem[key]]: elem }), {})(input);
+  reduce((acc, elem) => ({...acc, [elem[key]]: elem}), {})(input);

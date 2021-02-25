@@ -20,13 +20,13 @@
  * AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-import { AsyncInterface } from "./async-interface";
+import {AsyncInterface} from './async-interface';
 
 let microtaskCurrHandle = 0;
 let microtaskLastHandle = 0;
 const microtaskCallbacks = [];
 let microtaskNodeContent = 0;
-const microtaskNode = document && document.createTextNode("");
+const microtaskNode = document && document.createTextNode('');
 function microtaskFlush(): void {
   const len = microtaskCallbacks.length;
   for (let i = 0; i < len; i++) {
@@ -57,7 +57,7 @@ export const microTask: AsyncInterface = {
    * @param {!Function=} callback Callback to run
    * @return {number} Handle used for canceling task
    */
-  run(callback: (args) => void | undefined): number {
+  run(callback: () => void | undefined): number {
     microtaskNode.textContent = (microtaskNodeContent++).toString();
     microtaskCallbacks.push(callback);
     return microtaskCurrHandle++;
@@ -74,7 +74,7 @@ export const microTask: AsyncInterface = {
     const idx = handle - microtaskLastHandle;
     if (idx >= 0) {
       if (!microtaskCallbacks[idx]) {
-        throw new Error("invalid async handle: " + handle);
+        throw new Error('invalid async handle: ' + handle);
       }
       microtaskCallbacks[idx] = null;
     }

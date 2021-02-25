@@ -20,8 +20,8 @@
  * AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-import { AsyncInterface } from "./async-interface";
-import { timeOut } from "./time-out";
+import {AsyncInterface} from './async-interface';
+import {timeOut} from './time-out';
 type RequestIdleCallbackHandle = any;
 type RequestIdleCallbackOptions = {
   timeout: number;
@@ -41,14 +41,12 @@ declare global {
   }
 }
 const idlePeriodImpl: AsyncInterface = {
-  cancel: (handle) => window.cancelIdleCallback(handle),
-  run: (fn) => window.requestIdleCallback(fn as any),
+  cancel: handle => window.cancelIdleCallback(handle),
+  run: fn => window.requestIdleCallback(fn as any),
 };
 const fakeImpl: AsyncInterface = {
-  run: (callback) => timeOut.run(callback, 16),
-  cancel: (handle) => timeOut.cancel(handle),
+  run: callback => timeOut.run(callback, 16),
+  cancel: handle => timeOut.cancel(handle),
 };
 export const idlePeriod: AsyncInterface =
-  window && window.requestIdleCallback && window.cancelIdleCallback
-    ? idlePeriodImpl
-    : fakeImpl;
+  window && window.requestIdleCallback && window.cancelIdleCallback ? idlePeriodImpl : fakeImpl;

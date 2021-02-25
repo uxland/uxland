@@ -20,13 +20,13 @@
  * AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-import { reject } from "ramda";
-import { isNullOrEmpty } from "./is-null-or-empty";
+import {reject} from 'ramda';
+import {isNullOrEmpty} from './is-null-or-empty';
 
 /**
  * Filters out input of empty or null values/items
  * @function rejectNilOrEmpty
- * @memberof FunctionalUtilities.Ramda
+ * @memberof RamdaExtensions
  * @since v1.0.0
  * @param {!Array} input Input to filter empty or null values/items
  * @returns {*|void}

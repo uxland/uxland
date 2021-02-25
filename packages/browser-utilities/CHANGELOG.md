@@ -1,0 +1,33 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# [1.0.0-alpha.1](https://github.com/uxland/uxland/compare/@uxland/browser-utilities@1.0.0-alpha.0...@uxland/browser-utilities@1.0.0-alpha.1) (2021-02-23)
+
+
+### Bug Fixes
+
+* **browser-utilities:** add user-lang utility ([45cb63b](https://github.com/uxland/uxland/commit/45cb63b63b260085e7c4e56d93f7b087e44fe14c))
+* replace all functional-utilities dependencies ([58bc705](https://github.com/uxland/uxland/commit/58bc7052d3c59fdeac3bad13b8f43b11b611b29b))
+
+
+
+
+
+# 1.0.0-alpha.0 (2021-02-22)
+
+
+### Bug Fixes
+
+* update readme ([b1b49a0](https://github.com/uxland/uxland/commit/b1b49a06feaa531d7163f958e898d188e972c77c))
+
+
+### Features
+
+* refactor functional-utilities ([0aaf0da](https://github.com/uxland/uxland/commit/0aaf0da5d1804f9e7892dc04c63ab2bb57f9f3f9))
+
+
+### BREAKING CHANGES
+
+* Split functional-utilities library into three depending on purpose classification

@@ -20,14 +20,14 @@
  * AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-import { allPass } from "ramda";
-import { isNotEmpty } from "./is-not-empty";
-import { isNotNil } from "./is-not-nil";
+import {allPass} from 'ramda';
+import {isNotEmpty} from './is-not-empty';
+import {isNotNil} from './is-not-nil';
 
 /**
  * Checks whether input is not null nor empty
  * @function isNotNullNeitherEmpty
- * @memberof FunctionalUtilities.Ramda
+ * @memberof RamdaExtensions
  * @since v1.0.0
  * @param {*} input Input to check emptiness or nullity
  * @returns {boolean}

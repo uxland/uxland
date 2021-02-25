@@ -21,11 +21,10 @@
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-/** @namespace FunctionalUtilities */
-export * from "./async-queue";
-export * from "./collect";
-export * from "./constant-builder";
-export * from "./curried";
-export * from "./invariant";
-export * from "./meta";
-export * from "./nop";
+/** @namespace Utilities */
+export * from './collect';
+export * from './constant-builder';
+export * from './curried';
+export * from './invariant';
+export * from './meta';
+export * from './nop';

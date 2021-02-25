@@ -20,12 +20,12 @@
  * AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-import { propEq } from "ramda";
+import {propEq} from 'ramda';
 
 /**
  * Checks if input value is equal to object's id
  * @function idEq
- * @memberof FunctionalUtilities.Ramda
+ * @memberof RamdaExtensions
  * @since v1.0.0
  * @param {*} value Value to be checked
  * @returns {void}
@@ -36,4 +36,4 @@ import { propEq } from "ramda";
  * idEq(undefined)({foo: 'bar'}) //=> true
  */
 
-export const idEq = propEq("id");
+export const idEq = propEq('id');

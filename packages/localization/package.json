@@ -1,6 +1,6 @@
 {
   "name": "@uxland/localization",
-  "version": "1.0.0-alpha.28",
+  "version": "1.0.0-alpha.30",
   "description": "Localization",
   "author": "UXLand <dev@uxland.es>",
   "homepage": "https://github.com/uxland/uxland/tree/master/packages/localization#readme",
@@ -25,7 +25,7 @@
   },
   "scripts": {
     "build:es": "tsc -p tsconfig.json --outDir es --module esnext --target es2018 --noEmit false",
-    "build:cjs": "tsc -p tsconfig.json --outDir lib --noEmit false --declaration  --removeComments false",
+    "build:cjs": "tsc -p tsconfig.json --outDir lib --target es2018 --noEmit false --declaration  --removeComments false",
     "build:umd": "cross-env NODE_ENV=development rollup -c -o dist/index.js",
     "build:umd:min": "cross-env NODE_ENV=production rollup -c -o dist/index.min.js",
     "build:clean": "rimraf es lib dist tmp tsconfig.tsbuildinfo",
@@ -70,8 +70,8 @@
     "typescript": "^4.0.2"
   },
   "dependencies": {
-    "@uxland/event-aggregator": "^1.0.0-alpha.15",
-    "@uxland/utilities": "^1.0.0-alpha.4",
+    "@uxland/event-aggregator": "^1.0.0-alpha.16",
+    "@uxland/utilities": "^1.0.0-alpha.5",
     "intl-messageformat": "^7.8.4",
     "ramda": "^0.27.0"
   },

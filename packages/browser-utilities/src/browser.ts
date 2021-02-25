@@ -1,3 +1,4 @@
+/*eslint no-useless-escape: "warn"*/
 export const isTabletBrowser = (): boolean => {
   let check = false;
   (function (a): void {
@@ -30,10 +31,9 @@ export const isMobileBrowser = (): boolean => {
   return check;
 };
 
-export const isMobileOrTabletBrowser = (): boolean =>
-  isMobileBrowser() || isTabletBrowser();
+export const isMobileOrTabletBrowser = (): boolean => isMobileBrowser() || isTabletBrowser();
 
 export const isAndroid = (): boolean => {
   const ua = navigator.userAgent.toLowerCase();
-  return ua.indexOf("android") > -1; //&& ua.indexOf("mobile");
+  return ua.indexOf('android') > -1; //&& ua.indexOf("mobile");
 };
