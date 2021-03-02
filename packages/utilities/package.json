@@ -1,6 +1,6 @@
 {
   "name": "@uxland/utilities",
-  "version": "1.0.0-alpha.5",
+  "version": "1.0.0-alpha.6",
   "description": "Utilities",
   "author": "UXLand <dev@uxland.es>",
   "homepage": "https://github.com/uxland/uxland/tree/master/packages/utilities#readme",
@@ -71,6 +71,6 @@
     "typescript": "^4.0.2"
   },
   "dependencies": {
-    "@uxland/ramda-extensions": "^1.0.0-alpha.0"
+    "@uxland/ramda-extensions": "^1.0.0-alpha.1"
   }
 }
