@@ -1,4 +1,5 @@
 /*
+ * @license
  * BSD License
  *
  * Copyright (c) 2020, UXLand
