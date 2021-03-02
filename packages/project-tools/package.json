@@ -4,7 +4,7 @@
   "description": "UXLand project tools such as configs and lint",
   "author": "UXLand <dev@uxland.es>",
   "homepage": "https://github.com/uxland/uxland/tree/master/packages/project-tools#readme",
-  "license": "MIT",
+  "license": "BSD-4-Clause",
   "files": [
     "build",
     "documentation",

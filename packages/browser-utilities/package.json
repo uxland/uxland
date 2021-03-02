@@ -4,7 +4,7 @@
   "description": "Browser Utilities",
   "author": "Alex Vizcaino <avizcaino@uxland.es>",
   "homepage": "https://github.com/uxland/uxland/tree/master/packages/browser-utilities#readme",
-  "license": "ISC",
+  "license": "BSD-4-Clause",
   "main": "lib/index",
   "module": "es/index.js",
   "types": "lib/index.d.ts",
