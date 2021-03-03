@@ -20,7 +20,7 @@ import {toDictionaryBy} from './to-dictionary-by';
 let STUB = 1;
 /**
  * Entity interface
- * @memberof FunctionalUtilities
+ * @memberof RamdaExtensions
  * @interface Entity
  * @property {string} id Entity ID
  */
@@ -35,7 +35,7 @@ interface Entity {
  * @memberof RamdaExtensions
  * @since v1.0.0
  * @param {T[]} items Items to be converted into dictionary
- * @returns {FunctionalUtilities.Entity}
+ * @returns {RamdaExtensions.Entity}
  * @throws Will throw an error with the message supplied if condition is not fulfilled.
  * @see RamdaExtensions.toDictionaryBy
  * @example
