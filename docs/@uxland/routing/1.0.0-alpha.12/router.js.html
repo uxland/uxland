@@ -101,39 +101,39 @@ STUB = 1;
  * @since v1.0.0
  * @param {string} duplicateRoutes='You are trying to register multiple equal routes'
  */
-exports.duplicateRoutes = 'You are trying to register multiple equal routes';
+exports.duplicateRoutes = "You are trying to register multiple equal routes";
 /**
  * Existing route exception
  * @memberof Routing
  * @since v1.0.0
  * @param {string} existingRoute='You are trying to register a route that already exists'
  */
-exports.existingRoute = 'You are trying to register a route that already exists';
+exports.existingRoute = "You are trying to register a route that already exists";
 /**
  * Previous navigation action cancelled
  * @memberof Routing
  * @since v1.0.0
  * @param {string} previousNavigationCancelled='Previous navigation action has been cancelled due to a new one'
  */
-exports.previousNavigationCancelled = 'Previous navigation action has been cancelled due to a new one';
+exports.previousNavigationCancelled = "Previous navigation action has been cancelled due to a new one";
 const hasDuplicatedRoutes = (routes) => {
-    const urls = routes.map(r => r.route);
+    const urls = routes.map((r) => r.route);
     return new Set(urls).size != urls.length;
 };
-const hasExistingRoute = (route, routes) => routes.find(r => r.route == route.route) != undefined;
+const hasExistingRoute = (route, routes) => routes.find((r) => r.route == route.route) != undefined;
 // const isHashChangeAPIAvailable = () => typeof window !== 'undefined' &amp;&amp; 'onhashchange' in window;
-const routerHooksDefinedSpec = ramda_1.propSatisfies(ramda_extensions_1.isNotNil, 'hooks');
+const routerHooksDefinedSpec = ramda_1.propSatisfies(ramda_extensions_1.isNotNil, "hooks");
 const canNavigateFromSpec = ramda_1.allPass([
     routerHooksDefinedSpec,
-    ramda_1.pathSatisfies(ramda_extensions_1.isNotNil, ramda_extensions_1.toPath('hooks.canNavigateFrom')),
+    ramda_1.pathSatisfies(ramda_extensions_1.isNotNil, ramda_extensions_1.toPath("hooks.canNavigateFrom")),
 ]);
 const canNavigateToSpec = ramda_1.allPass([
     routerHooksDefinedSpec,
-    ramda_1.pathSatisfies(ramda_extensions_1.isNotNil, ramda_extensions_1.toPath('hooks.canNavigateTo')),
+    ramda_1.pathSatisfies(ramda_extensions_1.isNotNil, ramda_extensions_1.toPath("hooks.canNavigateTo")),
 ]);
 const routesToDeactivate = (last, current, routes) => {
-    const lastRoutes = finding_matching_routes_1.findMatchingRoutes(last, routes).map(m => m.route);
-    const currentRoutes = finding_matching_routes_1.findMatchingRoutes(current, routes).map(m => m.route);
+    const lastRoutes = finding_matching_routes_1.findMatchingRoutes(last, routes).map((m) => m.route);
+    const currentRoutes = finding_matching_routes_1.findMatchingRoutes(current, routes).map((m) => m.route);
     return ramda_1.difference(lastRoutes, currentRoutes);
 };
 function toAsync(makeGenerator) {
@@ -150,7 +150,7 @@ function toAsync(makeGenerator) {
         }
         try {
             const p = handle(generator.next);
-            p['generator'] = generator;
+            p["generator"] = generator;
             return p;
         }
         catch (ex) {
@@ -170,11 +170,11 @@ function* navigate(last, current, routes, router, notFoundHandler) {
             const toDeactivate = routesToDeactivate(last, current, routes);
             const canNavigateFromResults = yield Promise.all(toDeactivate
                 .filter(canNavigateFromSpec)
-                .map(r => r.hooks.canNavigateFrom(current, matchingRoute.params, query)));
+                .map((r) => r.hooks.canNavigateFrom(current, matchingRoute.params, query)));
             const canNavigateToResults = yield Promise.all(toDeactivate
                 .filter(canNavigateToSpec)
-                .map(r => r.hooks.canNavigateTo(current, matchingRoute.params, query)));
-            if ([...canNavigateFromResults, ...canNavigateToResults].every(x => x)) {
+                .map((r) => r.hooks.canNavigateTo(current, matchingRoute.params, query)));
+            if ([...canNavigateFromResults, ...canNavigateToResults].every((x) => x)) {
                 result = current;
                 router.resolving = true;
                 router.updateLocation(current);
@@ -206,7 +206,7 @@ class Router {
      * const router = new Router([{route: 'dummy'}])
      *
      */
-    constructor(routes = [], root, hash = '' /*private useHash = false, private hash = '#'*/) {
+    constructor(routes = [], root, hash = "" /*private useHash = false, private hash = '#'*/) {
         this.root = root;
         this.hash = hash;
         // private readonly locationChangeHandler: any;
@@ -234,7 +234,7 @@ class Router {
         }
         if (root) {
             // this.root = useHash ? root.replace(/\/$/, '/' + this.hash) : root.replace(/\/$/, '');
-            this.root = root.replace(/\/$/, '');
+            this.root = root.replace(/\/$/, "");
         }
         // else if (useHash) {
         //   this.root = (Router._currentLocation() as string).split(this.hash)[0].replace(/\/$/, '');
@@ -248,8 +248,17 @@ class Router {
      * @throws You are trying to register a route that already exists
      * @example
      *
+     * // Register a single route
      * router.registerRoutes({route: 'foo'});
+     *
+     * // Register multiple routes
      * router.registerRoutes([{route: 'foo'}, {route: 'bar'}])
+     *
+     * // Register route with hooks
+     * router.registerRoutes({
+     *    route: "dummy/:id",
+     *    hooks: { canNavigateFrom, canNavigateTo, navigatedFrom },
+     * });
      *
      */
     registerRoutes(routes) {
@@ -292,16 +301,16 @@ class Router {
      */
     destroy() {
         this._routes = [];
-        this._lastResolvedUrl = '';
+        this._lastResolvedUrl = "";
     }
     static _currentLocation() {
-        if (typeof window !== 'undefined') {
-            if (typeof window.__NAVIGO_WINDOW_LOCATION_MOCK__ !== 'undefined') {
+        if (typeof window !== "undefined") {
+            if (typeof window.__NAVIGO_WINDOW_LOCATION_MOCK__ !== "undefined") {
                 return window.__NAVIGO_WINDOW_LOCATION_MOCK__;
             }
             return clean_1.clean(window.location.href);
         }
-        return '';
+        return "";
     }
     /**
      * Returns router current location
@@ -313,23 +322,25 @@ class Router {
     getRoot() {
         return ramda_extensions_1.isNotNil(this.root)
             ? this.root
-            : root_1.root(Router._currentLocation().split('?')[0], this._routes);
+            : root_1.root(Router._currentLocation().split("?")[0], this._routes);
     }
-    getRouteUrl(path = '') {
-        return path.replace(this.getRoot(), '');
+    getRouteUrl(path = "") {
+        return path.replace(this.getRoot(), "");
     }
     updateLocation(location, replaceState = false) {
         if (this.usePushState) {
             // let to = `${this.getRoot() || ''}${this.useHash ? '/#' : '/'}${location}`;
-            let to = `${this.getRoot() || ''}/${location}`;
-            to = to.replace(/([^:])(\/{2,})/g, '$1/');
-            const method = replaceState ? 'replaceState' : 'pushState';
-            history[method]({}, '', to);
+            let to = `${this.getRoot() || ""}/${location}`;
+            to = to.replace(/([^:])(\/{2,})/g, "$1/");
+            const method = replaceState ? "replaceState" : "pushState";
+            history[method]({}, "", to);
         }
-        else if (typeof window != 'undefined') {
-            const path = location.replace(new RegExp('^' + this.hash), '');
+        else if (typeof window != "undefined") {
+            const path = location.replace(new RegExp("^" + this.hash), "");
             window.location.href =
-                window.location.href.replace(/#$/, '').replace(new RegExp(this.hash + '.*$'), '') +
+                window.location.href
+                    .replace(/#$/, "")
+                    .replace(new RegExp(this.hash + ".*$"), "") +
                     this.hash +
                     path;
         }

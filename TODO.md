@@ -19,16 +19,16 @@
 
 # Libraries
 
-| Library           | README | Docs |                                             Test                                              |
-| ----------------- | :----: | :--: | :-------------------------------------------------------------------------------------------: |
-| browser-utilities |  :x:   | :x:  |    ![Statements](https://img.shields.io/badge/Coverage-24.42%25-red.svg "Make me better!")    |
-| event-aggregator  |  :x:   | :x:  |     ![Statements](https://img.shields.io/badge/Coverage-40%25-red.svg "Make me better!")      |
-| fetch-client      |  :x:   | :x:  |    ![Statements](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg "Awesome!")     |
-| localization      |  :x:   | :x:  |    ![Statements](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg "Awesome!")     |
-| object-mapper     |  :x:   | :x:  | ![Statements](https://img.shields.io/badge/Coverage-95.28%25-brightgreen.svg "Almost there!") |
-| project-tools     |  :x:   | :x:  |                                               -                                               |
-| ramda-extensions  |  :x:   | :x:  |    ![Statements](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg "Awesome!")     |
-| redux             |  :x:   | :x:  | ![Statements](https://img.shields.io/badge/Coverage-97.48%25-brightgreen.svg "Almost there!") |
-| routing           |  :x:   | :x:  | ![Statements](https://img.shields.io/badge/Coverage-98.95%25-brightgreen.svg "Almost there!") |
-| style-utilities   |  :x:   | :x:  |                                               -                                               |
-| utilities         |  :x:   | :x:  |    ![Statements](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg "Awesome!")     |
+| Library           |       README       |        Docs        |                                             Test                                              |
+| ----------------- | :----------------: | :----------------: | :-------------------------------------------------------------------------------------------: |
+| browser-utilities |        :x:         |        :x:         |    ![Statements](https://img.shields.io/badge/Coverage-24.42%25-red.svg "Make me better!")    |
+| event-aggregator  |        :x:         |        :x:         |     ![Statements](https://img.shields.io/badge/Coverage-40%25-red.svg "Make me better!")      |
+| fetch-client      |        :x:         |        :x:         |    ![Statements](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg "Awesome!")     |
+| localization      | :white_check_mark: | :white_check_mark: |    ![Statements](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg "Awesome!")     |
+| object-mapper     | :white_check_mark: | :white_check_mark: | ![Statements](https://img.shields.io/badge/Coverage-95.28%25-brightgreen.svg "Almost there!") |
+| project-tools     |        :x:         |        :x:         |                                               -                                               |
+| ramda-extensions  |        :x:         |        :x:         |    ![Statements](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg "Awesome!")     |
+| redux             |        :x:         |        :x:         | ![Statements](https://img.shields.io/badge/Coverage-97.48%25-brightgreen.svg "Almost there!") |
+| routing           | :white_check_mark: | :white_check_mark: | ![Statements](https://img.shields.io/badge/Coverage-98.95%25-brightgreen.svg "Almost there!") |
+| style-utilities   | :white_check_mark: |         -          |                                               -                                               |
+| utilities         |        :x:         |        :x:         |    ![Statements](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg "Awesome!")     |
