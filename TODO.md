@@ -31,4 +31,4 @@
 | redux             |        :x:         |        :x:         | ![Statements](https://img.shields.io/badge/Coverage-97.48%25-brightgreen.svg "Almost there!") |
 | routing           | :white_check_mark: | :white_check_mark: | ![Statements](https://img.shields.io/badge/Coverage-98.95%25-brightgreen.svg "Almost there!") |
 | style-utilities   | :white_check_mark: |         -          |                                               -                                               |
-| utilities         |        :x:         |        :x:         |    ![Statements](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg "Awesome!")     |
+| utilities         | :white_check_mark: | :white_check_mark: |    ![Statements](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg "Awesome!")     |
