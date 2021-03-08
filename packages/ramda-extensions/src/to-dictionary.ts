@@ -30,7 +30,7 @@ interface Entity {
 }
 
 /**
- * Converts an array to dictionary using ID as key
+ * Check if condition is fulfilled, otherwise throws supplied message error
  * @function toDictionary
  * @memberof RamdaExtensions
  * @since v1.0.0
