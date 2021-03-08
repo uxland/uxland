@@ -22,7 +22,7 @@
 | Library           |       README       |        Docs        |                                             Test                                              |
 | ----------------- | :----------------: | :----------------: | :-------------------------------------------------------------------------------------------: |
 | browser-utilities |        :x:         |        :x:         |    ![Statements](https://img.shields.io/badge/Coverage-24.42%25-red.svg "Make me better!")    |
-| event-aggregator  |        :x:         |        :x:         |     ![Statements](https://img.shields.io/badge/Coverage-40%25-red.svg "Make me better!")      |
+| event-aggregator  | :white_check_mark: | :white_check_mark: |     ![Statements](https://img.shields.io/badge/Coverage-40%25-red.svg "Make me better!")      |
 | fetch-client      |        :x:         |        :x:         |    ![Statements](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg "Awesome!")     |
 | localization      | :white_check_mark: | :white_check_mark: |    ![Statements](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg "Awesome!")     |
 | object-mapper     | :white_check_mark: | :white_check_mark: | ![Statements](https://img.shields.io/badge/Coverage-95.28%25-brightgreen.svg "Almost there!") |
