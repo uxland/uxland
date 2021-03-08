@@ -73,7 +73,22 @@ const invokeHandler = (handler: Handler, data: any): void | never => {
   }
 };
 
-class EventAggregator {
+/**
+ * Subscribes to a message channel or message type
+ * @memberof EventAggregator
+ * @class
+ * @since v1.0.0
+ * @example
+ *
+ * ```
+ * const EA = new EventAggregator();
+ * EA.subscribe('event', () => {...});
+ * EA.publish('event');
+ * ```
+ *
+ */
+
+export class EventAggregator {
   eventLookup: Record<string, any[]>;
   messageHandlers: Array<any>;
 
@@ -82,7 +97,22 @@ class EventAggregator {
     this.messageHandlers = [];
   }
 
-  publish(event: string, data: any): void | never {
+  /**
+   * Publishes a message
+   * @function
+   * @memberof EventAggregator.EventAggregator
+   * @name publish
+   * @param {string} event The event or channel to publish to
+   * @param {*} data The data to publish on the channel
+   * @returns {void|never}
+   * @throws Event channel/type is invalid
+   * @example
+   *
+   * const payload = { foo: 'bar' };
+   * publish('EVENT-ID', payload);
+   *
+   */
+  publish(event: string | any, data: any): void | never {
     let subscribers: string | any[];
     let i: number;
 
@@ -110,7 +140,23 @@ class EventAggregator {
     }
   }
 
-  subscribe(event: string, callback: EventCallback): Subscription {
+  /**
+   * Subscribes to a message channel or message type
+   * @function
+   * @memberof EventAggregator.EventAggregator
+   * @name subscribe
+   * @param {string} event The event channel or event data type
+   * @param {EventAggregator.EventCallback} callback The callback to be invoked when when the specified message is published
+   * @returns {EventAggregator.Subscription}
+   * @throws Event channel/type is invalid
+   * @example
+   *
+   * ```
+   * EA.subscribe('EVENT-ID', callback);
+   * ```
+   *
+   */
+  subscribe(event: string | any, callback: EventCallback): Subscription {
     let handler: EventCallback | Handler;
     let subscribers: any[];
 
@@ -138,7 +184,23 @@ class EventAggregator {
     };
   }
 
-  subscribeOnce(event: string, callback: EventCallback): Subscription {
+  /**
+   * Subscribes to a message channel or message type, then disposes the subscription automatically after the first message is received
+   * @function
+   * @memberof EventAggregator.EventAggregator
+   * @name subscribeOnce
+   * @param {string} event The event channel or event data type
+   * @param {EventAggregator.EventCallback} callback The callback to be invoked when when the specified message is published
+   * @returns {EventAggregator.Subscription}
+   * @example
+   *
+   * ```
+   * const callback = (payload: any): void => {};
+   * EA.subscribeOnce('EVENT-ID', callback);
+   * ```
+   *
+   */
+  subscribeOnce(event: string | any, callback: EventCallback): Subscription {
     const sub = this.subscribe(event, (a: any, b: any) => {
       sub.dispose();
       return callback(a, b);

@@ -2,7 +2,7 @@
 
 | Build Status                                    | Statements                                    | Branches                                  | Functions                                   | Lines                               |
 | ----------------------------------------------- | --------------------------------------------- | ----------------------------------------- | ------------------------------------------- | ----------------------------------- |
-| ![BuildStatus](#buildstatus# 'Building Status') | ![Statements](#statements# 'Make me better!') | ![Branches](#branches# 'Make me better!') | ![Functions](#functions# 'Make me better!') | ![Lines](#lines# 'Make me better!') |
+| ![BuildStatus](#buildstatus# "Building Status") | ![Statements](#statements# "Make me better!") | ![Branches](#branches# "Make me better!") | ![Functions](#functions# "Make me better!") | ![Lines](#lines# "Make me better!") |
 
 ## Installation
 
@@ -10,14 +10,36 @@
 
 ## Usage
 
+### Event Aggregator instance
+
+It is possible to define numerous instances of the Event Aggregator within a project, each one with the same or different events subscribed, simulating each instance as a new channel of communication.
+
+```typescript
+const EA = new EventAggregator();
+const EA2 = new EventAggregator();
+
+EA.subscribe('event', () => {...});
+EA2.subscribe('event2', () => {...});
+EA.subscribe('common-event', () => {...});
+EA2.subscribe('common-event', () => {...});
+```
+
 ### Event publish
 
 To publish an event you must specify an eventId and an optional payload that will be collected by subscriber.
 
 ```typescript
-const payload = { foo: 'bar' };
-publish('EVENT-ID', payload);
+const payload = { foo: "bar" };
+publish("EVENT-ID", payload);
 ```
+
+It is possible also to provide a class instead of a string event
+
+```typescript
+publish(new Klass(), callback);
+```
+
+If a subscription is done with provided class, the callback provided at the subscription moment will be called.
 
 ### Event subscription
 
@@ -25,7 +47,13 @@ In order to subscribe to an event you must specify an eventId and a callback fun
 
 ```typescript
 const callback = (payload: any): void => {};
-subscribe('EVENT-ID', callback);
+subscribe("EVENT-ID", callback);
+```
+
+It is possible also to provide a class instead of a string event
+
+```typescript
+subscribe(Klass, callback);
 ```
 
 ### Event subscription (only once)
@@ -34,5 +62,5 @@ In order to subscribe to an event, only once, you must specify an eventId and a 
 
 ```typescript
 const callback = (payload: any): void => {};
-subscribeOnce('EVENT-ID', callback);
+subscribeOnce("EVENT-ID", callback);
 ```
