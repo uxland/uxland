@@ -1,6 +1,6 @@
 {
   "name": "@uxland/project-tools",
-  "version": "1.0.0-alpha.31",
+  "version": "1.0.0",
   "description": "UXLand project tools such as configs and lint",
   "author": "UXLand <dev@uxland.es>",
   "homepage": "https://github.com/uxland/uxland/tree/master/packages/project-tools#readme",
