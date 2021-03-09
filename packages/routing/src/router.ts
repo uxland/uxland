@@ -245,8 +245,17 @@ export class Router {
    * @throws You are trying to register a route that already exists
    * @example
    *
+   * // Register a single route
    * router.registerRoutes({route: 'foo'});
+   *
+   * // Register multiple routes
    * router.registerRoutes([{route: 'foo'}, {route: 'bar'}])
+   *
+   * // Register route with hooks
+   * router.registerRoutes({
+   *    route: "dummy/:id",
+   *    hooks: { canNavigateFrom, canNavigateTo, navigatedFrom },
+   * });
    *
    */
   registerRoutes(routes: Route | Route[]): void {

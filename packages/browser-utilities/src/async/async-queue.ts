@@ -15,6 +15,20 @@
  * THIS SOFTWARE IS PROVIDED BY <COPYRIGHT HOLDER> ''AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL <COPYRIGHT HOLDER> BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
+/**
+ * Creates an asynchronous queue instance that will call provided function when possible
+ * @class
+ * @name AsyncQueue
+ * @memberof BrowserUtilities
+ * @since v1.0.0
+ * @example
+ *
+ * const executor = (...args: any[]) => console.log('Queue Executor', args);
+ * const queue = new AsyncQueue(executor);
+ *
+ * queue.enqueueItem(1); //=> 'Queue Executor' 1;
+ */
 export class AsyncQueue {
   private _ownQueue = [];
   private isProcessing = false;
@@ -24,6 +38,11 @@ export class AsyncQueue {
     this.executor = fn;
   }
 
+  /**
+   * Enqueues item and tries to call executor with provided args
+   * @param args Arguments to pass to executor function
+   * @return {void}
+   */
   public enqueueItem(...args: any[]): void {
     this._ownQueue.push([...args]);
     this.tryProcessQueue();

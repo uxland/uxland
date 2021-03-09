@@ -15,6 +15,27 @@
  * THIS SOFTWARE IS PROVIDED BY <COPYRIGHT HOLDER> ''AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL <COPYRIGHT HOLDER> BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
+let STUB = 1;
+/** Async Runner
+ * @memberof BrowserUtilities
+ * @since v1.0.0
+ * @typedef AsyncRunner
+ * @param {function} callback - Callback function to call once asynchronous task has finished
+ * @param {number=} delay - Delay in miliseconds to start asynchronous task
+ */
+STUB = 1;
+export type AsyncRunner = (callback: () => void, delay?: number) => number;
+
+/**
+ * Async Interface
+ * @memberof BrowserUtilities
+ * @since v1.0.0
+ * @interface AsyncInterface
+ * @property {function} cancel - Cancel asynchronous task
+ * @property {AsyncRunner} run - Run asynchronous task
+ */
+STUB = 1;
 export interface AsyncInterface {
   cancel: (handle: number) => void;
   run: (callback: () => any, delay?: number) => number;

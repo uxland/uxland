@@ -39,7 +39,7 @@
     "test:benchmark": "jest test/unit/benchmark.spec.ts --collect-coverage=false --testPathIgnorePatterns []",
     "test:unit": "jest --collect-coverage",
     "test": "yarn test:unit",
-    "jsdoc": "yarn build:cjs && rimraf docs && jsdoc -r ./lib -c jsdoc.config.js",
+    "jsdoc-2": "yarn build:cjs && rimraf docs && jsdoc -r ./lib -c jsdoc.config.js",
     "jsdoc:styles": "cat ../../resources/docs/custom.css >> ./docs/$npm_package_name/$npm_package_version/styles/jsdoc.css",
     "jsdoc:mv": "mkdirp ../../docs/$npm_package_name/$npm_package_version && ncp docs/$npm_package_name/$npm_package_version ../../docs/$npm_package_name/$npm_package_version",
     "postjsdoc": "yarn jsdoc:styles && yarn jsdoc:mv"

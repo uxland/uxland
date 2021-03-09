@@ -25,8 +25,8 @@ import {constantBuilder, ConstantBuilder} from '@uxland/utilities';
  * @since v1.0.0
  * @param {string} prefix Action prefix
  * @param {string=} separator String separator between prefix, constant and suffix
- * @returns {FunctionalUtilities.ConstantBuilder}
- * @see FunctionalUtilities.ConstantBuilder
+ * @returns {Utilities.ConstantBuilder}
+ * @see Utilities.ConstantBuilder
  * @example
  *
  * actionNameBuilder('PREFIX', '@@')('NAME') //=> 'PREFIX@@NAME@@ACTION'

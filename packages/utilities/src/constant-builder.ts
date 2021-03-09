@@ -14,7 +14,7 @@ STUB = 1;
 export type ConstantBuilder = (constant: string) => string;
 
 /**
- * Constant Builder
+ * Converts a string to a new one with provided prefix and suffix in builder
  * @function
  * @name constantBuilder
  * @memberof Utilities

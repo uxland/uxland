@@ -18,6 +18,17 @@
 import {Action, applyMiddleware, createStore, Middleware, Reducer, Store} from 'redux';
 import {resetableReducer} from './resetable-reducer';
 
+/**
+ * Creates a reseteable store
+ * @function
+ * @memberof Redux
+ * @name createResetableStore
+ * @since v1.0.0
+ * @param {Reducer} mainReducer - Main Reducer
+ * @param {Middleware} middleware - Middleware
+ * @param {*=} defaultState - Default state
+ * @param {*=} middleware - Preload state
+ */
 export const createResetableStore: <S = any, A extends Action<any> = Action<any>>(
   mainReducer: Reducer<any, any>,
   middleware: Middleware<any, any, any>,
