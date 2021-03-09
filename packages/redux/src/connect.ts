@@ -26,6 +26,22 @@ export interface ConnectMixinConstructor {
 interface MixinFunction<T> {}
 export type ConnectMixinFunction = MixinFunction<ConnectMixinConstructor>;
 
+/**
+ * Connect mixin that provides redux functionalities and store access to parent class
+ * @mixin
+ * @memberof Redux
+ * @name connectMixin
+ * @since v1.0.0
+ * @param {Store} store Store
+ * @example
+ *
+ * connect = connectMixin(defaultStore);
+ * BaseClass = class Base {
+ *    baseProp = 'foo';
+ * };
+ * TestClass = class Test extends connect(BaseClass) {};
+ *
+ */
 export const connectMixin: (
   defaultStore?: Store<any, any>
 ) => ConnectMixinFunction = defaultStore => (superClass: any): ConnectMixinConstructor => {

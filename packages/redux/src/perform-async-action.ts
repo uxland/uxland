@@ -26,6 +26,15 @@ export interface Executor<T = any> {
   (meta: any, ...args: any[]): Promise<T>;
 }
 
+/**
+ * Performs asynchronous action
+ * @function
+ * @memberof Redux
+ * @name performAsyncAction
+ * @since v1.0.0
+ * @param {Dispatch} dispatch - Action Dispatcher
+ * @returns {Promise<any>}
+ */
 export const performAsyncAction: <T = any>(
   dispatch: Dispatch
 ) => (

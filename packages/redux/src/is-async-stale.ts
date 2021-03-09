@@ -42,6 +42,17 @@ const validTimestamp = (state: AsyncState): boolean => both(isNotNil, isValid)(s
 
 const validStaleInfo = (staleInterval: Duration): Pred =>
   allPass([validStaleInterval(staleInterval), validTimestamp]);
+
+/**
+ * Returns if asynchronous state is stale
+ * @function
+ * @memberof Redux
+ * @name isAsyncStateStale
+ * @since v1.0.0
+ * @param {Redux.AsyncState} state - Asynchronous state
+ * @param {Duration} staleInterval - Time to stale
+ * @returns {boolean}
+ */
 export const isAsyncStateStale = <TIn>(state: AsyncState<TIn>, staleInterval?: Duration): boolean =>
   cond([
     [nilOrDefault, always(true)],

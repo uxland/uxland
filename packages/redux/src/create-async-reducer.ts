@@ -36,13 +36,40 @@ import {Action} from './create-action';
 import {BasicOptions} from './create-basic-reducer';
 import {PathResolver, resolvePath} from './path-resolver';
 
+let STUB = 1;
+/**
+ * Reducer options interface
+ * @interface Options
+ * @memberof Redux
+ * @since v1.0.0
+ * @property {action => Date} timestampAccessor Function that returns and/or modifies the state's timestamp
+ * @property {action => *} payloadAccessor Function that returns and/or modifies payload
+ * @property {Redux.PathResolver=} pathResolver Function that modifies the path
+ * @property {boolean=} keepPreviousStateOnStarted
+ */
 export interface Options<T = any> extends BasicOptions<T> {
   timestampAccessor?: (action: Action) => Date;
   payloadAccessor?: (action: Action) => T;
   pathResolver?: Lens | PathResolver;
   keepPreviousStateOnStarted?: boolean;
 }
+STUB = 1;
 
+/**
+ * Asynchronous state interface
+ * @interface AsyncState
+ * @memberof Redux
+ * @since v1.0.0
+ * @property {boolean} isFetching Is fetching
+ * @property {boolean} error Function has errored
+ * @property {string} errorDescription Error description
+ * @property {*=} exceptions Exceptions
+ * @property {*=} state Current state
+ * @property {boolean=} didInvalidate Invalidated result
+ * @property {Date=} timestamp Timestamp of current state
+ * @property {number=} elapsed Time of execution
+ */
+STUB = 1;
 export interface AsyncState<TState = any> {
   isFetching: boolean;
   error?: boolean;
@@ -61,6 +88,15 @@ const defaultState: AsyncState = {
 };
 
 const fetchingState = {...defaultState, isFetching: true};
+
+/**
+ * Returns default state
+ * @function
+ * @memberof Redux
+ * @name getDefaultState
+ * @since v1.0.0
+ * @returns {Redux.AsyncState}
+ */
 export const getDefaultState = (): AsyncState => ({...defaultState});
 const actionCreator = (base: string) => (action: string): string => `${base}_${action}`;
 const actionsCreator = (base: string): any => {
@@ -102,6 +138,16 @@ const keepPreviousStateGetter: (defState: any) => CurrentStateGetter = (
   return (state, action): any =>
     options.keepPreviousStateOnStarted ? getter(state, action) : defState;
 };
+
+/**
+ * Creates a reducer for asynchronous actions
+ * @function
+ * @memberof Redux
+ * @name createAsyncReducer
+ * @since v1.0.0
+ * @param {string} actionName - Action name
+ * @param {Redux.Options} options - Reducer options
+ */
 export const createAsyncReducer = <T>(actionName: string, options: Options<T> = {}): any => {
   const initialValue: any = isNil(options.defValue)
     ? {...defaultState}
