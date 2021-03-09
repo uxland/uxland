@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.27](https://github.com/uxland/uxland/compare/@uxland/functional-utilities@1.0.0-alpha.26...@uxland/functional-utilities@1.0.0-alpha.27) (2021-03-09)
+
+
+### Bug Fixes
+
+* update testing and docs ([416ac8f](https://github.com/uxland/uxland/commit/416ac8f3cf10b644bba5dd679329daa2e1e2de45))
+
+
+
+
+
 # [1.0.0-alpha.26](https://github.com/uxland/uxland/compare/@uxland/functional-utilities@1.0.0-alpha.25...@uxland/functional-utilities@1.0.0-alpha.26) (2021-03-02)
 
 **Note:** Version bump only for package @uxland/functional-utilities

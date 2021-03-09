@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.18](https://github.com/uxland/uxland/compare/@uxland/event-aggregator@1.0.0-alpha.17...@uxland/event-aggregator@1.0.0-alpha.18) (2021-03-09)
+
+
+### Bug Fixes
+
+* **event-aggregator:** update testing and documentation ([208642b](https://github.com/uxland/uxland/commit/208642b6842ad11eda420d9df890ac7008d10069))
+
+
+
+
+
 # [1.0.0-alpha.17](https://github.com/uxland/uxland/compare/@uxland/event-aggregator@1.0.0-alpha.16...@uxland/event-aggregator@1.0.0-alpha.17) (2021-03-02)
 
 **Note:** Version bump only for package @uxland/event-aggregator

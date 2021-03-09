@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.3](https://github.com/uxland/uxland/compare/@uxland/browser-utilities@1.0.0-alpha.2...@uxland/browser-utilities@1.0.0-alpha.3) (2021-03-09)
+
+
+### Bug Fixes
+
+* move exported ([1465dd5](https://github.com/uxland/uxland/commit/1465dd5e80d5c6b1cb34a3ed5c46800ca7790304))
+* **browser-utilities:** update documentation and testing ([43758db](https://github.com/uxland/uxland/commit/43758dbae73fd0ffa812477fbd185d875967a2d9))
+* update testing and docs ([416ac8f](https://github.com/uxland/uxland/commit/416ac8f3cf10b644bba5dd679329daa2e1e2de45))
+
+
+
+
+
 # [1.0.0-alpha.2](https://github.com/uxland/uxland/compare/@uxland/browser-utilities@1.0.0-alpha.1...@uxland/browser-utilities@1.0.0-alpha.2) (2021-03-02)
 
 **Note:** Version bump only for package @uxland/browser-utilities

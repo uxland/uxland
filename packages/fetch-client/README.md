@@ -2,7 +2,7 @@
 
 | Build Status                                    | Statements                                    | Branches                                  | Functions                                   | Lines                               |
 | ----------------------------------------------- | --------------------------------------------- | ----------------------------------------- | ------------------------------------------- | ----------------------------------- |
-| ![BuildStatus](https://img.shields.io/badge/Build-Passing-brightgreen.svg "Building Status") | ![Statements](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg "Make me better!") | ![Branches](https://img.shields.io/badge/Coverage-96.43%25-brightgreen.svg "Make me better!") | ![Functions](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg "Make me better!") | ![Lines](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg "Make me better!") |
+| ![BuildStatus](https://img.shields.io/badge/Build-Passing-brightgreen.svg "Building Status") | ![Statements](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg "Make me better!") | ![Branches](https://img.shields.io/badge/Coverage-96.43%25-brightgreen.svg "Make me better!") | ![Functions](https://img.shields.io/badge/Coverage-90%25-brightgreen.svg "Make me better!") | ![Lines](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg "Make me better!") |
 
 ## Installation
 
@@ -12,25 +12,25 @@
 
 ### Configuration
 
-#### _Set Base URL_
+**_Set Base URL_**
 
 All relative fetch will use provided url as its own base URL. If using absolute uri when fetching, this will not be taken into account.
 
 ```typescript
-import { setBaseUrl } from '@uxland/fetch-client';
-setBaseUrl('http://localhost');
+import { setBaseUrl } from "@uxland/fetch-client";
+setBaseUrl("http://localhost");
 ```
 
-#### _Register response handlers_
+**_Register response handlers_**
 
 Register a response handler to manipulate result.
 
 ```typescript
-import { registerResponseHandler } from '@uxland/fetch-client';
+import { registerResponseHandler } from "@uxland/fetch-client";
 registerResponseHandler((response) => JSON.stringify(response));
 ```
 
-#### _Change fetch client configuration_
+**_Change fetch client configuration_**
 
 Change configuration globally. All fetch requests will use this configuration.
 
@@ -39,38 +39,38 @@ import { configure } from '@uxland/fetch-client';
 configure({mode: 'no-cors',{ headers: {authorization: 'Bearer <token>' }}});
 ```
 
-#### _Change fetch client headers_
+**_Change fetch client headers_**
 
 Change headers globally. All fetch requests will use specified headers.
 
 ```typescript
-import { setHeaders } from '@uxland/fetch-client';
-setHeaders({ authorization: 'Bearer <token>' });
+import { setHeaders } from "@uxland/fetch-client";
+setHeaders({ authorization: "Bearer <token>" });
 ```
 
-#### _Delete specific header_
+**_Delete specific header_**
 
 Remove a header from global headers using provided id.
 
 ```typescript
-import { removeHeader } from '@uxland/fetch-client';
-removeHeader('authorization');
+import { removeHeader } from "@uxland/fetch-client";
+removeHeader("authorization");
 ```
 
-#### _Reset fetch client headers_
+**_Reset fetch client headers_**
 
 Reset global headers to default.
 
 ```typescript
-import { resetHeaders } from '@uxland/fetch-client';
+import { resetHeaders } from "@uxland/fetch-client";
 resetHeaders();
 ```
 
 ### Fetch data
 
 ```typescript
-import { doFetch } from '@uxland/fetch-client';
-const response = doFetch('/dummy', { mode: 'no-cors' }, { foo: 'bar' })
+import { doFetch } from "@uxland/fetch-client";
+const response = doFetch("/dummy", { mode: "no-cors" }, { foo: "bar" })
   .then((r) => r)
   .catch((e) => e);
 ```
