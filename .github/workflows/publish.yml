@@ -26,7 +26,10 @@ jobs:
       - name: Install and test
         run: yarn install && yarn test
       - name: Build
-        run: yarn build && yarn readme:coverage:commit;
+        run: yarn build
+      - name: Update READMEs
+        run: yarn readme:coverage:commit
+        continue-on-error: true
       - name: Publish Prerelease
         if: github.ref == 'refs/heads/alpha'
         run: npx lerna publish --conventional-commits --conventional-prerelease --yes
