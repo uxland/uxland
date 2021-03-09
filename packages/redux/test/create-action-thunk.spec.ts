@@ -1,5 +1,5 @@
-import { flatten } from 'ramda';
-import { Action, createActionThunk } from '../../src';
+import {flatten} from 'ramda';
+import {Action, createActionThunk} from '../src';
 
 const type = 'ACTION';
 const actionCreator = (base: string) => (action: string): string => `${base}_${action}`;
@@ -24,7 +24,11 @@ describe('create action thunk fixture', () => {
       },
       metaCreator
     );
-  const dispatchAsyncAction = (factoryCreator) => async (result?, meta?, ...args: any[]): Promise<any> => {
+  const dispatchAsyncAction = factoryCreator => async (
+    result?,
+    meta?,
+    ...args: any[]
+  ): Promise<any> => {
     const factory = factoryCreator(result, meta);
     const thunk = factory(...args);
     const spy = jest.fn();
@@ -35,7 +39,7 @@ describe('create action thunk fixture', () => {
     }
     return spy;
   };
-  const dispatchAction = (factoryCreator) => (result?, meta?, ...args): any => {
+  const dispatchAction = factoryCreator => (result?, meta?, ...args): any => {
     const factory = factoryCreator(result, meta);
     const thunk = factory(...args);
     const spy = jest.fn();
@@ -68,12 +72,12 @@ describe('create action thunk fixture', () => {
     expect(started.payload).toBeUndefined();
   });
   it('started action should contain meta if supplied', async () => {
-    const meta = { id: 1 };
-    let spy = await dispatchAsyncSucceededActionThunk(undefined, (meta) => meta, meta);
+    const meta = {id: 1};
+    let spy = await dispatchAsyncSucceededActionThunk(undefined, meta => meta, meta);
     let started: Action = spy.mock.calls[0][0];
     expect(started.meta).toBeDefined();
     expect(started.meta).toBe(meta);
-    spy = await dispatchAsyncFailedActionThunk(undefined, (meta) => meta, meta);
+    spy = await dispatchAsyncFailedActionThunk(undefined, meta => meta, meta);
     started = spy.mock.calls[0][0];
     expect(started.meta).toBeDefined();
     expect(started.meta).toBe(meta);
@@ -88,10 +92,15 @@ describe('create action thunk fixture', () => {
   });
 
   it('succeeded action should contain meta if supplied', async () => {
-    const result = { result: 10 };
-    const meta1 = { id: 1 };
-    const meta2 = { id: 2 };
-    const spy = await dispatchAsyncSucceededActionThunk(result, (meta1, meta2) => ({ meta1, meta2 }), meta1, meta2);
+    const result = {result: 10};
+    const meta1 = {id: 1};
+    const meta2 = {id: 2};
+    const spy = await dispatchAsyncSucceededActionThunk(
+      result,
+      (meta1, meta2) => ({meta1, meta2}),
+      meta1,
+      meta2
+    );
     const succeeded: Action = flatten(spy.mock.calls)[1];
     expect(succeeded.meta).toBeDefined();
     expect(succeeded.meta.meta1).toBeDefined();
@@ -100,10 +109,15 @@ describe('create action thunk fixture', () => {
     expect(succeeded.meta.meta2).toBe(meta2);
   });
   it('succeeded action payload is result of function', async () => {
-    const result = { result: 10 };
-    const meta1 = { id: 1 };
-    const meta2 = { id: 2 };
-    const spy = await dispatchAsyncSucceededActionThunk(result, (meta1, meta2) => ({ meta1, meta2 }), meta1, meta2);
+    const result = {result: 10};
+    const meta1 = {id: 1};
+    const meta2 = {id: 2};
+    const spy = await dispatchAsyncSucceededActionThunk(
+      result,
+      (meta1, meta2) => ({meta1, meta2}),
+      meta1,
+      meta2
+    );
     const succeeded: Action = flatten(spy.mock.calls)[1];
     expect(succeeded.payload).toBe(result);
   });
@@ -111,15 +125,15 @@ describe('create action thunk fixture', () => {
     const param1 = 1;
     const param2 = 2;
     const param3 = 3;
-    const func = { fn: (): Promise<boolean> => Promise.resolve(true) };
+    const func = {fn: (): Promise<boolean> => Promise.resolve(true)};
     const functionSpy = jest.spyOn(func, 'fn');
-    const factory = createActionThunk(type, func.fn.bind(func), (p1, p2, p3) => ({ p1, p2, p3 }));
+    const factory = createActionThunk(type, func.fn.bind(func), (p1, p2, p3) => ({p1, p2, p3}));
     const thunk = factory(param1, param2, param3);
     const spy = jest.fn();
     await thunk(spy);
     const succeeded: Action = flatten(spy.mock.calls)[1];
     expect(succeeded.meta).toBeDefined();
-    expect(succeeded.meta).toEqual({ p1: param1, p2: param2, p3: param3 });
+    expect(succeeded.meta).toEqual({p1: param1, p2: param2, p3: param3});
     expect(functionSpy).toHaveBeenCalledWith(param1, param2, param3, {
       getState: undefined,
       extra: undefined,
@@ -136,10 +150,15 @@ describe('create action thunk fixture', () => {
     expect(actions[2].type).toEqual(endedAction);
   });
   it('failed action should contain meta if supplied', async () => {
-    const result = { result: 10 };
-    const meta1 = { id: 1 };
-    const meta2 = { id: 2 };
-    const spy = await dispatchAsyncFailedActionThunk(result, (meta1, meta2) => ({ meta1, meta2 }), meta1, meta2);
+    const result = {result: 10};
+    const meta1 = {id: 1};
+    const meta2 = {id: 2};
+    const spy = await dispatchAsyncFailedActionThunk(
+      result,
+      (meta1, meta2) => ({meta1, meta2}),
+      meta1,
+      meta2
+    );
     const failed: Action = flatten(spy.mock.calls)[1];
     expect(failed.meta).toBeDefined();
     expect(failed.meta.meta1).toBeDefined();
@@ -149,15 +168,20 @@ describe('create action thunk fixture', () => {
   });
   it('failed action payload should contain error', async () => {
     const result = new Error('error');
-    const meta1 = { id: 1 };
-    const meta2 = { id: 2 };
-    const spy = await dispatchAsyncFailedActionThunk(result, (meta1, meta2) => ({ meta1, meta2 }), meta1, meta2);
+    const meta1 = {id: 1};
+    const meta2 = {id: 2};
+    const spy = await dispatchAsyncFailedActionThunk(
+      result,
+      (meta1, meta2) => ({meta1, meta2}),
+      meta1,
+      meta2
+    );
     const failed: Action = flatten(spy.mock.calls)[1];
     expect(failed.payload).toEqual(result);
     expect(failed.error).toBe(true);
   });
   it('ended action payload contains elapsed', async () => {
-    const metaCreator = (meta1, meta2): any => ({ meta1, meta2 });
+    const metaCreator = (meta1, meta2): any => ({meta1, meta2});
     let spy = await dispatchAsyncSucceededActionThunk('eureka!', metaCreator, 1, 2);
     let ended: Action = flatten(spy.mock.calls)[2];
     expect(ended.payload.elapsed).toBeDefined();
@@ -166,9 +190,9 @@ describe('create action thunk fixture', () => {
     expect(ended.payload.elapsed).toBeDefined();
   });
   it('ended action should contain meta if supplied', async () => {
-    const meta1 = { id: 1 };
-    const meta2 = { id: 2 };
-    const metaCreator = (meta1, meta2): any => ({ meta1, meta2 });
+    const meta1 = {id: 1};
+    const meta2 = {id: 2};
+    const metaCreator = (meta1, meta2): any => ({meta1, meta2});
     let spy = await dispatchAsyncSucceededActionThunk('eureka!', metaCreator, meta1, meta2);
     let ended: Action = flatten(spy.mock.calls)[2];
     expect(ended.meta).toBeDefined();
@@ -194,10 +218,15 @@ describe('create action thunk fixture', () => {
   });
 
   it('(Not promise) succeeded action should contain meta if supplied', () => {
-    const result = { result: 10 };
-    const meta1 = { id: 1 };
-    const meta2 = { id: 2 };
-    const spy = dispatchSucceededActionThunk(result, (meta1, meta2) => ({ meta1, meta2 }), meta1, meta2);
+    const result = {result: 10};
+    const meta1 = {id: 1};
+    const meta2 = {id: 2};
+    const spy = dispatchSucceededActionThunk(
+      result,
+      (meta1, meta2) => ({meta1, meta2}),
+      meta1,
+      meta2
+    );
     const succeeded: Action = flatten(spy.mock.calls)[1];
     expect(succeeded.meta).toBeDefined();
     expect(succeeded.meta.meta1).toBeDefined();
@@ -207,10 +236,15 @@ describe('create action thunk fixture', () => {
   });
 
   it('(Not promise) succeeded action payload is result of function', () => {
-    const expected = { result: 10 };
-    const meta1 = { id: 1 };
-    const meta2 = { id: 2 };
-    const spy = dispatchSucceededActionThunk(expected, (meta1, meta2) => ({ meta1, meta2 }), meta1, meta2);
+    const expected = {result: 10};
+    const meta1 = {id: 1};
+    const meta2 = {id: 2};
+    const spy = dispatchSucceededActionThunk(
+      expected,
+      (meta1, meta2) => ({meta1, meta2}),
+      meta1,
+      meta2
+    );
     const succeeded: Action = flatten(spy.mock.calls)[1];
     expect(succeeded.payload).toEqual(expected);
   });
@@ -219,15 +253,15 @@ describe('create action thunk fixture', () => {
     const param1 = 1;
     const param2 = 2;
     const param3 = 3;
-    const func = { fn: (): boolean => true };
+    const func = {fn: (): boolean => true};
     const functionSpy = jest.spyOn(func, 'fn');
-    const factory = createActionThunk(type, func.fn.bind(func), (p1, p2, p3) => ({ p1, p2, p3 }));
+    const factory = createActionThunk(type, func.fn.bind(func), (p1, p2, p3) => ({p1, p2, p3}));
     const thunk = factory(param1, param2, param3);
     const spy = jest.fn();
     thunk(spy);
     const succeeded: Action = flatten(spy.mock.calls)[1];
     expect(succeeded.meta).toBeDefined();
-    expect(succeeded.meta).toEqual({ p1: param1, p2: param2, p3: param3 });
+    expect(succeeded.meta).toEqual({p1: param1, p2: param2, p3: param3});
     expect(functionSpy).toHaveBeenCalledWith(param1, param2, param3, {
       getState: undefined,
       extra: undefined,
@@ -246,10 +280,10 @@ describe('create action thunk fixture', () => {
   });
 
   it('(Not promise) failed action should contain meta if supplied', () => {
-    const result = { result: 10 };
-    const meta1 = { id: 1 };
-    const meta2 = { id: 2 };
-    const spy = dispatchFailedActionThunk(result, (meta1, meta2) => ({ meta1, meta2 }), meta1, meta2);
+    const result = {result: 10};
+    const meta1 = {id: 1};
+    const meta2 = {id: 2};
+    const spy = dispatchFailedActionThunk(result, (meta1, meta2) => ({meta1, meta2}), meta1, meta2);
     const failed: Action = flatten(spy.mock.calls)[1];
     expect(failed.meta).toBeDefined();
     expect(failed.meta.meta1).toBeDefined();
@@ -260,16 +294,16 @@ describe('create action thunk fixture', () => {
 
   test('(Not Promise) failed action payload should contain error', () => {
     const result = new Error('error');
-    const meta1 = { id: 1 };
-    const meta2 = { id: 2 };
-    const spy = dispatchFailedActionThunk(result, (meta1, meta2) => ({ meta1, meta2 }), meta1, meta2);
+    const meta1 = {id: 1};
+    const meta2 = {id: 2};
+    const spy = dispatchFailedActionThunk(result, (meta1, meta2) => ({meta1, meta2}), meta1, meta2);
     const failed: Action = flatten(spy.mock.calls)[1];
     expect(failed.payload).toBe(result);
     expect(failed.error).toBe(true);
   });
 
   test('(Not Promise) ended action payload contains elapsed', () => {
-    const metaCreator = (meta1, meta2): any => ({ meta1, meta2 });
+    const metaCreator = (meta1, meta2): any => ({meta1, meta2});
     let spy = dispatchSucceededActionThunk('eureka!', metaCreator, 1, 2);
     let ended: Action = flatten(spy.mock.calls)[2];
     expect(ended.payload.elapsed).toBeDefined();
@@ -278,9 +312,9 @@ describe('create action thunk fixture', () => {
     expect(ended.payload.elapsed).toBeDefined();
   });
   it('(Not promise) ended action should contain meta if supplied', () => {
-    const meta1 = { id: 1 };
-    const meta2 = { id: 2 };
-    const metaCreator = (meta1, meta2): any => ({ meta1, meta2 });
+    const meta1 = {id: 1};
+    const meta2 = {id: 2};
+    const metaCreator = (meta1, meta2): any => ({meta1, meta2});
     let spy = dispatchSucceededActionThunk('eureka!', metaCreator, meta1, meta2);
     let ended: Action = flatten(spy.mock.calls)[2];
     expect(ended.meta).toBeDefined();

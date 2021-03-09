@@ -1,10 +1,10 @@
 import {timeOut} from '@uxland/browser-utilities';
 import {createStore, Store} from 'redux';
 import {createSelector} from 'reselect';
-import {connectMixin} from '../connect';
-import {createAction} from '../create-action';
-import {createBasicReducer} from '../create-basic-reducer';
-import {watch} from '../watch';
+import {connectMixin} from '../src/connect';
+import {createAction} from '../src/create-action';
+import {createBasicReducer} from '../src/create-basic-reducer';
+import {watch} from '../src/watch';
 
 describe('connect fixture', () => {
   describe('given a class that uses connectMixin', () => {

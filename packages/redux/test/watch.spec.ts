@@ -1,14 +1,14 @@
-import { createStore, Store } from 'redux';
-import { createSelector } from 'reselect';
-import { createAction } from '../create-action';
-import { createBasicReducer } from '../create-basic-reducer';
-import { watch } from '../watch';
+import {createStore, Store} from 'redux';
+import {createSelector} from 'reselect';
+import {createAction} from '../src/create-action';
+import {createBasicReducer} from '../src/create-basic-reducer';
+import {watch} from '../src/watch';
 
 describe('watch fixture', () => {
   describe('when invoking `watch`', () => {
     let store: Store;
     const UPDATE_ACTION = 'UPDATE';
-    const initialState = { foo: 'bar' };
+    const initialState = {foo: 'bar'};
     const WATCHED_PROPERTIES_PROPERTY = 'WATCHED-PROPERTIES-PROPERTY';
     const watchedProperty = 'foo';
     beforeAll(() => {
@@ -20,7 +20,7 @@ describe('watch fixture', () => {
         state => state,
         (state: any) => state.foo
       );
-      watch(selector, { store })(array, watchedProperty);
+      watch(selector, {store})(array, watchedProperty);
       const watcher = array.constructor[WATCHED_PROPERTIES_PROPERTY][watchedProperty];
       expect(watcher.name).toEqual(watchedProperty);
       expect(watcher.selector).toBeDefined();
@@ -33,10 +33,10 @@ describe('watch fixture', () => {
         state => state,
         (state: any) => state.foo
       );
-      watch(selector, { store })(array, watchedProperty);
-      store.dispatch(createAction(UPDATE_ACTION)({ foo: 'quux' }));
+      watch(selector, {store})(array, watchedProperty);
+      store.dispatch(createAction(UPDATE_ACTION)({foo: 'quux'}));
       const watcher = array.constructor[WATCHED_PROPERTIES_PROPERTY][watchedProperty];
-      expect(watcher.store.getState()).toEqual({ foo: 'quux' });
+      expect(watcher.store.getState()).toEqual({foo: 'quux'});
     });
   });
 });

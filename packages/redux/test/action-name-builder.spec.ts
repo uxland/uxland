@@ -1,4 +1,4 @@
-import { actionNameBuilder } from '../../src';
+import {actionNameBuilder} from '../src';
 
 describe('constant builder', () => {
   it('action', () => {
