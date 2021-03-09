@@ -24,9 +24,9 @@ jobs:
           npm config set '//registry.npmjs.org/:_authToken' "${NPM_TOKEN}"
           npm whoami
       - name: Install and test
-        run: yarn install && yarn test
+        run: yarn install
       - name: Build
-        run: yarn build && yarn readme:coverage:commit
+        run: yarn build && yarn readme:coverage:commit;
       - name: Publish Prerelease
         if: github.ref == 'refs/heads/alpha'
         run: npx lerna publish --conventional-commits --conventional-prerelease --yes
