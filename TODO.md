@@ -21,7 +21,7 @@
 
 | Library           |       README       |        Docs        |                                             Test                                              |
 | ----------------- | :----------------: | :----------------: | :-------------------------------------------------------------------------------------------: |
-| browser-utilities |        :x:         |        :x:         |    ![Statements](https://img.shields.io/badge/Coverage-24.42%25-red.svg "Make me better!")    |
+| browser-utilities | :white_check_mark: | :white_check_mark: | ![Statements](https://img.shields.io/badge/Coverage-92.19%25-brightgreen.svg "Almost there!") |
 | event-aggregator  | :white_check_mark: | :white_check_mark: |    ![Statements](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg "Awesome!")     |
 | fetch-client      | :white_check_mark: | :white_check_mark: |    ![Statements](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg "Awesome!")     |
 | localization      | :white_check_mark: | :white_check_mark: |    ![Statements](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg "Awesome!")     |

@@ -42,15 +42,15 @@ const defaultLang = 'ca';
 /**
  * Returns language depending on user's navigator languages
  * @function
- * @name getUserLang
+ * @name getBrowserLang
  * @memberof BrowserUtilities
  * @since v1.0.0
  * @returns {string}
  * @example
  *
- * getUserLang(); //=> 'ca'
+ * getBrowserLang(); //=> 'ca'
  */
-export function getUserLang() {
+export function getBrowserLang() {
   for (const lang of navigator.languages) {
     const l = languages[lang];
     if (l) return l;
