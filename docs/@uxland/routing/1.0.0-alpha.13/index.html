@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>Home - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Routing.Router.html">Router</a><ul class='methods'><li data-type='method'><a href="Routing.Router.html#destroy">destroy</a></li><li data-type='method'><a href="Routing.Router.html#navigate">navigate</a></li><li data-type='method'><a href="Routing.Router.html#notFound">notFound</a></li><li data-type='method'><a href="Routing.Router.html#registerRoutes">registerRoutes</a></li></ul></li></ul><h3>Namespaces</h3><ul><li><a href="Routing.html">Routing</a></li></ul><h3>Interfaces</h3><ul><li><a href="Routing.Route.html">Route</a></li><li><a href="Routing.RouterHooks.html">RouterHooks</a></li></ul>
+</nav>
+
+<div id="main">
+    
+
+    
+
+
+
+    
+
+
+    <section class="package">
+        <h3>@uxland/routing 1.0.0-alpha.13</h3>		
+    </section>
+
+
+
+
+
+
+
+
+
+    
+
+
+
+    <section class="readme usertext">
+        <article><h1>UXL Routing <a href="https://badge.fury.io/js/%40uxland%2Frouting"><img src="https://badge.fury.io/js/%40uxland%2Frouting.svg" alt="npm version"></a></h1>
+<table>
+<thead>
+<tr>
+<th>Build Status</th>
+<th>Statements</th>
+<th>Branches</th>
+<th>Functions</th>
+<th>Lines</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="https://img.shields.io/badge/Build-Passing-brightgreen.svg" alt="BuildStatus" title="Building Status"></td>
+<td><img src="https://img.shields.io/badge/Coverage-98.95%25-brightgreen.svg" alt="Statements" title="Make me better!"></td>
+<td><img src="https://img.shields.io/badge/Coverage-93.83%25-brightgreen.svg" alt="Branches" title="Make me better!"></td>
+<td><img src="https://img.shields.io/badge/Coverage-97.83%25-brightgreen.svg" alt="Functions" title="Make me better!"></td>
+<td><img src="https://img.shields.io/badge/Coverage-98.84%25-brightgreen.svg" alt="Lines" title="Make me better!"></td>
+</tr>
+</tbody>
+</table>
+<h2>Installation</h2>
+<p><code>npm i @uxland/routing</code></p>
+<h2>Usage</h2>
+<h3>Initialization</h3>
+<p>Create an instance of router. The constructor accepts three parameters: routes array, router root url and hash character.</p>
+<pre class="prettyprint source lang-typescript"><code>const routes: Route[] = [{ route: &quot;dummy&quot; }, { route: &quot;foo&quot; }];
+const router = new Router(routes);
+</code></pre>
+<h3>Registering routes</h3>
+<p>It is possible to register new routes at any moment using provided <code>registerRoutes</code> function. It accepts a single route or an array of routes:</p>
+<pre class="prettyprint source lang-typescript"><code>router.registerRoutes({ route: &quot;bar&quot; });
+router.registerRoutes([{ route: &quot;qux&quot; }]);
+</code></pre>
+<h4>Get registered routes</h4>
+<pre class="prettyprint source lang-typescript"><code>const router = new Router([{ route: &quot;dummy&quot; }]);
+console.log(router.routes); //=> [{route: 'dummy'}]
+</code></pre>
+<h4>Dynamic routes</h4>
+<p>It is possible to define dynamic routes with parameters:</p>
+<pre class="prettyprint source lang-typescript"><code>router.registerRoutes({ route: &quot;dummy/:id/:action&quot; });
+
+// When navigating to dummy/foo/bar, parameters are:
+// id: foo
+// action: bar
+</code></pre>
+<h4>Route hooks</h4>
+<p>Route can have before and after navigation hooks that determine the possibility of navigation by returning a boolean promise and follow the next interface:</p>
+<pre class="prettyprint source lang-typescript"><code>export type HookFn = (
+  url: string,
+  params: RouteParams,
+  queryString: RouteQueryString
+) => Promise&lt;boolean>;
+
+router.registerRoutes({
+  route: &quot;dummy/:id&quot;,
+  hooks: { canNavigateFrom, canNavigateTo, navigatedFrom },
+});
+</code></pre>
+<h5>canNavigateFrom</h5>
+<p>This hook is executed before navigation happens and it is used in order to check if it is possible to navigate from current route.</p>
+<h5>canNavigateTo</h5>
+<p>This hook is executed before navigation happens and it is used in order to check if it is possible to navigate to new route.</p>
+<h5>navigatedFrom</h5>
+<p>This hook is executed after navigation happends and it is used as a callback function to be executed to perform actions after navigation has been completed.</p>
+<h3>Not Found Handler</h3>
+<p>When navigating to a route that is not registered, it is possible to provide a handler that will be executed:</p>
+<pre class="prettyprint source lang-typescript"><code>const router = new Router([{ route: &quot;dummy&quot; }]);
+router.notFound((url: string) => console.log(`${url} not registered`));
+router.navigate(&quot;foo&quot;);
+//=> Console output: &quot;foo not registered&quot;
+</code></pre>
+<h3>Navigate</h3>
+<p>Use navigate method to change location:</p>
+<pre class="prettyprint source lang-typescript"><code>router.navigate(&quot;dummy&quot;);
+router.navigate(&quot;http://localhost/dummy&quot;);
+</code></pre>
+<h4>Last resolved url</h4>
+<p>After navigation happens (successfully or not), last resolved url is stored</p>
+<pre class="prettyprint source lang-typescript"><code>const router = new Router([{ route: &quot;dummy&quot; }]);
+router.navigate(&quot;dummy&quot;);
+console.log(router.lastResolvedUrl); //=> 'dummy'
+</code></pre>
+<h3>Destroy</h3>
+<p>Resets router instance by emptying registered routes and last resolved url</p>
+<pre class="prettyprint source lang-typescript"><code>const router = new Router([{ route: &quot;dummy&quot; }, { route: &quot;foo&quot; }]);
+router.getRoutes(); //=> [{route: 'dummy'}, {route: 'foo'}]
+router.navigate(&quot;dummy&quot;);
+router.lastResolvedUrl; //=> 'dummy'
+router.destroy();
+router.getRoutes(); //=> []
+router.lastResolvedUrl; //=> ''
+</code></pre></article>
+    </section>
+
+
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a> using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>
