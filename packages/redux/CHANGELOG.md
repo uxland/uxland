@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.30](https://github.com/uxland/uxland/compare/@uxland/redux@1.0.0-alpha.29...@uxland/redux@1.0.0-alpha.30) (2021-03-09)
+
+**Note:** Version bump only for package @uxland/redux
+
+
+
+
+
 # [1.0.0-alpha.29](https://github.com/uxland/uxland/compare/@uxland/redux@1.0.0-alpha.28...@uxland/redux@1.0.0-alpha.29) (2021-03-02)
 
 **Note:** Version bump only for package @uxland/redux
