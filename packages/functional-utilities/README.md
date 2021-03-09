@@ -1,3 +1,11 @@
+# DEPRECATED
+
+See:
+
+- https://www.npmjs.com/package/@uxland/browser-utilities
+- https://www.npmjs.com/package/@uxland/utilities
+- https://www.npmjs.com/package/@uxland/ramda-extensions
+
 # UXL Functional Utilities [![npm version](https://badge.fury.io/js/%40uxland%2Ffunctional-utilities.svg)](https://badge.fury.io/js/%40uxland%2Ffunctional-utilities)
 
 | Build Status                                    | Statements                                    | Branches                                  | Functions                                   | Lines                               |
@@ -8,4 +16,4 @@
 
 `npm i @uxland/functional-utilities`
 
-## Usage
+> This package is deprecated
