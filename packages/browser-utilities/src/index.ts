@@ -20,5 +20,6 @@
 export * from './async';
 export * from './browser';
 export * from './file';
+export * from './meta';
 export * from './styles';
 export * from './user-lang';
