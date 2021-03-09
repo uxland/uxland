@@ -1,0 +1,27 @@
+{
+  "name": "@uxland/style-utilities",
+  "version": "1.0.0-alpha.8",
+  "description": "Style Utilities",
+  "author": "UXLand <dev@uxland.es>",
+  "homepage": "https://github.com/uxland/uxland/tree/master/packages/style-utilities#readme",
+  "license": "BSD-4-Clause",
+  "files": [
+    "flex-layout-styles.scss",
+    "units-styles.scss",
+    "mediaqueries-styles.scss",
+    "material-colors.scss",
+    "animations.scss"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "http://registry.npmjs.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uxland/uxland.git"
+  },
+  "scripts": {},
+  "bugs": {
+    "url": "https://github.com/uxland/uxland/issues"
+  }
+}

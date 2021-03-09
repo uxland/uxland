@@ -1,0 +1,53 @@
+{
+  "name": "@uxland/project-tools",
+  "version": "1.0.0-alpha.31",
+  "description": "UXLand project tools such as configs and lint",
+  "author": "UXLand <dev@uxland.es>",
+  "homepage": "https://github.com/uxland/uxland/tree/master/packages/project-tools#readme",
+  "license": "BSD-4-Clause",
+  "files": [
+    "build",
+    "documentation",
+    "fuse",
+    "lint",
+    "test"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "http://registry.npmjs.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uxland/uxland.git"
+  },
+  "scripts": {},
+  "bugs": {
+    "url": "https://github.com/uxland/uxland/issues"
+  },
+  "dependencies": {
+    "@babel/plugin-proposal-decorators": "^7.10.5",
+    "@babel/plugin-proposal-optional-chaining": "^7.11.0",
+    "@babel/preset-env": "^7.11.5",
+    "@commitlint/cli": "^9.1.2",
+    "@commitlint/config-conventional": "^9.1.2",
+    "@typescript-eslint/eslint-plugin": "^3.10.1",
+    "@typescript-eslint/parser": "^3.10.1",
+    "docdash": "^1.2.0",
+    "dotenv": "^8.2.0",
+    "eslint": "^7.7.0",
+    "eslint-plugin-unused-imports": "^0.1.3",
+    "fuse-box": "^4.0.0-next.446",
+    "jsdom": "^16.4.0",
+    "lint-staged": "^10.2.13",
+    "mutation-observer": "^1.0.3",
+    "node-sass": "^4.14.1",
+    "prettier": "^2.1.1",
+    "prettier-airbnb-config": "^1.0.0",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-uglify": "^6.0.4",
+    "ts-jest": "^26.3.0",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.2"
+  },
+  "gitHead": "779339a2bf1949d5c7bc5e11875d2e9523d45cf8"
+}

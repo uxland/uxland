@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "commonjs",
+    "noEmit": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "baseUrl": ".",
+    "paths": {
+      "@uxland/*": ["node_modules/@uxland/*/lib"]
+    }
+  },
+  "exclude": ["node_modules"]
+}

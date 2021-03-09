@@ -1,31 +1,52 @@
 {
   "name": "@uxland/uxland",
-  "private": true,
-  "devDependencies": {
-    "lerna": "^3.16.4"
-  },
   "description": "UXLand Libraries",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "author": "UXLand <dev@uxland.es>",
+  "license": "MIT",
+  "private": true,
   "repository": {
     "type": "git",
     "url": "git+https://github.com/uxland/uxland.git"
   },
-  "author": "UXLand <dev@uxland.es>",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/uxland/uxland/issues"
   },
   "homepage": "https://github.com/uxland/uxland#readme",
+  "devDependencies": {
+    "@commitlint/cli": "^9.1.2",
+    "@commitlint/config-conventional": "^9.1.2",
+    "current-git-branch": "^1.1.0",
+    "docdash": "^1.2.0",
+    "husky": "^4.2.1",
+    "jsdoc": "^3.6.3",
+    "lerna": "^3.22.1",
+    "minami": "^1.2.3",
+    "ncp": "^2.0.0"
+  },
+  "scripts": {
+    "build:clean": "lerna run build:clean",
+    "build:test": "lerna run build:test",
+    "build": "lerna run build --stream",
+    "deps:clean": "rimraf node_modules yarn.lock packages/**/node_modules",
+    "deps:install": "yarn install",
+    "deps:refresh": "yarn deps:clean && yarn deps:install",
+    "docgen": "lerna run jsdoc",
+    "readme:coverage": "lerna run readme:coverage --parallel",
+    "readme:coverage:commit": "yarn readme:coverage && git add packages/**/*.md && git commit -m 'docs: update README'",
+    "release:dry-run": "lerna run semantic-release:dry-run",
+    "release": "yarn build && yarn test && yarn readme:coverage",
+    "postrelease": "yarn docgen && git add . && git commit -m 'docs: update documentation'",
+    "test": "lerna run test --parallel",
+    "precommit": "yarn test && yarn build:test && yarn readme:coverage && git add .",
+    "postpublish": "yarn docgen && git add docs && git commit -m 'docs: new version documentation' && git push"
+  },
   "workspaces": [
     "packages/*"
   ],
   "husky": {
-    "hooks": {}
-  },
-  "dependencies": {
-    "husky": "^4.2.1"
+    "hooks": {
+      "commit-msg": "commitlint --config node_modules/@uxland/project-tools/lint/commitlint.config.js -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged -c node_modules/@uxland/project-tools/lint/lint-staged.config.js && node ./scripts/pre-commit.js"
+    }
   }
 }

@@ -1,13 +1,18 @@
 {
   "packages": ["packages/*"],
-  "ignoreChanges": ["packages/*/test/**", "**/*.md", "**/*.mdx"],
+  "ignoreChanges": [
+    "packages/*/test/**",
+    "**/*.md",
+    "**/*.mdx",
+    "packages/*-bkp/**/*"
+  ],
   "version": "independent",
   "npmClient": "yarn",
   "useWorkspaces": true,
   "command": {
     "version": {
       "allowBranch": ["master", "alpha", "beta"],
-      "message": "chore: release new versions"
+      "message": "chore(release): publish new versions"
     },
     "publish": {
       "conventionalCommits": true
