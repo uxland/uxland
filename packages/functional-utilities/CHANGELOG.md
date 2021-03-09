@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.28](https://github.com/uxland/uxland/compare/@uxland/functional-utilities@1.0.0-alpha.27...@uxland/functional-utilities@1.0.0-alpha.28) (2021-03-09)
+
+
+### Bug Fixes
+
+* **functional-utilities:** deprecate package ([47bd336](https://github.com/uxland/uxland/commit/47bd3363b7ca420d47d9cd4806ce3223b69a39e2))
+
+
+
+
+
 # [1.0.0-alpha.27](https://github.com/uxland/uxland/compare/@uxland/functional-utilities@1.0.0-alpha.26...@uxland/functional-utilities@1.0.0-alpha.27) (2021-03-09)
 
 
