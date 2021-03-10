@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>async/debounce.js - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BrowserUtilities.AsyncQueue.html">AsyncQueue</a></li><li><a href="BrowserUtilities.Debouncer.html">Debouncer</a></li></ul><h3>Namespaces</h3><ul><li><a href="BrowserUtilities.html">BrowserUtilities</a><ul class='methods'><li data-type='method'><a href="BrowserUtilities.html#.displayLayoutSizing">displayLayoutSizing</a></li><li data-type='method'><a href="BrowserUtilities.html#.getBrowserLang">getBrowserLang</a></li><li data-type='method'><a href="BrowserUtilities.html#.isAndroid">isAndroid</a></li><li data-type='method'><a href="BrowserUtilities.html#.isMobileBrowser">isMobileBrowser</a></li><li data-type='method'><a href="BrowserUtilities.html#.isMobileOrTabletBrowser">isMobileOrTabletBrowser</a></li><li data-type='method'><a href="BrowserUtilities.html#.isTabletBrowser">isTabletBrowser</a></li><li data-type='method'><a href="BrowserUtilities.html#.toBase64">toBase64</a></li></ul></li><li><a href="BrowserUtilities.Async.html">Async</a></li></ul><h3>Interfaces</h3><ul><li><a href="BrowserUtilities.AsyncInterface.html">AsyncInterface</a></li></ul><h3>Global</h3><ul><li><a href="global.html#displayMetaInformation">displayMetaInformation</a></li><li><a href="global.html#enqueueDebouncer">enqueueDebouncer</a></li><li><a href="global.html#flushDebouncers">flushDebouncers</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">async/debounce.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.flushDebouncers = exports.enqueueDebouncer = exports.debounce = exports.Debouncer = void 0;
+const time_out_1 = require("./time-out");
+/**
+ * Collapse multiple callbacks into one invocation after a timer.
+ * @class
+ * @name Debouncer
+ * @memberof BrowserUtilities
+ * @since v1.0.0
+ */
+class Debouncer {
+    constructor(asyncModule = null, callback = null, handle = null) {
+        this.asyncModule = asyncModule;
+        this.callback = callback;
+        this.handle = handle;
+    }
+    /**
+     * Sets the scheduler; that is, a module with the Async interface,
+     * a callback and optional arguments to be passed to the run function
+     * from the async module.
+     *
+     * @param {!AsyncInterface} asyncModule Object with Async interface.
+     * @param {function()} callback Callback to run.
+     * @return {void}
+     */
+    setConfig(asyncModule, callback) {
+        this.asyncModule = asyncModule;
+        this.callback = callback;
+        this.handle = this.asyncModule.run(() => {
+            this.handle = null;
+            this.callback();
+        });
+    }
+    /**
+     * Cancels an active debouncer and returns a reference to itself.
+     *
+     * @return {void}
+     */
+    cancel() {
+        if (this.isActive()) {
+            this.asyncModule.cancel(this.handle);
+            this.handle = null;
+        }
+    }
+    /**
+     * Flushes an active debouncer and returns a reference to itself.
+     *
+     * @return {void}
+     */
+    flush() {
+        if (this.isActive()) {
+            this.cancel();
+            this.callback();
+        }
+    }
+    /**
+     * Returns true if the debouncer is active.
+     *
+     * @return {boolean} True if active.
+     */
+    isActive() {
+        return this.handle != null;
+    }
+    /**
+     * Creates a debouncer if no debouncer is passed as a parameter
+     * or it cancels an active debouncer otherwise. The following
+     * example shows how a debouncer can be called multiple times within a
+     * microtask and "debounced" such that the provided callback function is
+     * called once. Add this method to a custom element:
+     *
+     * ```js
+     * import {microTask, debouncer} from '@uxland/browser-utilities';
+     * // ...
+     *
+     * _debounceWork() {
+     *   this._debounceJob = Debouncer.debounce(this._debounceJob,
+     *       microTask, () => this._doWork());
+     * }
+     * ```
+     *
+     * If the `_debounceWork` method is called multiple times within the same
+     * microtask, the `_doWork` function will be called only once at the next
+     * microtask checkpoint.
+     *
+     * Note: In testing it is often convenient to avoid asynchrony. To accomplish
+     * this with a debouncer, you can use `enqueueDebouncer` and
+     * `flush`. For example, extend the above example by adding
+     * `enqueueDebouncer(this._debounceJob)` at the end of the
+     * `_debounceWork` method. Then in a test, call `flush` to ensure
+     * the debouncer has completed.
+     *
+     * @param {Debouncer?} debouncer Debouncer object.
+     * @param {!AsyncInterface} asyncModule Object with Async interface
+     * @param {function()} callback Callback to run.
+     * @return {!Debouncer} Returns a debouncer object.
+     */
+    static debounce(debouncer, asyncModule, callback) {
+        if (debouncer instanceof Debouncer) {
+            debouncer.cancel();
+        }
+        else {
+            debouncer = new Debouncer();
+        }
+        debouncer.setConfig(asyncModule, callback);
+        return debouncer;
+    }
+}
+exports.Debouncer = Debouncer;
+exports.debounce = delay => (target, propertyKey, descriptor) => {
+    const desc = descriptor;
+    const originalCall = desc.value;
+    desc.value = (...args) => 
+    //@ts-ignore
+    (this.debouncer = Debouncer.debounce(
+    //@ts-ignore
+    this.debouncer, time_out_1.timeOut.after(delay), originalCall.apply(args)));
+};
+const debouncerQueue = new Set();
+/**
+ * Adds a `Debouncer` to a list of globally flushable tasks.
+ *
+ * @param {!Debouncer} debouncer Debouncer to enqueue
+ * @return {void}
+ */
+exports.enqueueDebouncer = function (debouncer) {
+    debouncerQueue.add(debouncer);
+};
+/**
+ * Flushes any enqueued debouncers
+ *
+ * @return {boolean} Returns whether any debouncers were flushed
+ */
+exports.flushDebouncers = function () {
+    const didFlush = Boolean(debouncerQueue.size);
+    // If new debouncers are added while flushing, Set.forEach will ensure
+    // newly added ones are also flushed
+    debouncerQueue.forEach((debouncer) => {
+        try {
+            debouncer.flush();
+        }
+        catch (e) {
+            setTimeout(() => {
+                throw e;
+            });
+        }
+    });
+    return didFlush;
+};
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a> using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+
+
+</body>
+</html>
