@@ -1,0 +1,39 @@
+yarn run v1.22.10
+$ lerna run esbuild --stream
+@uxland/browser-utilities: $ npm-run-all --parallel esbuild:es esbuild:cjs
+@uxland/event-aggregator: $ npm-run-all --parallel esbuild:es esbuild:cjs
+@uxland/ramda-extensions: $ npm-run-all --parallel esbuild:es esbuild:cjs
+@uxland/browser-utilities: $ esbuild src/index.ts --bundle --minify --target=es2018 --outfile=lib/index.js && yarn esbuild:dts
+@uxland/event-aggregator: $ esbuild src/index.ts --bundle --minify --format=esm --outfile=es/index.js
+@uxland/event-aggregator: $ esbuild src/index.ts --bundle --minify --target=es2018 --outfile=lib/index.js && yarn esbuild:dts
+@uxland/ramda-extensions: $ esbuild src/index.ts --bundle --minify --format=esm --outfile=es/index.js
+@uxland/browser-utilities: $ esbuild src/index.ts --bundle --minify --format=esm --outfile=es/index.js
+@uxland/ramda-extensions: $ esbuild src/index.ts --bundle --minify --target=es2018 --outfile=lib/index.js && yarn esbuild:dts
+@uxland/browser-utilities: $ tsc --emitDeclarationOnly --noEmit false --declaration --removeComments false --outDir lib
+@uxland/event-aggregator: $ tsc --emitDeclarationOnly --noEmit false --declaration --removeComments false --outDir lib
+@uxland/ramda-extensions: $ tsc --emitDeclarationOnly --noEmit false --declaration --removeComments false --outDir lib
+@uxland/object-mapper: $ npm-run-all --parallel esbuild:es esbuild:cjs
+@uxland/fetch-client: $ npm-run-all --parallel esbuild:es esbuild:cjs
+@uxland/utilities: $ npm-run-all --parallel esbuild:es esbuild:cjs
+@uxland/routing: $ npm-run-all --parallel esbuild:es esbuild:cjs
+@uxland/object-mapper: $ esbuild src/index.ts --bundle --minify --target=es2018 --outfile=lib/index.js && yarn esbuild:dts
+@uxland/object-mapper: $ esbuild src/index.ts --bundle --minify --format=esm --outfile=es/index.js
+@uxland/fetch-client: $ esbuild src/index.ts --bundle --minify --target=es2018 --outfile=lib/index.js && yarn esbuild:dts
+@uxland/routing: $ esbuild src/index.ts --bundle --minify --target=es2018 --outfile=lib/index.js && yarn esbuild:dts
+@uxland/fetch-client: $ esbuild src/index.ts --bundle --minify --format=esm --outfile=es/index.js
+@uxland/utilities: $ esbuild src/index.ts --bundle --minify --target=es2018 --outfile=lib/index.js && yarn esbuild:dts
+@uxland/routing: $ esbuild src/index.ts --bundle --minify --format=esm --outfile=es/index.js
+@uxland/utilities: $ esbuild src/index.ts --bundle --minify --format=esm --outfile=es/index.js
+@uxland/object-mapper: $ tsc --emitDeclarationOnly --noEmit false --declaration --removeComments false --outDir lib
+@uxland/routing: $ tsc --emitDeclarationOnly --noEmit false --declaration --removeComments false --outDir lib
+@uxland/fetch-client: $ tsc --emitDeclarationOnly --noEmit false --declaration --removeComments false --outDir lib
+@uxland/utilities: $ tsc --emitDeclarationOnly --noEmit false --declaration --removeComments false --outDir lib
+@uxland/localization: $ npm-run-all --parallel esbuild:es esbuild:cjs
+@uxland/redux: $ npm-run-all --parallel esbuild:es esbuild:cjs
+@uxland/localization: $ esbuild src/index.ts --bundle --minify --target=es2018 --outfile=lib/index.js && yarn esbuild:dts
+@uxland/redux: $ esbuild src/index.ts --bundle --minify --format=esm --outfile=es/index.js
+@uxland/localization: $ esbuild src/index.ts --bundle --minify --format=esm --outfile=es/index.js
+@uxland/redux: $ esbuild src/index.ts --bundle --minify --target=es2018 --outfile=lib/index.js && yarn esbuild:dts
+@uxland/redux: $ tsc --emitDeclarationOnly --noEmit false --declaration --removeComments false --outDir lib
+@uxland/localization: $ tsc --emitDeclarationOnly --noEmit false --declaration --removeComments false --outDir lib
+Done in 65.74s.
