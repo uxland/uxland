@@ -26,7 +26,7 @@ jobs:
       - name: Install and test
         run: yarn install && yarn test
       - name: Build
-        run: yarn build
+        run: yarn esbuild
       - name: Update READMEs
         run: yarn readme:coverage:commit
         continue-on-error: true
