@@ -30,3 +30,4 @@ export * from './reject-nil-or-empty';
 export * from './to-dictionary';
 export * from './to-dictionary-by';
 export * from './to-path';
+console.log('@uxland/ramda-extensions loaded');

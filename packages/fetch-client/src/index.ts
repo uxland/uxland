@@ -19,3 +19,4 @@
 /** @namespace FetchClient */
 export * from './fetch-client';
 export {INVALID_CREDENTIALS_EVENT, INVALID_REQUEST_EVENT} from './handlers/handle-errors';
+console.log('@uxland/fetch-client loaded');

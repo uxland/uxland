@@ -21,7 +21,7 @@
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 /** @namespace Redux */
-if (window && !window['process']) Object.assign(window, { process: { env: { NODE_ENV: 'production' } } });
+if (window && !window['process']) Object.assign(window, {process: {env: {NODE_ENV: 'production'}}});
 export * from './action-name-builder';
 export * from './connect';
 export * from './create-action';
@@ -37,3 +37,4 @@ export * from './reset-store';
 export * from './resetable-reducer';
 export * from './watch';
 export * from './watched-redux-property';
+console.log('@uxland/redux loaded');

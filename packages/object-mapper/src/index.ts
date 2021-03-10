@@ -22,3 +22,4 @@ export * from './model';
 export * from './serialize';
 
 /** @namespace ObjectMapper */
+console.log('@uxland/object-mapper loaded');

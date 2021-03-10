@@ -22,3 +22,4 @@ export * from './constant-builder';
 export * from './curried';
 export * from './invariant';
 export * from './nop';
+console.log('@uxland/utilities loaded');

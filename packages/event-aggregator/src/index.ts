@@ -18,3 +18,4 @@
 
 /** @namespace EventAggregator */
 export * from './event-aggregator';
+console.log('@uxland/event-aggregator loaded');

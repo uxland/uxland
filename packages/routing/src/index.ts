@@ -19,3 +19,4 @@
 /** @namespace Routing */
 export * from './hooks';
 export * from './router';
+console.log('@uxland/routing loaded');

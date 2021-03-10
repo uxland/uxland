@@ -14,7 +14,7 @@ let STUB = 1;
  * @property {*=} selector - Selector to use to return state portion
  * @property {*=} propertyOptions - Options of the watched property
  */
-export interface WatchOptions<> {
+export interface WatchOptions {
   name?: string;
   store?: Store<any, any>;
   selector?: any;

@@ -43,7 +43,11 @@
     "jsdoc": "yarn build:cjs && rimraf docs && jsdoc -r ./lib -c jsdoc.config.js",
     "jsdoc:styles": "cat ../../resources/docs/custom.css >> ./docs/$npm_package_name/$npm_package_version/styles/jsdoc.css",
     "jsdoc:mv": "mkdirp ../../docs/$npm_package_name/$npm_package_version && ncp docs/$npm_package_name/$npm_package_version ../../docs/$npm_package_name/$npm_package_version",
-    "postjsdoc": "yarn jsdoc:styles && yarn jsdoc:mv"
+    "postjsdoc": "yarn jsdoc:styles && yarn jsdoc:mv",
+    "esbuild:dts": "tsc --emitDeclarationOnly --noEmit false --declaration --removeComments false --outDir lib",
+    "esbuild:cjs": "esbuild src/index.ts --bundle --target=es2018 --outfile=lib/index.js && yarn esbuild:dts",
+    "esbuild:es": "esbuild src/index.ts --bundle --minify --format=esm --outfile=es/index.js",
+    "esbuild": "npm-run-all --parallel esbuild:es esbuild:cjs"
   },
   "bugs": {
     "url": "https://github.com/uxland/uxland/issues"
@@ -58,6 +62,7 @@
     "cat": "^0.2.0",
     "cross-env": "^7.0.0",
     "cucumber": "^6.0.5",
+    "esbuild": "^0.9.0",
     "jest": "^26.4.2",
     "jest-cucumber": "^3.0.0",
     "jsdoc": "^3.6.3",

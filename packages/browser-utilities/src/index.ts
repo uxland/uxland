@@ -23,3 +23,4 @@ export * from './file';
 export * from './meta';
 export * from './styles';
 export * from './user-lang';
+console.log('@uxland/browser-utilities loaded');

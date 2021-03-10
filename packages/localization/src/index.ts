@@ -24,3 +24,4 @@ export * from './locale-mixin';
 export * from './locales';
 export * from './localize';
 export * from './localizer-factory';
+console.log('@uxland/localization loaded');
