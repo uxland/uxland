@@ -10,6 +10,7 @@
   "types": "lib/index.d.ts",
   "files": [
     "!*.config.js",
+    "**/*.js",
     "lib",
     "dist",
     "README.md",
