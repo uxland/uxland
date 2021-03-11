@@ -45,8 +45,8 @@
     "jsdoc:mv": "mkdirp ../../docs/$npm_package_name/$npm_package_version && ncp docs/$npm_package_name/$npm_package_version ../../docs/$npm_package_name/$npm_package_version",
     "postjsdoc": "yarn jsdoc:styles && yarn jsdoc:mv",
     "esbuild:dts": "tsc --emitDeclarationOnly --noEmit false --declaration --removeComments false --outDir lib",
-    "esbuild:cjs": "esbuild src/index.ts --bundle --minify --target=es2018 --outfile=lib/index.js && yarn esbuild:dts",
-    "esbuild:es": "esbuild src/*.ts --minify --format=esm --outdir=es",
+    "esbuild:cjs": "esbuild src/index.ts --bundle --minify --target=es2018 --outfile=lib/index.js",
+    "esbuild:es": "esbuild src/*.ts --minify --format=esm",
     "esbuild": "npm-run-all --parallel esbuild:es esbuild:cjs"
   },
   "bugs": {
