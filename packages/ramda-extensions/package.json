@@ -5,12 +5,12 @@
   "author": "UXLand <dev@uxland.es>",
   "homepage": "https://github.com/uxland/uxland/tree/master/packages/ramda-extensions#readme",
   "license": "BSD-4-Clause",
-  "main": "lib/index",
-  "module": "es/index.js",
+  "main": "index",
+  "module": "index.js",
   "types": "lib/index.d.ts",
   "files": [
+    "!*.config.js",
     "lib",
-    "es",
     "dist",
     "README.md",
     "package.json"
@@ -46,8 +46,7 @@
     "esbuild:dts": "tsc --emitDeclarationOnly --noEmit false --declaration --removeComments false --outDir lib",
     "esbuild:cjs": "esbuild src/index.ts --bundle --minify --target=es2018 --outfile=lib/index.js",
     "esbuild:es": "esbuild src/*.ts --minify --format=esm --outdir=.",
-    "esbuild": "npm-run-all --parallel esbuild:es esbuild:cjs",
-    "postinstall": "mv es/* ./"
+    "esbuild": "npm-run-all --parallel esbuild:es esbuild:cjs"
   },
   "bugs": {
     "url": "https://github.com/uxland/uxland/issues"
