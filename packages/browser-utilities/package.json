@@ -46,7 +46,8 @@
     "esbuild:dts": "tsc --emitDeclarationOnly --noEmit false --declaration --removeComments false --outDir lib",
     "esbuild:cjs": "esbuild src/index.ts --bundle --minify --target=es2018 --outfile=lib/index.js",
     "esbuild:es": "esbuild src/*.ts src/**/*.ts --minify --format=esm --outdir=.",
-    "esbuild": "npm-run-all --parallel esbuild:es esbuild:cjs"
+    "esbuild": "npm-run-all --parallel esbuild:es esbuild:cjs",
+    "postinstall": "mv es/* ./"
   },
   "bugs": {
     "url": "https://github.com/uxland/uxland/issues"
