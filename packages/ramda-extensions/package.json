@@ -45,7 +45,7 @@
     "postjsdoc": "yarn jsdoc:styles && yarn jsdoc:mv",
     "esbuild:dts": "tsc --emitDeclarationOnly --noEmit false --declaration --removeComments false --outDir lib",
     "esbuild:cjs": "esbuild src/index.ts --bundle --minify --target=es2018 --outfile=lib/index.js && yarn esbuild:dts",
-    "esbuild:es": "esbuild src/*.ts --bundle --minify --format=esm --outdir=es",
+    "esbuild:es": "esbuild src/*.ts --minify --format=esm --outdir=es",
     "esbuild": "npm-run-all --parallel esbuild:es esbuild:cjs"
   },
   "bugs": {
