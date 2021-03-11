@@ -10,7 +10,7 @@
   "types": "lib/index.d.ts",
   "files": [
     "!*.config.js",
-"!coverage"
+    "!coverage",
     "**/*.js",
     "lib",
     "dist",
