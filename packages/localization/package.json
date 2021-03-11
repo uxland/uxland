@@ -1,17 +1,18 @@
 {
   "name": "@uxland/localization",
-  "version": "1.0.1-alpha.7",
+  "version": "1.0.1-alpha.8",
   "description": "Localization",
   "author": "UXLand <dev@uxland.es>",
   "homepage": "https://github.com/uxland/uxland/tree/master/packages/localization#readme",
   "license": "BSD-4-Clause",
   "main": "index",
   "module": "index.js",
-  "types": "lib/index.d.ts",
+  "types": "index.d.ts",
   "files": [
     "!*.config.js",
     "!coverage/*",
     "**/*.d.ts",
+    "**/*.js",
     "lib",
     "dist",
     "README.md",
@@ -77,8 +78,8 @@
     "typescript": "^4.0.2"
   },
   "dependencies": {
-    "@uxland/event-aggregator": "^1.0.1-alpha.7",
-    "@uxland/utilities": "^1.0.1-alpha.7",
+    "@uxland/event-aggregator": "^1.0.1-alpha.8",
+    "@uxland/utilities": "^1.0.1-alpha.8",
     "intl-messageformat": "^7.8.4",
     "ramda": "^0.27.0"
   },

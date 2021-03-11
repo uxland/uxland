@@ -1,17 +1,18 @@
 {
   "name": "@uxland/fetch-client",
-  "version": "1.0.1-alpha.7",
+  "version": "1.0.1-alpha.8",
   "description": "Fetch Client",
   "author": "UXLand <dev@uxland.es>",
   "homepage": "https://github.com/uxland/uxland/tree/master/packages/fetch-client#readme",
   "license": "BSD-4-Clause",
   "main": "index",
   "module": "index.js",
-  "types": "lib/index.d.ts",
+  "types": "index.d.ts",
   "files": [
     "!*.config.js",
     "!coverage/*",
     "**/*.d.ts",
+    "**/*.js",
     "lib",
     "dist",
     "README.md",
@@ -77,7 +78,7 @@
     "typescript": "^4.0.2"
   },
   "dependencies": {
-    "@uxland/event-aggregator": "^1.0.1-alpha.7",
+    "@uxland/event-aggregator": "^1.0.1-alpha.8",
     "ramda": "^0.27.1"
   },
   "gitHead": "dadaf3d855eb9871da1054ec7b3c77156540c7bd"

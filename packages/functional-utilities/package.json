@@ -8,7 +8,7 @@
   "license": "BSD-4-Clause",
   "main": "lib/index",
   "module": "es/index.js",
-  "types": "lib/index.d.ts",
+  "types": "index.d.ts",
   "files": [
     "lib",
     "es",
