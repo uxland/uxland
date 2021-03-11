@@ -10,8 +10,8 @@
   "types": "lib/index.d.ts",
   "files": [
     "!*.config.js",
-"!coverage",
-    "**/*.js",
+    "!coverage/*",
+    "**/*.d.ts",
     "lib",
     "dist",
     "README.md",
@@ -47,10 +47,10 @@
     "jsdoc:styles": "cat ../../resources/docs/custom.css >> ./docs/$npm_package_name/$npm_package_version/styles/jsdoc.css",
     "jsdoc:mv": "mkdirp ../../docs/$npm_package_name/$npm_package_version && ncp docs/$npm_package_name/$npm_package_version ../../docs/$npm_package_name/$npm_package_version",
     "postjsdoc": "yarn jsdoc:styles && yarn jsdoc:mv",
-    "esbuild:dts": "tsc --emitDeclarationOnly --noEmit false --declaration --removeComments false --outDir lib",
+    "esbuild:dts": "tsc --emitDeclarationOnly --noEmit false --declaration --removeComments false --outDir .",
     "esbuild:cjs": "esbuild src/index.ts --bundle --minify --target=es2018 --outfile=lib/index.js",
     "esbuild:es": "esbuild src/*.ts src/**/*.ts --minify --format=esm --outdir=.",
-    "esbuild": "npm-run-all --parallel esbuild:es esbuild:cjs"
+    "esbuild": "npm-run-all --parallel esbuild:es esbuild:dts"
   },
   "bugs": {
     "url": "https://github.com/uxland/uxland/issues"
