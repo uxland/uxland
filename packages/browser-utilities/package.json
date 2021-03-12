@@ -1,6 +1,6 @@
 {
   "name": "@uxland/browser-utilities",
-  "version": "1.0.1-alpha.10",
+  "version": "1.0.1-alpha.11",
   "description": "Browser Utilities",
   "author": "Alex Vizcaino <avizcaino@uxland.es>",
   "homepage": "https://github.com/uxland/uxland/tree/master/packages/browser-utilities#readme",
@@ -9,9 +9,9 @@
   "module": "index.js",
   "types": "index.d.ts",
   "files": [
-        "**/*.d.ts",
+    "**/*.d.ts",
     "**/*.js",
-"!*.config.js",
+    "!*.config.js",
     "!coverage/*",
     "lib",
     "dist",
