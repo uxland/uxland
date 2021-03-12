@@ -65,6 +65,7 @@ describe('Sandbox', () => {
       set: results.set.reduce((acc, time) => (acc += time), 0) / nTests,
       json: results.json.reduce((acc, time) => (acc += time), 0) / nTests,
     };
+    //@ts-ignore
     means = {...means, ['uxl vs json']: means.uxl / means.json};
     console.table(means);
     expect(true).toBeTruthy();
