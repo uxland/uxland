@@ -30,9 +30,12 @@ jobs:
       - name: Update READMEs
         run: yarn readme:coverage:commit
         continue-on-error: true
-      - name: Publish Prerelease
+      - name: Publish Alpha
         if: github.ref == 'refs/heads/alpha'
         run: npx lerna publish --conventional-commits --conventional-prerelease --dist-tag alpha --yes
+      - name: Publish Beta
+        if: github.ref == 'refs/heads/beta'
+        run: npx lerna publish --conventional-commits --conventional-prerelease --dist-tag beta --yes
       - name: Publish Release
         if: github.ref == 'refs/heads/master'
         run: npx lerna publish --conventional-commits --conventional-graduate --create-release github --yes
