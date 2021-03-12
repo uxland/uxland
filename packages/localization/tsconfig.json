@@ -4,5 +4,6 @@
     "outDir": "./"
   },
   "extends": "../project-tools/build/tsconfig.json",
-  "include": ["src/**/*.ts"]
+  "include": ["**/*.ts"],
+  "exclude": ["node_modules", "es", "src/**/*.spec.ts", "src/**/*.steps.ts"]
 }
