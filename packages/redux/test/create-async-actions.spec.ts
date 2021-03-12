@@ -5,7 +5,7 @@ import {
   INVALIDATED_SUFFIX,
   STARTED_SUFFIX,
   SUCCEEDED_SUFFIX,
-} from '../src';
+} from '../';
 const action = 'MY-ACTION';
 test('create async actions test', () => {
   const actions = createAsyncActions('MY-ACTION');

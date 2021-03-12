@@ -1,4 +1,4 @@
-import {isAndroid, isMobileBrowser, isMobileOrTabletBrowser, isTabletBrowser} from '../src/browser';
+import {isAndroid, isMobileBrowser, isMobileOrTabletBrowser, isTabletBrowser} from '../browser';
 
 describe('Given a browser', () => {
   describe('and tablet device', () => {

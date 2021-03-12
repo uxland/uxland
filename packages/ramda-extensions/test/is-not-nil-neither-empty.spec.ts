@@ -1,4 +1,4 @@
-import {isNotNullNeitherEmpty} from '../src/is-not-nil-neither-empty';
+import {isNotNullNeitherEmpty} from '../is-not-nil-neither-empty';
 
 describe('is not nil neither empty fixture', () => {
   it('undefined should return false', () => {

@@ -1,5 +1,5 @@
 import {flatten} from 'ramda';
-import {Action, createActionThunk} from '../src';
+import {Action, createActionThunk} from '../';
 
 const type = 'ACTION';
 const actionCreator = (base: string) => (action: string): string => `${base}_${action}`;

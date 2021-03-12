@@ -1,8 +1,8 @@
 import {createStore, Store} from 'redux';
 import {createSelector} from 'reselect';
-import {createAction} from '../src/create-action';
-import {createBasicReducer} from '../src/create-basic-reducer';
-import {watch} from '../src/watch';
+import {createAction} from '../create-action';
+import {createBasicReducer} from '../create-basic-reducer';
+import {watch} from '../watch';
 
 describe('watch fixture', () => {
   describe('when invoking `watch`', () => {

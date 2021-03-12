@@ -1,4 +1,4 @@
-import {toPath} from '../src/to-path';
+import {toPath} from '../to-path';
 describe('toPath test suite', () => {
   it('should return an array of paths when argument is an string path', () => {
     expect(toPath('foo.bar.baz')).toEqual(['foo', 'bar', 'baz']);

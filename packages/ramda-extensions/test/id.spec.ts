@@ -1,4 +1,4 @@
-import {id} from '../src/id';
+import {id} from '../id';
 
 describe('id fixture', () => {
   describe('Given an object with an id property', () => {

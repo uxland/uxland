@@ -1,7 +1,7 @@
 import {createStore} from 'redux';
-import {createAction} from '../src/create-action';
-import {createBasicReducer} from '../src/create-basic-reducer';
-import {createWatchedReduxProperty, getWatchedProperties} from '../src/watched-redux-property';
+import {createAction} from '../create-action';
+import {createBasicReducer} from '../create-basic-reducer';
+import {createWatchedReduxProperty, getWatchedProperties} from '../watched-redux-property';
 
 describe('watched redux property fixture', () => {
   describe('when invoking `createWatchedReduxProperty`', () => {

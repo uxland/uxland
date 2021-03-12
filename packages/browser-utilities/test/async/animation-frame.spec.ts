@@ -1,4 +1,4 @@
-import {animationFrame} from '../../src/async/animation-frame';
+import {animationFrame} from '../../async/animation-frame';
 class RequestAnimationFrameMockSession {
   handleCounter = 0;
   queue = new Map();

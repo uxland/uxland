@@ -1,4 +1,4 @@
-import {collect} from '../src/collect';
+import {collect} from '../collect';
 describe('when invoking `collect` method', () => {
   describe('given no input object is provided', () => {
     it('should return empty object if key is not provided', () =>

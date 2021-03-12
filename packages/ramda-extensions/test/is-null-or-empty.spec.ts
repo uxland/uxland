@@ -1,4 +1,4 @@
-import {isNullOrEmpty} from '../src/is-null-or-empty';
+import {isNullOrEmpty} from '../is-null-or-empty';
 
 describe('is not nil neither empty fixture', () => {
   it('undefined should return true', () => {

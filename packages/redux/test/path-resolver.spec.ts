@@ -1,5 +1,5 @@
 import {lensPath, lensProp} from 'ramda';
-import {Action, factory, resolvePath} from '../src';
+import {Action, factory, resolvePath} from '../';
 describe('resolve path fixture', () => {
   it('should resolve identity if argument is string', () => {
     const lensP = lensProp('property1');

@@ -1,5 +1,5 @@
 import {subMinutes} from 'date-fns';
-import {Duration, getDefaultState, isAsyncStateStale} from '../src';
+import {Duration, getDefaultState, isAsyncStateStale} from '../';
 
 describe('isAsyncStale-fixture', () => {
   it('should return true is state is null or undefined', () => {

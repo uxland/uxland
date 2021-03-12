@@ -1,4 +1,4 @@
-import {idEq} from '../src/id-eq';
+import {idEq} from '../id-eq';
 
 describe('id equallity fixture', () => {
   describe('Given an object {id: "foo"}', () => {

@@ -1,4 +1,4 @@
-import {rejectNilOrEmpty} from '../src/reject-nil-or-empty';
+import {rejectNilOrEmpty} from '../reject-nil-or-empty';
 
 describe('reject nil or empty', () => {
   it('empty array must be return empty array', () => {

@@ -1,4 +1,4 @@
-import {timeOut} from '../../src/async/time-out';
+import {timeOut} from '../../async/time-out';
 describe('timeout fixture', () => {
   describe('when providing a callback', () => {
     it('should call callback after timeout', done => {

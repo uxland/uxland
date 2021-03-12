@@ -1,4 +1,4 @@
-import {toDictionaryBy} from '../src/to-dictionary-by';
+import {toDictionaryBy} from '../to-dictionary-by';
 describe('to dictionary by fixture', () => {
   it('should return an object using "id" of each item as key', () => {
     const input: any = [

@@ -1,4 +1,4 @@
-import {toBase64} from '../src/file';
+import {toBase64} from '../file';
 
 describe('Given a file', () => {
   it('should return base64 of that file', async done => {
