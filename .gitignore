@@ -10,3 +10,6 @@ lerna-debug.log
 .idea/
 packages/test-packages/
 packages/*/docs
+packages/*/**/*.d.ts
+packages/*/**/*.js
+!packages/*/*.config.js
