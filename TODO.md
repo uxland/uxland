@@ -17,6 +17,10 @@
 - [ ] DOCS https://github.com/SAP/ui5-tooling/tree/master/docs
 - [ ] Use `module` instead of `namespace`
 
+# License
+
+- Check license generation when publishing (missing author, copyright, date)
+
 # Libraries
 
 | Library           |       README       |        Docs        |                                             Test                                              |                                                               Version                                                                |
