@@ -17,5 +17,6 @@
  */
 
 /** @namespace Routing */
+export * from './helpers';
 export * from './hooks';
 export * from './router';

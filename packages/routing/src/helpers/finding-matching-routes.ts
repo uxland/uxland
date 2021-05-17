@@ -20,12 +20,31 @@ import {Route} from '../router';
 import {regExpResultToParams} from './reg-expr-result-to-params';
 import {replaceDynamicURLSegments} from './replace-dynamic-url-segments';
 
+let STUB = 1;
+/**
+ * Matching route interface
+ * @interface MatchingRoute
+ * @member Routing
+ * @since v1.0.0
+ * @property {RegExpMatchArray} match
+ * @property {Routing.Route} route Route specification
+ * @property {*} params Route parameters
+ */
 export interface MatchingRoute {
   match: RegExpMatchArray;
   route: Route;
   params: any;
 }
+STUB = 1;
 
+/**
+ * Find matching routes for provided url
+ * @function
+ * @memberof Routing
+ * @name findMatchingRoutes
+ * @since v1.0.0
+ * @returns {Array.<Routing.MatchingRoute>}
+ */
 export const findMatchingRoutes = (url: string, routes: Route[] = []): MatchingRoute[] =>
   routes
     .map(route => {

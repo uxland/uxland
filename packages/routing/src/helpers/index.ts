@@ -16,4 +16,4 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-export * from './replace-dynamic-url-segments';
+export * from './finding-matching-routes';
