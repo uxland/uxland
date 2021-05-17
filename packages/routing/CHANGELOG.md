@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1](https://github.com/uxland/uxland/compare/@uxland/routing@1.0.0...@uxland/routing@1.0.1) (2021-05-17)
+
+
+### Bug Fixes
+
+* **routing:** expose findMatchingRoutes functionality ([2c7bb3f](https://github.com/uxland/uxland/commit/2c7bb3f3a46d54fd59a1a78d966d671b2f3f6858))
+
+
+
+
+
 # [1.0.0](https://github.com/uxland/uxland/compare/@uxland/routing@1.0.0-alpha.14...@uxland/routing@1.0.0) (2021-03-09)
 
 **Note:** Version bump only for package @uxland/routing
