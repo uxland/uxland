@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.2](https://github.com/uxland/uxland/compare/@uxland/routing@1.0.1...@uxland/routing@1.0.2) (2021-05-18)
+
+
+### Bug Fixes
+
+* **routing:** add store/state management ([715b613](https://github.com/uxland/uxland/commit/715b61364231c15780d0ad5ee7d44394113102b7))
+
+
+
+
+
 ## [1.0.1](https://github.com/uxland/uxland/compare/@uxland/routing@1.0.0...@uxland/routing@1.0.1) (2021-05-17)
 
 
