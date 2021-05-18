@@ -17,6 +17,7 @@
  */
 
 import {Route} from '../router';
+import {clean} from './clean';
 import {regExpResultToParams} from './reg-expr-result-to-params';
 import {replaceDynamicURLSegments} from './replace-dynamic-url-segments';
 
@@ -45,12 +46,28 @@ STUB = 1;
  * @since v1.0.0
  * @returns {Array.<Routing.MatchingRoute>}
  */
-export const findMatchingRoutes = (url: string, routes: Route[] = []): MatchingRoute[] =>
-  routes
+export const findMatchingRoutes = (
+  url: string,
+  routes: Route[] = [],
+  includeSubRoutes?: boolean,
+  addWildCard?: boolean
+): MatchingRoute[] => {
+  let result = routes
     .map(route => {
-      const {regexp, paramNames} = replaceDynamicURLSegments(route.route);
+      const {regexp, paramNames} = replaceDynamicURLSegments(
+        clean(addWildCard ? route.route + '/*' : route.route)
+      );
       const match = url?.replace(/^\/+/, '/').match(regexp);
       const params = regExpResultToParams(match, paramNames);
       return match ? {match, route, params} : undefined;
     })
     .filter(m => m);
+  result = includeSubRoutes ? [...result, ...findMatchingRoutes(url, routes, false, true)] : result;
+  return result.sort((a, b) => {
+    if (a === null) return 1;
+    if (b === null) return -1;
+    const aSegments = a.route.route.split('/');
+    const bSegments = b.route.route.split('/');
+    return bSegments.length - aSegments.length;
+  });
+};
