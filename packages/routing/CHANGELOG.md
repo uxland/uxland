@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.3](https://github.com/uxland/uxland/compare/@uxland/routing@1.0.2...@uxland/routing@1.0.3) (2021-05-19)
+
+
+### Bug Fixes
+
+* **routing:** add link-click-support and redux capabilities ([f924fb6](https://github.com/uxland/uxland/commit/f924fb6796708446aa5f20bb55af87c58bb58990))
+
+
+
+
+
 ## [1.0.2](https://github.com/uxland/uxland/compare/@uxland/routing@1.0.1...@uxland/routing@1.0.2) (2021-05-18)
 
 
