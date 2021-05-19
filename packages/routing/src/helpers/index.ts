@@ -17,3 +17,4 @@
  */
 
 export * from './finding-matching-routes';
+export * from './is-route-active';

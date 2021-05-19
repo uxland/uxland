@@ -16,7 +16,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-import {Route} from '../router';
+import {RouteDefinition} from '../router';
 import {clean} from './clean';
 import {regExpResultToParams} from './reg-expr-result-to-params';
 import {replaceDynamicURLSegments} from './replace-dynamic-url-segments';
@@ -33,7 +33,7 @@ let STUB = 1;
  */
 export interface MatchingRoute {
   match: RegExpMatchArray;
-  route: Route;
+  route: RouteDefinition;
   params: any;
 }
 STUB = 1;
@@ -48,7 +48,7 @@ STUB = 1;
  */
 export const findMatchingRoutes = (
   url: string,
-  routes: Route[] = [],
+  routes: RouteDefinition[] = [],
   includeSubRoutes?: boolean,
   addWildCard?: boolean
 ): MatchingRoute[] => {

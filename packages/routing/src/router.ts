@@ -56,15 +56,21 @@ export type RouteQueryString = {[key: string]: string};
  * Route interface
  * @memberof Routing
  * @since v1.0.0
- * @interface Route
+ * @interface RouteDefinition
  * @property {string} route URL route segment
  * @property {Routing.RouterHooks} hooks Actions to be executed before and after routing
  */
 STUB = 1;
-export interface Route {
+export interface RouteDefinition {
   route: string;
   // handler?: RouteHandler;
   hooks?: RouterHooks;
+}
+
+export interface Route<T = any> {
+  href: string;
+  params?: T;
+  query?: string;
 }
 
 /**
@@ -92,12 +98,12 @@ export const existingRoute = 'You are trying to register a route that already ex
 export const previousNavigationCancelled =
   'Previous navigation action has been cancelled due to a new one';
 
-const hasDuplicatedRoutes = (routes: Route[]): boolean => {
+const hasDuplicatedRoutes = (routes: RouteDefinition[]): boolean => {
   const urls = routes.map(r => r.route);
   return new Set(urls).size != urls.length;
 };
 
-const hasExistingRoute = (route: Route, routes: Route[]): boolean =>
+const hasExistingRoute = (route: RouteDefinition, routes: RouteDefinition[]): boolean =>
   routes.find(r => r.route == route.route) != undefined;
 
 // const isHashChangeAPIAvailable = () => typeof window !== 'undefined' && 'onhashchange' in window;
@@ -112,7 +118,11 @@ const canNavigateToSpec = allPass([
   pathSatisfies(isNotNil, toPath('hooks.canNavigateTo')),
 ]);
 
-const routesToDeactivate = (last: string, current: string, routes: Route[]): Route[] => {
+const routesToDeactivate = (
+  last: string,
+  current: string,
+  routes: RouteDefinition[]
+): RouteDefinition[] => {
   const lastRoutes = findMatchingRoutes(last, routes).map(m => m.route);
   const currentRoutes = findMatchingRoutes(current, routes).map(m => m.route);
   return difference(lastRoutes, currentRoutes);
@@ -145,7 +155,7 @@ function toAsync(makeGenerator) {
 function* navigate(
   last: string,
   current: string,
-  routes: Route[],
+  routes: RouteDefinition[],
   router: Router,
   notFoundHandler: () => void
 ) {
@@ -189,7 +199,7 @@ function* navigate(
 export class Router {
   // private readonly locationChangeHandler: any;
   // private listeningInterval: any;
-  private _routes: Route[] = [];
+  private _routes: RouteDefinition[] = [];
   private readonly usePushState: boolean;
   private generator: Generator;
   private _lastResolvedUrl: string = null;
@@ -209,7 +219,7 @@ export class Router {
 
   /**
    * Router constructor
-   * @param {Routing.Route[]} routes Routes collection
+   * @param {Routing.RouteDefinition[]} routes Routes collection
    * @param {string} [root] Router root segment
    * @param {string} hash='' Router hash to be added after root and before route path
    * @example
@@ -218,9 +228,9 @@ export class Router {
    *
    */
   constructor(
-    routes: Route[] = [],
-    private root?: string,
-    private hash = '' /*private useHash = false, private hash = '#'*/
+    routes: RouteDefinition[] = [],
+    protected root?: string,
+    protected hash = '' /*private useHash = false, private hash = '#'*/
   ) {
     this.usePushState = isPushStateAvailable();
     // this.locationChangeHandler = this.locationChange.bind(this);
@@ -240,7 +250,7 @@ export class Router {
 
   /**
    * Registers routes collection in router
-   * @param {(Routing.Route | Routing.Route[])} routes Routes collection
+   * @param {(Routing.RouteDefinition | Routing.RouteDefinition[])} routes Routes collection
    * @throws You are trying to register multiple equal routes
    * @throws You are trying to register a route that already exists
    * @example
@@ -258,7 +268,7 @@ export class Router {
    * });
    *
    */
-  registerRoutes(routes: Route | Route[]): void {
+  registerRoutes(routes: RouteDefinition | RouteDefinition[]): void {
     if (routes instanceof Array) {
       if (hasDuplicatedRoutes(routes)) throw new Error(duplicateRoutes);
       else this._routes.push(...routes);
@@ -270,9 +280,9 @@ export class Router {
 
   /**
    * Returns router registered routes
-   * @returns {Routing.Route[]}
+   * @returns {Routing.RouteDefinition[]}
    */
-  get routes(): Route[] {
+  get routes(): RouteDefinition[] {
     return this._routes;
   }
 
@@ -343,7 +353,7 @@ export class Router {
     }
   }
 
-  private routesToDeactivate(last: string, current: string): Route[] {
+  private routesToDeactivate(last: string, current: string): RouteDefinition[] {
     return routesToDeactivate(last, current, this._routes);
   }
 

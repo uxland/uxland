@@ -1,10 +1,6 @@
-import {routeReducer as route} from './route';
 import {combineReducers, Reducer} from 'redux';
-export interface Route<T = any> {
-  href: string;
-  params?: T;
-  query?: string;
-}
+import {Route} from '../router';
+import {routeReducer as route} from './route';
 
 export interface RoutingState {
   route: Route;

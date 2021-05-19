@@ -19,4 +19,6 @@
 /** @namespace Routing */
 export * from './helpers';
 export * from './hooks';
+export * from './link-click-support';
 export * from './router';
+export * from './store';

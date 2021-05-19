@@ -16,10 +16,10 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-import {Route} from '../router';
+import {RouteDefinition} from '../router';
 import {clean} from './clean';
 
-export const root = (url: string, routes: Route[] = []) => {
+export const root = (url: string, routes: RouteDefinition[] = []) => {
   if (!url) return undefined;
   const matched = routes.map(r =>
     r.route === '' || r.route === '*' ? url : url.split(new RegExp(r.route + '($|/)'))[0]

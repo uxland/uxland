@@ -1,6 +1,18 @@
 import {findMatchingRoutes} from '../helpers/finding-matching-routes';
-import {Route} from './reducer';
+import {Route} from '../router';
 
+/**
+ * Returns current route subpage or defaultPage if not found depending on wether route is active or not
+ * @function
+ * @memberof Routing
+ * @name computePage
+ * @since v1.0.2
+ * @param {Routing.Route} currentRoute Current route definition
+ * @param {string} defaultPage Default fallback page
+ * @param {boolean} isRouteActive Defines if current route is active
+ * @param {string} route Route to check against
+ * @returns {string}
+ */
 export const computePage: (
   currentRoute: Route,
   defaultPage: string,

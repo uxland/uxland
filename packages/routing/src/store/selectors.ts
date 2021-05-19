@@ -1,5 +1,6 @@
 import {createSelector} from 'reselect';
-import {Route, RoutingState} from './reducer';
+import {Route} from '../router';
+import {RoutingState} from './reducer';
 
 export interface AppRoutingState {
   routing: RoutingState;
