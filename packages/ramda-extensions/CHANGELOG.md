@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1-alpha.13](https://github.com/uxland/uxland/compare/@uxland/ramda-extensions@1.0.0...@uxland/ramda-extensions@1.0.1-alpha.13) (2021-05-27)
+
+
+### Bug Fixes
+
+* update versions ([4d5abb5](https://github.com/uxland/uxland/commit/4d5abb5946cbcb39b2cde3b9ebf2ea61892b9e1a))
+* **ramda-extensions:** esbuild approach ([90a8164](https://github.com/uxland/uxland/commit/90a81642eb3b43ddc453e39f30d90a76dc29e855))
+
+
+
+
+
 # [1.0.0](https://github.com/uxland/uxland/compare/@uxland/ramda-extensions@1.0.0-alpha.3...@uxland/ramda-extensions@1.0.0) (2021-03-09)
 
 **Note:** Version bump only for package @uxland/ramda-extensions

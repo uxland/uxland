@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1-alpha.13](https://github.com/uxland/uxland/compare/@uxland/routing@1.0.3...@uxland/routing@1.0.1-alpha.13) (2021-05-27)
+
+
+### Bug Fixes
+
+* update versions ([4d5abb5](https://github.com/uxland/uxland/commit/4d5abb5946cbcb39b2cde3b9ebf2ea61892b9e1a))
+* **routing:** esbuild approach ([4e878bf](https://github.com/uxland/uxland/commit/4e878bf26b486b8de16cb23a40e7b1811b256b7f))
+* **routing:** update version ([2717920](https://github.com/uxland/uxland/commit/2717920d79214ecf8949e34e4d4faa0e21396045))
+
+
+
+
+
 ## [1.0.3](https://github.com/uxland/uxland/compare/@uxland/routing@1.0.2...@uxland/routing@1.0.3) (2021-05-19)
 
 
