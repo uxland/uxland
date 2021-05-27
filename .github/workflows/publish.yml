@@ -32,9 +32,7 @@ jobs:
         run: yarn readme:coverage:commit
         continue-on-error: true
       - name: Publish Prerelease
-        if: github.ref == 'refs/heads/alpha'
-        run: npx lerna publish --conventional-commits --conventional-prerelease --dist-tag alpha --yes
-        if: github.ref == 'refs/heads/alpha-esbuild'
+        if: github.ref == 'refs/heads/alpha' || github.ref == 'refs/heads/alpha-esbuild'
         run: npx lerna publish --conventional-commits --conventional-prerelease --dist-tag alpha --yes
       - name: Publish Release
         if: github.ref == 'refs/heads/master'
