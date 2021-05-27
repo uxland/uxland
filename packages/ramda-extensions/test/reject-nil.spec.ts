@@ -1,4 +1,4 @@
-import {rejectNil} from '../src/reject-nil';
+import {rejectNil} from '../reject-nil';
 
 describe('reject nil fixture', () => {
   it('empty array must be return empty array', () => {

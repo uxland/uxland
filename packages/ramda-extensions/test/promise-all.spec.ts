@@ -1,4 +1,4 @@
-import {promiseAll} from '../src/promise-all';
+import {promiseAll} from '../promise-all';
 
 describe('promise all fixture', () => {
   it('should be defined', () => {

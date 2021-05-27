@@ -1,4 +1,4 @@
-import {rejectEmpty} from '../src/reject-empty';
+import {rejectEmpty} from '../reject-empty';
 describe('reject empty fixture', () => {
   it('empty array must be return empty array', () => {
     expect(rejectEmpty([])).toEqual([]);
