@@ -1,5 +1,5 @@
-import {reducer} from '../../../src/store/reducer';
-import {setRouteActionCreator} from '../../../src/store/route';
+import {reducer} from '../../../store/reducer';
+import {setRouteActionCreator} from '../../../store/route';
 
 describe('Route reducer', () => {
   it('should return the initial state', () => {

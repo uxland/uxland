@@ -1,5 +1,5 @@
-import {regExpResultToParams} from '../../../src/helpers/reg-expr-result-to-params';
-import {replaceDynamicURLSegments} from '../../../src/helpers/replace-dynamic-url-segments';
+import {regExpResultToParams} from '../../../helpers/reg-expr-result-to-params';
+import {replaceDynamicURLSegments} from '../../../helpers/replace-dynamic-url-segments';
 
 describe('RegExp Result to Params', () => {
   describe('when provided match is undefined', () => {

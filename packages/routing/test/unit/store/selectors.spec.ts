@@ -1,4 +1,4 @@
-import {AppRoutingState, routingSelectors} from '../../../src/store/selectors';
+import {AppRoutingState, routingSelectors} from '../../../store/selectors';
 describe('Route selectors', () => {
   describe('provided an initial state', () => {
     it('routingSelectors should return empty', () => {

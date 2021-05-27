@@ -1,4 +1,4 @@
-import {isRouteActive} from '../../../src/helpers/is-route-active';
+import {isRouteActive} from '../../../helpers/is-route-active';
 
 describe('Is route active', () => {
   describe('when provided a route', () => {

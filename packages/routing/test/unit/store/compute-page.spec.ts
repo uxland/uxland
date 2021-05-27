@@ -1,4 +1,4 @@
-import {computePage} from '../../../src/store/compute-page';
+import {computePage} from '../../../store/compute-page';
 
 describe('Compute page', () => {
   describe('when route is not active', () => {

@@ -1,4 +1,4 @@
-import {findMatchingRoutes} from '../../../src/helpers/finding-matching-routes';
+import {findMatchingRoutes} from '../../../helpers/finding-matching-routes';
 
 describe('Find Matching Routes', () => {
   describe('when provided url is undefined', () => {

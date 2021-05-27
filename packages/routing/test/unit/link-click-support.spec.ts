@@ -1,4 +1,4 @@
-import {initializeLinkClickSupport} from '../../src/link-click-support';
+import {initializeLinkClickSupport} from '../../link-click-support';
 import Router from './router-mock';
 jest.mock('./router-mock');
 
