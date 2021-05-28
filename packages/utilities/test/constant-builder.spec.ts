@@ -1,4 +1,4 @@
-import {constantBuilder} from '../src/constant-builder';
+import {constantBuilder} from '../constant-builder';
 describe('when invoking `constantBuilder` method for ACTION-NAME', () => {
   const ACTIONNAME = 'ACTION-NAME';
   describe('when a prefix is provided', () => {

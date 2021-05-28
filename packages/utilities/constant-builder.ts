@@ -1,4 +1,4 @@
-import {isNotNil} from '@uxland/ramda-extensions';
+import {isNotNil} from '@uxland/ramda-extensions/is-not-nil';
 import * as R from 'ramda';
 
 let STUB = 1;
@@ -31,21 +31,19 @@ export type ConstantBuilder = (constant: string) => string;
  * constantBuilder('PREFIX', 'SUFFIX', '$$')('CONSTANT') //=> 'PREFIX$$CONSTANT$$SUFFIX'
  *
  */
-export const constantBuilder = (
-  prefix: string,
-  suffix?: string,
-  separator = ':'
-): ConstantBuilder => (constant: string): string =>
-  R.cond([
-    [
-      (): boolean => R.isNil(prefix),
-      (): never => {
-        throw new Error('prefix is needed');
-      },
-    ],
-    [
-      (): boolean => isNotNil(suffix),
-      (): string => `${prefix}${separator}${constant}${separator}${suffix}`,
-    ],
-    [R.T, (): string => `${prefix}${separator}${constant}`],
-  ])();
+export const constantBuilder =
+  (prefix: string, suffix?: string, separator = ':'): ConstantBuilder =>
+  (constant: string): string =>
+    R.cond([
+      [
+        (): boolean => R.isNil(prefix),
+        (): never => {
+          throw new Error('prefix is needed');
+        },
+      ],
+      [
+        (): boolean => isNotNil(suffix),
+        (): string => `${prefix}${separator}${constant}${separator}${suffix}`,
+      ],
+      [R.T, (): string => `${prefix}${separator}${constant}`],
+    ])();
