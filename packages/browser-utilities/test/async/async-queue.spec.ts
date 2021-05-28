@@ -1,4 +1,4 @@
-import {AsyncQueue} from '../../src/async/async-queue';
+import {AsyncQueue} from '../../async/async-queue';
 describe('Given an instance of AsyncQueue', () => {
   describe('and no item is enqueued', () => {
     it('should not call executor', () => {

@@ -1,4 +1,4 @@
-import {animationFrame} from '../../src/async/animation-frame';
+import {animationFrame} from '../../async/animation-frame';
 class RequestAnimationFrameMockSession {
   handleCounter = 0;
   queue = new Map();
@@ -30,16 +30,13 @@ class RequestAnimationFrameMockSession {
 
 export const requestAnimationFrameMock = new RequestAnimationFrameMockSession();
 
-window.requestAnimationFrame = requestAnimationFrameMock.requestAnimationFrame.bind(
-  requestAnimationFrameMock
-);
-window.cancelAnimationFrame = requestAnimationFrameMock.cancelAnimationFrame.bind(
-  requestAnimationFrameMock
-);
+window.requestAnimationFrame =
+  requestAnimationFrameMock.requestAnimationFrame.bind(requestAnimationFrameMock);
+window.cancelAnimationFrame =
+  requestAnimationFrameMock.cancelAnimationFrame.bind(requestAnimationFrameMock);
 //@ts-ignore
-window.triggerNextAnimationFrame = requestAnimationFrameMock.triggerNextAnimationFrame.bind(
-  requestAnimationFrameMock
-);
+window.triggerNextAnimationFrame =
+  requestAnimationFrameMock.triggerNextAnimationFrame.bind(requestAnimationFrameMock);
 
 describe('Given the animationFrame functionality', () => {
   describe('when providing a callback', () => {

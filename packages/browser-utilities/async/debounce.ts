@@ -117,22 +117,20 @@ export class Debouncer {
     return debouncer;
   }
 }
-export const debounce: (delay: number) => MethodDecorator = delay => (
-  target,
-  propertyKey,
-  descriptor
-): void => {
-  const desc = descriptor as any;
-  const originalCall: () => void = desc.value;
-  desc.value = (...args: any[]): Debouncer =>
-    //@ts-ignore
-    (this.debouncer = Debouncer.debounce(
+export const debounce: (delay: number) => MethodDecorator =
+  delay =>
+  (target, propertyKey, descriptor): void => {
+    const desc = descriptor as any;
+    const originalCall: () => void = desc.value;
+    desc.value = (...args: any[]): Debouncer =>
       //@ts-ignore
-      this.debouncer,
-      timeOut.after(delay),
-      originalCall.apply(args)
-    ));
-};
+      (this.debouncer = Debouncer.debounce(
+        //@ts-ignore
+        this.debouncer,
+        timeOut.after(delay),
+        originalCall.apply(args)
+      ));
+  };
 
 const debouncerQueue = new Set();
 
