@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1-alpha.3](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.0...@uxland/project-tools@1.0.1-alpha.3) (2021-05-28)
+
+
+### Bug Fixes
+
+* **project-tools:** update fuse-box dep ([b7a44f1](https://github.com/uxland/uxland/commit/b7a44f1d71fb5d20e708aa543b5d5e34981d2f67))
+* **project-tools:** update version ([6e13fdf](https://github.com/uxland/uxland/commit/6e13fdf80880043dc12a61954071eb76b2b52f2e))
+
+
+
+
+
 # [1.0.0](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.0-alpha.31...@uxland/project-tools@1.0.0) (2021-03-09)
 
 **Note:** Version bump only for package @uxland/project-tools
