@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1-alpha.13](https://github.com/uxland/uxland/compare/@uxland/redux@1.0.0...@uxland/redux@1.0.1-alpha.13) (2021-05-28)
+
+
+### Bug Fixes
+
+* skipLibCheck to avoid date-fns errors in build ([f23f798](https://github.com/uxland/uxland/commit/f23f798687dd4e8685206ce1d4a7bdfadc5ab05f))
+* update deps ([dd923c9](https://github.com/uxland/uxland/commit/dd923c90b78cb8b5ff4af27ec5bb4f9410960268))
+
+
+
+
+
 # [1.0.0](https://github.com/uxland/uxland/compare/@uxland/redux@1.0.0-alpha.31...@uxland/redux@1.0.0) (2021-03-09)
 
 **Note:** Version bump only for package @uxland/redux

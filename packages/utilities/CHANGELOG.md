@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1-alpha.14](https://github.com/uxland/uxland/compare/@uxland/utilities@1.0.1-alpha.13...@uxland/utilities@1.0.1-alpha.14) (2021-05-28)
+
+
+### Bug Fixes
+
+* **utilities:** update dependency ([a44664f](https://github.com/uxland/uxland/commit/a44664f56d15bdaa3e79e18f82d242c0663e163b))
+
+
+
+
+
 ## [1.0.1-alpha.13](https://github.com/uxland/uxland/compare/@uxland/utilities@1.0.0...@uxland/utilities@1.0.1-alpha.13) (2021-05-28)
 
 

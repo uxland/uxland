@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.4-alpha.1](https://github.com/uxland/uxland/compare/@uxland/routing@1.0.4-alpha.0...@uxland/routing@1.0.4-alpha.1) (2021-05-28)
+
+
+### Bug Fixes
+
+* **routing:** update imports and deps ([f6f80a2](https://github.com/uxland/uxland/commit/f6f80a2f94256f4c0ac54183b413f8eb4d362395))
+
+
+
+
+
 ## [1.0.4-alpha.0](https://github.com/uxland/uxland/compare/@uxland/routing@1.0.1-alpha.13...@uxland/routing@1.0.4-alpha.0) (2021-05-27)
 
 
