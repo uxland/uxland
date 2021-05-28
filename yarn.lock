@@ -2562,6 +2562,13 @@
   dependencies:
     ramda "^0.27.1"
 
+"@uxland/utilities@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@uxland/utilities/-/utilities-1.0.0.tgz#489af40aed8b4dae04ab9c35faf1e34345fccfab"
+  integrity sha512-IfyFdAzRPNpzWr79/b+QGSi3cWjlOrrxQnh0ABimVnlq0nNMnLR5GTOfhIx6xN7K8iA6nA5uuHhW9yqX8nhuOQ==
+  dependencies:
+    "@uxland/ramda-extensions" "^1.0.0"
+
 "@zkochan/cmd-shim@^3.1.0":
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/@zkochan/cmd-shim/-/cmd-shim-3.1.0.tgz#2ab8ed81f5bb5452a85f25758eb9b8681982fd2e"
