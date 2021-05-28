@@ -1,4 +1,4 @@
-import {microTask} from '@uxland/browser-utilities';
+import {microTask} from '@uxland/browser-utilities/async/micro-task';
 import {Store, Unsubscribe} from 'redux';
 import {bind} from './bind';
 
@@ -42,20 +42,20 @@ export type ConnectMixinFunction = MixinFunction<ConnectMixinConstructor>;
  * TestClass = class Test extends connect(BaseClass) {};
  *
  */
-export const connectMixin: (
-  defaultStore?: Store<any, any>
-) => ConnectMixinFunction = defaultStore => (superClass: any): ConnectMixinConstructor => {
-  class ConnectMixin extends superClass implements ConnectMixin {
-    __reduxStoreSubscriptions__: Unsubscribe[];
+export const connectMixin: (defaultStore?: Store<any, any>) => ConnectMixinFunction =
+  defaultStore =>
+  (superClass: any): ConnectMixinConstructor => {
+    class ConnectMixin extends superClass implements ConnectMixin {
+      __reduxStoreSubscriptions__: Unsubscribe[];
 
-    constructor() {
-      super();
-      microTask.run(() => bind(this));
-    }
+      constructor() {
+        super();
+        microTask.run(() => bind(this));
+      }
 
-    static get reduxDefaultStore(): Store | undefined {
-      return defaultStore;
+      static get reduxDefaultStore(): Store | undefined {
+        return defaultStore;
+      }
     }
-  }
-  return ConnectMixin;
-};
+    return ConnectMixin;
+  };

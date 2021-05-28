@@ -16,7 +16,7 @@
  * THIS SOFTWARE IS PROVIDED BY <COPYRIGHT HOLDER> ''AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL <COPYRIGHT HOLDER> BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-import {isNullOrEmpty} from '@uxland/ramda-extensions';
+import {isNullOrEmpty} from '@uxland/ramda-extensions/is-null-or-empty';
 import * as R from 'ramda';
 import {SerializerInfo} from './model';
 import {
@@ -87,51 +87,52 @@ const executeFn = (data: any, from: string | string[], fn: Function) =>
         () => fn(data)
       )(data)
   )(from);
-const assignInputToOutput = (
-  data: any,
-  from: string | string[],
-  to?: string,
-  serializerFn?: Function,
-  serializers?: any[]
-) => (output: any) =>
-  R.cond([
-    [
-      hasSerializerFn,
-      () => setOutput(from as string, to, executeFn(data, from, serializerFn))(output),
-    ],
-    [hasSerializers, () => setOutput(from as string, to, serialize(data, serializers))(output)],
-    [R.T, () => setOutput(from as string, to, data)(output)],
-  ])({
-    serializerFn,
-    serializers,
-  });
-const inToOut = (
-  data: any,
-  from: string | string[],
-  to?: string | string[],
-  fn?: Function,
-  serializers?: any
-) => (output: any) =>
-  R.cond([
-    [
-      hasFromTo,
-      () =>
-        R.cond([
-          [isArray, () => multipleTo(data, from, to as string[], fn)],
-          [
-            R.T,
-            () =>
-              assignInputToOutput(getProp(from, data), from, to as string, fn, serializers)(output),
-          ],
-          // [R.T, R.always(assignInputToOutput(getProp(from, data), from, to as string, fn, serializers)(output))]
-        ])(to),
-    ],
-    [R.T, () => assignInputToOutput(getProp(from, data), from, undefined, fn, serializers)(output)],
-    // [R.T, R.always(assignInputToOutput(getProp(from, data), from, undefined, fn, serializers)(output))]
-  ])({
-    from,
-    to,
-  });
+const assignInputToOutput =
+  (data: any, from: string | string[], to?: string, serializerFn?: Function, serializers?: any[]) =>
+  (output: any) =>
+    R.cond([
+      [
+        hasSerializerFn,
+        () => setOutput(from as string, to, executeFn(data, from, serializerFn))(output),
+      ],
+      [hasSerializers, () => setOutput(from as string, to, serialize(data, serializers))(output)],
+      [R.T, () => setOutput(from as string, to, data)(output)],
+    ])({
+      serializerFn,
+      serializers,
+    });
+const inToOut =
+  (data: any, from: string | string[], to?: string | string[], fn?: Function, serializers?: any) =>
+  (output: any) =>
+    R.cond([
+      [
+        hasFromTo,
+        () =>
+          R.cond([
+            [isArray, () => multipleTo(data, from, to as string[], fn)],
+            [
+              R.T,
+              () =>
+                assignInputToOutput(
+                  getProp(from, data),
+                  from,
+                  to as string,
+                  fn,
+                  serializers
+                )(output),
+            ],
+            // [R.T, R.always(assignInputToOutput(getProp(from, data), from, to as string, fn, serializers)(output))]
+          ])(to),
+      ],
+      [
+        R.T,
+        () => assignInputToOutput(getProp(from, data), from, undefined, fn, serializers)(output),
+      ],
+      // [R.T, R.always(assignInputToOutput(getProp(from, data), from, undefined, fn, serializers)(output))]
+    ])({
+      from,
+      to,
+    });
 
 const serializeArray = <I, O>(i: I[], serializers: SerializerInfo<I, O>[]): O[] =>
   R.reduce<I, O[]>((collection, d) => collection.concat(serialize(d, serializers)), [], i);

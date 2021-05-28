@@ -15,7 +15,7 @@
  * THIS SOFTWARE IS PROVIDED BY <COPYRIGHT HOLDER> ''AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL <COPYRIGHT HOLDER> BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-import {nop} from '@uxland/utilities';
+import {nop} from '@uxland/utilities/nop';
 import {
   always,
   cond,
@@ -98,7 +98,10 @@ const fetchingState = {...defaultState, isFetching: true};
  * @returns {Redux.AsyncState}
  */
 export const getDefaultState = (): AsyncState => ({...defaultState});
-const actionCreator = (base: string) => (action: string): string => `${base}_${action}`;
+const actionCreator =
+  (base: string) =>
+  (action: string): string =>
+    `${base}_${action}`;
 const actionsCreator = (base: string): any => {
   const creator = actionCreator(base);
   return {
@@ -129,15 +132,17 @@ const extractErrorDescription = (action: Action): ((payload: any) => void | stri
 type StateFactory = (state: any, action: Action) => any;
 const typeEqual = propEq('type');
 type CurrentStateGetter = (options: Options) => (state: any, action: Action) => any;
-const getState: CurrentStateGetter = options => (state, action): any =>
-  options.pathResolver ? view(resolvePath(options.pathResolver, action), state) : state;
-const keepPreviousStateGetter: (defState: any) => CurrentStateGetter = (
-  defState = defaultState
-) => (options: any): ((state, action) => any) => {
-  const getter = getState(options);
-  return (state, action): any =>
-    options.keepPreviousStateOnStarted ? getter(state, action) : defState;
-};
+const getState: CurrentStateGetter =
+  options =>
+  (state, action): any =>
+    options.pathResolver ? view(resolvePath(options.pathResolver, action), state) : state;
+const keepPreviousStateGetter: (defState: any) => CurrentStateGetter =
+  (defState = defaultState) =>
+  (options: any): ((state, action) => any) => {
+    const getter = getState(options);
+    return (state, action): any =>
+      options.keepPreviousStateOnStarted ? getter(state, action) : defState;
+  };
 
 /**
  * Creates a reducer for asynchronous actions
@@ -153,13 +158,8 @@ export const createAsyncReducer = <T>(actionName: string, options: Options<T> = 
     ? {...defaultState}
     : {...defaultState, state: options.defValue};
   const defValue: any = options.pathResolver ? {} : initialValue;
-  const {
-    startedAction,
-    succeededAction,
-    failedAction,
-    endedAction,
-    invalidatedAction,
-  } = actionsCreator(actionName);
+  const {startedAction, succeededAction, failedAction, endedAction, invalidatedAction} =
+    actionsCreator(actionName);
   const isStarted = typeEqual(startedAction),
     isFailed = typeEqual(failedAction),
     isSucceeded = typeEqual(succeededAction),
@@ -177,12 +177,14 @@ export const createAsyncReducer = <T>(actionName: string, options: Options<T> = 
   const failedStateGetter = keepPreviousStateGetter(defaultState)(options);
   const getPayload = (action: Action): any =>
     options.payloadAccessor ? options.payloadAccessor(action) : action.payload;
-  const setTimestamp = (action: Action) => (state: AsyncState<T>): any => {
-    const timestamp = options.timestampAccessor
-      ? options.timestampAccessor(action)
-      : action.timestamp;
-    return timestamp ? set(lensProp('timestamp'), timestamp, state) : state;
-  };
+  const setTimestamp =
+    (action: Action) =>
+    (state: AsyncState<T>): any => {
+      const timestamp = options.timestampAccessor
+        ? options.timestampAccessor(action)
+        : action.timestamp;
+      return timestamp ? set(lensProp('timestamp'), timestamp, state) : state;
+    };
   const startedStateFactory: StateFactory = pipe(
     fetchingStateGetter,
     when(
@@ -217,13 +219,18 @@ export const createAsyncReducer = <T>(actionName: string, options: Options<T> = 
     options.pathResolver
       ? set(resolvePath(options.pathResolver, action), newState, state)
       : newState;
-  const setState = (state, action) => (newState: any): any =>
-    pipe(
-      stateGetter,
-      ifElse(equals(newState), always(state), updateState(state, action, newState))
-    )(state, action);
-  const stateFactory = (factory: StateFactory) => state => (action: any): any =>
-    pipe(factory, setTimestamp(action), setState(state, action))(state, action);
+  const setState =
+    (state, action) =>
+    (newState: any): any =>
+      pipe(
+        stateGetter,
+        ifElse(equals(newState), always(state), updateState(state, action, newState))
+      )(state, action);
+  const stateFactory =
+    (factory: StateFactory) =>
+    state =>
+    (action: any): any =>
+      pipe(factory, setTimestamp(action), setState(state, action))(state, action);
   return (state = defValue, action: Action): any =>
     cond([
       [isStarted, stateFactory(startedStateFactory)(state)],
