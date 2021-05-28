@@ -16,7 +16,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-import {isNotNil, toPath} from '@uxland/ramda-extensions';
+import {isNotNil} from '@uxland/ramda-extensions/is-not-nil';
+import {toPath} from '@uxland/ramda-extensions/to-path';
 import {allPass, difference, pathSatisfies, propSatisfies} from 'ramda';
 import {clean} from './helpers/clean';
 import {findMatchingRoutes} from './helpers/finding-matching-routes';
