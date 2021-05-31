@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1-alpha.14](https://github.com/uxland/uxland/compare/@uxland/object-mapper@1.0.1-alpha.13...@uxland/object-mapper@1.0.1-alpha.14) (2021-05-31)
+
+
+### Bug Fixes
+
+* **object-mapper:** esbuild approach ([6dab15e](https://github.com/uxland/uxland/commit/6dab15ee7b4352d16ab22623203c0acbdf4e99a7))
+
+
+
+
+
 ## [1.0.1-alpha.13](https://github.com/uxland/uxland/compare/@uxland/object-mapper@1.0.0...@uxland/object-mapper@1.0.1-alpha.13) (2021-05-28)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1-alpha.13](https://github.com/uxland/uxland/compare/@uxland/event-aggregator@1.0.0...@uxland/event-aggregator@1.0.1-alpha.13) (2021-05-31)
+
+
+### Bug Fixes
+
+* **event-aggregator:** esbuild approach ([31b70bf](https://github.com/uxland/uxland/commit/31b70bfcdb45d9301dc08860c11ff8de9547cdbf))
+
+
+
+
+
 # [1.0.0](https://github.com/uxland/uxland/compare/@uxland/event-aggregator@1.0.0-alpha.19...@uxland/event-aggregator@1.0.0) (2021-03-09)
 
 **Note:** Version bump only for package @uxland/event-aggregator

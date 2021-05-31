@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1-alpha.14](https://github.com/uxland/uxland/compare/@uxland/localization@1.0.1-alpha.13...@uxland/localization@1.0.1-alpha.14) (2021-05-31)
+
+
+### Bug Fixes
+
+* **localization:** correct imports ([5f0e143](https://github.com/uxland/uxland/commit/5f0e143cd613169078fc122ece71784b273a8ec2))
+* **localization:** esbuild approach ([6d21c94](https://github.com/uxland/uxland/commit/6d21c9474d28164b90c5b8e7585f04309635a663))
+
+
+
+
+
 ## [1.0.1-alpha.13](https://github.com/uxland/uxland/compare/@uxland/localization@1.0.0...@uxland/localization@1.0.1-alpha.13) (2021-05-28)
 
 

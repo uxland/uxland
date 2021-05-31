@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1-alpha.14](https://github.com/uxland/uxland/compare/@uxland/redux@1.0.1-alpha.13...@uxland/redux@1.0.1-alpha.14) (2021-05-31)
+
+
+### Bug Fixes
+
+* **redux:** esbuild approach ([f44fd70](https://github.com/uxland/uxland/commit/f44fd7063c74a65e9f959f66c6f104c8d8be0e28))
+
+
+
+
+
 ## [1.0.1-alpha.13](https://github.com/uxland/uxland/compare/@uxland/redux@1.0.0...@uxland/redux@1.0.1-alpha.13) (2021-05-28)
 
 

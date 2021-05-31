@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1-alpha.13](https://github.com/uxland/uxland/compare/@uxland/fetch-client@1.0.0...@uxland/fetch-client@1.0.1-alpha.13) (2021-05-31)
+
+
+### Bug Fixes
+
+* **fetch-client:** esbuild approach ([c26a1d4](https://github.com/uxland/uxland/commit/c26a1d4a2f00fef66ebe1fb2c6816ef67b5f0d11))
+
+
+
+
+
 # [1.0.0](https://github.com/uxland/uxland/compare/@uxland/fetch-client@1.0.0-alpha.21...@uxland/fetch-client@1.0.0) (2021-03-09)
 
 **Note:** Version bump only for package @uxland/fetch-client
