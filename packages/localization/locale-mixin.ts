@@ -20,7 +20,7 @@
  * AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-import { subscribe } from "@uxland/event-aggregator";
+import {subscribe} from '@uxland/event-aggregator/event-aggregator';
 import {
   FORMATTERS_RESET,
   FORMATTERS_UPDATED,
@@ -28,12 +28,8 @@ import {
   LANGUAGE_UPDATED,
   LOCALES_RESET,
   LOCALES_UPDATED,
-} from "./events";
-import {
-  Localizer,
-  localizerFactory,
-  LocalizerFactory,
-} from "./localizer-factory";
+} from './events';
+import {Localizer, localizerFactory, LocalizerFactory} from './localizer-factory';
 
 interface LocalizationMixin {
   localize: Localizer;
@@ -68,59 +64,38 @@ type LocaleMixinFunction = MixinFunction<LocalizationMixinConstructor>;
  * ```
  */
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-export const localeMixin: (factory: LocalizerFactory) => LocaleMixinFunction = (
-  factory
-) => (superClass: any) =>
-  class LocaleMixin extends superClass implements LocalizationMixin {
-    localize: Localizer;
-    useKeyIfMissing: boolean;
-    formats: any = {};
-    language = "en";
-    locales: Record<string, any> = {};
-    constructor() {
-      super();
-      subscribe(LOCALES_UPDATED, this.localesChanged.bind(this));
-      subscribe(LOCALES_RESET, this.localesChanged.bind(this));
-      subscribe(LANGUAGE_UPDATED, this.languageChanged.bind(this));
-      subscribe(LANGUAGE_RESET, this.languageChanged.bind(this));
-      subscribe(FORMATTERS_UPDATED, this.formattersChanged.bind(this));
-      subscribe(FORMATTERS_RESET, this.formattersChanged.bind(this));
-      this.localize = factory(
-        this.language,
-        this.locales,
-        this.formats,
-        this.useKeyIfMissing
-      );
-    }
+export const localeMixin: (factory: LocalizerFactory) => LocaleMixinFunction =
+  factory => (superClass: any) =>
+    class LocaleMixin extends superClass implements LocalizationMixin {
+      localize: Localizer;
+      useKeyIfMissing: boolean;
+      formats: any = {};
+      language = 'en';
+      locales: Record<string, any> = {};
+      constructor() {
+        super();
+        subscribe(LOCALES_UPDATED, this.localesChanged.bind(this));
+        subscribe(LOCALES_RESET, this.localesChanged.bind(this));
+        subscribe(LANGUAGE_UPDATED, this.languageChanged.bind(this));
+        subscribe(LANGUAGE_RESET, this.languageChanged.bind(this));
+        subscribe(FORMATTERS_UPDATED, this.formattersChanged.bind(this));
+        subscribe(FORMATTERS_RESET, this.formattersChanged.bind(this));
+        this.localize = factory(this.language, this.locales, this.formats, this.useKeyIfMissing);
+      }
 
-    private localesChanged(locales: Record<string, any>): void {
-      this.locales = locales;
-      this.localize = factory(
-        this.language,
-        this.locales,
-        this.formats,
-        this.useKeyIfMissing
-      );
-    }
-    public languageChanged(language: string): void {
-      this.language = language;
-      this.localize = factory(
-        this.language,
-        this.locales,
-        this.formats,
-        this.useKeyIfMissing
-      );
-    }
-    public formattersChanged(formats: string): void {
-      this.formats = formats;
-      this.localize = factory(
-        this.language,
-        this.locales,
-        this.formats,
-        this.useKeyIfMissing
-      );
-    }
-  };
+      private localesChanged(locales: Record<string, any>): void {
+        this.locales = locales;
+        this.localize = factory(this.language, this.locales, this.formats, this.useKeyIfMissing);
+      }
+      public languageChanged(language: string): void {
+        this.language = language;
+        this.localize = factory(this.language, this.locales, this.formats, this.useKeyIfMissing);
+      }
+      public formattersChanged(formats: string): void {
+        this.formats = formats;
+        this.localize = factory(this.language, this.locales, this.formats, this.useKeyIfMissing);
+      }
+    };
 
 /**
  * Default mixin in order to give localization capabilities and to subscribe to locales and language changes

@@ -1,5 +1,5 @@
-import { publish } from "@uxland/event-aggregator";
-import { FORMATTERS_RESET, FORMATTERS_UPDATED } from "./events";
+import {publish} from '@uxland/event-aggregator/event-aggregator';
+import {FORMATTERS_RESET, FORMATTERS_UPDATED} from './events';
 
 let currentFormats = {};
 
