@@ -1,8 +1,11 @@
 import {lensProp} from 'ramda';
-import {AsyncState, createAsyncReducer, factory} from '../src';
+import {AsyncState, createAsyncReducer, factory} from '../';
 
 const action = 'TYPE';
-const actionCreator = (base: string) => (action: string): string => `${base}_${action}`;
+const actionCreator =
+  (base: string) =>
+  (action: string): string =>
+    `${base}_${action}`;
 const endedAction = actionCreator(action)('ENDED');
 const startedAction = actionCreator(action)('STARTED');
 const failedAction = actionCreator(action)('FAILED');

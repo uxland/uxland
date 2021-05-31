@@ -18,7 +18,10 @@
 import {always, drop, ifElse, is} from 'ramda';
 import {ActionCreator, createAction, MetaCreator} from './create-action';
 
-const createMeta = (mc: MetaCreator) => (...args: any): any => mc(...drop(1, args));
+const createMeta =
+  (mc: MetaCreator) =>
+  (...args: any): any =>
+    mc(...drop(1, args));
 
 let STUB = 1;
 /**
@@ -99,51 +102,49 @@ export const createActionThunk = (
     [TYPE_ENDED]: createAction(TYPE_ENDED, undefined, finalMetaCreator(metaCreator)),
   };
 
-  const factory: ActionThunkFactory = (...args: any[]) => (
-    dispatch: ActionCreator,
-    getState?: any,
-    extra?: any
-  ): Promise<any> | never => {
-    let result: Promise<any>;
-    const startedAt = new Date().getTime();
-    dispatch(actionCreators[TYPE_START](...args));
-    const succeeded = (data: any): any => {
-      dispatch(actionCreators[TYPE_SUCCEEDED](data, ...args));
-      const endedAt = new Date().getTime();
-      dispatch(
-        actionCreators[TYPE_ENDED](
-          {
-            elapsed: endedAt - startedAt,
-          },
-          ...args
-        )
-      );
-      return data;
+  const factory: ActionThunkFactory =
+    (...args: any[]) =>
+    (dispatch: ActionCreator, getState?: any, extra?: any): Promise<any> | never => {
+      let result: Promise<any>;
+      const startedAt = new Date().getTime();
+      dispatch(actionCreators[TYPE_START](...args));
+      const succeeded = (data: any): any => {
+        dispatch(actionCreators[TYPE_SUCCEEDED](data, ...args));
+        const endedAt = new Date().getTime();
+        dispatch(
+          actionCreators[TYPE_ENDED](
+            {
+              elapsed: endedAt - startedAt,
+            },
+            ...args
+          )
+        );
+        return data;
+      };
+      const failed = (err: Error): never => {
+        const endedAt = new Date().getTime();
+        dispatch(actionCreators[TYPE_FAILED](err, ...args));
+        dispatch(
+          actionCreators[TYPE_ENDED](
+            {
+              elapsed: endedAt - startedAt,
+            },
+            ...args
+          )
+        );
+        throw err;
+      };
+      try {
+        result = fn(...args, {getState, dispatch, extra});
+      } catch (error) {
+        failed(error);
+      }
+      // in case of async (promise), use success and fail callbacks.
+      if (result && result.then) {
+        return result.then(succeeded, failed);
+      }
+      return succeeded(result);
     };
-    const failed = (err: Error): never => {
-      const endedAt = new Date().getTime();
-      dispatch(actionCreators[TYPE_FAILED](err, ...args));
-      dispatch(
-        actionCreators[TYPE_ENDED](
-          {
-            elapsed: endedAt - startedAt,
-          },
-          ...args
-        )
-      );
-      throw err;
-    };
-    try {
-      result = fn(...args, {getState, dispatch, extra});
-    } catch (error) {
-      failed(error);
-    }
-    // in case of async (promise), use success and fail callbacks.
-    if (result && result.then) {
-      return result.then(succeeded, failed);
-    }
-    return succeeded(result);
-  };
 
   factory.NAME = type;
   factory.START = actionCreators[TYPE_START].toString();

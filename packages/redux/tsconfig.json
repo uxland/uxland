@@ -1,9 +1,17 @@
 {
+  "extends": "../project-tools/build/tsconfig.json",
   "compilerOptions": {
-    "rootDir": "./src",
+    "rootDir": "./",
     "outDir": "./",
+    "composite": true,
     "skipLibCheck": true
   },
-  "extends": "../project-tools/build/tsconfig.json",
-  "include": ["src/**/*.ts"]
+  "include": ["**/*.ts"],
+  "exclude": [
+    "node_modules",
+    "es",
+    "src/**/*.spec.ts",
+    "src/**/*.steps.ts",
+    "test"
+  ]
 }

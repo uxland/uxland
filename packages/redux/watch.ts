@@ -14,7 +14,7 @@ let STUB = 1;
  * @property {*=} selector - Selector to use to return state portion
  * @property {*=} propertyOptions - Options of the watched property
  */
-export interface WatchOptions<> {
+export interface WatchOptions {
   name?: string;
   store?: Store<any, any>;
   selector?: any;
@@ -38,17 +38,16 @@ const getStore = (store: Store, proto: any): Store =>
  * @param {Redux.WatchOptions} options - Watch options
  * @returns {*}
  */
-export const watch = <T = any>(selector: Selector<T> | string, options: WatchOptions = {}) => (
-  proto: any,
-  name: PropertyKey
-): void => {
-  createWatchedReduxProperty(
-    {
-      name: String(name),
-      selector: getSelector(selector),
-      store: getStore(options.store, proto),
-    },
-    proto,
-    String(name)
-  );
-};
+export const watch =
+  <T = any>(selector: Selector<T> | string, options: WatchOptions = {}) =>
+  (proto: any, name: PropertyKey): void => {
+    createWatchedReduxProperty(
+      {
+        name: String(name),
+        selector: getSelector(selector),
+        store: getStore(options.store, proto),
+      },
+      proto,
+      String(name)
+    );
+  };

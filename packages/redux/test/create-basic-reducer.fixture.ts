@@ -1,5 +1,5 @@
 import {lensProp} from 'ramda';
-import {createBasicReducer, factory} from '../src';
+import {createBasicReducer, factory} from '../';
 const action = 'MY-ACTION';
 describe('create basic reducer fixture', () => {
   it('basic reducer should initialize default value', () => {

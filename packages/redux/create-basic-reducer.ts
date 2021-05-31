@@ -50,7 +50,7 @@ const setState = (state: any, action: Action, path: Lens | PathResolver): any =>
 export const createBasicReducer: <T = any>(
   actionName: string,
   options?: BasicOptions<T>
-) => Reducer<T> = (actionName, options = {defValue: null}) => (
-  state = options.defValue,
-  action: Action
-): any => (action.type === actionName ? setState(state, action, options.path) : state);
+) => Reducer<T> =
+  (actionName, options = {defValue: null}) =>
+  (state = options.defValue, action: Action): any =>
+    action.type === actionName ? setState(state, action, options.path) : state;

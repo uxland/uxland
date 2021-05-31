@@ -1,4 +1,4 @@
-import {createAction} from '../src';
+import {createAction} from '../';
 import {isFSA} from './flux-standard-action';
 const type = 'TYPE';
 describe('create action fixture', () => {

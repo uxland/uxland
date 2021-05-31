@@ -1,8 +1,11 @@
 import {flatten} from 'ramda';
-import {Action, createActionThunk} from '../src';
+import {Action, createActionThunk} from '../';
 
 const type = 'ACTION';
-const actionCreator = (base: string) => (action: string): string => `${base}_${action}`;
+const actionCreator =
+  (base: string) =>
+  (action: string): string =>
+    `${base}_${action}`;
 const endedAction = actionCreator(type)('ENDED');
 const startedAction = actionCreator(type)('STARTED');
 const failedAction = actionCreator(type)('FAILED');
@@ -24,32 +27,32 @@ describe('create action thunk fixture', () => {
       },
       metaCreator
     );
-  const dispatchAsyncAction = factoryCreator => async (
-    result?,
-    meta?,
-    ...args: any[]
-  ): Promise<any> => {
-    const factory = factoryCreator(result, meta);
-    const thunk = factory(...args);
-    const spy = jest.fn();
-    try {
-      await thunk(spy);
-    } catch (e) {
-      //console.log(e);
-    }
-    return spy;
-  };
-  const dispatchAction = factoryCreator => (result?, meta?, ...args): any => {
-    const factory = factoryCreator(result, meta);
-    const thunk = factory(...args);
-    const spy = jest.fn();
-    try {
-      thunk(spy);
-    } catch (e) {
-      //console.log(e);
-    }
-    return spy;
-  };
+  const dispatchAsyncAction =
+    factoryCreator =>
+    async (result?, meta?, ...args: any[]): Promise<any> => {
+      const factory = factoryCreator(result, meta);
+      const thunk = factory(...args);
+      const spy = jest.fn();
+      try {
+        await thunk(spy);
+      } catch (e) {
+        //console.log(e);
+      }
+      return spy;
+    };
+  const dispatchAction =
+    factoryCreator =>
+    (result?, meta?, ...args): any => {
+      const factory = factoryCreator(result, meta);
+      const thunk = factory(...args);
+      const spy = jest.fn();
+      try {
+        thunk(spy);
+      } catch (e) {
+        //console.log(e);
+      }
+      return spy;
+    };
   const dispatchAsyncSucceededActionThunk = dispatchAsyncAction(createAsyncSucceededThunkFactory);
   const dispatchAsyncFailedActionThunk = dispatchAsyncAction(createAsyncFailedThunkFactory);
   const dispatchSucceededActionThunk = dispatchAction(createSucceededThunkFactory);
