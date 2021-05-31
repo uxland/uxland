@@ -1,4 +1,4 @@
-import { AbapBoolean, SAPBooleanDeserializer, SAPBooleanSerializer } from '../../src/boolean-serializer';
+import {AbapBoolean, SAPBooleanDeserializer, SAPBooleanSerializer} from '../..//boolean-serializer';
 
 describe('Boolean serializer', () => {
   describe('SAP Boolean Serializer', () => {

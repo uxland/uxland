@@ -1,6 +1,6 @@
-import { parse } from 'date-fns';
+import {parse} from 'date-fns';
 import * as R from 'ramda';
-import { parseTimestamp, SAPDateSerializer, ValidationError } from '../../src/date-serializer';
+import {parseTimestamp, SAPDateSerializer, ValidationError} from '../..//date-serializer';
 
 describe('Date serializer', () => {
   describe('String formatters', () => {
@@ -11,19 +11,13 @@ describe('Date serializer', () => {
     it('given a timestamp in "yyyymmddTHHmm" format, output must be "yyyymmdd HHmm00"', () => {
       const timestamp = '20190215T1025';
       expect(parseTimestamp(timestamp)).toEqual(
-        R.pipe(
-          R.replace('T', ' '),
-          i => R.concat(i, '00')
-        )(timestamp)
+        R.pipe(R.replace('T', ' '), i => R.concat(i, '00'))(timestamp)
       );
     });
     it('given a timestamp in "yyyymmddTHH" format, output must be "yyyymmdd HH0000"', () => {
       const timestamp = '20190215T10';
       expect(parseTimestamp(timestamp)).toEqual(
-        R.pipe(
-          R.replace('T', ' '),
-          i => R.concat(i, '0000')
-        )(timestamp)
+        R.pipe(R.replace('T', ' '), i => R.concat(i, '0000'))(timestamp)
       );
     });
     it('given a timestamp in format "yymmddTHHmmss" format, it must throw an invalid-date-format', () => {
@@ -68,11 +62,15 @@ describe('Date serializer', () => {
     });
     it('given a timestamp in "yyyymmdd HHmmss" format, it must return a date', () => {
       const timestamp = '20190101 102502';
-      expect(SAPDateSerializer(timestamp)).toStrictEqual(parse(timestamp, 'yyyyMMdd HHmmss', new Date()));
+      expect(SAPDateSerializer(timestamp)).toStrictEqual(
+        parse(timestamp, 'yyyyMMdd HHmmss', new Date())
+      );
     });
     it('given a date in "yyyymmdd" format, it must return a date in format at "12:00:00', () => {
       const timestamp = '20190101';
-      expect(SAPDateSerializer(timestamp)).toStrictEqual(parse(timestamp+' 120000', 'yyyyMMdd HHmmss', new Date()));
+      expect(SAPDateSerializer(timestamp)).toStrictEqual(
+        parse(timestamp + ' 120000', 'yyyyMMdd HHmmss', new Date())
+      );
     });
   });
 });

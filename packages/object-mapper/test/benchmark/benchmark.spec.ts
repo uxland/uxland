@@ -1,7 +1,7 @@
-import { ObjectMapper } from 'json-object-mapper';
+import {ObjectMapper} from 'json-object-mapper';
 import 'reflect-metadata';
-import { serialize } from '../../src/serialize';
-import { serialize as serializeSet } from '../../src/serialize-set';
+import {serialize} from '../..//serialize';
+import {serialize as serializeSet} from '../..//serialize-set';
 import * as generators from '../unit/data/generators';
 const performance = require('perf_hooks').performance;
 
@@ -20,7 +20,7 @@ describe('Benchmarks', () => {
     const times = {
       uxl: {},
       set: {},
-      json: {}
+      json: {},
     };
     for (let i = 0; i < nItems.length; i++) {
       const items = nItems[i];
@@ -33,11 +33,14 @@ describe('Benchmarks', () => {
         const t3 = performance.now();
         ObjectMapper.deserializeArray(generators.JsonSerializer, input);
         const t4 = performance.now();
-        if (!times.uxl[`${items} (${iterations[i]} runs)`]) times.uxl[`${items} (${iterations[i]} runs)`] = [];
+        if (!times.uxl[`${items} (${iterations[i]} runs)`])
+          times.uxl[`${items} (${iterations[i]} runs)`] = [];
         times.uxl[`${items} (${iterations[i]} runs)`].push(t2 - t1);
-        if (!times.set[`${items} (${iterations[i]} runs)`]) times.set[`${items} (${iterations[i]} runs)`] = [];
+        if (!times.set[`${items} (${iterations[i]} runs)`])
+          times.set[`${items} (${iterations[i]} runs)`] = [];
         times.set[`${items} (${iterations[i]} runs)`].push(t3 - t2);
-        if (!times.json[`${items} (${iterations[i]} runs)`]) times.json[`${items} (${iterations[i]} runs)`] = [];
+        if (!times.json[`${items} (${iterations[i]} runs)`])
+          times.json[`${items} (${iterations[i]} runs)`] = [];
         times.json[`${items} (${iterations[i]} runs)`].push(t4 - t3);
       }
     }
@@ -46,24 +49,30 @@ describe('Benchmarks', () => {
       uxl: Object.keys(times.uxl).reduce(
         (collection, key) => ({
           ...collection,
-          [key]: times.uxl[key].reduce((acc, time) => (acc += time), 0) / parseInt(key.split('(')[1].split(' ')[0])
+          [key]:
+            times.uxl[key].reduce((acc, time) => (acc += time), 0) /
+            parseInt(key.split('(')[1].split(' ')[0]),
         }),
         {}
       ),
       set: Object.keys(times.set).reduce(
         (collection, key) => ({
           ...collection,
-          [key]: times.set[key].reduce((acc, time) => (acc += time), 0) / parseInt(key.split('(')[1].split(' ')[0])
+          [key]:
+            times.set[key].reduce((acc, time) => (acc += time), 0) /
+            parseInt(key.split('(')[1].split(' ')[0]),
         }),
         {}
       ),
       json: Object.keys(times.json).reduce(
         (collection, key) => ({
           ...collection,
-          [key]: times.json[key].reduce((acc, time) => (acc += time), 0) / parseInt(key.split('(')[1].split(' ')[0])
+          [key]:
+            times.json[key].reduce((acc, time) => (acc += time), 0) /
+            parseInt(key.split('(')[1].split(' ')[0]),
         }),
         {}
-      )
+      ),
     };
     console.table(means);
     // const fastest =

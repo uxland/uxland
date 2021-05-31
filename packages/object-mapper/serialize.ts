@@ -72,29 +72,27 @@ const executeFn = (data: any, from: string | string[], fn: (payload: any) => any
     : isArray(data)
     ? data.map(d => fn(d))
     : fn(data);
-const assignInputToOutput = (
-  data: any,
-  from: string | string[],
-  to?: string,
-  serializerFn?: () => any,
-  serializers?: any[]
-) => (output: any): any => {
-  if (!serializerFn && !serializers) return setProperty(from as string, to, data)(output);
-  else if (serializerFn)
-    return setProperty(from as string, to, executeFn(data, from, serializerFn))(output);
-  // eslint-disable-next-line @typescript-eslint/no-use-before-define
-  else return setProperty(from as string, to, serialize(data, serializers))(output);
-};
-const inToOut = (
-  data: any,
-  from: string | string[],
-  to?: string | string[],
-  fn?: () => any,
-  serializers?: any
-) => (output: any): any =>
-  isArray(to)
-    ? multipleTo(data, from, to as string[], fn)
-    : assignInputToOutput(getProp(from, data), from, to as string, fn, serializers)(output);
+const assignInputToOutput =
+  (
+    data: any,
+    from: string | string[],
+    to?: string,
+    serializerFn?: () => any,
+    serializers?: any[]
+  ) =>
+  (output: any): any => {
+    if (!serializerFn && !serializers) return setProperty(from as string, to, data)(output);
+    else if (serializerFn)
+      return setProperty(from as string, to, executeFn(data, from, serializerFn))(output);
+    // eslint-disable-next-line @typescript-eslint/no-use-before-define
+    else return setProperty(from as string, to, serialize(data, serializers))(output);
+  };
+const inToOut =
+  (data: any, from: string | string[], to?: string | string[], fn?: () => any, serializers?: any) =>
+  (output: any): any =>
+    isArray(to)
+      ? multipleTo(data, from, to as string[], fn)
+      : assignInputToOutput(getProp(from, data), from, to as string, fn, serializers)(output);
 
 const serializeArray = <I, O>(i: I[], serializers: SerializerInfo<I, O>[]): O[] =>
   // eslint-disable-next-line @typescript-eslint/no-use-before-define
