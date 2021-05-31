@@ -1,30 +1,30 @@
-import { subscribe } from "@uxland/event-aggregator";
+import {subscribe} from '@uxland/event-aggregator';
 import {
   handleErrors,
   INVALID_CREDENTIALS_EVENT,
   INVALID_REQUEST_EVENT,
-} from "../../../src/handlers/handle-errors";
+} from '../../../handlers/handle-errors';
 
-describe("Given a response", () => {
-  describe("and response is ok", () => {
+describe('Given a response', () => {
+  describe('and response is ok', () => {
     const response: any = {
       ok: true,
       status: 200,
-      json: () => Promise.resolve({ foo: "bar" }),
+      json: () => Promise.resolve({foo: 'bar'}),
     };
-    it("should return response", async (done) => {
+    it('should return response', async done => {
       expect(await handleErrors(response)).toEqual(response);
       done();
     });
   });
-  describe("and response is not ok", () => {
-    describe("if result contains body", () => {
-      it("should throw a new error containing data body, status and statusText", async (done) => {
+  describe('and response is not ok', () => {
+    describe('if result contains body', () => {
+      it('should throw a new error containing data body, status and statusText', async done => {
         const response: any = {
           ok: false,
           status: 401,
-          statusText: "Crendentials invalid",
-          json: () => Promise.resolve({ foo: "bar" }),
+          statusText: 'Crendentials invalid',
+          json: () => Promise.resolve({foo: 'bar'}),
         };
         const data = await response.json();
         const error = {
@@ -42,12 +42,12 @@ describe("Given a response", () => {
         }
       });
     });
-    describe("if body deserialization fails", () => {
-      it("should return error containing status and statusText", async (done) => {
+    describe('if body deserialization fails', () => {
+      it('should return error containing status and statusText', async done => {
         const response: any = {
           ok: false,
           status: 401,
-          statusText: "Crendentials invalid",
+          statusText: 'Crendentials invalid',
           json: () => Promise.reject(),
         };
         const error = {
@@ -64,12 +64,12 @@ describe("Given a response", () => {
         }
       });
     });
-    describe("if status is 401", () => {
-      it("should publish INVALID_CREDENTIALS_EVENT", async (done) => {
+    describe('if status is 401', () => {
+      it('should publish INVALID_CREDENTIALS_EVENT', async done => {
         const r: any = {
           ok: false,
           status: 401,
-          statusText: "Crendentials invalid",
+          statusText: 'Crendentials invalid',
         };
         const error = {
           ...new Error(),
@@ -88,9 +88,9 @@ describe("Given a response", () => {
         }
       });
     });
-    describe("for any other status", () => {
-      it("should publish INVALID_REQUEST_EVENT", async (done) => {
-        const r: any = { ok: false, status: 400, statusText: "Dump" };
+    describe('for any other status', () => {
+      it('should publish INVALID_REQUEST_EVENT', async done => {
+        const r: any = {ok: false, status: 400, statusText: 'Dump'};
         const error = {
           ...new Error(),
           status: r.status,

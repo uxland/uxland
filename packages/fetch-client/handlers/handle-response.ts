@@ -1,7 +1,7 @@
-import { ResponseHandler } from "../domain";
+import {ResponseHandler} from '../domain';
 
-const HEADER_CONTENT_TYPE = "Content-Type";
-const CONTENT_TYPE_JSON = "application/json";
+const HEADER_CONTENT_TYPE = 'Content-Type';
+const CONTENT_TYPE_JSON = 'application/json';
 
 const isResponseContentTypeJSON = (response: Response): boolean => {
   const contentType = response.headers?.get(HEADER_CONTENT_TYPE);
@@ -15,10 +15,5 @@ export const handleResponse = async <T>(
   isResponseContentTypeJSON(response)
     ? await response
         .json()
-        .then((r) =>
-          handlers.reduce(
-            (previousValue, currentValue) => currentValue(previousValue),
-            r
-          )
-        )
+        .then(r => handlers.reduce((previousValue, currentValue) => currentValue(previousValue), r))
     : await response.text();

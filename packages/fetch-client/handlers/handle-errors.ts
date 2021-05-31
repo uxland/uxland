@@ -1,4 +1,4 @@
-import { publish } from "@uxland/event-aggregator";
+import {publish} from '@uxland/event-aggregator/event-aggregator';
 
 /**
  * Event indicating that credentials are invalid
@@ -6,7 +6,7 @@ import { publish } from "@uxland/event-aggregator";
  * @since v1.0.0
  * @param {string} INVALID_CREDENTIALS_EVENT='UXL-FETCH:INVALID_CREDENTIALS_EVENT'
  */
-export const INVALID_CREDENTIALS_EVENT = "UXL-FETCH:INVALID_CREDENTIALS_EVENT";
+export const INVALID_CREDENTIALS_EVENT = 'UXL-FETCH:INVALID_CREDENTIALS_EVENT';
 
 /**
  * Event indicating that fetch has failed
@@ -14,12 +14,10 @@ export const INVALID_CREDENTIALS_EVENT = "UXL-FETCH:INVALID_CREDENTIALS_EVENT";
  * @since v1.0.0
  * @param {string} INVALID_REQUEST_EVENT='UXL-FETCH:INVALID_REQUEST_EVENT'
  */
-export const INVALID_REQUEST_EVENT = "UXL-FETCH:INVALID_REQUEST_EVENT";
+export const INVALID_REQUEST_EVENT = 'UXL-FETCH:INVALID_REQUEST_EVENT';
 
-export const handleErrors = async (
-  response: Response
-): Promise<Response | never> => {
-  const microTask = (): Promise<void> => new Promise((resolve) => resolve());
+export const handleErrors = async (response: Response): Promise<Response | never> => {
+  const microTask = (): Promise<void> => new Promise(resolve => resolve());
   if (!response.ok) {
     let error;
     try {
