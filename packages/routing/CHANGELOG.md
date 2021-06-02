@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.4-alpha.4](https://github.com/uxland/uxland/compare/@uxland/routing@1.0.4-alpha.3...@uxland/routing@1.0.4-alpha.4) (2021-06-02)
+
+
+### Bug Fixes
+
+* skiplibcheck due to date-fns problems ([4c12b2b](https://github.com/uxland/uxland/commit/4c12b2b49d03bf410b2f9dd40d85053617fbf3e8))
+* **redux:** correct version dep ([b812f09](https://github.com/uxland/uxland/commit/b812f090f4f9045a617170d044f59d7a815b03c1))
+
+
+
+
+
 ## [1.0.4-alpha.3](https://github.com/uxland/uxland/compare/@uxland/routing@1.0.4-alpha.2...@uxland/routing@1.0.4-alpha.3) (2021-06-02)
 
 
