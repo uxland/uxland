@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.4-alpha.3](https://github.com/uxland/uxland/compare/@uxland/routing@1.0.4-alpha.2...@uxland/routing@1.0.4-alpha.3) (2021-06-02)
+
+
+### Bug Fixes
+
+* add uglify ([112ff05](https://github.com/uxland/uxland/commit/112ff051f6344fbdff5d8c0e701256db78bb0d19))
+
+
+
+
+
 ## [1.0.4-alpha.2](https://github.com/uxland/uxland/compare/@uxland/routing@1.0.4-alpha.1...@uxland/routing@1.0.4-alpha.2) (2021-05-31)
 
 **Note:** Version bump only for package @uxland/routing

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1-alpha.15](https://github.com/uxland/uxland/compare/@uxland/redux@1.0.1-alpha.14...@uxland/redux@1.0.1-alpha.15) (2021-06-02)
+
+
+### Bug Fixes
+
+* add uglify ([112ff05](https://github.com/uxland/uxland/commit/112ff051f6344fbdff5d8c0e701256db78bb0d19))
+
+
+
+
+
 ## [1.0.1-alpha.14](https://github.com/uxland/uxland/compare/@uxland/redux@1.0.1-alpha.13...@uxland/redux@1.0.1-alpha.14) (2021-05-31)
 
 

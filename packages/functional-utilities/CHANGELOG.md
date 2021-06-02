@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1-alpha.6](https://github.com/uxland/uxland/compare/@uxland/functional-utilities@1.0.0...@uxland/functional-utilities@1.0.1-alpha.6) (2021-06-02)
+
+
+### Bug Fixes
+
+* add uglify ([112ff05](https://github.com/uxland/uxland/commit/112ff051f6344fbdff5d8c0e701256db78bb0d19))
+* correct version ([a241159](https://github.com/uxland/uxland/commit/a24115946ebc27565ed745e4ee6d02b288a4fd14))
+* correct version ([86b435d](https://github.com/uxland/uxland/commit/86b435db7054668d837b032c9b4d1356a749468f))
+
+
+
+
+
 # [1.0.0](https://github.com/uxland/uxland/compare/@uxland/functional-utilities@1.0.0-alpha.28...@uxland/functional-utilities@1.0.0) (2021-03-09)
 
 **Note:** Version bump only for package @uxland/functional-utilities

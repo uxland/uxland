@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1-alpha.5](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.1-alpha.4...@uxland/project-tools@1.0.1-alpha.5) (2021-06-02)
+
+
+### Bug Fixes
+
+* add uglify ([112ff05](https://github.com/uxland/uxland/commit/112ff051f6344fbdff5d8c0e701256db78bb0d19))
+
+
+
+
+
 ## [1.0.1-alpha.4](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.1-alpha.3...@uxland/project-tools@1.0.1-alpha.4) (2021-05-28)
 
 **Note:** Version bump only for package @uxland/project-tools
