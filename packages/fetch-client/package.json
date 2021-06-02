@@ -5,6 +5,7 @@
   "author": "UXLand <dev@uxland.es>",
   "homepage": "https://github.com/uxland/uxland/tree/master/packages/fetch-client#readme",
   "license": "BSD-4-Clause",
+  "browser": "index.min.js",
   "main": "index",
   "module": "index.js",
   "types": "index.d.ts",
@@ -29,7 +30,9 @@
     "build:clean": "rimraf {handlers/*,helpers/*,domain,fetch-client,index}.{!config.js,js,d.ts} tsconfig.tsbuildinfo",
     "build:cjs": "esbuild index.ts --bundle --minify --target=es2018 --outfile=lib/index.js",
     "build:es": "esbuild *.ts handlers/*.ts helpers/*.ts --minify --format=esm --outdir=.",
-    "build": "npm-run-all --parallel build:es build:dts",
+    "prebuild:uglify": "esbuild *.ts handlers/*.ts helpers/*.ts --minify --format=esm --outdir=./lib",
+    "build:uglify": "uglifyjs lib/**/*.js --compress --mangle --mangle-props --no-annotations -o index.min.js",
+    "build": "npm-run-all --parallel build:es build:dts build:uglify",
     "prebuild": "echo nok > .buildstatus",
     "postbuild": "echo ok > .buildstatus",
     "readme:coverage": "node_modules/.bin/jest-badges-readme",
@@ -68,7 +71,8 @@
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-uglify": "^6.0.4",
     "ts-jest": "^26.3.0",
-    "typescript": "^4.0.2"
+    "typescript": "^4.0.2",
+    "uglify-js": "^3.13.8"
   },
   "dependencies": {
     "@uxland/event-aggregator": "^1.0.1-alpha.13",

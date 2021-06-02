@@ -5,6 +5,7 @@
   "author": "UXLand <dev@uxland.es>",
   "homepage": "https://github.com/uxland/uxland/tree/master/packages/style-utilities#readme",
   "license": "BSD-4-Clause",
+  "browser": "index.min.js",
   "files": [
     "flex-layout-styles.scss",
     "units-styles.scss",
@@ -23,5 +24,8 @@
   "scripts": {},
   "bugs": {
     "url": "https://github.com/uxland/uxland/issues"
+  },
+  "devDependencies": {
+    "uglify-js": "^3.13.8"
   }
 }

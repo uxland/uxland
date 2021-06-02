@@ -5,6 +5,7 @@
   "author": "UXLand <dev@uxland.es>",
   "homepage": "https://github.com/uxland/uxland/tree/master/packages/project-tools#readme",
   "license": "BSD-4-Clause",
+  "browser": "index.min.js",
   "files": [
     "build",
     "documentation",
@@ -49,5 +50,8 @@
     "ts-node": "^9.0.0",
     "typescript": "^4.0.2"
   },
-  "gitHead": "779339a2bf1949d5c7bc5e11875d2e9523d45cf8"
+  "gitHead": "779339a2bf1949d5c7bc5e11875d2e9523d45cf8",
+  "devDependencies": {
+    "uglify-js": "^3.13.8"
+  }
 }

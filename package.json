@@ -24,7 +24,7 @@
     "ncp": "^2.0.0"
   },
   "scripts": {
-    "build:clean": "lerna run build:clean",
+    "build:clean": "lerna run build:clean && rimraf packages/*/index.min.js",
     "build:test": "lerna run build:test",
     "build": "lerna run build --stream --parallel",
     "clean": "lerna run build:clean --stream --parallel",
