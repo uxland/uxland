@@ -2550,39 +2550,6 @@
     "@typescript-eslint/types" "4.25.0"
     eslint-visitor-keys "^2.0.0"
 
-"@uxland/browser-utilities@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@uxland/browser-utilities/-/browser-utilities-1.0.0.tgz#37209899dd6a5cc4f800eced7c28be3f634f9a8f"
-  integrity sha512-8xjcrkOKL69yf+60YW+QzDNP5H1Wq8x8o/6rF7n8fIGN4+0q44xUE95Gy1gaVA4e0c4fQ7QA34tkniZ0G6A71w==
-
-"@uxland/ramda-extensions@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@uxland/ramda-extensions/-/ramda-extensions-1.0.0.tgz#ac45b3734e4b3b7cc6dd37a79fd03b19b301e02c"
-  integrity sha512-hTB0FW8qSbAXYFCjJPvK6wVswHZMlfWy/zPbIdD2s6jD0Ls+sfQKrFEPH+An8u/V5VPPjMDCHV4QoTdaT7XSpw==
-  dependencies:
-    ramda "^0.27.1"
-
-"@uxland/redux@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@uxland/redux/-/redux-1.0.0.tgz#ee2993d5f38e092eae6203f68a39c246599f85fd"
-  integrity sha512-FsIKkPnndEgyIDD1sWpalDQMLihIwDHt92zmmTYlUfVgz1GNEg9Uxy0iS7wJQB5pEZWsJ4Jzd0xv8pWzHVtYww==
-  dependencies:
-    "@uxland/browser-utilities" "^1.0.0"
-    "@uxland/ramda-extensions" "^1.0.0"
-    "@uxland/utilities" "^1.0.0"
-    date-fns "^2.10.0"
-    ramda "^0.27.0"
-    redux "^4.0.5"
-    reflect-metadata "^0.1.13"
-    reselect "^4.0.0"
-
-"@uxland/utilities@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@uxland/utilities/-/utilities-1.0.0.tgz#489af40aed8b4dae04ab9c35faf1e34345fccfab"
-  integrity sha512-IfyFdAzRPNpzWr79/b+QGSi3cWjlOrrxQnh0ABimVnlq0nNMnLR5GTOfhIx6xN7K8iA6nA5uuHhW9yqX8nhuOQ==
-  dependencies:
-    "@uxland/ramda-extensions" "^1.0.0"
-
 "@zkochan/cmd-shim@^3.1.0":
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/@zkochan/cmd-shim/-/cmd-shim-3.1.0.tgz#2ab8ed81f5bb5452a85f25758eb9b8681982fd2e"
