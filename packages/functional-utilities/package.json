@@ -6,7 +6,6 @@
   "author": "UXLand <dev@uxland.es>",
   "homepage": "https://github.com/uxland/uxland/tree/master/packages/functional-utilities#readme",
   "license": "BSD-4-Clause",
-  "browser": "index.min.js",
   "main": "lib/index",
   "module": "es/index.js",
   "types": "lib/index.d.ts",
@@ -70,8 +69,7 @@
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-uglify": "^6.0.4",
     "ts-jest": "^26.3.0",
-    "typescript": "^4.0.2",
-    "uglify-js": "^3.13.8"
+    "typescript": "^4.0.2"
   },
   "dependencies": {
     "ramda": "^0.27.0"

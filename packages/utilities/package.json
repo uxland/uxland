@@ -5,8 +5,6 @@
   "author": "UXLand <dev@uxland.es>",
   "homepage": "https://github.com/uxland/uxland/tree/master/packages/utilities#readme",
   "license": "BSD-4-Clause",
-  "browser": "index.min.js",
-  "main": "index",
   "module": "index.js",
   "types": "index.d.ts",
   "files": [
@@ -30,9 +28,8 @@
     "build:clean": "rimraf {collect,constant-builder,curried,invariant,nop,index}.{!config.js,js,d.ts} tsconfig.tsbuildinfo",
     "build:cjs": "esbuild index.ts --bundle --minify --target=es2018 --outfile=lib/index.js",
     "build:es": "esbuild *.ts --minify --format=esm --outdir=.",
-    "prebuild:uglify": "esbuild index.ts --bundle --minify --external:@uxland/* --external:ramda --format=esm --outdir=./lib",
-    "build:uglify": "uglifyjs lib/index.js --compress --mangle  --no-annotations --beautify quote_style=1 -o index.min.js",
-    "build": "npm-run-all --parallel build:es build:dts build:uglify",
+    "build:min": "esbuild index.ts --bundle --minify --external:@uxland/* --external:ramda --format=esm --outfile=./index.min.js",
+    "build": "npm-run-all --parallel build:es build:dts",
     "prebuild": "echo nok > .buildstatus",
     "postbuild": "echo ok > .buildstatus",
     "readme:coverage": "node_modules/.bin/jest-badges-readme",
@@ -71,8 +68,7 @@
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-uglify": "^6.0.4",
     "ts-jest": "^26.3.0",
-    "typescript": "^4.0.2",
-    "uglify-js": "^3.13.8"
+    "typescript": "^4.0.2"
   },
   "dependencies": {
     "@uxland/ramda-extensions": "^1.0.1-alpha.17"
