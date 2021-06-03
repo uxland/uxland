@@ -1,6 +1,6 @@
 {
   "name": "@uxland/utilities",
-  "version": "1.0.1-alpha.19",
+  "version": "1.0.1-alpha.20",
   "description": "Utilities",
   "author": "UXLand <dev@uxland.es>",
   "homepage": "https://github.com/uxland/uxland/tree/master/packages/utilities#readme",
@@ -75,6 +75,6 @@
     "uglify-js": "^3.13.8"
   },
   "dependencies": {
-    "@uxland/ramda-extensions": "^1.0.1-alpha.17"
+    "@uxland/ramda-extensions": "^1.0.1-alpha.18"
   }
 }
