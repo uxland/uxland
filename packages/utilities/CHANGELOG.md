@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1-alpha.18](https://github.com/uxland/uxland/compare/@uxland/utilities@1.0.1-alpha.17...@uxland/utilities@1.0.1-alpha.18) (2021-06-03)
+
+
+### Bug Fixes
+
+* exclude external libs from build ([fb0b859](https://github.com/uxland/uxland/commit/fb0b859bbfe165987709fade29ebdced36b3fab7))
+
+
+
+
+
 ## [1.0.1-alpha.17](https://github.com/uxland/uxland/compare/@uxland/utilities@1.0.1-alpha.16...@uxland/utilities@1.0.1-alpha.17) (2021-06-03)
 
 

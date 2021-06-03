@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.4-alpha.6](https://github.com/uxland/uxland/compare/@uxland/routing@1.0.4-alpha.5...@uxland/routing@1.0.4-alpha.6) (2021-06-03)
+
+
+### Bug Fixes
+
+* exclude external libs from build ([fb0b859](https://github.com/uxland/uxland/commit/fb0b859bbfe165987709fade29ebdced36b3fab7))
+
+
+
+
+
 ## [1.0.4-alpha.5](https://github.com/uxland/uxland/compare/@uxland/routing@1.0.4-alpha.4...@uxland/routing@1.0.4-alpha.5) (2021-06-03)
 
 
