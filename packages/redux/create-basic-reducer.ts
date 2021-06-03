@@ -52,5 +52,5 @@ export const createBasicReducer: <T = any>(
   options?: BasicOptions<T>
 ) => Reducer<T> =
   (actionName, options = {defValue: null}) =>
-  (state = options.defValue, action: Action): any =>
+  (state = options.defValue || ({} as any), action: Action): any =>
     action.type === actionName ? setState(state, action, options.path) : state;
