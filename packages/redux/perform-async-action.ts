@@ -45,7 +45,7 @@ export const performAsyncAction: <T = any>(
   dispatch =>
   (actionType, fn, errorHandler): any => {
     const actions = createAsyncActions(actionType);
-    return meta =>
+    return function (meta) {
       async (...args: any): Promise<any> => {
         const started = window.performance.now();
         try {
@@ -69,4 +69,5 @@ export const performAsyncAction: <T = any>(
           });
         }
       };
+    };
   };
