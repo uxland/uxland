@@ -10,3 +10,5 @@ lerna-debug.log
 .idea/
 packages/test-packages/
 packages/*/docs
+packages/*/**/*.min.js
+.DS_Store
