@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1-alpha.19](https://github.com/uxland/uxland/compare/@uxland/ramda-extensions@1.0.1-alpha.18...@uxland/ramda-extensions@1.0.1-alpha.19) (2021-06-03)
+
+
+### Bug Fixes
+
+* delete uglify proposal ([0469f91](https://github.com/uxland/uxland/commit/0469f91da0fc74badd1f2f3f947585f4ca75f285))
+
+
+
+
+
 ## [1.0.1-alpha.18](https://github.com/uxland/uxland/compare/@uxland/ramda-extensions@1.0.1-alpha.17...@uxland/ramda-extensions@1.0.1-alpha.18) (2021-06-03)
 
 
