@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1-alpha.19](https://github.com/uxland/uxland/compare/@uxland/browser-utilities@1.0.1-alpha.18...@uxland/browser-utilities@1.0.1-alpha.19) (2021-06-03)
+
+
+### Bug Fixes
+
+* disable --mangle-props option from uglify build script to avoid environemtn variables renaming ([74aef36](https://github.com/uxland/uxland/commit/74aef362e3b38b734cfe3c90e9bf4ce3d1b026da))
+
+
+
+
+
 ## [1.0.1-alpha.18](https://github.com/uxland/uxland/compare/@uxland/browser-utilities@1.0.1-alpha.17...@uxland/browser-utilities@1.0.1-alpha.18) (2021-06-03)
 
 **Note:** Version bump only for package @uxland/browser-utilities
