@@ -1,36 +1,37 @@
+import {expect} from '@open-wc/testing';
 import {isNotNil} from '../is-not-nil';
 describe('is not nil fixture', () => {
-  test('null should return false', () => {
-    expect(isNotNil(null)).toBe(false);
+  it('null should return false', () => {
+    expect(isNotNil(null)).to.equal(false);
   });
-  test('undefined should return false', () => {
-    expect(isNotNil(undefined)).toBe(false);
+  it('undefined should return false', () => {
+    expect(isNotNil(undefined)).to.equal(false);
   });
-  test('empty string should return true', () => {
-    expect(isNotNil('')).toBe(true);
+  it('empty string should return true', () => {
+    expect(isNotNil('')).to.equal(true);
   });
-  test('non empty string should return true', () => {
-    expect(isNotNil('hello')).toBe(true);
+  it('non empty string should return true', () => {
+    expect(isNotNil('hello')).to.equal(true);
   });
-  test('number should retrun true', () => {
-    expect(isNotNil(3)).toBe(true);
+  it('number should retrun true', () => {
+    expect(isNotNil(3)).to.equal(true);
   });
-  test('0 should return true', () => {
-    expect(isNotNil(0)).toBe(true);
+  it('0 should return true', () => {
+    expect(isNotNil(0)).to.equal(true);
   });
-  test('empty array should return true', () => {
-    expect(isNotNil([])).toBe(true);
+  it('empty array should return true', () => {
+    expect(isNotNil([])).to.equal(true);
   });
-  test('array should return true', () => {
-    expect(isNotNil([1, 2, 3])).toBe(true);
+  it('array should return true', () => {
+    expect(isNotNil([1, 2, 3])).to.equal(true);
   });
-  test('empty object should return true', () => {
-    expect(isNotNil({})).toBe(true);
+  it('empty object should return true', () => {
+    expect(isNotNil({})).to.equal(true);
   });
-  test('object should return true', () => {
-    expect(isNotNil({hello: 0})).toBe(true);
+  it('object should return true', () => {
+    expect(isNotNil({hello: 0})).to.equal(true);
   });
-  test('NaN should return true', () => {
-    expect(isNotNil(NaN)).toBe(true);
+  it('NaN should return true', () => {
+    expect(isNotNil(NaN)).to.equal(true);
   });
 });
