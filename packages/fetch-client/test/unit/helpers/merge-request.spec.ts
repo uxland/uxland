@@ -1,15 +1,19 @@
+import {expect} from '@open-wc/testing';
 import {mergeRequest} from '../../../helpers/merge-request';
 
 describe('Given an initial request', () => {
   const request: RequestInit = {method: 'POST'};
   describe('when no extra configuration is provided', () => {
     it('should return same request', () =>
-      expect(mergeRequest(request, undefined)).toEqual(request));
+      expect(mergeRequest(request, undefined)).to.deep.equal(request));
   });
   describe('when extra configuration is provided', () => {
     const config = {mode: 'include'};
     it('should return merged request and configuration', () =>
-      expect(mergeRequest(request, config)).toEqual({...request, ...config}));
+      expect(mergeRequest(request, config)).to.deep.equal({
+        ...request,
+        ...config,
+      }));
   });
   describe('when request has headers', () => {
     describe('and configuration has headers', () => {
@@ -22,7 +26,7 @@ describe('Given an initial request', () => {
           method: 'POST',
           headers: {'content-type': 'application/json'},
         };
-        expect(mergeRequest(requestWithHeaders, config)).toEqual({
+        expect(mergeRequest(requestWithHeaders, config)).to.deep.equal({
           method: requestWithHeaders.method,
           mode: config.mode,
           headers: {
