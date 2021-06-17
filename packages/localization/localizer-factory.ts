@@ -16,7 +16,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 import IntlMessageFormat from 'intl-messageformat';
-import {Lens, lensPath, view} from 'ramda';
+import lensPath from 'ramda/es/lensPath';
+import view from 'ramda/es/view';
 
 const getArgs = (args: any[]): any[] => {
   let result = args;
@@ -32,7 +33,7 @@ const getArgs = (args: any[]): any[] => {
 
   return result;
 };
-const getLens = (key: string): Lens => lensPath(String(key).split('.'));
+const getLens = (key: string) => lensPath(String(key).split('.'));
 let STUB = 1;
 /**
  * Localizer

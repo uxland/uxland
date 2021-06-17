@@ -1,3 +1,4 @@
+import {expect} from '@open-wc/testing';
 import * as EA from '@uxland/event-aggregator';
 import {
   DEFAULT_LANGUAGE,
@@ -6,16 +7,15 @@ import {
   resetLanguage,
   setLanguage,
 } from '../language';
-
 describe('language utilities', () => {
   describe('when getting language', () => {
     it('should return default language', () => {
-      expect(getLanguage()).toEqual(DEFAULT_LANGUAGE);
+      expect(getLanguage()).to.deep.equal(DEFAULT_LANGUAGE);
     });
   });
   describe('when setting language', () => {
     let spy: jest.SpyInstance;
-    beforeAll(() => {
+    beforeEach(() => {
       spy = jest.spyOn(EA, 'publish');
       setLanguage('es');
     });
@@ -23,18 +23,19 @@ describe('language utilities', () => {
       expect(spy).toHaveBeenCalled();
     });
     it('should set provided language as default', () => {
-      expect(getLanguage()).toEqual('es');
+      expect(getLanguage()).to.deep.equal('es');
     });
   });
   describe('when resetting language', () => {
     let spy: jest.SpyInstance;
-    beforeAll(() => {
+    beforeEach(() => {
       spy = jest.spyOn(EA, 'publish');
       resetLanguage();
     });
     it('should publish an event to communicate language reset', () => {
       expect(spy).toHaveBeenCalled();
     });
-    it('should have default language', () => expect(getLanguage()).toEqual(getDefaultLanguage()));
+    it('should have default language', () =>
+      expect(getLanguage()).to.deep.equal(getDefaultLanguage()));
   });
 });

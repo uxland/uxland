@@ -16,7 +16,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 import {publish} from '@uxland/event-aggregator';
-import {mergeDeepRight} from 'ramda';
+import mergeDeepRight from 'ramda/es/mergeDeepRight';
 import {LOCALES_RESET, LOCALES_UPDATED} from './events';
 
 const defaultLocales: Record<string, any> = {};
