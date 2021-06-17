@@ -18,6 +18,8 @@ jobs:
           fetch-depth: 0
       - name: Setup GIT credentials
         run: |
+          sudo apt-get update
+          sudo apt-get install -y libgbm-dev
           git config user.name $GITHUB_ACTOR
           git config user.email avizcaino@uxland.es
       - name: Setup NPM
