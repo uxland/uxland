@@ -1,6 +1,6 @@
 {
   "name": "@uxland/object-mapper",
-  "version": "1.0.1-alpha.21",
+  "version": "1.0.1-alpha.22",
   "description": "Object serializer-deserializer",
   "author": "UXLand <dev@uxland.es>",
   "homepage": "https://github.com/uxland/uxland/tree/master/packages/object-mapper#readme",

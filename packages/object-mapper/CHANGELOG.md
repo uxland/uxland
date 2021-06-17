@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1-alpha.22](https://github.com/uxland/uxland/compare/@uxland/object-mapper@1.0.1-alpha.21...@uxland/object-mapper@1.0.1-alpha.22) (2021-06-17)
+
+
+### Bug Fixes
+
+* specific date-fns imports ([400f76b](https://github.com/uxland/uxland/commit/400f76b2f38c98cd483c97010926f5febe56a4e5))
+
+
+
+
+
 ## [1.0.1-alpha.21](https://github.com/uxland/uxland/compare/@uxland/object-mapper@1.0.1-alpha.20...@uxland/object-mapper@1.0.1-alpha.21) (2021-06-17)
 
 
