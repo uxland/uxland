@@ -17,7 +17,18 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 import {isNullOrEmpty} from '@uxland/ramda-extensions/is-null-or-empty';
-import * as R from 'ramda';
+import cond from 'ramda/es/cond';
+import equals from 'ramda/es/equals';
+import ifElse from 'ramda/es/ifElse';
+import isNil from 'ramda/es/isNil';
+import path from 'ramda/es/path';
+import pipe from 'ramda/es/pipe';
+import prop from 'ramda/es/prop';
+import reduce from 'ramda/es/reduce';
+import remove from 'ramda/es/remove';
+import set from 'ramda/es/set';
+import split from 'ramda/es/split';
+import T from 'ramda/es/T';
 import {SerializerInfo} from './model';
 import {
   getFrom,
@@ -36,17 +47,17 @@ import {
 } from './utilities';
 import {invalidPath, invalidSerializers} from './validation';
 
-const buildFirstIndexPath = R.pipe(R.split('.'), (paths: string[]) => [
+const buildFirstIndexPath = pipe(split('.'), (paths: string[]) => [
   paths[0],
   0,
-  ...R.remove(0, 1, paths),
+  ...remove(0, 1, paths),
 ]);
 const getProp = (from: string | string[], data: any) =>
-  R.cond([
+  cond([
     [
       isArray,
       () =>
-        R.reduce(
+        reduce(
           (collection, fromK: string) => collection.concat(data ? data[fromK] : undefined),
           [],
           from as string[]
@@ -55,48 +66,48 @@ const getProp = (from: string | string[], data: any) =>
     [
       isPath,
       () =>
-        R.cond([
-          [isObject, () => R.path(R.split('.', from as string), data)],
-          [isSingleObject, () => R.path(buildFirstIndexPath(from as string), data)],
-          [R.T, () => thrower(invalidPath)],
-        ])(R.prop(R.split('.', from as string)[0], data)),
+        cond([
+          [isObject, () => path(split('.', from as string), data)],
+          [isSingleObject, () => path(buildFirstIndexPath(from as string), data)],
+          [T, () => thrower(invalidPath)],
+        ])(prop(split('.', from as string)[0], data)),
     ],
-    [R.T, () => R.prop(from as string, data)],
+    [T, () => prop(from as string, data)],
   ])(from);
 const setOutput = (from: string, to: string, value: any) =>
-  R.set(lensProp(to || from), R.isNil(value) ? undefined : value);
+  set(lensProp(to || from), isNil(value) ? undefined : value);
 const multipleTo = (data: any, from: string | string[], to: string[], fn: Function) =>
-  R.cond([
+  cond([
     [
-      R.equals,
-      () => R.reduce((collection, toK: string) => inToOut(data, toK, toK, fn)(collection), {}, to),
+      equals,
+      () => reduce((collection, toK: string) => inToOut(data, toK, toK, fn)(collection), {}, to),
     ],
     [
-      R.T,
-      () => R.reduce((collection, toK: string) => inToOut(data, from, toK, fn)(collection), {}, to),
+      T,
+      () => reduce((collection, toK: string) => inToOut(data, from, toK, fn)(collection), {}, to),
     ],
   ])(from, to);
 const executeFn = (data: any, from: string | string[], fn: Function) =>
-  R.ifElse(
+  ifElse(
     isArray,
     () => fn(...data),
     () =>
-      R.ifElse(
+      ifElse(
         isArray,
-        () => R.reduce((collection: any[], d) => collection.concat(fn(d)), [], data),
+        () => reduce((collection: any[], d) => collection.concat(fn(d)), [], data),
         () => fn(data)
       )(data)
   )(from);
 const assignInputToOutput =
   (data: any, from: string | string[], to?: string, serializerFn?: Function, serializers?: any[]) =>
   (output: any) =>
-    R.cond([
+    cond([
       [
         hasSerializerFn,
         () => setOutput(from as string, to, executeFn(data, from, serializerFn))(output),
       ],
       [hasSerializers, () => setOutput(from as string, to, serialize(data, serializers))(output)],
-      [R.T, () => setOutput(from as string, to, data)(output)],
+      [T, () => setOutput(from as string, to, data)(output)],
     ])({
       serializerFn,
       serializers,
@@ -104,14 +115,14 @@ const assignInputToOutput =
 const inToOut =
   (data: any, from: string | string[], to?: string | string[], fn?: Function, serializers?: any) =>
   (output: any) =>
-    R.cond([
+    cond([
       [
         hasFromTo,
         () =>
-          R.cond([
+          cond([
             [isArray, () => multipleTo(data, from, to as string[], fn)],
             [
-              R.T,
+              T,
               () =>
                 assignInputToOutput(
                   getProp(from, data),
@@ -121,23 +132,20 @@ const inToOut =
                   serializers
                 )(output),
             ],
-            // [R.T, R.always(assignInputToOutput(getProp(from, data), from, to as string, fn, serializers)(output))]
+            // [T, always(assignInputToOutput(getProp(from, data), from, to as string, fn, serializers)(output))]
           ])(to),
       ],
-      [
-        R.T,
-        () => assignInputToOutput(getProp(from, data), from, undefined, fn, serializers)(output),
-      ],
-      // [R.T, R.always(assignInputToOutput(getProp(from, data), from, undefined, fn, serializers)(output))]
+      [T, () => assignInputToOutput(getProp(from, data), from, undefined, fn, serializers)(output)],
+      // [T, always(assignInputToOutput(getProp(from, data), from, undefined, fn, serializers)(output))]
     ])({
       from,
       to,
     });
 
 const serializeArray = <I, O>(i: I[], serializers: SerializerInfo<I, O>[]): O[] =>
-  R.reduce<I, O[]>((collection, d) => collection.concat(serialize(d, serializers)), [], i);
+  reduce<I, O[]>((collection, d) => collection.concat(serialize(d, serializers)), [], i);
 const serializeObject = <I, O>(i: I, serializers: SerializerInfo<I, O>[]): O =>
-  R.reduce<SerializerInfo<I, O>, O>(
+  reduce<SerializerInfo<I, O>, O>(
     (o, s) =>
       inToOut(
         i,
@@ -158,13 +166,13 @@ const serializeObject = <I, O>(i: I, serializers: SerializerInfo<I, O>[]): O =>
 export function serialize<I, O>(i: I[], serializers?: SerializerInfo<I, O>[]): O[];
 export function serialize<I, O>(i: I, serializers?: SerializerInfo<I, O>[]): O;
 export function serialize<I, O>(i: I | I[], serializers?: SerializerInfo<I, O>[]): O | O[] {
-  return R.cond([
+  return cond([
     [isNullOrEmpty, () => i],
     [invalidSerializers, () => i],
     [
-      R.T,
+      T,
       () =>
-        R.ifElse(
+        ifElse(
           isArray,
           () => serializeArray(i as I[], serializers),
           () => serializeObject(i as I, serializers)

@@ -16,13 +16,26 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 import {isNotNullNeitherEmpty} from '@uxland/ramda-extensions/is-not-nil-neither-empty';
-import * as R from 'ramda';
+import allPass from 'ramda/es/allPass';
+import complement from 'ramda/es/complement';
+import equals from 'ramda/es/equals';
+import has from 'ramda/es/has';
+import ifElse from 'ramda/es/ifElse';
+import indexOf from 'ramda/es/indexOf';
+import is from 'ramda/es/is';
+import isNil from 'ramda/es/isNil';
+import length from 'ramda/es/length';
+import lensPath from 'ramda/es/lensPath';
+import RlensProp from 'ramda/es/lensProp';
+import pipe from 'ramda/es/pipe';
+import prop from 'ramda/es/prop';
+import split from 'ramda/es/split';
 import {SerializerInfo} from './model';
 
-export const isTrue = R.equals(true);
-export const isFalse = R.equals(false);
-export const isArray = R.is(Array);
-export const isObject = R.allPass([R.complement(isArray), R.is(Object)]);
+export const isTrue = equals(true);
+export const isFalse = equals(false);
+export const isArray = is(Array);
+export const isObject = allPass([complement(isArray), is(Object)]);
 
 export const thrower = (message: string): never => {
   throw new Error(message);
@@ -33,30 +46,30 @@ export const getSerializerFn = (serializer?: any): (() => any) => serializer?.se
 export const getDeserializerFn = (serializer?: any): (() => any) => serializer?.deserializerFn;
 export const getSerializers = (serializer?: any): SerializerInfo<any, any>[] =>
   serializer?.serializers;
-export const hasFrom = R.pipe(getFrom, isNotNullNeitherEmpty);
-export const hasTo = R.pipe(getTo, isNotNullNeitherEmpty);
-export const hasSerializerFn = R.pipe(getSerializerFn, isNotNullNeitherEmpty);
-export const hasDeserializerFn = R.pipe(getDeserializerFn, isNotNullNeitherEmpty);
-export const hasSerializers = R.pipe(getSerializers, isNotNullNeitherEmpty);
-export const noSerializers = R.complement(hasSerializers);
-export const hasFromTo = R.allPass([hasFrom, hasTo]);
-export const hasDeserializeProp = R.has('deserializeProp');
-export const hasBoth = R.allPass([hasDeserializeProp, hasSerializerFn]);
-export const hasInvalidStructure = R.allPass([hasSerializerFn, hasSerializers]);
-export const multipleSerializeProp = R.pipe(R.prop('serializeProp'), isArray);
-export const isPath = R.pipe(R.indexOf('.'), R.complement(R.equals(-1)));
-export const isSingleObject = R.allPass([isArray, R.pipe(R.length, R.equals(1))]);
+export const hasFrom = pipe(getFrom, isNotNullNeitherEmpty);
+export const hasTo = pipe(getTo, isNotNullNeitherEmpty);
+export const hasSerializerFn = pipe(getSerializerFn, isNotNullNeitherEmpty);
+export const hasDeserializerFn = pipe(getDeserializerFn, isNotNullNeitherEmpty);
+export const hasSerializers = pipe(getSerializers, isNotNullNeitherEmpty);
+export const noSerializers = complement(hasSerializers);
+export const hasFromTo = allPass([hasFrom, hasTo]);
+export const hasDeserializeProp = has('deserializeProp');
+export const hasBoth = allPass([hasDeserializeProp, hasSerializerFn]);
+export const hasInvalidStructure = allPass([hasSerializerFn, hasSerializers]);
+export const multipleSerializeProp = pipe(prop('serializeProp'), isArray);
+export const isPath = pipe(indexOf('.'), complement(equals(-1)));
+export const isSingleObject = allPass([isArray, pipe(length, equals(1))]);
 export const lensProp = (prop: string): any =>
-  R.ifElse(
+  ifElse(
     isPath,
-    () => R.lensPath(R.split('.')(prop)),
-    () => R.lensProp(prop)
+    () => lensPath(split('.')(prop)),
+    () => RlensProp(prop)
   )(prop);
 
 export const getPath = (prop: string): string =>
-  R.ifElse(
+  ifElse(
     isPath,
-    () => R.split('.')(prop),
+    () => split('.')(prop),
     () => prop
   )(prop);
 
@@ -64,8 +77,8 @@ export const setProperty =
   (from: string, to: string, value: any) =>
   (obj: any = {}): any => {
     const path = getPath(to || from);
-    const parsedValue = R.isNil(value) ? undefined : value;
-    return R.ifElse(
+    const parsedValue = isNil(value) ? undefined : value;
+    return ifElse(
       isArray,
       () => {
         for (let i = path.length - 1; i >= 0; i--) {

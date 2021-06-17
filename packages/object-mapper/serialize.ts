@@ -15,7 +15,12 @@
  * THIS SOFTWARE IS PROVIDED BY <COPYRIGHT HOLDER> ''AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL <COPYRIGHT HOLDER> BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-import * as R from 'ramda';
+
+import equals from 'ramda/es/equals';
+import Rpath from 'ramda/es/path';
+import pipe from 'ramda/es/pipe';
+import remove from 'ramda/es/remove';
+import split from 'ramda/es/split';
 import {SerializerInfo} from './model';
 import {
   getFrom,
@@ -31,20 +36,20 @@ import {
 } from './utilities';
 import {invalidPath, validSerializers} from './validation';
 
-const buildFirstIndexPath = R.pipe(R.split('.'), (paths: string[]) => [
+const buildFirstIndexPath = pipe(split('.'), (paths: string[]) => [
   paths[0],
   0,
-  ...R.remove(0, 1, paths),
+  ...remove(0, 1, paths),
 ]);
 const getPropForArray = (from: string[], data: any): any =>
   from.map((fromK: string) => (data ? data[fromK] : undefined));
 const getPropForPath = (from: string, data: any): any => {
-  const path = R.split('.', from as string);
+  const path = split('.', from as string);
   const item = data[path[0]];
   return isObject(item)
-    ? R.path(path, data)
+    ? Rpath(path, data)
     : isSingleObject(item)
-    ? R.path(buildFirstIndexPath(from as string), data)
+    ? Rpath(buildFirstIndexPath(from as string), data)
     : thrower(invalidPath);
 };
 const getProp = (from: string | string[], data: any): any =>
@@ -61,8 +66,7 @@ const multipleTo = (
 ): Record<string, unknown> =>
   // eslint-disable-next-line @typescript-eslint/no-use-before-define
   to.reduce(
-    (collection, toK: string) =>
-      inToOut(data, R.equals(from, to) ? toK : from, toK, fn)(collection),
+    (collection, toK: string) => inToOut(data, equals(from, to) ? toK : from, toK, fn)(collection),
     {}
   );
 const executeFn = (data: any, from: string | string[], fn: (payload: any) => any): any =>
