@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.4-alpha.10](https://github.com/uxland/uxland/compare/@uxland/routing@1.0.4-alpha.9...@uxland/routing@1.0.4-alpha.10) (2021-06-17)
+
+
+### Bug Fixes
+
+* update test config ([8259192](https://github.com/uxland/uxland/commit/8259192175825a071f6ab32b91e285a9a8a91f3f))
+* **routing:** specific ramda imports and web-test-runner ([4904fcd](https://github.com/uxland/uxland/commit/4904fcdd4cf3248435e30bc474d58821051256ff))
+
+
+
+
+
 ## [1.0.4-alpha.9](https://github.com/uxland/uxland/compare/@uxland/routing@1.0.4-alpha.8...@uxland/routing@1.0.4-alpha.9) (2021-06-03)
 
 

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1-alpha.21](https://github.com/uxland/uxland/compare/@uxland/redux@1.0.1-alpha.20...@uxland/redux@1.0.1-alpha.21) (2021-06-17)
+
+
+### Bug Fixes
+
+* update test config ([8259192](https://github.com/uxland/uxland/commit/8259192175825a071f6ab32b91e285a9a8a91f3f))
+* **redux:** specific ramda imports and web-test-runner ([56001a5](https://github.com/uxland/uxland/commit/56001a507578b5e8c52a637f8b1168f2171605a5))
+
+
+
+
+
 ## [1.0.1-alpha.20](https://github.com/uxland/uxland/compare/@uxland/redux@1.0.1-alpha.19...@uxland/redux@1.0.1-alpha.20) (2021-06-03)
 
 

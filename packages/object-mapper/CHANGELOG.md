@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1-alpha.21](https://github.com/uxland/uxland/compare/@uxland/object-mapper@1.0.1-alpha.20...@uxland/object-mapper@1.0.1-alpha.21) (2021-06-17)
+
+
+### Bug Fixes
+
+* update test config ([8259192](https://github.com/uxland/uxland/commit/8259192175825a071f6ab32b91e285a9a8a91f3f))
+* **object-mappers:** specific ramda imports and web-test-runner ([c9e1bc1](https://github.com/uxland/uxland/commit/c9e1bc18a8723adc767888d97087dfbcdceb26c8))
+
+
+
+
+
 ## [1.0.1-alpha.20](https://github.com/uxland/uxland/compare/@uxland/object-mapper@1.0.1-alpha.19...@uxland/object-mapper@1.0.1-alpha.20) (2021-06-03)
 
 

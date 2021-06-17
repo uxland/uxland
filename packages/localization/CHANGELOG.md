@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1-alpha.21](https://github.com/uxland/uxland/compare/@uxland/localization@1.0.1-alpha.20...@uxland/localization@1.0.1-alpha.21) (2021-06-17)
+
+
+### Bug Fixes
+
+* tsconfig ([aad062d](https://github.com/uxland/uxland/commit/aad062d63effb7029c6854c9d14f93bb6f3ecd96))
+* update test config ([8259192](https://github.com/uxland/uxland/commit/8259192175825a071f6ab32b91e285a9a8a91f3f))
+* **localization:** specific ramda imports and disable testing ([3d5ec9a](https://github.com/uxland/uxland/commit/3d5ec9a4217de6a4d06866888c5f8da8410a5029))
+
+
+
+
+
 ## [1.0.1-alpha.20](https://github.com/uxland/uxland/compare/@uxland/localization@1.0.1-alpha.19...@uxland/localization@1.0.1-alpha.20) (2021-06-03)
 
 

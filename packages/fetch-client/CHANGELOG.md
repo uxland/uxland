@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1-alpha.20](https://github.com/uxland/uxland/compare/@uxland/fetch-client@1.0.1-alpha.19...@uxland/fetch-client@1.0.1-alpha.20) (2021-06-17)
+
+
+### Bug Fixes
+
+* update test config ([8259192](https://github.com/uxland/uxland/commit/8259192175825a071f6ab32b91e285a9a8a91f3f))
+* update tsconfig ([f4d9561](https://github.com/uxland/uxland/commit/f4d9561b1eb45ab391a6a55cdcad5c1add67b945))
+* **fetch-client:** use specific ramda imports and new testing strategy ([56a1841](https://github.com/uxland/uxland/commit/56a18416afcdb49efabd26867735de6554a96633))
+
+
+
+
+
 ## [1.0.1-alpha.19](https://github.com/uxland/uxland/compare/@uxland/fetch-client@1.0.1-alpha.18...@uxland/fetch-client@1.0.1-alpha.19) (2021-06-03)
 
 

@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1-alpha.22](https://github.com/uxland/uxland/compare/@uxland/utilities@1.0.1-alpha.21...@uxland/utilities@1.0.1-alpha.22) (2021-06-17)
+
+
+### Bug Fixes
+
+* tsconfig ([aad062d](https://github.com/uxland/uxland/commit/aad062d63effb7029c6854c9d14f93bb6f3ecd96))
+* update test config ([8259192](https://github.com/uxland/uxland/commit/8259192175825a071f6ab32b91e285a9a8a91f3f))
+* **utilities:** specific ramda imports and web-test-runner ([79108a4](https://github.com/uxland/uxland/commit/79108a45f7b01e0feb8ac059dfbdd7982d6d27f2))
+
+
+
+
+
 ## [1.0.1-alpha.21](https://github.com/uxland/uxland/compare/@uxland/utilities@1.0.1-alpha.20...@uxland/utilities@1.0.1-alpha.21) (2021-06-03)
 
 
