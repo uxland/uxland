@@ -1,6 +1,11 @@
 {
   "extends": "../project-tools/build/tsconfig.json",
-  "compilerOptions": { "rootDir": "./", "outDir": "./", "composite": true },
+  "compilerOptions": {
+    "rootDir": "./",
+    "outDir": "./",
+    "composite": true,
+    "skipLibCheck": true
+  },
   "include": ["**/*.ts"],
   "exclude": [
     "node_modules",
