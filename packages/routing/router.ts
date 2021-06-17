@@ -18,7 +18,10 @@
 
 import {isNotNil} from '@uxland/ramda-extensions/is-not-nil';
 import {toPath} from '@uxland/ramda-extensions/to-path';
-import {allPass, difference, pathSatisfies, propSatisfies} from 'ramda';
+import allPass from 'ramda/es/allPass';
+import difference from 'ramda/es/difference';
+import pathSatisfies from 'ramda/es/pathSatisfies';
+import propSatisfies from 'ramda/es/propSatisfies';
 import {clean} from './helpers/clean';
 import {findMatchingRoutes} from './helpers/finding-matching-routes';
 import {getOnlyUrl} from './helpers/get-only-url';
