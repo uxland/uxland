@@ -16,7 +16,12 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 import {isNotNil} from '@uxland/ramda-extensions/is-not-nil';
-import {addDays, addHours, addMinutes, addSeconds, isBefore, isValid} from 'date-fns';
+import addDays from 'date-fns/addDays';
+import addHours from 'date-fns/addHours';
+import addMinutes from 'date-fns/addMinutes';
+import addSeconds from 'date-fns/addSeconds';
+import isBefore from 'date-fns/isBefore';
+import isValid from 'date-fns/isValid';
 import allPass from 'ramda/es/allPass';
 import always from 'ramda/es/always';
 import both from 'ramda/es/both';
