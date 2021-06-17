@@ -1,4 +1,5 @@
-import {pipe, tap} from 'ramda';
+import pipe from 'ramda/es/pipe';
+import tap from 'ramda/es/tap';
 import {Action, Store} from 'redux';
 import {RESET_STORE_ACTION} from './resetable-reducer';
 

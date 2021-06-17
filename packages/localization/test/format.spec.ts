@@ -1,15 +1,15 @@
+import {expect} from '@open-wc/testing';
 import * as EA from '@uxland/event-aggregator';
 import {getFormatters, resetFormatters, setFormatters} from '../format';
-
 describe('formatters utilities', () => {
   describe('when getting formatters', () => {
     it('should return default formatters', () => {
-      expect(getFormatters()).toEqual({});
+      expect(getFormatters()).to.deep.equal({});
     });
   });
   describe('when setting formatters', () => {
     let spy: jest.SpyInstance;
-    beforeAll(() => {
+    beforeEach(() => {
       spy = jest.spyOn(EA, 'publish');
       setFormatters({
         number: {EUR: {style: 'currency', currency: 'EUR'}},
@@ -19,20 +19,20 @@ describe('formatters utilities', () => {
       expect(spy).toHaveBeenCalled();
     });
     it('should set provided formatters as default', () => {
-      expect(getFormatters()).toEqual({
+      expect(getFormatters()).to.deep.equal({
         number: {EUR: {style: 'currency', currency: 'EUR'}},
       });
     });
   });
   describe('when resetting formatters', () => {
     let spy: jest.SpyInstance;
-    beforeAll(() => {
+    beforeEach(() => {
       spy = jest.spyOn(EA, 'publish');
       resetFormatters();
     });
     it('should publish an event to communicate formatters reset', () => {
       expect(spy).toHaveBeenCalled();
     });
-    it('should have default formatters', () => expect(getFormatters()).toEqual({}));
+    it('should have default formatters', () => expect(getFormatters()).to.deep.equal({}));
   });
 });

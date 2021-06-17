@@ -1,3 +1,4 @@
+import {expect} from '@open-wc/testing';
 import * as R from 'ramda';
 import {SerializerInfo} from '../..//model';
 import {serialize} from '../..//serialize';
@@ -9,12 +10,11 @@ import {
 } from '../..//validation';
 
 type anySerializerInfo = Array<SerializerInfo<any, any, any, any>>;
-
 describe('Serializer', () => {
   describe('When calling serialization without serializers', () => {
     it('input must be pass through', () => {
       const input = {foo: 'bar'};
-      expect(serialize(input)).toStrictEqual(input);
+      expect(serialize(input)).to.deep.equal(input);
     });
   });
   describe('Given a serializer without "from" property', () => {
@@ -22,43 +22,43 @@ describe('Serializer', () => {
       const input = {foo: 'bar'};
       const serializers: anySerializerInfo = [{} as any];
       const serializerError = () => serialize(input, serializers);
-      expect(serializerError).toThrow(requiredFrom);
+      expect(serializerError).throw(requiredFrom);
     });
   });
   describe('Given a serializer with only "from" property', () => {
     it('if "from" property does not exists in input, initialize output[from] as undefined', () => {
       const input = {foo: 'bar'};
       const serializers: anySerializerInfo = [{from: 'FOO'}];
-      expect(serialize(input, serializers)).toStrictEqual({FOO: undefined});
+      expect(serialize(input, serializers)).to.deep.equal({FOO: undefined});
     });
     it('if "from" property exists in input, output[from] must be equal to input[from]', () => {
       const input = {foo: 'bar'};
       const serializers: anySerializerInfo = [{from: 'foo'}];
-      expect(serialize(input, serializers)).toStrictEqual(input);
+      expect(serialize(input, serializers)).to.deep.equal(input);
     });
     describe('and "from" is a path', () => {
       it('if input[path] is an object, output[path] must be equal to input[path]', () => {
         const input = {foo: {bar: 'baz'}};
         const serializers: anySerializerInfo = [{from: 'foo.bar', deserializerFn: () => null}];
-        expect(serialize(input, serializers)).toStrictEqual(input);
+        expect(serialize(input, serializers)).to.deep.equal(input);
       });
       it('if input[path] is a single object array, output[path] must be equal to flatten(input[path])', () => {
         const input = {foo: [{bar: 'baz'}]};
         const serializers: anySerializerInfo = [{from: 'foo.bar', deserializerFn: () => null}];
         const output = {foo: {bar: 'baz'}};
-        expect(serialize(input, serializers)).toStrictEqual(output);
+        expect(serialize(input, serializers)).to.deep.equal(output);
       });
       it('if input[path] is an array, it must throw an error', () => {
         const input = {foo: [{bar: 'baz'}, {qux: 'quux'}]};
         const serializers: anySerializerInfo = [{from: 'foo.bar', deserializerFn: () => null}];
         const serializerError = () => serialize(input, serializers);
-        expect(serializerError).toThrow(invalidPath);
+        expect(serializerError).throw(invalidPath);
       });
     });
     it('if input[from] is an array, output[from] must be equal to input[from]', () => {
       const input = {foo: ['bar']};
       const serializers: anySerializerInfo = [{from: 'foo'}];
-      expect(serialize(input, serializers)).toStrictEqual(input);
+      expect(serialize(input, serializers)).to.deep.equal(input);
     });
   });
   describe('Given a serializer with "from" and "to" properties', () => {
@@ -66,32 +66,32 @@ describe('Serializer', () => {
       const input = {foo: 'bar'};
       const serializers: anySerializerInfo = [{from: 'foo', to: 'FOO'}];
       const output = {FOO: 'bar'};
-      expect(serialize(input, serializers)).toStrictEqual(output);
+      expect(serialize(input, serializers)).to.deep.equal(output);
     });
     it('if "to" property is an array, duplicate input[from] to N output[to[n]]', () => {
       const input = {foo: 'bar'};
       const serializers: anySerializerInfo = [{from: 'foo', to: ['FOO', 'BAR']}];
       const output = {FOO: 'bar', BAR: 'bar'};
-      expect(serialize(input, serializers)).toStrictEqual(output);
+      expect(serialize(input, serializers)).to.deep.equal(output);
     });
     it('if input[from] is an array, output[to] must be equal to input[from]', () => {
       const input = {foo: ['bar']};
       const serializers: anySerializerInfo = [{from: 'foo', to: ['FOO', 'BAR']}];
       const output = {FOO: ['bar'], BAR: ['bar']};
-      expect(serialize(input, serializers)).toStrictEqual(output);
+      expect(serialize(input, serializers)).to.deep.equal(output);
     });
     it('if input[from] is empty, output must be empty too', () => {
       const input = {foo: ''};
       const serializers: anySerializerInfo = [{from: 'foo', to: 'FOO'}];
       const output = {FOO: ''};
-      expect(serialize(input, serializers)).toStrictEqual(output);
+      expect(serialize(input, serializers)).to.deep.equal(output);
     });
     describe('and "from" and/or "to" is a path', () => {
       it('if "to" is a path, output[path] must be equal to input[from]', () => {
         const input = {foo: 'baz'};
         const serializers: anySerializerInfo = [{from: 'foo', to: 'foo.bar'}];
         const output = {foo: {bar: 'baz'}};
-        expect(serialize(input, serializers)).toStrictEqual(output);
+        expect(serialize(input, serializers)).to.deep.equal(output);
       });
       it('if "from" and "to" are paths, output[pathO] must be equal to input[pathI]', () => {
         const input = {foo: {bar: 'baz'}};
@@ -99,7 +99,7 @@ describe('Serializer', () => {
           {from: 'foo.bar', to: 'qux.quux', deserializerFn: () => null},
         ];
         const output = {qux: {quux: 'baz'}};
-        expect(serialize(input, serializers)).toStrictEqual(output);
+        expect(serialize(input, serializers)).to.deep.equal(output);
       });
     });
     describe('and "from" is any properties array', () => {
@@ -107,7 +107,7 @@ describe('Serializer', () => {
         const input = {date: '20190101', time: '100000'};
         const serializers: anySerializerInfo = [{from: ['date', 'time'], to: ['date', 'time']}];
         const output = {date: '20190101', time: '100000'};
-        expect(serialize(input, serializers)).toStrictEqual(output);
+        expect(serialize(input, serializers)).to.deep.equal(output);
       });
       it('if "to" property is an array an has a serializeFn, duplicate input[from] to N output[serializeFn(to[n])]', () => {
         const input = {foo: 'bar'};
@@ -119,13 +119,13 @@ describe('Serializer', () => {
           },
         ];
         const output = {FOO: 'BAR', BAR: 'BAR'};
-        expect(serialize(input, serializers)).toStrictEqual(output);
+        expect(serialize(input, serializers)).to.deep.equal(output);
       });
       it('if "to" is a path or single property, it must have a serializerFn', () => {
         const input = {date: '20190101', time: '100000'};
         const serializers: anySerializerInfo = [{from: ['date', 'time'], to: 'date'}];
         const serializerError = () => serialize(input, serializers);
-        expect(serializerError).toThrow(requiredSerializeFn);
+        expect(serializerError).throw(requiredSerializeFn);
       });
       it('if "to" is a path or single property, must execute serializerFn using input[from]', () => {
         const input = {date: '20190101', time: '100000'};
@@ -134,7 +134,7 @@ describe('Serializer', () => {
           {from: ['date', 'time'], to: 'timestamp', serializerFn},
         ];
         const output = {timestamp: serializerFn(input.date, input.time)};
-        expect(serialize(input, serializers)).toStrictEqual(output);
+        expect(serialize(input, serializers)).to.deep.equal(output);
       });
       it('if "from" has a property that does not exists, it must not dump', () => {
         const input: any = {};
@@ -150,7 +150,7 @@ describe('Serializer', () => {
             timestamp: serializerFn(R.prop('data.date')(input), R.prop('data.time')(input)),
           },
         };
-        expect(serialize(input, serializers)).toStrictEqual(output);
+        expect(serialize(input, serializers)).to.deep.equal(output);
       });
     });
   });
@@ -161,7 +161,7 @@ describe('Serializer', () => {
         {from: 'foo', serializerFn: data => data.toUpperCase()},
       ];
       const output = {foo: 'BAR'};
-      expect(serialize(input, serializers)).toStrictEqual(output);
+      expect(serialize(input, serializers)).to.deep.equal(output);
     });
     it('and "from" and "to" properties, output[to] must be equal to serializerFn(input[from])', () => {
       const input = {foo: 'bar'};
@@ -169,7 +169,7 @@ describe('Serializer', () => {
         {from: 'foo', to: 'FOO', serializerFn: data => data.toUpperCase()},
       ];
       const output = {FOO: 'BAR'};
-      expect(serialize(input, serializers)).toStrictEqual(output);
+      expect(serialize(input, serializers)).to.deep.equal(output);
     });
     it('and input[from] is an array, output[to] must be equal to serialize each input[from]', () => {
       const input = {foo: ['bar', 'baz']};
@@ -177,7 +177,7 @@ describe('Serializer', () => {
         {from: 'foo', to: 'FOO', serializerFn: data => data.toUpperCase()},
       ];
       const output = {FOO: ['BAR', 'BAZ']};
-      expect(serialize(input, serializers)).toStrictEqual(output);
+      expect(serialize(input, serializers)).to.deep.equal(output);
     });
   });
   describe('Given a serializer with sub-serializers', () => {
@@ -185,7 +185,7 @@ describe('Serializer', () => {
       const input = {foo: 'bar'};
       const serializers: anySerializerInfo = [{from: 'foo', serializers: [{from: 'bar'}]}];
       const output = {foo: {bar: undefined}};
-      expect(serialize(input, serializers)).toStrictEqual(output);
+      expect(serialize(input, serializers)).to.deep.equal(output);
     });
     it('if input[from] is an object, serialize input[from] to output[to] using sub-serializers', () => {
       const input = {foo: {bar: 'baz'}};
@@ -193,7 +193,7 @@ describe('Serializer', () => {
         {from: 'foo', to: 'FOO', serializers: [{from: 'bar'}]},
       ];
       const output = {FOO: {bar: 'baz'}};
-      expect(serialize(input, serializers)).toStrictEqual(output);
+      expect(serialize(input, serializers)).to.deep.equal(output);
     });
     it('and input[from] is an array, output[to]', () => {
       const input = {foo: [{bar: 'baz', qux: 'quux'}]};
@@ -212,7 +212,7 @@ describe('Serializer', () => {
         },
       ];
       const output = {FOO: [{BAR: 'BAZ', QUX: 'quux'}]};
-      expect(serialize(input, serializers)).toStrictEqual(output);
+      expect(serialize(input, serializers)).to.deep.equal(output);
     });
   });
   describe('Given a serializer with serializerFn and sub-serializers', () => {
@@ -222,7 +222,7 @@ describe('Serializer', () => {
         {from: 'foo', serializerFn: () => null, serializers: []},
       ];
       const serializerError = () => serialize(input, serializers);
-      expect(serializerError).toThrow(invalidSerializerStructure);
+      expect(serializerError).throw(invalidSerializerStructure);
     });
   });
 });

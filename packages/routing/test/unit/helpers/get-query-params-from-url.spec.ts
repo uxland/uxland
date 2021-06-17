@@ -5,27 +5,28 @@
 //   });
 // });
 
+import {expect} from '@open-wc/testing';
 import {getQueryParametersFromUrl} from '../../../helpers/get-query-params-from-url';
 
 describe('Get QueryParameters from URL', () => {
   describe('when providing an undefined url', () => {
     it('should return undefined', () => {
-      expect(getQueryParametersFromUrl(undefined)).toBeUndefined();
+      expect(getQueryParametersFromUrl(undefined)).to.be.undefined;
     });
   });
   describe('when providing an empty url', () => {
     it('should return undefined', () => {
-      expect(getQueryParametersFromUrl('')).toBeUndefined();
+      expect(getQueryParametersFromUrl('')).to.be.undefined;
     });
   });
   describe('when providing an url without parameters', () => {
     it('should return undefined', () => {
-      expect(getQueryParametersFromUrl('/dummy')).toBeUndefined();
+      expect(getQueryParametersFromUrl('/dummy')).to.be.undefined;
     });
   });
   describe('when providing an url with parameters', () => {
     it('should return a collection of parameter and corresponding value', () => {
-      expect(getQueryParametersFromUrl('/dummy?foo=bar')).toEqual({
+      expect(getQueryParametersFromUrl('/dummy?foo=bar')).to.deep.equal({
         foo: 'bar',
       });
     });

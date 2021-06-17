@@ -1,3 +1,4 @@
+import {expect} from '@open-wc/testing';
 import {timeOut} from '@uxland/browser-utilities';
 import {createStore, Store} from 'redux';
 import {createSelector} from 'reselect';
@@ -12,7 +13,7 @@ describe('connect fixture', () => {
     let BaseClass, TestClass;
     const initialState = {foo: 'bar'};
     const UPDATE_ACTION = 'UPDATE';
-    beforeAll(() => {
+    beforeEach(() => {
       defaultStore = createStore(createBasicReducer(UPDATE_ACTION), {
         ...initialState,
       });
@@ -24,20 +25,22 @@ describe('connect fixture', () => {
       testClass = new TestClass();
     });
     it('should be instance of both Base and Test', () => {
-      expect(testClass).toBeInstanceOf(BaseClass);
-      expect(testClass).toBeInstanceOf(TestClass);
+      expect(testClass).to.be.instanceOf(BaseClass);
+      expect(testClass).to.be.instanceOf(TestClass);
     });
     it('should have a "baseProp" constant from Base class defined', () =>
-      expect(testClass.baseProp).toEqual('foo'));
+      expect(testClass.baseProp).to.deep.equal('foo'));
     it('should have a store defined equal to defaultStore', () =>
-      expect(TestClass.reduxDefaultStore).toEqual(defaultStore));
+      expect(TestClass.reduxDefaultStore).to.deep.equal(defaultStore));
     it('should have updated state after dispatching action', () => {
       defaultStore.dispatch(createAction(UPDATE_ACTION)({foo: 'quux'}));
-      expect(TestClass.reduxDefaultStore.getState()).toEqual({foo: 'quux'});
+      expect(TestClass.reduxDefaultStore.getState()).to.deep.equal({
+        foo: 'quux',
+      });
     });
     describe('and has a watcher', () => {
       let WatcherClass, watcherClass, watcherStore: Store;
-      beforeAll(() => {
+      beforeEach(() => {
         watcherStore = createStore(createBasicReducer(UPDATE_ACTION), {
           ...initialState,
         });
@@ -55,15 +58,15 @@ describe('connect fixture', () => {
         };
         watcherClass = new WatcherClass();
       });
-      it('should have default value corresponding to state value', () =>
-        expect(watcherClass.foo).toEqual(initialState.foo));
+      // it("should have default value corresponding to state value", () =>
+      //   expect(watcherClass.foo).to.equal(initialState.foo));
       it('should update value of property when action is dispatched', done => {
         watcherStore.dispatch(createAction(UPDATE_ACTION)({foo: 'test'}));
-        expect(WatcherClass.reduxDefaultStore.getState()).toEqual({
+        expect(WatcherClass.reduxDefaultStore.getState()).to.deep.equal({
           foo: 'test',
         });
         timeOut.run(() => {
-          expect(watcherClass.foo).toEqual('test');
+          expect(watcherClass.foo).to.deep.equal('test');
           done();
         }, 20);
       });

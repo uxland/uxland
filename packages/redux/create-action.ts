@@ -16,7 +16,9 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 import {invariant} from '@uxland/utilities/invariant';
-import {identity, is, isNil} from 'ramda';
+import identity from 'ramda/es/identity';
+import is from 'ramda/es/is';
+import isNil from 'ramda/es/isNil';
 import {Action as ReduxAction} from 'redux';
 
 export type ActionFunctionAny<R> = (...args: any[]) => R;
