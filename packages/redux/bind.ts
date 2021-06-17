@@ -1,7 +1,13 @@
 import {Debouncer} from '@uxland/browser-utilities/async/debounce';
 import {timeOut} from '@uxland/browser-utilities/async/time-out';
 import {nop} from '@uxland/utilities/nop';
-import {filter, map, pipe, propEq, reject, uniq, values} from 'ramda';
+import filter from 'ramda/es/filter';
+import map from 'ramda/es/map';
+import pipe from 'ramda/es/pipe';
+import propEq from 'ramda/es/propEq';
+import reject from 'ramda/es/reject';
+import uniq from 'ramda/es/uniq';
+import values from 'ramda/es/values';
 import {Store, Unsubscribe} from 'redux';
 import {PropertyWatch} from './connect';
 import {getWatchedProperties} from './watched-redux-property';

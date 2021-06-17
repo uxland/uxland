@@ -16,22 +16,20 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 import {nop} from '@uxland/utilities/nop';
-import {
-  always,
-  cond,
-  equals,
-  ifElse,
-  is,
-  isNil,
-  Lens,
-  lensProp,
-  pipe,
-  propEq,
-  set,
-  T as Tr,
-  view,
-  when,
-} from 'ramda';
+import always from 'ramda/es/always';
+import cond from 'ramda/es/cond';
+import equals from 'ramda/es/equals';
+import ifElse from 'ramda/es/ifElse';
+import is from 'ramda/es/is';
+import isNil from 'ramda/es/isNil';
+import lensProp from 'ramda/es/lensProp';
+import pipe from 'ramda/es/pipe';
+import propEq from 'ramda/es/propEq';
+import set from 'ramda/es/set';
+import Tr from 'ramda/es/T';
+import view from 'ramda/es/view';
+import when from 'ramda/es/when';
+import {Lens} from 'ramda/tools';
 import {Action} from './create-action';
 import {BasicOptions} from './create-basic-reducer';
 import {PathResolver, resolvePath} from './path-resolver';

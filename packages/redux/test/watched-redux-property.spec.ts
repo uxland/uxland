@@ -1,3 +1,4 @@
+import {expect} from '@open-wc/testing';
 import {createStore} from 'redux';
 import {createAction} from '..//create-action';
 import {createBasicReducer} from '..//create-basic-reducer';
@@ -11,31 +12,32 @@ describe('watched redux property fixture', () => {
     const WATCHED_PROPERTIES_PROPERTY = 'WATCHED-PROPERTIES-PROPERTY';
     const watchedProperty = 'foo';
 
-    beforeAll(() => {
+    beforeEach(() => {
       store = createStore(createBasicReducer(UPDATE_ACTION), initialState);
     });
     it('should extend constructor with a new object "WATCHED-PROPERTIES-PROPERTY"', () => {
       const array = new Array('dummy');
-      expect(array.constructor[WATCHED_PROPERTIES_PROPERTY]).toBeUndefined();
+      expect(array.constructor[WATCHED_PROPERTIES_PROPERTY]).to.be.undefined;
       createWatchedReduxProperty({store}, array, watchedProperty);
-      expect(array.constructor[WATCHED_PROPERTIES_PROPERTY]).toBeDefined();
-      expect(array.constructor[WATCHED_PROPERTIES_PROPERTY][watchedProperty]).toBeDefined();
+      expect(array.constructor[WATCHED_PROPERTIES_PROPERTY]).to.not.be.undefined;
+      expect(array.constructor[WATCHED_PROPERTIES_PROPERTY][watchedProperty]).to.not.be.undefined;
     });
     it('watched property should be store-based and with initial state', () => {
       const array = new Array('dummy');
       createWatchedReduxProperty({store}, array, watchedProperty);
-      expect(array.constructor[WATCHED_PROPERTIES_PROPERTY][watchedProperty].store).toBeDefined();
+      expect(array.constructor[WATCHED_PROPERTIES_PROPERTY][watchedProperty].store).to.not.be
+        .undefined;
       expect(
         array.constructor[WATCHED_PROPERTIES_PROPERTY][watchedProperty].store.getState()
-      ).toEqual(initialState);
+      ).to.deep.equal(initialState);
     });
     it('should have updated state when action is dispatched', () => {
       const array = new Array('dummy');
       createWatchedReduxProperty({store}, array, watchedProperty);
       const property = array.constructor[WATCHED_PROPERTIES_PROPERTY][watchedProperty];
-      expect(property.store.getState()).toEqual(initialState);
+      expect(property.store.getState()).to.deep.equal(initialState);
       store.dispatch(createAction(UPDATE_ACTION)({foo: 'quux'}));
-      expect(property.store.getState()).toEqual({foo: 'quux'});
+      expect(property.store.getState()).to.deep.equal({foo: 'quux'});
     });
   });
   describe('when invoking `getWatchedProperties`', () => {
@@ -43,17 +45,17 @@ describe('watched redux property fixture', () => {
     const UPDATE_ACTION = 'UPDATE';
     const initialState = {foo: 'bar'};
 
-    beforeAll(() => {
+    beforeEach(() => {
       store = createStore(createBasicReducer(UPDATE_ACTION), initialState);
     });
     it('should return initial if no watcher has been defined', () => {
       const obj = new String();
-      expect(getWatchedProperties(obj)).toEqual({});
+      expect(getWatchedProperties(obj)).to.deep.equal({});
     });
     it('should return store object if watcher has been defined', () => {
       const obj = new String();
       createWatchedReduxProperty({store}, obj, 'foo');
-      expect(getWatchedProperties(obj)).toEqual({foo: {store}});
+      expect(getWatchedProperties(obj)).to.deep.equal({foo: {store}});
     });
   });
 });

@@ -17,7 +17,16 @@
  */
 import {isNotNil} from '@uxland/ramda-extensions/is-not-nil';
 import {addDays, addHours, addMinutes, addSeconds, isBefore, isValid} from 'date-fns';
-import {allPass, always, both, cond, either, equals, isNil, Pred, propEq, T} from 'ramda';
+import allPass from 'ramda/es/allPass';
+import always from 'ramda/es/always';
+import both from 'ramda/es/both';
+import cond from 'ramda/es/cond';
+import either from 'ramda/es/either';
+import equals from 'ramda/es/equals';
+import isNil from 'ramda/es/isNil';
+import propEq from 'ramda/es/propEq';
+import T from 'ramda/es/T';
+import {Pred} from 'ramda/tools';
 import {AsyncState, getDefaultState} from './create-async-reducer';
 
 const defaultState = getDefaultState();
