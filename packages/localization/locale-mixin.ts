@@ -64,14 +64,19 @@ type LocaleMixinFunction = MixinFunction<LocalizationMixinConstructor>;
  * ```
  */
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+let formats: any = {};
+let language = 'en';
+let locales: Record<string, any> = {};
+const useKeyIfMissing = false;
+
 export const localeMixin: (factory: LocalizerFactory) => LocaleMixinFunction =
   factory => (superClass: any) =>
     class LocaleMixin extends superClass implements LocalizationMixin {
       localize: Localizer;
-      useKeyIfMissing: boolean;
-      formats: any = {};
-      language = 'en';
-      locales: Record<string, any> = {};
+      useKeyIfMissing: boolean = useKeyIfMissing;
+      formats: any = formats;
+      language = language;
+      locales: Record<string, any> = locales;
       constructor() {
         super();
         subscribe(LOCALES_UPDATED, this.localesChanged.bind(this));
@@ -80,20 +85,23 @@ export const localeMixin: (factory: LocalizerFactory) => LocaleMixinFunction =
         subscribe(LANGUAGE_RESET, this.languageChanged.bind(this));
         subscribe(FORMATTERS_UPDATED, this.formattersChanged.bind(this));
         subscribe(FORMATTERS_RESET, this.formattersChanged.bind(this));
-        this.localize = factory(this.language, this.locales, this.formats, this.useKeyIfMissing);
+        this.localize = factory(language, locales, formats, useKeyIfMissing);
       }
 
-      private localesChanged(locales: Record<string, any>): void {
-        this.locales = locales;
-        this.localize = factory(this.language, this.locales, this.formats, this.useKeyIfMissing);
+      private localesChanged(newLocales: Record<string, any>): void {
+        locales = newLocales;
+        this.locales = newLocales;
+        this.localize = factory(language, locales, formats, useKeyIfMissing);
       }
-      public languageChanged(language: string): void {
-        this.language = language;
-        this.localize = factory(this.language, this.locales, this.formats, this.useKeyIfMissing);
+      public languageChanged(newLanguage: string): void {
+        language = newLanguage;
+        this.language = newLanguage;
+        this.localize = factory(language, locales, formats, useKeyIfMissing);
       }
-      public formattersChanged(formats: string): void {
-        this.formats = formats;
-        this.localize = factory(this.language, this.locales, this.formats, this.useKeyIfMissing);
+      public formattersChanged(newFormats: string): void {
+        formats = newFormats;
+        this.formats = newFormats;
+        this.localize = factory(language, locales, formats, useKeyIfMissing);
       }
     };
 
