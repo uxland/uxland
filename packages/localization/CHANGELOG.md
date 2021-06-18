@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1-alpha.22](https://github.com/uxland/uxland/compare/@uxland/localization@1.0.1-alpha.21...@uxland/localization@1.0.1-alpha.22) (2021-06-18)
+
+
+### Bug Fixes
+
+* **localization:** correct localization-mixin approach ([731d4e4](https://github.com/uxland/uxland/commit/731d4e4edcec3a6f4eda244f3941b9f7856366cd))
+
+
+
+
+
 ## [1.0.1-alpha.21](https://github.com/uxland/uxland/compare/@uxland/localization@1.0.1-alpha.20...@uxland/localization@1.0.1-alpha.21) (2021-06-17)
 
 
