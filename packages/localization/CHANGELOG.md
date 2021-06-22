@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1-alpha.23](https://github.com/uxland/uxland/compare/@uxland/localization@1.0.1-alpha.22...@uxland/localization@1.0.1-alpha.23) (2021-06-22)
+
+
+### Bug Fixes
+
+* **utilities:** add dedupe-mixin utility ([94aca27](https://github.com/uxland/uxland/commit/94aca274dd8ea2e069554313559c374fbb07e4ce))
+
+
+
+
+
 ## [1.0.1-alpha.22](https://github.com/uxland/uxland/compare/@uxland/localization@1.0.1-alpha.21...@uxland/localization@1.0.1-alpha.22) (2021-06-18)
 
 
