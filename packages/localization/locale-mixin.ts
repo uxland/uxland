@@ -21,6 +21,7 @@
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 import {subscribe} from '@uxland/event-aggregator';
+import {dedupeMixin, Constructor} from '@uxland/utilities/dedupe-mixin';
 import {
   FORMATTERS_RESET,
   FORMATTERS_UPDATED,
@@ -44,8 +45,10 @@ interface LocalizationMixinConstructor extends LocalizationMixin {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface MixinFunction<T> {}
-type LocaleMixinFunction = MixinFunction<LocalizationMixinConstructor>;
+interface MixinFunction<T> {
+  (superClass: any): T;
+}
+type LocaleMixinFunction = (superClass: any) => LocalizationMixinConstructor; //=>  MixinFunction<LocalizationMixinConstructor>;
 
 /**
  * Mixin in order to give localization capabilities and to subscribe to locales and language changes
@@ -69,8 +72,8 @@ let language = 'en';
 let locales: Record<string, any> = {};
 const useKeyIfMissing = false;
 
-export const localeMixin: (factory: LocalizerFactory) => LocaleMixinFunction =
-  factory => (superClass: any) =>
+export function localeMixin(factory: LocalizerFactory): LocaleMixinFunction {
+  return dedupeMixin((superClass: Constructor) => {
     class LocaleMixin extends superClass implements LocalizationMixin {
       localize: Localizer;
       useKeyIfMissing: boolean = useKeyIfMissing;
@@ -103,7 +106,46 @@ export const localeMixin: (factory: LocalizerFactory) => LocaleMixinFunction =
         this.formats = newFormats;
         this.localize = factory(language, locales, formats, useKeyIfMissing);
       }
-    };
+    }
+    return localeMixin;
+  });
+}
+
+// export const localeMixin: (factory: LocalizerFactory) => LocaleMixinFunction =
+//   (factory) => (superClass: any) =>
+//     class LocaleMixin extends superClass implements LocalizationMixin {
+//       localize: Localizer;
+//       useKeyIfMissing: boolean = useKeyIfMissing;
+//       formats: any = formats;
+//       language = language;
+//       locales: Record<string, any> = locales;
+//       constructor() {
+//         super();
+//         subscribe(LOCALES_UPDATED, this.localesChanged.bind(this));
+//         subscribe(LOCALES_RESET, this.localesChanged.bind(this));
+//         subscribe(LANGUAGE_UPDATED, this.languageChanged.bind(this));
+//         subscribe(LANGUAGE_RESET, this.languageChanged.bind(this));
+//         subscribe(FORMATTERS_UPDATED, this.formattersChanged.bind(this));
+//         subscribe(FORMATTERS_RESET, this.formattersChanged.bind(this));
+//         this.localize = factory(language, locales, formats, useKeyIfMissing);
+//       }
+
+//       private localesChanged(newLocales: Record<string, any>): void {
+//         locales = newLocales;
+//         this.locales = newLocales;
+//         this.localize = factory(language, locales, formats, useKeyIfMissing);
+//       }
+//       public languageChanged(newLanguage: string): void {
+//         language = newLanguage;
+//         this.language = newLanguage;
+//         this.localize = factory(language, locales, formats, useKeyIfMissing);
+//       }
+//       public formattersChanged(newFormats: string): void {
+//         formats = newFormats;
+//         this.formats = newFormats;
+//         this.localize = factory(language, locales, formats, useKeyIfMissing);
+//       }
+//     };
 
 /**
  * Default mixin in order to give localization capabilities and to subscribe to locales and language changes

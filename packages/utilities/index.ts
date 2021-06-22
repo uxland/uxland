@@ -20,5 +20,6 @@
 export * from './collect';
 export * from './constant-builder';
 export * from './curried';
+export * from './dedupe-mixin';
 export * from './invariant';
 export * from './nop';
