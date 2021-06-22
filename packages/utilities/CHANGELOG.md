@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1-alpha.24](https://github.com/uxland/uxland/compare/@uxland/utilities@1.0.1-alpha.23...@uxland/utilities@1.0.1-alpha.24) (2021-06-22)
+
+**Note:** Version bump only for package @uxland/utilities
+
+
+
+
+
 ## [1.0.1-alpha.23](https://github.com/uxland/uxland/compare/@uxland/utilities@1.0.1-alpha.22...@uxland/utilities@1.0.1-alpha.23) (2021-06-22)
 
 

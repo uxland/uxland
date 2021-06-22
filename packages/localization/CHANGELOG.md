@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1-alpha.24](https://github.com/uxland/uxland/compare/@uxland/localization@1.0.1-alpha.23...@uxland/localization@1.0.1-alpha.24) (2021-06-22)
+
+
+### Bug Fixes
+
+* **localization:** issue in mixin ([86e3a91](https://github.com/uxland/uxland/commit/86e3a9119e489c9de2c48cd68f20f9df6d3670ed))
+
+
+
+
+
 ## [1.0.1-alpha.23](https://github.com/uxland/uxland/compare/@uxland/localization@1.0.1-alpha.22...@uxland/localization@1.0.1-alpha.23) (2021-06-22)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "@uxland/localization",
-  "version": "1.0.1-alpha.23",
+  "version": "1.0.1-alpha.24",
   "description": "Localization",
   "author": "UXLand <dev@uxland.es>",
   "homepage": "https://github.com/uxland/uxland/tree/master/packages/localization#readme",
@@ -78,7 +78,7 @@
   },
   "dependencies": {
     "@uxland/event-aggregator": "^1.0.1-alpha.20",
-    "@uxland/utilities": "^1.0.1-alpha.23",
+    "@uxland/utilities": "^1.0.1-alpha.24",
     "intl-messageformat": "^7.8.4",
     "ramda": "^0.27.0"
   },
