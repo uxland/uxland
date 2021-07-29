@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1-alpha.25](https://github.com/uxland/uxland/compare/@uxland/redux@1.0.1-alpha.24...@uxland/redux@1.0.1-alpha.25) (2021-07-29)
+
+
+### Bug Fixes
+
+* **redux:** accept empty string as defValue in createBasicReducer ([cf80d0d](https://github.com/uxland/uxland/commit/cf80d0d7a5aaa61dbe1a1618c782d1b8900fe990))
+
+
+
+
+
 ## [1.0.1-alpha.24](https://github.com/uxland/uxland/compare/@uxland/redux@1.0.1-alpha.23...@uxland/redux@1.0.1-alpha.24) (2021-06-22)
 
 **Note:** Version bump only for package @uxland/redux
