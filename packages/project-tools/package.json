@@ -40,7 +40,6 @@
     "jsdom": "^16.4.0",
     "lint-staged": "^10.2.13",
     "mutation-observer": "^1.0.3",
-    "node-sass": "^4.14.1",
     "prettier": "^2.1.1",
     "prettier-airbnb-config": "^1.0.0",
     "rollup-plugin-babel": "^4.4.0",
