@@ -21,7 +21,7 @@
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 import {subscribe} from '@uxland/event-aggregator';
-import {Constructor, dedupeMixin} from '@uxland/utilities/dedupe-mixin';
+import {Constructor} from '@uxland/utilities/dedupe-mixin';
 import {
   FORMATTERS_RESET,
   FORMATTERS_UPDATED,
@@ -39,12 +39,6 @@ export interface LocalizationMixin {
   language: string;
   locales: Record<string, any>;
 }
-
-interface LocalizationMixinConstructor extends LocalizationMixin {
-  new (...args: any[]): LocalizationMixin;
-}
-
-type LocaleMixinFunction = (superClass: any) => LocalizationMixinConstructor; //=>  MixinFunction<LocalizationMixinConstructor>;
 
 /**
  * Mixin in order to give localization capabilities and to subscribe to locales and language changes
@@ -68,16 +62,17 @@ let language = 'en';
 let locales: Record<string, any> = {};
 const useKeyIfMissing = false;
 
-export function localeMixin(factory: LocalizerFactory): LocaleMixinFunction {
-  return dedupeMixin((superClass: Constructor) => {
+export const localeMixin =
+  <T extends Constructor>(factory: LocalizerFactory) =>
+  (superClass: T) => {
     class localeMixin extends superClass implements LocalizationMixin {
       localize: Localizer;
       useKeyIfMissing: boolean = useKeyIfMissing;
       formats: any = formats;
       language = language;
       locales: Record<string, any> = locales;
-      constructor() {
-        super();
+      constructor(...args) {
+        super(...args);
         subscribe(LOCALES_UPDATED, this.localesChanged.bind(this));
         subscribe(LOCALES_RESET, this.localesChanged.bind(this));
         subscribe(LANGUAGE_UPDATED, this.languageChanged.bind(this));
@@ -103,9 +98,8 @@ export function localeMixin(factory: LocalizerFactory): LocaleMixinFunction {
         this.localize = factory(language, locales, formats, useKeyIfMissing);
       }
     }
-    return localeMixin;
-  });
-}
+    return localeMixin as Constructor<LocalizationMixin> & T;
+  };
 
 /**
  * Default mixin in order to give localization capabilities and to subscribe to locales and language changes
