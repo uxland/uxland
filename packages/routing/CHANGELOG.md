@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.4-alpha.16](https://github.com/uxland/uxland/compare/@uxland/routing@1.0.4-alpha.15...@uxland/routing@1.0.4-alpha.16) (2021-07-30)
+
+**Note:** Version bump only for package @uxland/routing
+
+
+
+
+
 ## [1.0.4-alpha.15](https://github.com/uxland/uxland/compare/@uxland/routing@1.0.4-alpha.14...@uxland/routing@1.0.4-alpha.15) (2021-07-29)
 
 **Note:** Version bump only for package @uxland/routing
