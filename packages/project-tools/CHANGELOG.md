@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1-alpha.7](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.1-alpha.6...@uxland/project-tools@1.0.1-alpha.7) (2021-07-29)
+
+
+### Bug Fixes
+
+* **project-tools:** delete node-sass dependency ([497cdf8](https://github.com/uxland/uxland/commit/497cdf8fbba98e1080509b3ac03c5df57e0e54ff))
+
+
+
+
+
 ## [1.0.1-alpha.6](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.1-alpha.5...@uxland/project-tools@1.0.1-alpha.6) (2021-06-03)
 
 
