@@ -1,4 +1,5 @@
 import {microTask} from '@uxland/browser-utilities/async/micro-task';
+import {Constructor} from '@uxland/utilities/dedupe-mixin';
 import {Store, Unsubscribe} from 'redux';
 import {bind} from './bind';
 
@@ -18,14 +19,6 @@ export interface ConnectMixin {
   __reduxStoreSubscriptions__: Unsubscribe[];
 }
 
-export interface ConnectMixinConstructor {
-  new (...args: any[]): ConnectMixin;
-}
-
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface MixinFunction<T> {}
-export type ConnectMixinFunction = MixinFunction<ConnectMixinConstructor>;
-
 /**
  * Connect mixin that provides redux functionalities and store access to parent class
  * @mixin
@@ -42,14 +35,14 @@ export type ConnectMixinFunction = MixinFunction<ConnectMixinConstructor>;
  * TestClass = class Test extends connect(BaseClass) {};
  *
  */
-export const connectMixin: (defaultStore?: Store<any, any>) => ConnectMixinFunction =
-  defaultStore =>
-  (superClass: any): ConnectMixinConstructor => {
+export const connectMixin =
+  <T extends Constructor>(defaultStore: Store<any, any>) =>
+  (superClass: T) => {
     class ConnectMixin extends superClass implements ConnectMixin {
       __reduxStoreSubscriptions__: Unsubscribe[];
 
-      constructor() {
-        super();
+      constructor(...args) {
+        super(...args);
         microTask.run(() => bind(this));
       }
 
@@ -57,5 +50,5 @@ export const connectMixin: (defaultStore?: Store<any, any>) => ConnectMixinFunct
         return defaultStore;
       }
     }
-    return ConnectMixin;
+    return ConnectMixin as Constructor<ConnectMixin> & T;
   };
