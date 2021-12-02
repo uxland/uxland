@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1-alpha.11](https://github.com/uxland/uxland/compare/@uxland/functional-utilities@1.0.1-alpha.10...@uxland/functional-utilities@1.0.1-alpha.11) (2021-12-02)
+
+
+### Bug Fixes
+
+* remove private from functional module ([948571e](https://github.com/uxland/uxland/commit/948571e43f0168f24d1dc40ecc8288f7fad52b69))
+
+
+
+
+
 ## [1.0.1-alpha.10](https://github.com/uxland/uxland/compare/@uxland/functional-utilities@1.0.1-alpha.9...@uxland/functional-utilities@1.0.1-alpha.10) (2021-12-02)
 
 

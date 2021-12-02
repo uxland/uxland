@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1-alpha.28](https://github.com/uxland/uxland/compare/@uxland/localization@1.0.1-alpha.27...@uxland/localization@1.0.1-alpha.28) (2021-12-02)
+
+**Note:** Version bump only for package @uxland/localization
+
+
+
+
+
 ## [1.0.1-alpha.27](https://github.com/uxland/uxland/compare/@uxland/localization@1.0.1-alpha.26...@uxland/localization@1.0.1-alpha.27) (2021-12-02)
 
 
