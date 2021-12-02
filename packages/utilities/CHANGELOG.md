@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1-alpha.25](https://github.com/uxland/uxland/compare/@uxland/utilities@1.0.1-alpha.24...@uxland/utilities@1.0.1-alpha.25) (2021-12-02)
+
+
+### Bug Fixes
+
+* packages registry urls https ([da9afcb](https://github.com/uxland/uxland/commit/da9afcbd2c6b611b11e9c21e3164bac5e7138b0d))
+
+
+
+
+
 ## [1.0.1-alpha.24](https://github.com/uxland/uxland/compare/@uxland/utilities@1.0.1-alpha.23...@uxland/utilities@1.0.1-alpha.24) (2021-06-22)
 
 **Note:** Version bump only for package @uxland/utilities
