@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1-alpha.9](https://github.com/uxland/uxland/compare/@uxland/functional-utilities@1.0.1-alpha.8...@uxland/functional-utilities@1.0.1-alpha.9) (2021-12-02)
+
+
+### Bug Fixes
+
+* add width vars on display-layout-sizing ([1927e21](https://github.com/uxland/uxland/commit/1927e21c10293d655c8f87fea1761fcb543439bd))
+
+
+
+
+
 ## [1.0.1-alpha.8](https://github.com/uxland/uxland/compare/@uxland/functional-utilities@1.0.1-alpha.7...@uxland/functional-utilities@1.0.1-alpha.8) (2021-06-17)
 
 
