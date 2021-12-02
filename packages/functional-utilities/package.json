@@ -1,6 +1,5 @@
 {
   "name": "@uxland/functional-utilities",
-  "private": true,
   "version": "1.0.1-alpha.9",
   "description": "Functional Utilities",
   "author": "UXLand <dev@uxland.es>",
