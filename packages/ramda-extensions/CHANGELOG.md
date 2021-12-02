@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1-alpha.21](https://github.com/uxland/uxland/compare/@uxland/ramda-extensions@1.0.1-alpha.20...@uxland/ramda-extensions@1.0.1-alpha.21) (2021-12-02)
+
+
+### Bug Fixes
+
+* packages registry urls https ([da9afcb](https://github.com/uxland/uxland/commit/da9afcbd2c6b611b11e9c21e3164bac5e7138b0d))
+
+
+
+
+
 ## [1.0.1-alpha.20](https://github.com/uxland/uxland/compare/@uxland/ramda-extensions@1.0.1-alpha.19...@uxland/ramda-extensions@1.0.1-alpha.20) (2021-06-17)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1-alpha.2](https://github.com/uxland/uxland/compare/@uxland/style-utilities@1.0.1-alpha.1...@uxland/style-utilities@1.0.1-alpha.2) (2021-12-02)
+
+
+### Bug Fixes
+
+* packages registry urls https ([da9afcb](https://github.com/uxland/uxland/commit/da9afcbd2c6b611b11e9c21e3164bac5e7138b0d))
+
+
+
+
+
 ## [1.0.1-alpha.1](https://github.com/uxland/uxland/compare/@uxland/style-utilities@1.0.1-alpha.0...@uxland/style-utilities@1.0.1-alpha.1) (2021-06-03)
 
 

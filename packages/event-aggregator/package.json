@@ -1,6 +1,6 @@
 {
   "name": "@uxland/event-aggregator",
-  "version": "1.0.1-alpha.20",
+  "version": "1.0.1-alpha.21",
   "description": "Event Aggregator",
   "author": "UXLand <dev@uxland.es>",
   "homepage": "https://github.com/uxland/uxland/tree/master/packages/event-aggregator#readme",
