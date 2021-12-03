@@ -18,6 +18,7 @@
 
 /** @namespace BrowserUtilities */
 export * from './async';
+export * from './base64-to-url';
 export * from './browser';
 export * from './file';
 export * from './meta';
