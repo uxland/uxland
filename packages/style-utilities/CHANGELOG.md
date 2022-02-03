@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1](https://github.com/uxland/uxland/compare/@uxland/style-utilities@1.0.1-alpha.3...@uxland/style-utilities@1.0.1) (2022-02-03)
+
+**Note:** Version bump only for package @uxland/style-utilities
+
+
+
+
+
 ## [1.0.1-alpha.3](https://github.com/uxland/uxland/compare/@uxland/style-utilities@1.0.1-alpha.2...@uxland/style-utilities@1.0.1-alpha.3) (2021-12-02)
 
 **Note:** Version bump only for package @uxland/style-utilities
