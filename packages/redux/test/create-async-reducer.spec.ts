@@ -1,8 +1,12 @@
+import {expect} from '@open-wc/testing';
 import {lensProp} from 'ramda';
-import {AsyncState, createAsyncReducer, factory} from '../src';
+import {AsyncState, createAsyncReducer, factory} from '../';
 
 const action = 'TYPE';
-const actionCreator = (base: string) => (action: string): string => `${base}_${action}`;
+const actionCreator =
+  (base: string) =>
+  (action: string): string =>
+    `${base}_${action}`;
 const endedAction = actionCreator(action)('ENDED');
 const startedAction = actionCreator(action)('STARTED');
 const failedAction = actionCreator(action)('FAILED');
@@ -13,7 +17,7 @@ describe('create async reducer fixture', () => {
   it('should initialize to default AsyncState', () => {
     const reducer = createAsyncReducer<any>(action);
     const state = reducer(undefined, {type: 'OTHER-TYPE'});
-    expect(state).toEqual({
+    expect(state).to.deep.equal({
       didInvalidate: false,
       error: false,
       isFetching: false,
@@ -22,7 +26,7 @@ describe('create async reducer fixture', () => {
   it('should initialize state if default value is supplied', () => {
     const reducer = createAsyncReducer<number>(action, {defValue: 1});
     const state = reducer(undefined, {type: 'OTHER-TYPE'});
-    expect(state).toEqual({
+    expect(state).to.deep.equal({
       didInvalidate: false,
       state: 1,
       error: false,
@@ -38,9 +42,9 @@ describe('create async reducer fixture', () => {
       state: 15,
     };
     const newState = reducer(state, {type: 'OTHER-ACTION', payload: 34});
-    expect(newState).toBe(state);
+    expect(newState).to.equal(state);
   });
-  test('action name is not a valid action', () => {
+  it('action name is not a valid action', () => {
     const reducer = createAsyncReducer<number>(action);
     const state = {
       isFetching: false,
@@ -49,9 +53,9 @@ describe('create async reducer fixture', () => {
       state: 15,
     };
     const newState = reducer(state, {type: action, payload: 34});
-    expect(newState).toBe(state);
+    expect(newState).to.equal(state);
   });
-  test('handling action started sets isFetching property to true and resets other properties', () => {
+  it('handling action started sets isFetching property to true and resets other properties', () => {
     const reducer = createAsyncReducer<number>(action);
     const state: AsyncState = {
       isFetching: false,
@@ -63,14 +67,14 @@ describe('create async reducer fixture', () => {
       timestamp: new Date(),
     };
     const newState = reducer(state, {type: startedAction});
-    expect(state).not.toBe(newState);
-    expect(newState).toEqual({
+    expect(state).not.to.equal(newState);
+    expect(newState).to.deep.equal({
       isFetching: true,
       didInvalidate: false,
       error: false,
     });
   });
-  test('handling action succeeded set state to payload and resets other properties', () => {
+  it('handling action succeeded set state to payload and resets other properties', () => {
     const reducer = createAsyncReducer<number>(action);
     const state: AsyncState = {
       isFetching: false,
@@ -82,15 +86,15 @@ describe('create async reducer fixture', () => {
       timestamp: new Date(),
     };
     const newState = reducer(state, {type: succeededAction, payload: 55});
-    expect(state).not.toBe(newState);
-    expect(newState).toEqual({
+    expect(state).not.to.equal(newState);
+    expect(newState).to.deep.equal({
       isFetching: false,
       didInvalidate: false,
       error: false,
       state: 55,
     });
   });
-  test('handling action failed sets error properties', () => {
+  it('handling action failed sets error properties', () => {
     const reducer = createAsyncReducer<number>(action);
     const state: AsyncState = {
       isFetching: false,
@@ -105,7 +109,7 @@ describe('create async reducer fixture', () => {
       type: failedAction,
       payload: {message: 'error message'},
     });
-    expect(state).not.toBe(newState);
+    expect(state).not.to.equal(newState);
     const expected = {
       isFetching: false,
       didInvalidate: false,
@@ -113,15 +117,15 @@ describe('create async reducer fixture', () => {
       errorDescription: 'error message',
       exceptions: [{message: 'error message'}],
     };
-    expect(newState).toEqual(expected);
+    expect(newState).to.deep.equal(expected);
     newState = reducer(state, {type: failedAction});
-    expect(newState).toEqual({
+    expect(newState).to.deep.equal({
       isFetching: false,
       didInvalidate: false,
       error: true,
     });
     newState = reducer(state, {type: failedAction, payload: 34});
-    expect(newState).toEqual({
+    expect(newState).to.deep.equal({
       isFetching: false,
       didInvalidate: false,
       error: true,
@@ -129,7 +133,7 @@ describe('create async reducer fixture', () => {
       exceptions: [34],
     });
   });
-  test('handling action ended sets elapsed time', () => {
+  it('handling action ended sets elapsed time', () => {
     const reducer = createAsyncReducer<number>(action);
     const state: AsyncState = {
       isFetching: false,
@@ -141,10 +145,10 @@ describe('create async reducer fixture', () => {
       timestamp: new Date(),
     };
     const newState = reducer(state, {type: endedAction, payload: 65});
-    expect(state).not.toBe(newState);
-    expect(newState).toEqual({...state, elapsed: 65});
+    expect(state).not.to.equal(newState);
+    expect(newState).to.deep.equal({...state, elapsed: 65});
   });
-  test('handling action ended should not set elapsed is not supplied', () => {
+  it('handling action ended should not set elapsed is not supplied', () => {
     const reducer = createAsyncReducer<number>(action);
     const state: AsyncState = {
       isFetching: false,
@@ -156,10 +160,10 @@ describe('create async reducer fixture', () => {
       timestamp: new Date(),
     };
     const newState = reducer(state, {type: endedAction});
-    expect(state).toBe(newState);
-    expect(newState).toEqual({...state});
+    expect(state).to.equal(newState);
+    expect(newState).to.deep.equal({...state});
   });
-  test('actions should set timestamp if supplied in action', () => {
+  it('actions should set timestamp if supplied in action', () => {
     const timestamp = new Date();
     const reducer = createAsyncReducer<number>(action);
     const state: AsyncState = {
@@ -173,8 +177,8 @@ describe('create async reducer fixture', () => {
       payload: 55,
       timestamp,
     });
-    expect(state).not.toBe(newState);
-    expect(newState).toEqual({
+    expect(state).not.to.equal(newState);
+    expect(newState).to.deep.equal({
       isFetching: true,
       didInvalidate: false,
       error: false,
@@ -185,8 +189,8 @@ describe('create async reducer fixture', () => {
       payload: 55,
       timestamp,
     });
-    expect(state).not.toBe(newState);
-    expect(newState).toEqual({
+    expect(state).not.to.equal(newState);
+    expect(newState).to.deep.equal({
       isFetching: false,
       didInvalidate: false,
       error: false,
@@ -198,8 +202,8 @@ describe('create async reducer fixture', () => {
       payload: 'fail',
       timestamp,
     });
-    expect(state).not.toBe(newState);
-    expect(newState).toEqual({
+    expect(state).not.to.equal(newState);
+    expect(newState).to.deep.equal({
       isFetching: false,
       didInvalidate: false,
       error: true,
@@ -208,8 +212,8 @@ describe('create async reducer fixture', () => {
       timestamp: timestamp,
     });
     newState = reducer(state, {type: endedAction, payload: 35, timestamp});
-    expect(state).not.toBe(newState);
-    expect(newState).toEqual({
+    expect(state).not.to.equal(newState);
+    expect(newState).to.deep.equal({
       isFetching: false,
       didInvalidate: false,
       error: false,
@@ -222,7 +226,7 @@ describe('create async reducer fixture', () => {
       payload: 35,
       timestamp,
     });
-    expect(newState).toEqual({
+    expect(newState).to.deep.equal({
       isFetching: false,
       didInvalidate: true,
       error: false,
@@ -230,7 +234,7 @@ describe('create async reducer fixture', () => {
       timestamp: timestamp,
     });
   });
-  test('actions should set timestamp if timestamp resolver option', () => {
+  it('actions should set timestamp if timestamp resolver option', () => {
     const timestamp = new Date();
     let reducer = createAsyncReducer<{value?: number; timestamp?: Date}>(action, {
       timestampAccessor: a => a.payload.timestamp,
@@ -245,8 +249,8 @@ describe('create async reducer fixture', () => {
       type: startedAction,
       payload: {timestamp},
     });
-    expect(state).not.toBe(newState);
-    expect(newState).toEqual({
+    expect(state).not.to.equal(newState);
+    expect(newState).to.deep.equal({
       isFetching: true,
       didInvalidate: false,
       error: false,
@@ -256,8 +260,8 @@ describe('create async reducer fixture', () => {
       type: succeededAction,
       payload: {value: 55, timestamp},
     });
-    expect(state).not.toBe(newState);
-    expect(newState).toEqual({
+    expect(state).not.to.equal(newState);
+    expect(newState).to.deep.equal({
       isFetching: false,
       didInvalidate: false,
       error: false,
@@ -269,8 +273,8 @@ describe('create async reducer fixture', () => {
       payload: {message: 'fail', timestamp},
       timestamp,
     });
-    expect(state).not.toBe(newState);
-    expect(newState).toEqual({
+    expect(state).not.to.equal(newState);
+    expect(newState).to.deep.equal({
       isFetching: false,
       didInvalidate: false,
       error: true,
@@ -284,8 +288,8 @@ describe('create async reducer fixture', () => {
       payload: {message: 'fail', timestamp},
       timestamp,
     });
-    expect(state).not.toBe(newState);
-    expect(newState).toEqual({
+    expect(state).not.to.equal(newState);
+    expect(newState).to.deep.equal({
       isFetching: false,
       didInvalidate: true,
       error: false,
@@ -297,8 +301,8 @@ describe('create async reducer fixture', () => {
       timestampAccessor: a => a.timestamp,
     });
     newState = reducer(state, {type: endedAction, payload: 35, timestamp});
-    expect(state).not.toBe(newState);
-    expect(newState).toEqual({
+    expect(state).not.to.equal(newState);
+    expect(newState).to.deep.equal({
       isFetching: false,
       didInvalidate: false,
       error: false,
@@ -307,7 +311,7 @@ describe('create async reducer fixture', () => {
       timestamp: timestamp,
     });
   });
-  test('invalidate action should set didInvalidate property', () => {
+  it('invalidate action should set didInvalidate property', () => {
     const reducer = createAsyncReducer(action);
     const state: AsyncState = {
       isFetching: false,
@@ -319,15 +323,15 @@ describe('create async reducer fixture', () => {
       type: invalidatedAction,
       payload: {value: 18},
     });
-    expect(newState).not.toBe(state);
-    expect(newState).toEqual({
+    expect(newState).not.to.equal(state);
+    expect(newState).to.deep.equal({
       isFetching: false,
       error: false,
       didInvalidate: true,
       state: {value: 15},
     });
   });
-  test('succeeded action should use payload accessor if supplied', () => {
+  it('succeeded action should use payload accessor if supplied', () => {
     const reducer = createAsyncReducer(action, {
       payloadAccessor: a => a.payload.data,
     });
@@ -335,7 +339,7 @@ describe('create async reducer fixture', () => {
       type: succeededAction,
       payload: {data: 15},
     });
-    expect(newState).toEqual({
+    expect(newState).to.deep.equal({
       isFetching: false,
       didInvalidate: false,
       error: false,
@@ -351,7 +355,7 @@ describe('create async reducer fixture path resolver', () => {
       pathResolver: dataLensProp,
     });
     let newState = reducer(undefined, {type: 'OTHER-TYPE'});
-    expect(newState).toEqual({});
+    expect(newState).to.deep.equal({});
 
     reducer = createAsyncReducer<any>(action, {
       pathResolver: metaPathResolver,
@@ -360,9 +364,9 @@ describe('create async reducer fixture path resolver', () => {
       type: 'OTHER-TYPE',
       meta: {propertyId: 'data'},
     });
-    expect(newState).toEqual({});
+    expect(newState).to.deep.equal({});
   });
-  test('should return state if action type is different', () => {
+  it('should return state if action type is different', () => {
     let reducer = createAsyncReducer<number>(action, {
       pathResolver: dataLensProp,
     });
@@ -373,15 +377,15 @@ describe('create async reducer fixture path resolver', () => {
       state: 15,
     };
     let newState = reducer(state, {type: 'OTHER-ACTION', payload: 34});
-    expect(newState).toBe(state);
+    expect(newState).to.equal(state);
 
     reducer = createAsyncReducer<any>(action, {
       pathResolver: metaPathResolver,
     });
     newState = reducer(state, {type: 'OTHER-ACTION', payload: 34});
-    expect(newState).toBe(state);
+    expect(newState).to.equal(state);
   });
-  test('action name is not a valid action', () => {
+  it('action name is not a valid action', () => {
     let reducer = createAsyncReducer<number>(action, {
       pathResolver: dataLensProp,
     });
@@ -392,15 +396,15 @@ describe('create async reducer fixture path resolver', () => {
       state: 15,
     };
     let newState = reducer(state, {type: action, payload: 34});
-    expect(newState).toBe(state);
+    expect(newState).to.equal(state);
 
     reducer = createAsyncReducer<any>(action, {
       pathResolver: metaPathResolver,
     });
     newState = reducer(state, {type: action, payload: 34});
-    expect(newState).toBe(state);
+    expect(newState).to.equal(state);
   });
-  test('handling action started sets isFetching property to true and resets other properties', () => {
+  it('handling action started sets isFetching property to true and resets other properties', () => {
     let reducer = createAsyncReducer(action, {pathResolver: dataLensProp});
     const state: any = {
       data: {
@@ -414,8 +418,8 @@ describe('create async reducer fixture path resolver', () => {
       },
     };
     let newState = reducer(state, {type: startedAction});
-    expect(state).not.toBe(newState);
-    expect(newState).toEqual({
+    expect(state).not.to.equal(newState);
+    expect(newState).to.deep.equal({
       data: {isFetching: true, didInvalidate: false, error: false},
     });
     reducer = createAsyncReducer<any>(action, {
@@ -425,12 +429,12 @@ describe('create async reducer fixture path resolver', () => {
       type: startedAction,
       meta: {propertyId: 'data'},
     });
-    expect(state).not.toBe(newState);
-    expect(newState).toEqual({
+    expect(state).not.to.equal(newState);
+    expect(newState).to.deep.equal({
       data: {isFetching: true, didInvalidate: false, error: false},
     });
   });
-  test('handling action succeeded set state to payload and resets other properties', () => {
+  it('handling action succeeded set state to payload and resets other properties', () => {
     let reducer = createAsyncReducer<number>(action, {
       pathResolver: dataLensProp,
     });
@@ -446,8 +450,8 @@ describe('create async reducer fixture path resolver', () => {
       },
     };
     let newState = reducer(state, {type: succeededAction, payload: 55});
-    expect(state).not.toBe(newState);
-    expect(newState).toEqual({
+    expect(state).not.to.equal(newState);
+    expect(newState).to.deep.equal({
       data: {
         isFetching: false,
         didInvalidate: false,
@@ -464,8 +468,8 @@ describe('create async reducer fixture path resolver', () => {
       payload: 55,
       meta: {propertyId: 'data'},
     });
-    expect(state).not.toBe(newState);
-    expect(newState).toEqual({
+    expect(state).not.to.equal(newState);
+    expect(newState).to.deep.equal({
       data: {
         isFetching: false,
         didInvalidate: false,
@@ -474,7 +478,7 @@ describe('create async reducer fixture path resolver', () => {
       },
     });
   });
-  test('handling action failed sets error properties', () => {
+  it('handling action failed sets error properties', () => {
     const state: any = {
       data: {
         isFetching: false,
@@ -503,17 +507,17 @@ describe('create async reducer fixture path resolver', () => {
       type: failedAction,
       payload: {message: 'error message'},
     });
-    expect(state).not.toBe(newState);
-    expect(newState).toEqual(expected);
+    expect(state).not.to.equal(newState);
+    expect(newState).to.deep.equal(expected);
     newState = reducer(state, {
       type: failedAction,
       meta: {propertyId: 'data'},
     });
-    expect(newState).toEqual({
+    expect(newState).to.deep.equal({
       data: {isFetching: false, didInvalidate: false, error: true},
     });
     newState = reducer(state, {type: failedAction, payload: 34});
-    expect(newState).toEqual({
+    expect(newState).to.deep.equal({
       data: {
         isFetching: false,
         didInvalidate: false,
@@ -531,13 +535,13 @@ describe('create async reducer fixture path resolver', () => {
       payload: {message: 'error message'},
       meta: {propertyId: 'data'},
     });
-    expect(state).not.toBe(newState);
-    expect(newState).toEqual(expected);
+    expect(state).not.to.equal(newState);
+    expect(newState).to.deep.equal(expected);
     newState = reducer(state, {
       type: failedAction,
       meta: {propertyId: 'data'},
     });
-    expect(newState).toEqual({
+    expect(newState).to.deep.equal({
       data: {isFetching: false, didInvalidate: false, error: true},
     });
     newState = reducer(state, {
@@ -545,7 +549,7 @@ describe('create async reducer fixture path resolver', () => {
       payload: 34,
       meta: {propertyId: 'data'},
     });
-    expect(newState).toEqual({
+    expect(newState).to.deep.equal({
       data: {
         isFetching: false,
         didInvalidate: false,
@@ -555,7 +559,7 @@ describe('create async reducer fixture path resolver', () => {
       },
     });
   });
-  test('handling action ended sets elapsed time', () => {
+  it('handling action ended sets elapsed time', () => {
     let reducer = createAsyncReducer<number>(action, {
       pathResolver: dataLensProp,
     });
@@ -571,8 +575,8 @@ describe('create async reducer fixture path resolver', () => {
       },
     };
     let newState = reducer(state, {type: endedAction, payload: 65});
-    expect(state).not.toBe(newState);
-    expect(newState).toEqual({
+    expect(state).not.to.equal(newState);
+    expect(newState).to.deep.equal({
       ...state,
       data: {...state.data, elapsed: 65},
     });
@@ -584,13 +588,13 @@ describe('create async reducer fixture path resolver', () => {
       payload: 65,
       meta: {propertyId: 'data'},
     });
-    expect(state).not.toBe(newState);
-    expect(newState).toEqual({
+    expect(state).not.to.equal(newState);
+    expect(newState).to.deep.equal({
       ...state,
       data: {...state.data, elapsed: 65},
     });
   });
-  test('handling action ended should not set elapsed if not supplied', () => {
+  it('handling action ended should not set elapsed if not supplied', () => {
     let reducer = createAsyncReducer<number>(action, {
       pathResolver: dataLensProp,
     });
@@ -606,8 +610,8 @@ describe('create async reducer fixture path resolver', () => {
       },
     };
     let newState = reducer(state, {type: endedAction});
-    expect(state).toBe(newState);
-    expect(newState).toEqual({...state});
+    expect(state).to.equal(newState);
+    expect(newState).to.deep.equal({...state});
     reducer = createAsyncReducer<number>(action, {
       pathResolver: metaPathResolver,
     });
@@ -615,10 +619,10 @@ describe('create async reducer fixture path resolver', () => {
       type: endedAction,
       meta: {propertyId: 'data'},
     });
-    expect(state).toBe(newState);
-    expect(newState).toEqual({...state});
+    expect(state).to.equal(newState);
+    expect(newState).to.deep.equal({...state});
   });
-  test('actions should set timestamp if supplied in action', () => {
+  it('actions should set timestamp if supplied in action', () => {
     const timestamp = new Date();
     let reducer = createAsyncReducer<number>(action, {
       pathResolver: dataLensProp,
@@ -636,8 +640,8 @@ describe('create async reducer fixture path resolver', () => {
       payload: 55,
       timestamp,
     });
-    expect(state).not.toBe(newState);
-    expect(newState).toEqual({
+    expect(state).not.to.equal(newState);
+    expect(newState).to.deep.equal({
       data: {
         isFetching: true,
         didInvalidate: false,
@@ -650,8 +654,8 @@ describe('create async reducer fixture path resolver', () => {
       payload: 55,
       timestamp,
     });
-    expect(state).not.toBe(newState);
-    expect(newState).toEqual({
+    expect(state).not.to.equal(newState);
+    expect(newState).to.deep.equal({
       data: {
         isFetching: false,
         didInvalidate: false,
@@ -665,8 +669,8 @@ describe('create async reducer fixture path resolver', () => {
       payload: 'fail',
       timestamp,
     });
-    expect(state).not.toBe(newState);
-    expect(newState).toEqual({
+    expect(state).not.to.equal(newState);
+    expect(newState).to.deep.equal({
       data: {
         isFetching: false,
         didInvalidate: false,
@@ -677,8 +681,8 @@ describe('create async reducer fixture path resolver', () => {
       },
     });
     newState = reducer(state, {type: endedAction, payload: 35, timestamp});
-    expect(state).not.toBe(newState);
-    expect(newState).toEqual({
+    expect(state).not.to.equal(newState);
+    expect(newState).to.deep.equal({
       data: {
         isFetching: false,
         didInvalidate: false,
@@ -693,7 +697,7 @@ describe('create async reducer fixture path resolver', () => {
       payload: 35,
       timestamp,
     });
-    expect(newState).toEqual({
+    expect(newState).to.deep.equal({
       data: {
         isFetching: false,
         didInvalidate: true,
@@ -712,8 +716,8 @@ describe('create async reducer fixture path resolver', () => {
       timestamp,
       meta: {propertyId: 'data'},
     });
-    expect(state).not.toBe(newState);
-    expect(newState).toEqual({
+    expect(state).not.to.equal(newState);
+    expect(newState).to.deep.equal({
       data: {
         isFetching: true,
         didInvalidate: false,
@@ -727,8 +731,8 @@ describe('create async reducer fixture path resolver', () => {
       timestamp,
       meta: {propertyId: 'data'},
     });
-    expect(state).not.toBe(newState);
-    expect(newState).toEqual({
+    expect(state).not.to.equal(newState);
+    expect(newState).to.deep.equal({
       data: {
         isFetching: false,
         didInvalidate: false,
@@ -743,8 +747,8 @@ describe('create async reducer fixture path resolver', () => {
       timestamp,
       meta: {propertyId: 'data'},
     });
-    expect(state).not.toBe(newState);
-    expect(newState).toEqual({
+    expect(state).not.to.equal(newState);
+    expect(newState).to.deep.equal({
       data: {
         isFetching: false,
         didInvalidate: false,
@@ -760,8 +764,8 @@ describe('create async reducer fixture path resolver', () => {
       timestamp,
       meta: {propertyId: 'data'},
     });
-    expect(state).not.toBe(newState);
-    expect(newState).toEqual({
+    expect(state).not.to.equal(newState);
+    expect(newState).to.deep.equal({
       data: {
         isFetching: false,
         didInvalidate: false,
@@ -777,7 +781,7 @@ describe('create async reducer fixture path resolver', () => {
       timestamp,
       meta: {propertyId: 'data'},
     });
-    expect(newState).toEqual({
+    expect(newState).to.deep.equal({
       data: {
         isFetching: false,
         didInvalidate: true,
@@ -787,7 +791,7 @@ describe('create async reducer fixture path resolver', () => {
       },
     });
   });
-  test('actions should set timestamp if timestamp resolver option', () => {
+  it('actions should set timestamp if timestamp resolver option', () => {
     const timestamp = new Date();
     let reducer = createAsyncReducer<any>(action, {
       timestampAccessor: a => a.payload.timestamp,
@@ -805,8 +809,8 @@ describe('create async reducer fixture path resolver', () => {
       type: startedAction,
       payload: {timestamp},
     });
-    expect(state).not.toBe(newState);
-    expect(newState).toEqual({
+    expect(state).not.to.equal(newState);
+    expect(newState).to.deep.equal({
       data: {
         isFetching: true,
         didInvalidate: false,
@@ -818,8 +822,8 @@ describe('create async reducer fixture path resolver', () => {
       type: succeededAction,
       payload: {value: 55, timestamp},
     });
-    expect(state).not.toBe(newState);
-    expect(newState).toEqual({
+    expect(state).not.to.equal(newState);
+    expect(newState).to.deep.equal({
       data: {
         isFetching: false,
         didInvalidate: false,
@@ -833,8 +837,8 @@ describe('create async reducer fixture path resolver', () => {
       payload: {message: 'fail', timestamp},
       timestamp,
     });
-    expect(state).not.toBe(newState);
-    expect(newState).toEqual({
+    expect(state).not.to.equal(newState);
+    expect(newState).to.deep.equal({
       data: {
         isFetching: false,
         didInvalidate: false,
@@ -850,8 +854,8 @@ describe('create async reducer fixture path resolver', () => {
       payload: {message: 'fail', timestamp},
       timestamp,
     });
-    expect(state).not.toBe(newState);
-    expect(newState).toEqual({
+    expect(state).not.to.equal(newState);
+    expect(newState).to.deep.equal({
       data: {
         isFetching: false,
         didInvalidate: true,
@@ -866,8 +870,8 @@ describe('create async reducer fixture path resolver', () => {
       pathResolver: dataLensProp,
     });
     newState = reducer(state, {type: endedAction, payload: 35, timestamp});
-    expect(state).not.toBe(newState);
-    expect(newState).toEqual({
+    expect(state).not.to.equal(newState);
+    expect(newState).to.deep.equal({
       data: {
         isFetching: false,
         didInvalidate: false,
@@ -887,8 +891,8 @@ describe('create async reducer fixture path resolver', () => {
       payload: {timestamp},
       meta: {propertyId: 'data'},
     });
-    expect(state).not.toBe(newState);
-    expect(newState).toEqual({
+    expect(state).not.to.equal(newState);
+    expect(newState).to.deep.equal({
       data: {
         isFetching: true,
         didInvalidate: false,
@@ -901,8 +905,8 @@ describe('create async reducer fixture path resolver', () => {
       payload: {value: 55, timestamp},
       meta: {propertyId: 'data'},
     });
-    expect(state).not.toBe(newState);
-    expect(newState).toEqual({
+    expect(state).not.to.equal(newState);
+    expect(newState).to.deep.equal({
       data: {
         isFetching: false,
         didInvalidate: false,
@@ -917,8 +921,8 @@ describe('create async reducer fixture path resolver', () => {
       timestamp,
       meta: {propertyId: 'data'},
     });
-    expect(state).not.toBe(newState);
-    expect(newState).toEqual({
+    expect(state).not.to.equal(newState);
+    expect(newState).to.deep.equal({
       data: {
         isFetching: false,
         didInvalidate: false,
@@ -935,8 +939,8 @@ describe('create async reducer fixture path resolver', () => {
       timestamp,
       meta: {propertyId: 'data'},
     });
-    expect(state).not.toBe(newState);
-    expect(newState).toEqual({
+    expect(state).not.to.equal(newState);
+    expect(newState).to.deep.equal({
       data: {
         isFetching: false,
         didInvalidate: true,
@@ -956,8 +960,8 @@ describe('create async reducer fixture path resolver', () => {
       timestamp,
       meta: {propertyId: 'data'},
     });
-    expect(state).not.toBe(newState);
-    expect(newState).toEqual({
+    expect(state).not.to.equal(newState);
+    expect(newState).to.deep.equal({
       data: {
         isFetching: false,
         didInvalidate: false,
@@ -968,7 +972,7 @@ describe('create async reducer fixture path resolver', () => {
       },
     });
   });
-  test('invalidate action should set didInvalidate property', () => {
+  it('invalidate action should set didInvalidate property', () => {
     let reducer = createAsyncReducer(action, {pathResolver: dataLensProp});
     const state: any = {
       data: {
@@ -982,8 +986,8 @@ describe('create async reducer fixture path resolver', () => {
       type: invalidatedAction,
       payload: {value: 18},
     });
-    expect(newState).not.toBe(state);
-    expect(newState).toEqual({
+    expect(newState).not.to.equal(state);
+    expect(newState).to.deep.equal({
       data: {
         isFetching: false,
         error: false,
@@ -997,8 +1001,8 @@ describe('create async reducer fixture path resolver', () => {
       payload: {value: 18},
       meta: {propertyId: 'data'},
     });
-    expect(newState).not.toBe(state);
-    expect(newState).toEqual({
+    expect(newState).not.to.equal(state);
+    expect(newState).to.deep.equal({
       data: {
         isFetching: false,
         error: false,
@@ -1007,7 +1011,7 @@ describe('create async reducer fixture path resolver', () => {
       },
     });
   });
-  test('succeeded action should use payload accessor if supplied', () => {
+  it('succeeded action should use payload accessor if supplied', () => {
     let reducer = createAsyncReducer(action, {
       payloadAccessor: a => a.payload.data,
       pathResolver: dataLensProp,
@@ -1016,7 +1020,7 @@ describe('create async reducer fixture path resolver', () => {
       type: succeededAction,
       payload: {data: 15},
     });
-    expect(newState).toEqual({
+    expect(newState).to.deep.equal({
       data: {
         isFetching: false,
         didInvalidate: false,
@@ -1033,7 +1037,7 @@ describe('create async reducer fixture path resolver', () => {
       payload: {data: 15},
       meta: {propertyId: 'data'},
     });
-    expect(newState).toEqual({
+    expect(newState).to.deep.equal({
       data: {
         isFetching: false,
         didInvalidate: false,

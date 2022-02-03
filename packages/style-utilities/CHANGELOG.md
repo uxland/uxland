@@ -3,6 +3,47 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1-alpha.3](https://github.com/uxland/uxland/compare/@uxland/style-utilities@1.0.1-alpha.2...@uxland/style-utilities@1.0.1-alpha.3) (2021-12-02)
+
+**Note:** Version bump only for package @uxland/style-utilities
+
+
+
+
+
+## [1.0.1-alpha.2](https://github.com/uxland/uxland/compare/@uxland/style-utilities@1.0.1-alpha.1...@uxland/style-utilities@1.0.1-alpha.2) (2021-12-02)
+
+
+### Bug Fixes
+
+* packages registry urls https ([da9afcb](https://github.com/uxland/uxland/commit/da9afcbd2c6b611b11e9c21e3164bac5e7138b0d))
+
+
+
+
+
+## [1.0.1-alpha.1](https://github.com/uxland/uxland/compare/@uxland/style-utilities@1.0.1-alpha.0...@uxland/style-utilities@1.0.1-alpha.1) (2021-06-03)
+
+
+### Bug Fixes
+
+* delete uglify proposal ([0469f91](https://github.com/uxland/uxland/commit/0469f91da0fc74badd1f2f3f947585f4ca75f285))
+
+
+
+
+
+## [1.0.1-alpha.0](https://github.com/uxland/uxland/compare/@uxland/style-utilities@1.0.0...@uxland/style-utilities@1.0.1-alpha.0) (2021-06-02)
+
+
+### Bug Fixes
+
+* add uglify ([112ff05](https://github.com/uxland/uxland/commit/112ff051f6344fbdff5d8c0e701256db78bb0d19))
+
+
+
+
+
 # [1.0.0](https://github.com/uxland/uxland/compare/@uxland/style-utilities@1.0.0-alpha.8...@uxland/style-utilities@1.0.0) (2021-03-09)
 
 **Note:** Version bump only for package @uxland/style-utilities

@@ -3,6 +3,176 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1-alpha.28](https://github.com/uxland/uxland/compare/@uxland/localization@1.0.1-alpha.27...@uxland/localization@1.0.1-alpha.28) (2021-12-02)
+
+**Note:** Version bump only for package @uxland/localization
+
+
+
+
+
+## [1.0.1-alpha.27](https://github.com/uxland/uxland/compare/@uxland/localization@1.0.1-alpha.26...@uxland/localization@1.0.1-alpha.27) (2021-12-02)
+
+
+### Bug Fixes
+
+* packages registry urls https ([da9afcb](https://github.com/uxland/uxland/commit/da9afcbd2c6b611b11e9c21e3164bac5e7138b0d))
+
+
+
+
+
+## [1.0.1-alpha.26](https://github.com/uxland/uxland/compare/@uxland/localization@1.0.1-alpha.25...@uxland/localization@1.0.1-alpha.26) (2021-07-30)
+
+**Note:** Version bump only for package @uxland/localization
+
+
+
+
+
+## [1.0.1-alpha.25](https://github.com/uxland/uxland/compare/@uxland/localization@1.0.1-alpha.24...@uxland/localization@1.0.1-alpha.25) (2021-07-30)
+
+
+### Bug Fixes
+
+* **localization:** refactor locale-mixin typing ([31289fc](https://github.com/uxland/uxland/commit/31289fc9aba95d1c5c5460dc8a95bb81d86a3cf9))
+
+
+
+
+
+## [1.0.1-alpha.24](https://github.com/uxland/uxland/compare/@uxland/localization@1.0.1-alpha.23...@uxland/localization@1.0.1-alpha.24) (2021-06-22)
+
+
+### Bug Fixes
+
+* **localization:** issue in mixin ([86e3a91](https://github.com/uxland/uxland/commit/86e3a9119e489c9de2c48cd68f20f9df6d3670ed))
+
+
+
+
+
+## [1.0.1-alpha.23](https://github.com/uxland/uxland/compare/@uxland/localization@1.0.1-alpha.22...@uxland/localization@1.0.1-alpha.23) (2021-06-22)
+
+
+### Bug Fixes
+
+* **utilities:** add dedupe-mixin utility ([94aca27](https://github.com/uxland/uxland/commit/94aca274dd8ea2e069554313559c374fbb07e4ce))
+
+
+
+
+
+## [1.0.1-alpha.22](https://github.com/uxland/uxland/compare/@uxland/localization@1.0.1-alpha.21...@uxland/localization@1.0.1-alpha.22) (2021-06-18)
+
+
+### Bug Fixes
+
+* **localization:** correct localization-mixin approach ([731d4e4](https://github.com/uxland/uxland/commit/731d4e4edcec3a6f4eda244f3941b9f7856366cd))
+
+
+
+
+
+## [1.0.1-alpha.21](https://github.com/uxland/uxland/compare/@uxland/localization@1.0.1-alpha.20...@uxland/localization@1.0.1-alpha.21) (2021-06-17)
+
+
+### Bug Fixes
+
+* tsconfig ([aad062d](https://github.com/uxland/uxland/commit/aad062d63effb7029c6854c9d14f93bb6f3ecd96))
+* update test config ([8259192](https://github.com/uxland/uxland/commit/8259192175825a071f6ab32b91e285a9a8a91f3f))
+* **localization:** specific ramda imports and disable testing ([3d5ec9a](https://github.com/uxland/uxland/commit/3d5ec9a4217de6a4d06866888c5f8da8410a5029))
+
+
+
+
+
+## [1.0.1-alpha.20](https://github.com/uxland/uxland/compare/@uxland/localization@1.0.1-alpha.19...@uxland/localization@1.0.1-alpha.20) (2021-06-03)
+
+
+### Bug Fixes
+
+* delete uglify proposal ([0469f91](https://github.com/uxland/uxland/commit/0469f91da0fc74badd1f2f3f947585f4ca75f285))
+
+
+
+
+
+## [1.0.1-alpha.19](https://github.com/uxland/uxland/compare/@uxland/localization@1.0.1-alpha.18...@uxland/localization@1.0.1-alpha.19) (2021-06-03)
+
+
+### Bug Fixes
+
+* disable --mangle-props option from uglify build script to avoid environemtn variables renaming ([74aef36](https://github.com/uxland/uxland/commit/74aef362e3b38b734cfe3c90e9bf4ce3d1b026da))
+
+
+
+
+
+## [1.0.1-alpha.18](https://github.com/uxland/uxland/compare/@uxland/localization@1.0.1-alpha.17...@uxland/localization@1.0.1-alpha.18) (2021-06-03)
+
+**Note:** Version bump only for package @uxland/localization
+
+
+
+
+
+## [1.0.1-alpha.17](https://github.com/uxland/uxland/compare/@uxland/localization@1.0.1-alpha.16...@uxland/localization@1.0.1-alpha.17) (2021-06-03)
+
+
+### Bug Fixes
+
+* exclude external libs from build ([fb0b859](https://github.com/uxland/uxland/commit/fb0b859bbfe165987709fade29ebdced36b3fab7))
+
+
+
+
+
+## [1.0.1-alpha.16](https://github.com/uxland/uxland/compare/@uxland/localization@1.0.1-alpha.15...@uxland/localization@1.0.1-alpha.16) (2021-06-03)
+
+
+### Bug Fixes
+
+* correct uglify build ([a182c34](https://github.com/uxland/uxland/commit/a182c34cdd7a79d94c6c6476b7ba12e59fbf1bbe))
+
+
+
+
+
+## [1.0.1-alpha.15](https://github.com/uxland/uxland/compare/@uxland/localization@1.0.1-alpha.14...@uxland/localization@1.0.1-alpha.15) (2021-06-02)
+
+
+### Bug Fixes
+
+* add uglify ([112ff05](https://github.com/uxland/uxland/commit/112ff051f6344fbdff5d8c0e701256db78bb0d19))
+
+
+
+
+
+## [1.0.1-alpha.14](https://github.com/uxland/uxland/compare/@uxland/localization@1.0.1-alpha.13...@uxland/localization@1.0.1-alpha.14) (2021-05-31)
+
+
+### Bug Fixes
+
+* **localization:** correct imports ([5f0e143](https://github.com/uxland/uxland/commit/5f0e143cd613169078fc122ece71784b273a8ec2))
+* **localization:** esbuild approach ([6d21c94](https://github.com/uxland/uxland/commit/6d21c9474d28164b90c5b8e7585f04309635a663))
+
+
+
+
+
+## [1.0.1-alpha.13](https://github.com/uxland/uxland/compare/@uxland/localization@1.0.0...@uxland/localization@1.0.1-alpha.13) (2021-05-28)
+
+
+### Bug Fixes
+
+* update deps ([dd923c9](https://github.com/uxland/uxland/commit/dd923c90b78cb8b5ff4af27ec5bb4f9410960268))
+
+
+
+
+
 # [1.0.0](https://github.com/uxland/uxland/compare/@uxland/localization@1.0.0-alpha.33...@uxland/localization@1.0.0) (2021-03-09)
 
 **Note:** Version bump only for package @uxland/localization

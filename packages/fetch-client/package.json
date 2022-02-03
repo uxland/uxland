@@ -1,35 +1,35 @@
 {
   "name": "@uxland/fetch-client",
-  "version": "1.0.0",
+  "version": "1.0.1-alpha.22",
   "description": "Fetch Client",
   "author": "UXLand <dev@uxland.es>",
   "homepage": "https://github.com/uxland/uxland/tree/master/packages/fetch-client#readme",
   "license": "BSD-4-Clause",
-  "main": "lib/index",
-  "module": "es/index.js",
-  "types": "lib/index.d.ts",
+  "module": "index.js",
+  "types": "index.d.ts",
   "files": [
-    "lib",
-    "es",
-    "dist",
     "README.md",
-    "package.json"
+    "package.json",
+    "**/*.js",
+    "**/*.d.ts",
+    "!*.config.js",
+    "!coverage/**/*"
   ],
   "publishConfig": {
     "access": "public",
-    "registry": "http://registry.npmjs.org/"
+    "registry": "https://registry.npmjs.org/"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/uxland/uxland.git"
   },
   "scripts": {
-    "build:es": "tsc -p tsconfig.json --outDir es --module esnext --target es2018 --noEmit false",
-    "build:cjs": "tsc -p tsconfig.json --outDir lib --target es2018 --noEmit false --declaration  --removeComments false",
-    "build:umd": "cross-env NODE_ENV=development rollup -c -o dist/index.js",
-    "build:umd:min": "cross-env NODE_ENV=production rollup -c -o dist/index.min.js",
-    "build:clean": "rimraf es lib dist tmp tsconfig.tsbuildinfo",
-    "build": "yarn build:clean && npm-run-all --parallel build:es build:cjs && npm-run-all --parallel build:umd build:umd:min",
+    "build:dts": "tsc --emitDeclarationOnly --noEmit false --declaration --removeComments false --outDir .",
+    "build:clean": "rimraf {handlers/*,helpers/*,domain,fetch-client,index}.{!config.js,js,d.ts} tsconfig.tsbuildinfo",
+    "build:cjs": "esbuild index.ts --bundle --minify --target=es2018 --outfile=lib/index.js",
+    "build:es": "esbuild *.ts handlers/*.ts helpers/*.ts --minify --format=esm --outdir=.",
+    "build:min": "esbuild index.ts --bundle --minify --external:@uxland/* --external:ramda --format=esm --outfile=./index.min.js",
+    "build": "npm-run-all --parallel build:es build:dts",
     "prebuild": "echo nok > .buildstatus",
     "postbuild": "echo ok > .buildstatus",
     "readme:coverage": "node_modules/.bin/jest-badges-readme",
@@ -37,7 +37,7 @@
     "tdd:benchmark": "jest --watch test/unit/benchmark.spec.ts --collect-coverage=false --testPathIgnorePatterns []",
     "tdd:sandbox": "jest --watch test/unit/sandbox.spec.ts --testPathIgnorePatterns []",
     "test:benchmark": "jest test/unit/benchmark.spec.ts --collect-coverage=false --testPathIgnorePatterns []",
-    "test:unit": "jest --collect-coverage",
+    "test:unit": "web-test-runner test/unit/**/*.spec.ts --node-resolve --coverage",
     "test": "yarn test:unit",
     "jsdoc": "yarn build:cjs && rimraf docs && jsdoc -r ./lib -c jsdoc.config.js",
     "jsdoc:styles": "cat ../../resources/docs/custom.css >> ./docs/$npm_package_name/$npm_package_version/styles/jsdoc.css",
@@ -52,11 +52,16 @@
     "@babel/plugin-proposal-optional-chaining": "^7.8.3",
     "@babel/preset-env": "^7.8.4",
     "@olavoparno/jest-badges-readme": "^1.4.0",
+    "@open-wc/testing": "^3.0.0-next.1",
     "@types/jest": "^26.0.14",
     "@types/ramda": "^0.26.41",
+    "@web/dev-server-esbuild": "^0.2.12",
+    "@web/dev-server-import-maps": "^0.0.5",
+    "@web/test-runner": "^0.13.4",
     "cat": "^0.2.0",
     "cross-env": "^7.0.0",
     "cucumber": "^6.0.5",
+    "esbuild": "^0.11.20",
     "jest": "^26.4.2",
     "jest-cucumber": "^3.0.0",
     "jsdoc": "^3.6.3",
@@ -66,11 +71,12 @@
     "rollup": "^1.31.1",
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-uglify": "^6.0.4",
+    "sinon": "^10.0.0",
     "ts-jest": "^26.3.0",
     "typescript": "^4.0.2"
   },
   "dependencies": {
-    "@uxland/event-aggregator": "^1.0.0",
+    "@uxland/event-aggregator": "^1.0.1-alpha.22",
     "ramda": "^0.27.1"
   },
   "gitHead": "dadaf3d855eb9871da1054ec7b3c77156540c7bd"

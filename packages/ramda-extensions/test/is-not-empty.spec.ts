@@ -1,36 +1,37 @@
-import {isNotEmpty} from '../src/is-not-empty';
+import {expect} from '@open-wc/testing';
+import {isNotEmpty} from '../is-not-empty';
 describe('is not empty fixture', () => {
   it('null should return true', () => {
-    expect(isNotEmpty(null)).toBe(true);
+    expect(isNotEmpty(null)).to.equal(true);
   });
-  test('undefined should return true', () => {
-    expect(isNotEmpty(undefined)).toBe(true);
+  it('undefined should return true', () => {
+    expect(isNotEmpty(undefined)).to.equal(true);
   });
-  test('empty string should return false', () => {
-    expect(isNotEmpty('')).toBe(false);
+  it('empty string should return false', () => {
+    expect(isNotEmpty('')).to.equal(false);
   });
-  test('non empty string should return true', () => {
-    expect(isNotEmpty('hello')).toBe(true);
+  it('non empty string should return true', () => {
+    expect(isNotEmpty('hello')).to.equal(true);
   });
-  test('number should return true', () => {
-    expect(isNotEmpty(3)).toBe(true);
+  it('number should return true', () => {
+    expect(isNotEmpty(3)).to.equal(true);
   });
-  test('0 should return true', () => {
-    expect(isNotEmpty(0)).toBe(true);
+  it('0 should return true', () => {
+    expect(isNotEmpty(0)).to.equal(true);
   });
-  test('empty array should return false', () => {
-    expect(isNotEmpty([])).toBe(false);
+  it('empty array should return false', () => {
+    expect(isNotEmpty([])).to.equal(false);
   });
-  test('array should return true', () => {
-    expect(isNotEmpty([1, 2, 3])).toBe(true);
+  it('array should return true', () => {
+    expect(isNotEmpty([1, 2, 3])).to.equal(true);
   });
-  test('empty object should return false', () => {
-    expect(isNotEmpty({})).toBe(false);
+  it('empty object should return false', () => {
+    expect(isNotEmpty({})).to.equal(false);
   });
-  test('object should return true', () => {
-    expect(isNotEmpty({hello: 0})).toBe(true);
+  it('object should return true', () => {
+    expect(isNotEmpty({hello: 0})).to.equal(true);
   });
-  test('NaN should return true', () => {
-    expect(isNotEmpty(NaN)).toBe(true);
+  it('NaN should return true', () => {
+    expect(isNotEmpty(NaN)).to.equal(true);
   });
 });

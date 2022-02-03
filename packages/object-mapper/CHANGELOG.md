@@ -3,6 +3,134 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1-alpha.24](https://github.com/uxland/uxland/compare/@uxland/object-mapper@1.0.1-alpha.23...@uxland/object-mapper@1.0.1-alpha.24) (2021-12-02)
+
+**Note:** Version bump only for package @uxland/object-mapper
+
+
+
+
+
+## [1.0.1-alpha.23](https://github.com/uxland/uxland/compare/@uxland/object-mapper@1.0.1-alpha.22...@uxland/object-mapper@1.0.1-alpha.23) (2021-12-02)
+
+
+### Bug Fixes
+
+* packages registry urls https ([da9afcb](https://github.com/uxland/uxland/commit/da9afcbd2c6b611b11e9c21e3164bac5e7138b0d))
+
+
+
+
+
+## [1.0.1-alpha.22](https://github.com/uxland/uxland/compare/@uxland/object-mapper@1.0.1-alpha.21...@uxland/object-mapper@1.0.1-alpha.22) (2021-06-17)
+
+
+### Bug Fixes
+
+* specific date-fns imports ([400f76b](https://github.com/uxland/uxland/commit/400f76b2f38c98cd483c97010926f5febe56a4e5))
+
+
+
+
+
+## [1.0.1-alpha.21](https://github.com/uxland/uxland/compare/@uxland/object-mapper@1.0.1-alpha.20...@uxland/object-mapper@1.0.1-alpha.21) (2021-06-17)
+
+
+### Bug Fixes
+
+* update test config ([8259192](https://github.com/uxland/uxland/commit/8259192175825a071f6ab32b91e285a9a8a91f3f))
+* **object-mappers:** specific ramda imports and web-test-runner ([c9e1bc1](https://github.com/uxland/uxland/commit/c9e1bc18a8723adc767888d97087dfbcdceb26c8))
+
+
+
+
+
+## [1.0.1-alpha.20](https://github.com/uxland/uxland/compare/@uxland/object-mapper@1.0.1-alpha.19...@uxland/object-mapper@1.0.1-alpha.20) (2021-06-03)
+
+
+### Bug Fixes
+
+* delete uglify proposal ([0469f91](https://github.com/uxland/uxland/commit/0469f91da0fc74badd1f2f3f947585f4ca75f285))
+
+
+
+
+
+## [1.0.1-alpha.19](https://github.com/uxland/uxland/compare/@uxland/object-mapper@1.0.1-alpha.18...@uxland/object-mapper@1.0.1-alpha.19) (2021-06-03)
+
+
+### Bug Fixes
+
+* disable --mangle-props option from uglify build script to avoid environemtn variables renaming ([74aef36](https://github.com/uxland/uxland/commit/74aef362e3b38b734cfe3c90e9bf4ce3d1b026da))
+
+
+
+
+
+## [1.0.1-alpha.18](https://github.com/uxland/uxland/compare/@uxland/object-mapper@1.0.1-alpha.17...@uxland/object-mapper@1.0.1-alpha.18) (2021-06-03)
+
+**Note:** Version bump only for package @uxland/object-mapper
+
+
+
+
+
+## [1.0.1-alpha.17](https://github.com/uxland/uxland/compare/@uxland/object-mapper@1.0.1-alpha.16...@uxland/object-mapper@1.0.1-alpha.17) (2021-06-03)
+
+
+### Bug Fixes
+
+* exclude external libs from build ([fb0b859](https://github.com/uxland/uxland/commit/fb0b859bbfe165987709fade29ebdced36b3fab7))
+
+
+
+
+
+## [1.0.1-alpha.16](https://github.com/uxland/uxland/compare/@uxland/object-mapper@1.0.1-alpha.15...@uxland/object-mapper@1.0.1-alpha.16) (2021-06-03)
+
+
+### Bug Fixes
+
+* correct uglify build ([a182c34](https://github.com/uxland/uxland/commit/a182c34cdd7a79d94c6c6476b7ba12e59fbf1bbe))
+
+
+
+
+
+## [1.0.1-alpha.15](https://github.com/uxland/uxland/compare/@uxland/object-mapper@1.0.1-alpha.14...@uxland/object-mapper@1.0.1-alpha.15) (2021-06-02)
+
+
+### Bug Fixes
+
+* add uglify ([112ff05](https://github.com/uxland/uxland/commit/112ff051f6344fbdff5d8c0e701256db78bb0d19))
+
+
+
+
+
+## [1.0.1-alpha.14](https://github.com/uxland/uxland/compare/@uxland/object-mapper@1.0.1-alpha.13...@uxland/object-mapper@1.0.1-alpha.14) (2021-05-31)
+
+
+### Bug Fixes
+
+* **object-mapper:** esbuild approach ([6dab15e](https://github.com/uxland/uxland/commit/6dab15ee7b4352d16ab22623203c0acbdf4e99a7))
+
+
+
+
+
+## [1.0.1-alpha.13](https://github.com/uxland/uxland/compare/@uxland/object-mapper@1.0.0...@uxland/object-mapper@1.0.1-alpha.13) (2021-05-28)
+
+
+### Bug Fixes
+
+* skipLibCheck to avoid date-fns errors in build ([f23f798](https://github.com/uxland/uxland/commit/f23f798687dd4e8685206ce1d4a7bdfadc5ab05f))
+* update deps ([dd923c9](https://github.com/uxland/uxland/commit/dd923c90b78cb8b5ff4af27ec5bb4f9410960268))
+
+
+
+
+
 # [1.0.0](https://github.com/uxland/uxland/compare/@uxland/object-mapper@1.0.0-alpha.33...@uxland/object-mapper@1.0.0) (2021-03-09)
 
 **Note:** Version bump only for package @uxland/object-mapper

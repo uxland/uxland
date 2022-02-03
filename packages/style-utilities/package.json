@@ -1,6 +1,6 @@
 {
   "name": "@uxland/style-utilities",
-  "version": "1.0.0",
+  "version": "1.0.1-alpha.3",
   "description": "Style Utilities",
   "author": "UXLand <dev@uxland.es>",
   "homepage": "https://github.com/uxland/uxland/tree/master/packages/style-utilities#readme",
@@ -14,7 +14,7 @@
   ],
   "publishConfig": {
     "access": "public",
-    "registry": "http://registry.npmjs.org/"
+    "registry": "https://registry.npmjs.org/"
   },
   "repository": {
     "type": "git",

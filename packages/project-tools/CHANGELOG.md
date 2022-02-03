@@ -3,6 +3,94 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1-alpha.11](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.1-alpha.10...@uxland/project-tools@1.0.1-alpha.11) (2021-12-02)
+
+**Note:** Version bump only for package @uxland/project-tools
+
+
+
+
+
+## [1.0.1-alpha.10](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.1-alpha.9...@uxland/project-tools@1.0.1-alpha.10) (2021-12-02)
+
+
+### Bug Fixes
+
+* packages registry urls https ([da9afcb](https://github.com/uxland/uxland/commit/da9afcbd2c6b611b11e9c21e3164bac5e7138b0d))
+
+
+
+
+
+## [1.0.1-alpha.9](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.1-alpha.8...@uxland/project-tools@1.0.1-alpha.9) (2021-07-30)
+
+**Note:** Version bump only for package @uxland/project-tools
+
+
+
+
+
+## [1.0.1-alpha.8](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.1-alpha.7...@uxland/project-tools@1.0.1-alpha.8) (2021-07-30)
+
+**Note:** Version bump only for package @uxland/project-tools
+
+
+
+
+
+## [1.0.1-alpha.7](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.1-alpha.6...@uxland/project-tools@1.0.1-alpha.7) (2021-07-29)
+
+
+### Bug Fixes
+
+* **project-tools:** delete node-sass dependency ([497cdf8](https://github.com/uxland/uxland/commit/497cdf8fbba98e1080509b3ac03c5df57e0e54ff))
+
+
+
+
+
+## [1.0.1-alpha.6](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.1-alpha.5...@uxland/project-tools@1.0.1-alpha.6) (2021-06-03)
+
+
+### Bug Fixes
+
+* delete uglify proposal ([0469f91](https://github.com/uxland/uxland/commit/0469f91da0fc74badd1f2f3f947585f4ca75f285))
+
+
+
+
+
+## [1.0.1-alpha.5](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.1-alpha.4...@uxland/project-tools@1.0.1-alpha.5) (2021-06-02)
+
+
+### Bug Fixes
+
+* add uglify ([112ff05](https://github.com/uxland/uxland/commit/112ff051f6344fbdff5d8c0e701256db78bb0d19))
+
+
+
+
+
+## [1.0.1-alpha.4](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.1-alpha.3...@uxland/project-tools@1.0.1-alpha.4) (2021-05-28)
+
+**Note:** Version bump only for package @uxland/project-tools
+
+
+
+
+
+## [1.0.1-alpha.3](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.0...@uxland/project-tools@1.0.1-alpha.3) (2021-05-28)
+
+
+### Bug Fixes
+
+* **project-tools:** update fuse-box dep ([b7a44f1](https://github.com/uxland/uxland/commit/b7a44f1d71fb5d20e708aa543b5d5e34981d2f67))
+* **project-tools:** update version ([6e13fdf](https://github.com/uxland/uxland/commit/6e13fdf80880043dc12a61954071eb76b2b52f2e))
+
+
+
+
+
 # [1.0.0](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.0-alpha.31...@uxland/project-tools@1.0.0) (2021-03-09)
 
 **Note:** Version bump only for package @uxland/project-tools

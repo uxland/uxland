@@ -3,6 +3,141 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1-alpha.25](https://github.com/uxland/uxland/compare/@uxland/browser-utilities@1.0.1-alpha.24...@uxland/browser-utilities@1.0.1-alpha.25) (2021-12-03)
+
+
+### Bug Fixes
+
+* add new base64ToUrl functionality ([37f1ba9](https://github.com/uxland/uxland/commit/37f1ba96348915d10f85acffd2a5919344918fa5))
+
+
+
+
+
+## [1.0.1-alpha.24](https://github.com/uxland/uxland/compare/@uxland/browser-utilities@1.0.1-alpha.23...@uxland/browser-utilities@1.0.1-alpha.24) (2021-12-02)
+
+**Note:** Version bump only for package @uxland/browser-utilities
+
+
+
+
+
+## [1.0.1-alpha.23](https://github.com/uxland/uxland/compare/@uxland/browser-utilities@1.0.1-alpha.22...@uxland/browser-utilities@1.0.1-alpha.23) (2021-12-02)
+
+
+### Bug Fixes
+
+* packages registry urls https ([da9afcb](https://github.com/uxland/uxland/commit/da9afcbd2c6b611b11e9c21e3164bac5e7138b0d))
+
+
+
+
+
+## [1.0.1-alpha.22](https://github.com/uxland/uxland/compare/@uxland/browser-utilities@1.0.1-alpha.21...@uxland/browser-utilities@1.0.1-alpha.22) (2021-12-02)
+
+
+### Bug Fixes
+
+* add width vars on display-layout-sizing ([1927e21](https://github.com/uxland/uxland/commit/1927e21c10293d655c8f87fea1761fcb543439bd))
+
+
+
+
+
+## [1.0.1-alpha.21](https://github.com/uxland/uxland/compare/@uxland/browser-utilities@1.0.1-alpha.20...@uxland/browser-utilities@1.0.1-alpha.21) (2021-06-17)
+
+
+### Bug Fixes
+
+* tsconfig ([aad062d](https://github.com/uxland/uxland/commit/aad062d63effb7029c6854c9d14f93bb6f3ecd96))
+
+
+
+
+
+## [1.0.1-alpha.20](https://github.com/uxland/uxland/compare/@uxland/browser-utilities@1.0.1-alpha.19...@uxland/browser-utilities@1.0.1-alpha.20) (2021-06-03)
+
+
+### Bug Fixes
+
+* delete uglify proposal ([0469f91](https://github.com/uxland/uxland/commit/0469f91da0fc74badd1f2f3f947585f4ca75f285))
+
+
+
+
+
+## [1.0.1-alpha.19](https://github.com/uxland/uxland/compare/@uxland/browser-utilities@1.0.1-alpha.18...@uxland/browser-utilities@1.0.1-alpha.19) (2021-06-03)
+
+
+### Bug Fixes
+
+* disable --mangle-props option from uglify build script to avoid environemtn variables renaming ([74aef36](https://github.com/uxland/uxland/commit/74aef362e3b38b734cfe3c90e9bf4ce3d1b026da))
+
+
+
+
+
+## [1.0.1-alpha.18](https://github.com/uxland/uxland/compare/@uxland/browser-utilities@1.0.1-alpha.17...@uxland/browser-utilities@1.0.1-alpha.18) (2021-06-03)
+
+**Note:** Version bump only for package @uxland/browser-utilities
+
+
+
+
+
+## [1.0.1-alpha.17](https://github.com/uxland/uxland/compare/@uxland/browser-utilities@1.0.1-alpha.16...@uxland/browser-utilities@1.0.1-alpha.17) (2021-06-03)
+
+**Note:** Version bump only for package @uxland/browser-utilities
+
+
+
+
+
+## [1.0.1-alpha.16](https://github.com/uxland/uxland/compare/@uxland/browser-utilities@1.0.1-alpha.15...@uxland/browser-utilities@1.0.1-alpha.16) (2021-06-03)
+
+
+### Bug Fixes
+
+* correct uglify build ([a182c34](https://github.com/uxland/uxland/commit/a182c34cdd7a79d94c6c6476b7ba12e59fbf1bbe))
+
+
+
+
+
+## [1.0.1-alpha.15](https://github.com/uxland/uxland/compare/@uxland/browser-utilities@1.0.1-alpha.14...@uxland/browser-utilities@1.0.1-alpha.15) (2021-06-02)
+
+
+### Bug Fixes
+
+* add uglify ([112ff05](https://github.com/uxland/uxland/commit/112ff051f6344fbdff5d8c0e701256db78bb0d19))
+* **browser-utilities:** solves build problem ([f1d479c](https://github.com/uxland/uxland/commit/f1d479c0e2b7ca22ddf04662526ba87a45c52cc4))
+
+
+
+
+
+## [1.0.1-alpha.14](https://github.com/uxland/uxland/compare/@uxland/browser-utilities@1.0.1-alpha.13...@uxland/browser-utilities@1.0.1-alpha.14) (2021-05-28)
+
+
+### Bug Fixes
+
+* **browser-utilities:** fix package ([2a8ee79](https://github.com/uxland/uxland/commit/2a8ee79423209813cf9c0446960465f5bffaf02a))
+
+
+
+
+
+## [1.0.1-alpha.13](https://github.com/uxland/uxland/compare/@uxland/browser-utilities@1.0.0...@uxland/browser-utilities@1.0.1-alpha.13) (2021-05-28)
+
+
+### Bug Fixes
+
+* **browser-utilities:** esbuild approach ([63308bd](https://github.com/uxland/uxland/commit/63308bd1a9d4319e696dc8ecc89b4c9135c54c2f))
+
+
+
+
+
 # [1.0.0](https://github.com/uxland/uxland/compare/@uxland/browser-utilities@1.0.0-alpha.4...@uxland/browser-utilities@1.0.0) (2021-03-09)
 
 **Note:** Version bump only for package @uxland/browser-utilities

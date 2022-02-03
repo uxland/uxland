@@ -1,8 +1,9 @@
-import {actionNameBuilder} from '../src';
+import {expect} from '@open-wc/testing';
+import {actionNameBuilder} from '../';
 
 describe('constant builder', () => {
   it('action', () => {
     const action = actionNameBuilder('prefix')('my-action');
-    expect(action).toBe('prefix:my-action:ACTION');
+    expect(action).to.equal('prefix:my-action:ACTION');
   });
 });

@@ -1,4 +1,4 @@
-import {getBrowserLang} from '../src/user-lang';
+import {getBrowserLang} from '../user-lang';
 describe('Given a navigator', () => {
   describe('and no language is set', () => {
     it('should return default language', () => {

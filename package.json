@@ -24,14 +24,15 @@
     "ncp": "^2.0.0"
   },
   "scripts": {
-    "build:clean": "lerna run build:clean",
+    "build:clean": "lerna run build:clean && rimraf packages/*/index.min.js",
     "build:test": "lerna run build:test",
-    "build": "lerna run build --stream",
+    "build": "lerna run build --stream --parallel",
+    "clean": "lerna run build:clean --stream --parallel",
     "deps:clean": "rimraf node_modules yarn.lock packages/**/node_modules",
     "deps:install": "yarn install",
     "deps:refresh": "yarn deps:clean && yarn deps:install",
     "docgen": "lerna run jsdoc",
-    "readme:coverage": "lerna run readme:coverage --parallel",
+    "readme:coverage": "lerna run readme:coverage --stream --parallel",
     "readme:coverage:commit": "yarn readme:coverage && git add packages/**/*.md && git commit -m 'docs: update README'",
     "release:dry-run": "lerna run semantic-release:dry-run",
     "release": "yarn build && yarn test && yarn readme:coverage",
@@ -54,6 +55,7 @@
     "dot-prop": "^5.1.1",
     "y18n": "^5.0.5",
     "ssri": "^8.0.1",
-    "ini": "^1.3.6"
+    "ini": "^1.3.6",
+    "puppeteer": "^9.1.1"
   }
 }

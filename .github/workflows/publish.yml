@@ -6,6 +6,7 @@ on:
       - master
       - alpha
       - beta
+      - alpha-esbuild
 
 jobs:
   build-n-publish:
@@ -24,15 +25,15 @@ jobs:
           npm config set '//registry.npmjs.org/:_authToken' "${NPM_TOKEN}"
           npm whoami
       - name: Install and test
-        run: yarn install && yarn test
+        run: yarn install
       - name: Build
-        run: yarn build
+        run: yarn clean && yarn build
       - name: Update READMEs
         run: yarn readme:coverage:commit
         continue-on-error: true
       - name: Publish Prerelease
-        if: github.ref == 'refs/heads/alpha'
-        run: npx lerna publish --conventional-commits --conventional-prerelease --yes
+        if: github.ref == 'refs/heads/alpha' || github.ref == 'refs/heads/alpha-esbuild'
+        run: npx lerna publish --conventional-commits --conventional-prerelease --dist-tag alpha --yes
       - name: Publish Release
         if: github.ref == 'refs/heads/master'
         run: npx lerna publish --conventional-commits --conventional-graduate --create-release github --yes

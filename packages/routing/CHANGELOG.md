@@ -3,6 +3,227 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.4-alpha.21](https://github.com/uxland/uxland/compare/@uxland/routing@1.0.4-alpha.20...@uxland/routing@1.0.4-alpha.21) (2021-12-03)
+
+**Note:** Version bump only for package @uxland/routing
+
+
+
+
+
+## [1.0.4-alpha.20](https://github.com/uxland/uxland/compare/@uxland/routing@1.0.4-alpha.19...@uxland/routing@1.0.4-alpha.20) (2021-12-02)
+
+**Note:** Version bump only for package @uxland/routing
+
+
+
+
+
+## [1.0.4-alpha.19](https://github.com/uxland/uxland/compare/@uxland/routing@1.0.4-alpha.18...@uxland/routing@1.0.4-alpha.19) (2021-12-02)
+
+
+### Bug Fixes
+
+* packages registry urls https ([da9afcb](https://github.com/uxland/uxland/commit/da9afcbd2c6b611b11e9c21e3164bac5e7138b0d))
+
+
+
+
+
+## [1.0.4-alpha.18](https://github.com/uxland/uxland/compare/@uxland/routing@1.0.4-alpha.17...@uxland/routing@1.0.4-alpha.18) (2021-12-02)
+
+**Note:** Version bump only for package @uxland/routing
+
+
+
+
+
+## [1.0.4-alpha.17](https://github.com/uxland/uxland/compare/@uxland/routing@1.0.4-alpha.16...@uxland/routing@1.0.4-alpha.17) (2021-07-30)
+
+**Note:** Version bump only for package @uxland/routing
+
+
+
+
+
+## [1.0.4-alpha.16](https://github.com/uxland/uxland/compare/@uxland/routing@1.0.4-alpha.15...@uxland/routing@1.0.4-alpha.16) (2021-07-30)
+
+**Note:** Version bump only for package @uxland/routing
+
+
+
+
+
+## [1.0.4-alpha.15](https://github.com/uxland/uxland/compare/@uxland/routing@1.0.4-alpha.14...@uxland/routing@1.0.4-alpha.15) (2021-07-29)
+
+**Note:** Version bump only for package @uxland/routing
+
+
+
+
+
+## [1.0.4-alpha.14](https://github.com/uxland/uxland/compare/@uxland/routing@1.0.4-alpha.13...@uxland/routing@1.0.4-alpha.14) (2021-07-29)
+
+**Note:** Version bump only for package @uxland/routing
+
+
+
+
+
+## [1.0.4-alpha.13](https://github.com/uxland/uxland/compare/@uxland/routing@1.0.4-alpha.12...@uxland/routing@1.0.4-alpha.13) (2021-06-22)
+
+**Note:** Version bump only for package @uxland/routing
+
+
+
+
+
+## [1.0.4-alpha.12](https://github.com/uxland/uxland/compare/@uxland/routing@1.0.4-alpha.11...@uxland/routing@1.0.4-alpha.12) (2021-06-22)
+
+**Note:** Version bump only for package @uxland/routing
+
+
+
+
+
+## [1.0.4-alpha.11](https://github.com/uxland/uxland/compare/@uxland/routing@1.0.4-alpha.10...@uxland/routing@1.0.4-alpha.11) (2021-06-17)
+
+**Note:** Version bump only for package @uxland/routing
+
+
+
+
+
+## [1.0.4-alpha.10](https://github.com/uxland/uxland/compare/@uxland/routing@1.0.4-alpha.9...@uxland/routing@1.0.4-alpha.10) (2021-06-17)
+
+
+### Bug Fixes
+
+* update test config ([8259192](https://github.com/uxland/uxland/commit/8259192175825a071f6ab32b91e285a9a8a91f3f))
+* **routing:** specific ramda imports and web-test-runner ([4904fcd](https://github.com/uxland/uxland/commit/4904fcdd4cf3248435e30bc474d58821051256ff))
+
+
+
+
+
+## [1.0.4-alpha.9](https://github.com/uxland/uxland/compare/@uxland/routing@1.0.4-alpha.8...@uxland/routing@1.0.4-alpha.9) (2021-06-03)
+
+
+### Bug Fixes
+
+* delete uglify proposal ([0469f91](https://github.com/uxland/uxland/commit/0469f91da0fc74badd1f2f3f947585f4ca75f285))
+
+
+
+
+
+## [1.0.4-alpha.8](https://github.com/uxland/uxland/compare/@uxland/routing@1.0.4-alpha.7...@uxland/routing@1.0.4-alpha.8) (2021-06-03)
+
+
+### Bug Fixes
+
+* disable --mangle-props option from uglify build script to avoid environemtn variables renaming ([74aef36](https://github.com/uxland/uxland/commit/74aef362e3b38b734cfe3c90e9bf4ce3d1b026da))
+
+
+
+
+
+## [1.0.4-alpha.7](https://github.com/uxland/uxland/compare/@uxland/routing@1.0.4-alpha.6...@uxland/routing@1.0.4-alpha.7) (2021-06-03)
+
+**Note:** Version bump only for package @uxland/routing
+
+
+
+
+
+## [1.0.4-alpha.6](https://github.com/uxland/uxland/compare/@uxland/routing@1.0.4-alpha.5...@uxland/routing@1.0.4-alpha.6) (2021-06-03)
+
+
+### Bug Fixes
+
+* exclude external libs from build ([fb0b859](https://github.com/uxland/uxland/commit/fb0b859bbfe165987709fade29ebdced36b3fab7))
+
+
+
+
+
+## [1.0.4-alpha.5](https://github.com/uxland/uxland/compare/@uxland/routing@1.0.4-alpha.4...@uxland/routing@1.0.4-alpha.5) (2021-06-03)
+
+
+### Bug Fixes
+
+* correct uglify build ([a182c34](https://github.com/uxland/uxland/commit/a182c34cdd7a79d94c6c6476b7ba12e59fbf1bbe))
+
+
+
+
+
+## [1.0.4-alpha.4](https://github.com/uxland/uxland/compare/@uxland/routing@1.0.4-alpha.3...@uxland/routing@1.0.4-alpha.4) (2021-06-02)
+
+
+### Bug Fixes
+
+* skiplibcheck due to date-fns problems ([4c12b2b](https://github.com/uxland/uxland/commit/4c12b2b49d03bf410b2f9dd40d85053617fbf3e8))
+* **redux:** correct version dep ([b812f09](https://github.com/uxland/uxland/commit/b812f090f4f9045a617170d044f59d7a815b03c1))
+
+
+
+
+
+## [1.0.4-alpha.3](https://github.com/uxland/uxland/compare/@uxland/routing@1.0.4-alpha.2...@uxland/routing@1.0.4-alpha.3) (2021-06-02)
+
+
+### Bug Fixes
+
+* add uglify ([112ff05](https://github.com/uxland/uxland/commit/112ff051f6344fbdff5d8c0e701256db78bb0d19))
+
+
+
+
+
+## [1.0.4-alpha.2](https://github.com/uxland/uxland/compare/@uxland/routing@1.0.4-alpha.1...@uxland/routing@1.0.4-alpha.2) (2021-05-31)
+
+**Note:** Version bump only for package @uxland/routing
+
+
+
+
+
+## [1.0.4-alpha.1](https://github.com/uxland/uxland/compare/@uxland/routing@1.0.4-alpha.0...@uxland/routing@1.0.4-alpha.1) (2021-05-28)
+
+
+### Bug Fixes
+
+* **routing:** update imports and deps ([f6f80a2](https://github.com/uxland/uxland/commit/f6f80a2f94256f4c0ac54183b413f8eb4d362395))
+
+
+
+
+
+## [1.0.4-alpha.0](https://github.com/uxland/uxland/compare/@uxland/routing@1.0.1-alpha.13...@uxland/routing@1.0.4-alpha.0) (2021-05-27)
+
+
+### Bug Fixes
+
+* correct routing version ([3187824](https://github.com/uxland/uxland/commit/3187824312340280f6d26b3ff6844c36acc1feea))
+
+
+
+
+
+## [1.0.1-alpha.13](https://github.com/uxland/uxland/compare/@uxland/routing@1.0.3...@uxland/routing@1.0.1-alpha.13) (2021-05-27)
+
+
+### Bug Fixes
+
+* update versions ([4d5abb5](https://github.com/uxland/uxland/commit/4d5abb5946cbcb39b2cde3b9ebf2ea61892b9e1a))
+* **routing:** esbuild approach ([4e878bf](https://github.com/uxland/uxland/commit/4e878bf26b486b8de16cb23a40e7b1811b256b7f))
+* **routing:** update version ([2717920](https://github.com/uxland/uxland/commit/2717920d79214ecf8949e34e4d4faa0e21396045))
+
+
+
+
+
 ## [1.0.3](https://github.com/uxland/uxland/compare/@uxland/routing@1.0.2...@uxland/routing@1.0.3) (2021-05-19)
 
 

@@ -2,7 +2,7 @@
  * Display's layout sizing
  * @param {boolean} withLog Show log?
  */
-export const displayLayoutSizing = (withLog: boolean): void => {
+export const displayLayoutSizing = (withLog: boolean) => {
   const doc = document.getElementsByTagName('body')[0];
   const outHeight = window.outerHeight;
   const innHeight = window.innerHeight;
@@ -14,6 +14,8 @@ export const displayLayoutSizing = (withLog: boolean): void => {
     doc.style.setProperty('--window-outer-height', `${outHeight}px`);
     doc.style.setProperty('--window-inner-height', `${innHeight}px`);
     doc.style.setProperty('--body-height', `${doc.clientHeight}px`);
+    doc.style.setProperty('--window-outer-width', `${outWidth}px`);
+    doc.style.setProperty('--window-inner-width', `${innWidth}px`);
   }
   if (withLog) {
     console.log('');

@@ -1,4 +1,4 @@
-import {EventAggregator} from '../../src/event-aggregator';
+import {EventAggregator} from '../../event-aggregator';
 describe('Given an event aggregator instance', () => {
   const dummyEvent = 'DUMMY-EVENT';
   const emptyEvent = 'EMPTY-EVENT';

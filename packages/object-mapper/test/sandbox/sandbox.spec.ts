@@ -1,42 +1,44 @@
 // import { ObjectMapper } from 'json-object-mapper';
-import { ObjectMapper } from 'json-object-mapper';
+import {ObjectMapper} from 'json-object-mapper';
 import 'reflect-metadata';
-import { SAPBooleanSerializer } from '../../src/boolean-serializer';
-import { deserialize } from '../../src/deserialize';
-import { serialize } from '../../src/serialize';
-import { serialize as serializeSet } from '../../src/serialize-set';
-import { input } from '../unit/sap/input';
-import { MedicalReport } from '../unit/sap/json-object-mapper';
-import { serializers } from '../unit/sap/serializers';
+import {SAPBooleanSerializer} from '../..//boolean-serializer';
+import {deserialize} from '../..//deserialize';
+import {serialize} from '../..//serialize';
+import {serialize as serializeSet} from '../..//serialize-set';
+import {input} from '../unit/sap/input';
+import {MedicalReport} from '../unit/sap/json-object-mapper';
+import {serializers} from '../unit/sap/serializers';
 const performance = require('perf_hooks').performance;
 
 describe('Sandbox', () => {
   it('From plain to plain', () => {
-    const input = { foo: 'bar' };
-    const serializers: any = [{ from: 'foo', to: 'FOO' }];
-    expect(serialize(input, serializers)).toStrictEqual({ FOO: 'bar' });
+    const input = {foo: 'bar'};
+    const serializers: any = [{from: 'foo', to: 'FOO'}];
+    expect(serialize(input, serializers)).toStrictEqual({FOO: 'bar'});
   });
   it('From nested to plain', () => {
-    const input = { foo: { baz: 'bar' } };
-    const serializers: any = [{ from: 'foo.baz', to: 'foo' }];
-    expect(serialize(input, serializers)).toStrictEqual({ foo: 'bar' });
+    const input = {foo: {baz: 'bar'}};
+    const serializers: any = [{from: 'foo.baz', to: 'foo'}];
+    expect(serialize(input, serializers)).toStrictEqual({foo: 'bar'});
   });
   it('From plain to nested', () => {
-    const input = { foo: 'bar' };
-    const serializers: any = [{ from: 'foo', to: 'foo.baz' }];
-    expect(serialize(input, serializers)).toStrictEqual({ foo: { baz: 'bar' } });
+    const input = {foo: 'bar'};
+    const serializers: any = [{from: 'foo', to: 'foo.baz'}];
+    expect(serialize(input, serializers)).toStrictEqual({
+      foo: {baz: 'bar'},
+    });
   });
   it('From nested to plain and from plain to nested using same serializer', () => {
-    const input = { foo: { baz: 'bar' } };
-    const serializers: any = [{ from: 'foo.baz', to: 'baz' }];
+    const input = {foo: {baz: 'bar'}};
+    const serializers: any = [{from: 'foo.baz', to: 'baz'}];
     const output = serialize(input, serializers); // {foo: 'bar'};
-    expect(serialize(input, serializers)).toStrictEqual({ baz: 'bar' });
+    expect(serialize(input, serializers)).toStrictEqual({baz: 'bar'});
     expect(deserialize(output, serializers)).toStrictEqual(input); // {foo: {baz: 'bar'}};
   });
   it('if input[from] is empty string, when using SAPBooleanSerializer, output must be false', () => {
-    const input = { foo: '' };
-    const output = { FOO: false };
-    const serializers: any = [{ from: 'foo', to: 'FOO', serializerFn: SAPBooleanSerializer }];
+    const input = {foo: ''};
+    const output = {FOO: false};
+    const serializers: any = [{from: 'foo', to: 'FOO', serializerFn: SAPBooleanSerializer}];
     expect(serialize(input, serializers)).toStrictEqual(output);
   });
   it('Massive object serialization: object-mapper vs json-object-mapper', () => {
@@ -44,7 +46,7 @@ describe('Sandbox', () => {
     const results = {
       uxl: [],
       set: [],
-      json: []
+      json: [],
     };
     for (let i = 0; i < nTests; i++) {
       const t1 = performance.now();
@@ -61,9 +63,9 @@ describe('Sandbox', () => {
     let means = {
       uxl: results.uxl.reduce((acc, time) => (acc += time), 0) / nTests,
       set: results.set.reduce((acc, time) => (acc += time), 0) / nTests,
-      json: results.json.reduce((acc, time) => (acc += time), 0) / nTests
+      json: results.json.reduce((acc, time) => (acc += time), 0) / nTests,
     };
-    means = { ...means, ['uxl vs json']: means.uxl / means.json };
+    means = {...means, ['uxl vs json']: means.uxl / means.json};
     console.table(means);
     expect(true).toBeTruthy();
   });

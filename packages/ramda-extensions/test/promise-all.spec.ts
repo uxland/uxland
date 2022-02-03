@@ -1,7 +1,8 @@
-import {promiseAll} from '../src/promise-all';
+import {expect} from '@open-wc/testing';
+import {promiseAll} from '../promise-all';
 
 describe('promise all fixture', () => {
   it('should be defined', () => {
-    expect(promiseAll).toBeDefined();
+    expect(promiseAll).to.not.be.undefined;
   });
 });
