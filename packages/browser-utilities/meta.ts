@@ -42,11 +42,13 @@ export const displayMetaInformation = (): void => {
   console.log(`%c|-- User Agent: ${window.navigator.userAgent}`, 'color:#388e3c');
   console.log(`%c|-- Cookies enabled: ${window.navigator.cookieEnabled}`, 'color:#388e3c');
   console.log(`%c|-- Online: ${window.navigator.onLine}`, 'color:#388e3c');
-  console.log(
-    `%c|-- Lit-element version: ${(window as any).litElementVersions[0]}`,
-    'color:#388e3c'
-  );
-  console.log(`%c|-- Lit-html version: ${(window as any).litHtmlVersions[0]}`, 'color:#388e3c');
+  if ((window as any).litElementVersions && (window as any).litHtmlVersions) {
+    console.log(
+      `%c|-- Lit-element version: ${(window as any).litElementVersions[0]}`,
+      'color:#388e3c'
+    );
+    console.log(`%c|-- Lit-html version: ${(window as any).litHtmlVersions[0]}`, 'color:#388e3c');
+  }
   console.log(`%c|-- Browser bar visible: ${window.locationbar.visible}`, 'color:#388e3c');
   console.log(
     `%c|-- Orientation: ${
