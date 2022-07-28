@@ -1,6 +1,6 @@
 {
   "name": "@uxland/routing",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Routing library",
   "author": "UXLand <dev@uxland.es>",
   "homepage": "https://github.com/uxland/uxland/tree/master/packages/routing#readme",
@@ -78,7 +78,7 @@
   },
   "dependencies": {
     "@uxland/ramda-extensions": "^1.0.1",
-    "@uxland/redux": "^1.0.1",
+    "@uxland/redux": "^1.0.2",
     "ramda": "^0.27.1",
     "redux": "^4.1.0"
   }

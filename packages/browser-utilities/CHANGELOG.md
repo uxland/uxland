@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.2](https://github.com/uxland/uxland/compare/@uxland/browser-utilities@1.0.1...@uxland/browser-utilities@1.0.2) (2022-07-28)
+
+
+### Bug Fixes
+
+* solves issue when Lit does not exist ([2ab9767](https://github.com/uxland/uxland/commit/2ab9767d1572c746b76553b4faca4e92633a3c11))
+
+
+
+
+
 ## [1.0.1](https://github.com/uxland/uxland/compare/@uxland/browser-utilities@1.0.1-alpha.25...@uxland/browser-utilities@1.0.1) (2022-02-03)
 
 **Note:** Version bump only for package @uxland/browser-utilities
