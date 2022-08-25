@@ -63,7 +63,7 @@ describe('Region fixture', () => {
         });
       });
       describe('Given several views', () => {
-        let views: View[] = [];
+        const views: View[] = [];
         beforeEach(() => {
           for (let i = 0; i < 5; i++) views.push(createView(`view-${i}`));
         });
