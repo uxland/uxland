@@ -6,7 +6,6 @@ on:
       - master
       - alpha
       - beta
-      - alpha-esbuild
 
 jobs:
   build-n-publish:
