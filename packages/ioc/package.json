@@ -1,6 +1,6 @@
 {
   "name": "@uxland/ioc",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "IOC",
   "author": "Alex Vizcaino <avizcaino@uxland.es>",
   "homepage": "https://github.com/uxland/uxland/tree/master/packages/ioc#readme",
