@@ -1,0 +1,17 @@
+{
+  "extends": "../project-tools/build/tsconfig.json",
+  "compilerOptions": {
+    "rootDir": "./",
+    "outDir": "./",
+    "composite": true,
+    "skipLibCheck": true
+  },
+  "include": ["**/*.ts"],
+  "exclude": [
+    "node_modules",
+    "es",
+    "src/**/*.spec.ts",
+    "src/**/*.steps.ts",
+    "test"
+  ]
+}

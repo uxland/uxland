@@ -6774,6 +6774,11 @@ intl-messageformat@^7.8.4:
     intl-format-cache "^4.2.21"
     intl-messageformat-parser "^3.6.4"
 
+inversify@^6.0.1:
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/inversify/-/inversify-6.0.1.tgz#b20d35425d5d8c5cd156120237aad0008d969f02"
+  integrity sha512-B3ex30927698TJENHR++8FfEaJGqoWOgI6ZY5Ht/nLUsFCwHn6akbwtnUAPCgUepAnTpe2qHxhDNjoKLyz6rgQ==
+
 ip@1.1.5, ip@^1.1.5:
   version "1.1.5"
   resolved "https://registry.yarnpkg.com/ip/-/ip-1.1.5.tgz#bdded70114290828c0a039e72ef25f5aaec4354a"
@@ -8358,6 +8363,11 @@ media-typer@0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/media-typer/-/media-typer-0.3.0.tgz#8710d7af0aa626f8fffa1ce00168545263255748"
   integrity sha1-hxDXrwqmJvj/+hzgAWhUUmMlV0g=
+
+mediatr-ts@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/mediatr-ts/-/mediatr-ts-0.3.0.tgz#9c860c97eb54061501f781599d2387f46ac13021"
+  integrity sha512-cnGB68wMJdWevMm1Ye3U9KPS/R8AeJbMSejme+dKJeQjyPeWaKb6OGPnh+OE82+SKme6DbmF4/yLfAevCl1M4w==
 
 memorystream@^0.3.1:
   version "0.3.1"
