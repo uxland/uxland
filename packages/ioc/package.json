@@ -27,7 +27,7 @@
     "build:dts": "tsc --emitDeclarationOnly --noEmit false --declaration --removeComments false --outDir .",
     "build:clean": "rimraf {index,container}.{!config.js,js,d.ts} tsconfig.tsbuildinfo",
     "build:cjs": "esbuild index.ts --bundle --minify --target=es2018 --outfile=lib/index.js",
-    "build:es": "esbuild *.ts async/*.ts --minify --format=esm --outdir=.",
+    "build:es": "esbuild *.ts --minify --format=esm --outdir=.",
     "build:min": "esbuild index.ts --bundle --minify --external:@uxland/* --format=esm --outfile=./index.min.js",
     "build": "npm-run-all --parallel build:es build:dts",
     "prebuild": "echo nok > .buildstatus",
