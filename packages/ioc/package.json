@@ -1,6 +1,6 @@
 {
   "name": "@uxland/ioc",
-  "version": "0.0.1",
+  "version": "1.0.0-alpha.0",
   "description": "IOC",
   "author": "Alex Vizcaino <avizcaino@uxland.es>",
   "homepage": "https://github.com/uxland/uxland/tree/master/packages/ioc#readme",
@@ -25,7 +25,7 @@
   },
   "scripts": {
     "build:dts": "tsc --emitDeclarationOnly --noEmit false --declaration --removeComments false --outDir .",
-    "build:clean": "rimraf {index,container,mediator-bootstrap}.{!config.js,js,d.ts} tsconfig.tsbuildinfo",
+    "build:clean": "rimraf {index,container,mediator-resolver}.{!config.js,js,d.ts} tsconfig.tsbuildinfo",
     "build:cjs": "esbuild index.ts --bundle --minify --target=es2018 --outfile=lib/index.js",
     "build:es": "esbuild *.ts --minify --format=esm --outdir=.",
     "build:min": "esbuild index.ts --bundle --minify --external:@uxland/* --format=esm --outfile=./index.min.js",

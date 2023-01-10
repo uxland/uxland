@@ -18,4 +18,4 @@
 
 /** @namespace IOC */
 export * from "./container";
-export * from './mediator-bootstrap';
+export * from "./mediator-resolver";
