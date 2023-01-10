@@ -25,6 +25,18 @@ const iocContainer = new Container({
   defaultScope: "Transient",
 });
 
+/**
+ * Returns if it's a tablet's browser
+ * @function
+ * @name provideSingleton
+ * @memberof ioc
+ * @since v1.0.0
+ * @returns {function}
+ * @example
+ *
+ * @provideSingleton()
+ * class Adapter {}
+ */
 function provideSingleton<T>(identifier?: interfaces.ServiceIdentifier<T>) {
   return function (constructor): void {
     identifier = identifier || constructor;

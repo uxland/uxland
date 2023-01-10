@@ -1,4 +1,4 @@
-# UXL Browser Utilities [![npm version](https://badge.fury.io/js/%40uxland%2Fbrowser-utilities.svg)](https://badge.fury.io/js/%40uxland%2Fbrowser-utilities)
+# UXL IOC [![npm version](https://badge.fury.io/js/%40uxland%2Fioc.svg)](https://badge.fury.io/js/%40uxland%2Fioc)
 
 | Build Status                                    | Statements                                    | Branches                                  | Functions                                   | Lines                               |
 | ----------------------------------------------- | --------------------------------------------- | ----------------------------------------- | ------------------------------------------- | ----------------------------------- |
@@ -6,84 +6,34 @@
 
 ## Installation
 
-`npm i @uxland/browser-utilities`
+`npm i @uxland/ioc`
 
 ## Usage
 
-### Get browser's language
+### Register constructor singleton to iocContainer
 
-Returns language depending on user's navigator languages
-
-```typescript
-getBrowserLang(); //=> 'ca'
-```
-
-### Meta
-
-Display's meta information such as browser version, UA, LitElement version
+Registers a constructor singleton to the InversionOfControl container. Each time a reference of the constructor or abstract class is provided with inversify, the container will provide with its singleton pair.
 
 ```typescript
-displayMetaInformation();
+@provideSingleton()
+class IOCAdapter {
+  method(): void {
+    console.log("Calling `method` from `IOCAdapter`");
+  }
+}
+
+class Adapter {
+  constructor(@inject(IOCAdapter) protected adapter: IOCAdapter) {
+    this.adapter.method(); // => 'Calling `method` from `IOCAdapter`'
+  }
+}
 ```
 
-### Layout sizing
+### Set Mediator resolver
 
-Display's layout sizing
+This method overrides the mediator default resolver to use our own container.
 
 ```typescript
-displayLayoutSizing(true);
+const container: Container = new Container();
+setMediatorResolver(container);
 ```
-
-### Convert file to base64
-
-```typescript
-const file = new File(["foo"], "foo.txt", {
-  type: "text/plain",
-});
-await toBase64(file); //=> data:text/plain;base64,Zm9v
-```
-
-### Browser's device
-
-Returns true depending on device type
-
-```typescript
-isTabletBrowser(); //=> true | false
-isMobileBrowser(); //=> true | false
-isMobileOrTabletBrowser(); //=> true | false
-```
-
-### Animation frame
-
-Asynchronous task that will call provided callback in next window animation frame
-
-```typescript
-const callback = () => console.log("task ended");
-const handler = animationFrame.run(callback); //=> 'task ended'
-// To cancel asynchronous task
-animationFrame.cancel(handler);
-```
-
-### Asynchronous queue
-
-Creates an asynchronous queue instance that will call provided function when possible
-
-```typescript
-const executor = (...args: any[]) => console.log("Queue Executor", args);
-const queue = new AsyncQueue(executor);
-queue.enqueueItem(1); //=> 'Queue Executor' 1;
-```
-
-### Debouncer
-
-https://polymer-library.polymer-project.org/3.0/api/utils/debounce
-
-### Idle Period
-
-### Micro task
-
-https://polymer-library.polymer-project.org/3.0/api/utils/async
-
-### Time out
-
-https://polymer-library.polymer-project.org/3.0/api/utils/async
