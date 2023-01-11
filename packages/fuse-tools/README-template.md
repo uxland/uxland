@@ -1,4 +1,4 @@
-# UXL Fuse Tools [![npm version](https://badge.fury.io/js/%40uxland%2Ffuse-tools.svg)](https://badge.fury.io/js/%40uxland%2Ffuse-tools)
+# UXL Project Tools [![npm version](https://badge.fury.io/js/%40uxland%2Fproject-tools.svg)](https://badge.fury.io/js/%40uxland%2Fproject-tools)
 
 <!-- | Build Status                                    | Statements                                    | Branches                                  | Functions                                   | Lines                               |
 | ----------------------------------------------- | --------------------------------------------- | ----------------------------------------- | ------------------------------------------- | ----------------------------------- |
@@ -6,18 +6,46 @@
 
 ## Installation
 
-`npm i @uxland/fuse-tools`
+`npm i @uxland/project-tools`
 
 ## Usage
+
+### Build tools
+
+#### _rollup_
+
+```javascript
+const buildConfig = require('@uxland/project-tools/build/rollup.config');
+const pkg = require('./package.json');
+const config = buildConfig(pkg);
+module.exports = config;
+```
+
+#### _TSConfig_
+
+```json
+{
+  "compilerOptions": { "rootDir": "./src", "outDir": "./lib", "composite": true },
+  "extends": "@uxland/project-tools/build/tsconfig.json",
+  "include": ["src/**/*.ts"]
+}
+```
+
+### Documentation tools
+
+```javascript
+const baseConfig = require('@uxland/project-tools/documentation/jsdoc.config');
+module.exports = { ...baseConfig, opts: { ...baseConfig.opts, template: <templatePath> } };
+```
 
 ### Fuse
 
 #### _devServer_
 
 ```javascript
-const { fuse } = require("<node_modules>/@uxland/fuse-tools/fuse/start");
-const pkg = require("./package.json");
-fuse("demo/index.ts", "../styles/styles.scss", "demo/index.html", true, {
+const { fuse } = require('<node_modules>/@uxland/project-tools/fuse/start');
+const pkg = require('./package.json');
+fuse('demo/index.ts', '../styles/styles.scss', 'demo/index.html', true, {
   APP_VERSION: pkg.version,
 }).runDev();
 ```
@@ -25,16 +53,16 @@ fuse("demo/index.ts", "../styles/styles.scss", "demo/index.html", true, {
 #### _productionBuild_
 
 ```javascript
-const { fuse } = require("<node_modules>/@uxland/fuse-tools/fuse/start");
-const pkg = require("./package.json");
-fuse("demo/index.ts", "../styles/styles.scss", "demo/index.html", true, {
+const { fuse } = require('<node_modules>/@uxland/project-tools/fuse/start');
+const pkg = require('./package.json');
+fuse('demo/index.ts', '../styles/styles.scss', 'demo/index.html', true, {
   APP_VERSION: pkg.version,
 }).runProd({
   uglify: false,
-  target: "browser",
+  target: 'browser',
   bundles: {
-    app: "app.$hash.js",
-    vendor: "vendor.$hash.js",
+    app: 'app.$hash.js',
+    vendor: 'vendor.$hash.js',
   },
 });
 ```
@@ -57,8 +85,8 @@ Use provided configurations to use lint in your project
 ### Testing tools
 
 ```javascript
-const config = require("@uxland/project-tools/test/jest.config");
-const pack = require("./package");
+const config = require('@uxland/project-tools/test/jest.config');
+const pack = require('./package');
 
 module.exports = { ...config, name: pack.name, displayName: pack.name };
 ```

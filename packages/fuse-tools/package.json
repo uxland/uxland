@@ -1,0 +1,30 @@
+{
+  "name": "@uxland/fuse-tools",
+  "version": "1.0.0-alpha.0",
+  "description": "UXLand fuse tools",
+  "author": "UXLand <dev@uxland.es>",
+  "homepage": "https://github.com/uxland/uxland/tree/master/packages/fuse-tools#readme",
+  "license": "BSD-4-Clause",
+  "files": [
+    "build",
+    "fuse"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uxland/uxland.git"
+  },
+  "scripts": {},
+  "bugs": {
+    "url": "https://github.com/uxland/uxland/issues"
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "fuse-box": "^4.0.1-next.4",
+    "ts-node": "^9.0.0"
+  },
+  "gitHead": "779339a2bf1949d5c7bc5e11875d2e9523d45cf8"
+}
