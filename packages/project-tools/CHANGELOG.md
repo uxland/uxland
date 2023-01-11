@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.1...@uxland/project-tools@2.0.0) (2023-01-11)
+
+
+### Features
+
+* **fuse-tools/project-tools:** uncouple fuse from project-tools package (closes [#55](https://github.com/uxland/uxland/issues/55)) ([d488cfc](https://github.com/uxland/uxland/commit/d488cfcb57e96b7c39149ffb375742dfe240f8e5))
+
+
+
+
+
 ## [1.0.1](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.1-alpha.11...@uxland/project-tools@1.0.1) (2022-02-03)
 
 **Note:** Version bump only for package @uxland/project-tools

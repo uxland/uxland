@@ -1,6 +1,6 @@
 {
   "name": "@uxland/fuse-tools",
-  "version": "1.0.0-alpha.0",
+  "version": "1.0.0",
   "description": "UXLand fuse tools",
   "author": "UXLand <dev@uxland.es>",
   "homepage": "https://github.com/uxland/uxland/tree/master/packages/fuse-tools#readme",
