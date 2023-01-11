@@ -54,6 +54,7 @@ class InversifyResolver implements IResolver {
  *
  * setMediatorResolver(new Container());
  */
-export const setMediatorResolver = (container: Container) => {
+export const setMediatorResolver = (container: Container): Promise<void> => {
   mediatorSettings.resolver = new InversifyResolver(container);
+  return Promise.resolve();
 };
