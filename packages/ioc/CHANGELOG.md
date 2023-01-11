@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1](https://github.com/uxland/uxland/compare/@uxland/ioc@1.0.0...@uxland/ioc@1.0.1) (2023-01-11)
+
+
+### Bug Fixes
+
+* **ioc:** setMediatorResolver as promise ([4f00613](https://github.com/uxland/uxland/commit/4f006139872f87f8ada5c9c04d1d571fcb2cfe88))
+
+
+
+
+
 # [1.0.0](https://github.com/uxland/uxland/compare/@uxland/ioc@0.1.0...@uxland/ioc@1.0.0) (2023-01-10)
 
 
