@@ -1,7 +1,8 @@
 {
-  "packages": ["packages/*"],
+  "packages": ["packages/*", "react/*"],
   "ignoreChanges": [
     "packages/*/test/**",
+    "react/*/test/**",
     "**/*.md",
     "**/*.mdx",
     "packages/*-bkp/**/*"
@@ -11,7 +12,7 @@
   "useWorkspaces": true,
   "command": {
     "version": {
-      "allowBranch": ["master", "alpha", "beta"],
+      "allowBranch": ["master", "alpha", "beta", "52-uxland-react-utilities"],
       "message": "chore(release): publish new versions"
     },
     "publish": {
