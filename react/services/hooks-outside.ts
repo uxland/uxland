@@ -15,8 +15,21 @@
  * THIS SOFTWARE IS PROVIDED BY <COPYRIGHT HOLDER> ''AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL <COPYRIGHT HOLDER> BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+import { getHook as reactGetHook } from "react-hooks-outside";
 
-export * from "./hooks-outside";
-export * from "./i18n";
-export * from "./notification-service";
-export * from "./redux";
+/**
+ * Allows to use hooks outside a react component passing data
+ * @function
+ * @name getHook
+ * @memberof ReactServices
+ * @since v1.0.0
+ * @example
+ * @param {String} name - Hook name
+ * @param {*} payload - Data payload for hook
+ * @returns {void}
+ * @example
+ *
+ * getHook('hookName', {foo: 'bar'})
+ */
+export const getHook = (name: string, payload: any) =>
+  reactGetHook(name) && reactGetHook(name)(payload);

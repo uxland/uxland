@@ -75,6 +75,8 @@ export const useGlobalPath = () => {
  * @name useLocalePath
  * @memberof ReactServices
  * @since v1.0.0
+ * @param {string} namespace - Localization namespace
+ * @param {string} basePath - Localization path
  * @returns {string}
  * @example
  *
@@ -91,6 +93,20 @@ export const useLocalePath = (namespace?: string, basePath?: string) => {
   return localePath;
 };
 
-export const translate = (moduleName: string, path: string, options?: any) => {
-  return i18n.t(path, { ...options, ns: moduleName, lng: i18n.language });
+/**
+ * Function that returns correspongind locale value by provided
+ * @function
+ * @name useLocalePath
+ * @memberof ReactServices
+ * @since v1.0.0
+ * @param {string} namespace - Localization namespace
+ * @param {string} path - Localization path
+ * @param {*} options - Localization payload
+ * @returns {string}
+ * @example
+ *
+ * translate('ns', 'foo.bar', {dummy: 0})
+ */
+export const translate = (namespace: string, path: string, options?: any) => {
+  return i18n.t(path, { ...options, ns: namespace, lng: i18n.language });
 };

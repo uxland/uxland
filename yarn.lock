@@ -10090,6 +10090,11 @@ raw-body@^2.3.3:
     iconv-lite "0.4.24"
     unpipe "1.0.0"
 
+react-hooks-outside@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/react-hooks-outside/-/react-hooks-outside-1.0.3.tgz#9f354a6171d822d0408a3c1221351220b6f49120"
+  integrity sha512-sSpolUfJcZV0S2Upku91OO6bIR0CJ2J/1yBothInD9zB5q37pT+4lXbYWC+3lWbdQrR8wgGEm5pkwC1w4hSwpQ==
+
 react-i18next@^12.1.4:
   version "12.1.4"
   resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-12.1.4.tgz#be0a60d3a45acc4321909f8a4b8cde16518a2926"
