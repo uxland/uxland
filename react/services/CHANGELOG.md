@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0](https://github.com/uxland/uxland/compare/@uxland/react-services@1.0.0-alpha.4...@uxland/react-services@1.0.0) (2023-01-23)
+
+**Note:** Version bump only for package @uxland/react-services
+
+
+
+
+
 # [1.0.0-alpha.4](https://github.com/uxland/uxland/compare/@uxland/react-services@1.0.0-alpha.3...@uxland/react-services@1.0.0-alpha.4) (2023-01-23)
 
 
