@@ -19,4 +19,3 @@
 export * from "./hooks-outside";
 export * from "./i18n";
 export * from "./notification-service";
-export * from "./redux";
