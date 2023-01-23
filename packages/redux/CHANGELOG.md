@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.1](https://github.com/uxland/uxland/compare/@uxland/redux@1.0.2...@uxland/redux@2.0.0-alpha.1) (2023-01-23)
+
+
+### Features
+
+* **redux:** refactor redux to use @reduxjs/toolkit (closes [#57](https://github.com/uxland/uxland/issues/57)) ([a4218ce](https://github.com/uxland/uxland/commit/a4218cec28cab82ae08aef001fbc80e86743724b))
+
+
+
+
+
 ## [1.0.2](https://github.com/uxland/uxland/compare/@uxland/redux@1.0.1...@uxland/redux@1.0.2) (2022-07-28)
 
 **Note:** Version bump only for package @uxland/redux

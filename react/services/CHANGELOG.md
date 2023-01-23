@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-alpha.4](https://github.com/uxland/uxland/compare/@uxland/react-services@1.0.0-alpha.3...@uxland/react-services@1.0.0-alpha.4) (2023-01-23)
+
+
+### Bug Fixes
+
+* **react/services:** delete redux export ([ebb421f](https://github.com/uxland/uxland/commit/ebb421f299f93dbeac92eae5fd3e4512e841fc51))
+
+
+### Features
+
+* **redux:** refactor redux to use @reduxjs/toolkit (closes [#57](https://github.com/uxland/uxland/issues/57)) ([a4218ce](https://github.com/uxland/uxland/commit/a4218cec28cab82ae08aef001fbc80e86743724b))
+
+
+
+
+
 # [1.0.0-alpha.3](https://github.com/uxland/uxland/compare/@uxland/react-services@1.0.0-alpha.2...@uxland/react-services@1.0.0-alpha.3) (2023-01-16)
 
 
