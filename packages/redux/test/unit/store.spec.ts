@@ -48,10 +48,11 @@ describe("Given a StoreService instance", () => {
         { status: AsyncStateStatus.idle, data: { foo: "bar" }, error: null },
         false
       );
+      const { setData, setError } = noResetableSlice.actions;
       service.injectReducer("noReset", noResetableSlice.reducer);
       const error = new Error("error-message");
-      service.dispatch(noResetableSlice.actions.setData("dummy"));
-      service.dispatch(noResetableSlice.actions.setError(error.message));
+      service.dispatch(setData("dummy"));
+      service.dispatch(setError(error.message));
       service.resetStore();
       expect(service.getState()?.foo?.status).toEqual(AsyncStateStatus.idle);
       expect(service.getState()?.noReset?.error).toEqual(error.message);

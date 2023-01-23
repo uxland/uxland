@@ -1,13 +1,12 @@
-import { Dispatch } from "@reduxjs/toolkit";
-import { AsyncReducers, AsyncStateStatus } from "./domain";
+import { CaseReducerActions, Dispatch } from "@reduxjs/toolkit";
+import { AsyncCaseReducers, AsyncStateStatus } from "./domain";
 
 export const performAsyncAction = async <T>(
   dispatch: Dispatch,
-  actions: AsyncReducers,
+  actions: CaseReducerActions<AsyncCaseReducers<T>, string>,
   fn: (...args: any[]) => Promise<any>
 ): Promise<T> => {
   try {
-    console.log(actions);
     dispatch(actions.setStatus(AsyncStateStatus.pending));
     const r = await fn();
     dispatch(actions.setData(r));

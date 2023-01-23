@@ -16,7 +16,12 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-import { AnyAction } from "@reduxjs/toolkit";
+import {
+  AnyAction,
+  CaseReducer,
+  PayloadAction,
+  SliceCaseReducers,
+} from "@reduxjs/toolkit";
 
 let STUB = 1;
 /**
@@ -54,3 +59,9 @@ export type AsyncReducers = {
   setError: (payload: any) => AnyAction;
   setData: (payload: any) => AnyAction;
 };
+
+export interface AsyncCaseReducers<State> extends SliceCaseReducers<State> {
+  setStatus: CaseReducer<State, PayloadAction<AsyncStateStatus>>;
+  setData: CaseReducer<State, PayloadAction<any>>;
+  setError: CaseReducer<State, PayloadAction<string>>;
+}

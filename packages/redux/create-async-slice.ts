@@ -17,6 +17,7 @@
  */
 
 import { CreateSliceOptions, Slice, createSlice } from "@reduxjs/toolkit";
+import { AsyncCaseReducers } from "./domain";
 import { resetAction } from "./reset-action";
 
 /**
@@ -33,7 +34,7 @@ import { resetAction } from "./reset-action";
  *
  * createAsyncSlice('sliceName', {status: AsyncStateStatus.idle, data: {foo: 'bar'}, error: null});
  */
-export const createAsyncSlice = <T>(
+export const createAsyncSlice = <State, T>(
   name: string,
   initialState: T,
   resetable: boolean = true
@@ -56,5 +57,6 @@ export const createAsyncSlice = <T>(
       extraReducers: (builder) =>
         builder.addCase(resetAction, () => initialState),
     };
-  return createSlice(sliceConfig);
+  //@ts-ignore
+  return createSlice<State, AsyncCaseReducers<State>>(sliceConfig);
 };
