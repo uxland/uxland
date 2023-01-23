@@ -16,36 +16,75 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-import { Slice, createSlice } from "@reduxjs/toolkit";
-import { AsyncState } from "./domain";
+import {
+  EnhancedStore,
+  Reducer,
+  combineReducers,
+  configureStore,
+} from "@reduxjs/toolkit";
+import { resetAction } from "./reset-action";
 
 /**
- * Returns if it's a tablet's browser
- * @function
- * @name createAsyncSlice
+ * Creates a Redux Store service
+ * @class
+ * @name StoreService
  * @memberof ReactServices
- * @param {string} name - Slice name
- * @param {*} initialState - Reducer initial state
+ * @param {{[key: string]: Reducer}} reducers - Initial store reducers
+ * @param {string} name - Store name
+ * @param {boolean} devTools - Devtools middleware activation
  * @since v1.0.0
  * @returns {Slice}
  * @example
  *
  * createAsyncSlice('sliceName', {foo: 'bar'});
  */
-export const createAsyncSlice = <T>(
-  name: string,
-  initialState: AsyncState<T>
-) => {
-  return createSlice({
-    name,
-    initialState,
-    reducers: {
-      setStatus: (state, action) => ({ ...state, status: action.payload }),
-      setError: (state, action) => ({ ...state, error: action.payload }),
-      setData: (state, action) => ({
-        ...state,
-        data: action.payload,
-      }),
-    },
-  });
-};
+export class StoreService {
+  private store: EnhancedStore<any, any, any>;
+
+  constructor(
+    private reducers: { [key: string]: Reducer },
+    name: string,
+    devTools: boolean
+  ) {
+    // const appReducer = combineReducers(reducers);
+    // const rootReducer = (
+    //   state: ReturnType<typeof rootReducer>,
+    //   action: AnyAction
+    // ) => {
+    //   console.log(action.type);
+    //   if (action.type === this.RESET_ACTION) {
+    //     return appReducer(undefined, action);
+    //   }
+    //   return appReducer(state, action);
+    // };
+
+    this.store = configureStore({
+      // reducer: rootReducer,
+      reducer: reducers,
+      devTools: devTools ? { name } : false,
+    });
+  }
+
+  getStore() {
+    return this.store;
+  }
+
+  resetStore() {
+    this.store?.dispatch(resetAction());
+  }
+
+  getState() {
+    return this.store?.getState();
+  }
+
+  injectReducer(key: string, reducer: Reducer) {
+    this.reducers[key] = reducer;
+    const rootReducer = combineReducers(this.reducers);
+    this.store?.replaceReducer(rootReducer as any);
+  }
+
+  dispatch<T = any>(action: T) {
+    console.log("dispatching");
+    return this.store?.dispatch(action);
+  }
+}

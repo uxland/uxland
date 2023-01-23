@@ -2924,6 +2924,20 @@
     "@typescript-eslint/types" "4.27.0"
     eslint-visitor-keys "^2.0.0"
 
+"@uxland/redux@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@uxland/redux/-/redux-1.0.2.tgz#b1f131dda9da10f407282278a91928e69c5eee6b"
+  integrity sha512-cUJzY99vECgL5TcJNB3CYYrIs5Rd5W/8azi0oShvt/h62gzQjlWY+PyMt3IirHxVhGJfcCDdqTqiRMsiAZiINg==
+  dependencies:
+    "@uxland/browser-utilities" "^1.0.2"
+    "@uxland/ramda-extensions" "^1.0.1"
+    "@uxland/utilities" "^1.0.1"
+    date-fns "^2.10.0"
+    ramda "^0.27.0"
+    redux "^4.0.5"
+    reflect-metadata "^0.1.13"
+    reselect "^4.0.0"
+
 "@web/browser-logs@^0.2.1", "@web/browser-logs@^0.2.2":
   version "0.2.4"
   resolved "https://registry.yarnpkg.com/@web/browser-logs/-/browser-logs-0.2.4.tgz#486518a950b8fa790d97218cc5a0b4efbd20ac5a"

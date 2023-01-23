@@ -1,6 +1,6 @@
-import { createAsyncSlice } from "../../../redux/create-async-slice";
-import { AsyncStateStatus } from "../../../redux/domain";
-import { StoreService } from "../../../redux/store-service";
+import { createAsyncSlice } from "../../create-async-slice";
+import { AsyncStateStatus } from "../../domain";
+import { StoreService } from "../../store-service";
 
 describe("Given a StoreService instance", () => {
   let service: StoreService, slice;
@@ -35,11 +35,26 @@ describe("Given a StoreService instance", () => {
   });
   describe("When dispatching action", () => {
     it("should be present in state", () => {
-      const { setStatus } = slice.actions;
       service.dispatch(slice.actions.setStatus(AsyncStateStatus.succeeded));
       expect(service.getState()?.foo?.status).toEqual(
         AsyncStateStatus.succeeded
       );
+    });
+  });
+  describe("When resetting store", () => {
+    it("should reset store to default state", () => {
+      const noResetableSlice = createAsyncSlice(
+        "noReset",
+        { status: AsyncStateStatus.idle, data: { foo: "bar" }, error: null },
+        false
+      );
+      service.injectReducer("noReset", noResetableSlice.reducer);
+      const error = new Error("error-message");
+      service.dispatch(noResetableSlice.actions.setData("dummy"));
+      service.dispatch(noResetableSlice.actions.setError(error.message));
+      service.resetStore();
+      expect(service.getState()?.foo?.status).toEqual(AsyncStateStatus.idle);
+      expect(service.getState()?.noReset?.error).toEqual(error.message);
     });
   });
 });
