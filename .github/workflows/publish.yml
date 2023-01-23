@@ -6,6 +6,7 @@ on:
       - master
       - alpha
       - beta
+      - 52-uxland-react-utilities
 
 jobs:
   build-n-publish:
@@ -31,7 +32,7 @@ jobs:
         run: yarn readme:coverage:commit
         continue-on-error: true
       - name: Publish Prerelease
-        if: github.ref == 'refs/heads/alpha' || github.ref == 'refs/heads/alpha-esbuild'
+        if: github.ref == 'refs/heads/alpha' || github.ref == 'refs/heads/52-uxland-react-utilities'
         run: npx lerna publish --conventional-commits --conventional-prerelease --dist-tag alpha --yes
       - name: Publish Release
         if: github.ref == 'refs/heads/master'

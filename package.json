@@ -42,7 +42,8 @@
     "postpublish": "yarn docgen && git add docs && git commit -m 'docs: new version documentation' && git push"
   },
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "react/*"
   ],
   "husky": {
     "hooks": {
