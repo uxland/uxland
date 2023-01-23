@@ -1,7 +1,8 @@
-import { createAsyncSlice } from "../../../redux/create-async-slice";
-import { AsyncStateStatus } from "../../../redux/domain";
+import { createAsyncSlice } from "../../create-async-slice";
+import { AsyncStateStatus } from "../../domain";
+
 describe("When creating a new slice", () => {
-  it("should have 3 actions", () => {
+  it("should have 4 actions", () => {
     const initialState = {
       status: AsyncStateStatus.idle,
       data: { foo: "bar" },
