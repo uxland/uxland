@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.2](https://github.com/uxland/uxland/compare/@uxland/redux@2.0.0-alpha.1...@uxland/redux@2.0.0-alpha.2) (2023-01-23)
+
+
+### Bug Fixes
+
+* **redux:** solves issues with typing ([9862ff1](https://github.com/uxland/uxland/commit/9862ff14cc83353a470fc34482707af93b5a2c92))
+
+
+
+
+
 # [2.0.0-alpha.1](https://github.com/uxland/uxland/compare/@uxland/redux@1.0.2...@uxland/redux@2.0.0-alpha.1) (2023-01-23)
 
 
