@@ -18,4 +18,5 @@
 
 export * from "./create-async-slice";
 export * from "./domain";
+export * from "./perform-async-action";
 export * from "./store-service";
