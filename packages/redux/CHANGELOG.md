@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.2](https://github.com/uxland/uxland/compare/@uxland/redux@2.0.1...@uxland/redux@2.0.2) (2023-01-24)
+
+
+### Bug Fixes
+
+* **redux:** publish utility ([96f7051](https://github.com/uxland/uxland/commit/96f7051b7d9637c44c96c8735853feed8ef5d332))
+
+
+
+
+
 ## [2.0.1](https://github.com/uxland/uxland/compare/@uxland/redux@2.0.0...@uxland/redux@2.0.1) (2023-01-24)
 
 
