@@ -84,7 +84,6 @@ export class StoreService {
   }
 
   dispatch<T = any>(action: T) {
-    console.log("dispatching");
     return this.store?.dispatch(action);
   }
 }
