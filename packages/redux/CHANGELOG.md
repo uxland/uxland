@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.3](https://github.com/uxland/uxland/compare/@uxland/redux@2.0.2...@uxland/redux@2.0.3) (2023-01-24)
+
+
+### Bug Fixes
+
+* **redux:** delete console ([efb5cac](https://github.com/uxland/uxland/commit/efb5cac7c208ad5187c31365fa56ad27510d239e))
+
+
+
+
+
 ## [2.0.2](https://github.com/uxland/uxland/compare/@uxland/redux@2.0.1...@uxland/redux@2.0.2) (2023-01-24)
 
 
