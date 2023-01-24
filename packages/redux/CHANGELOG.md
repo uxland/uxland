@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.1](https://github.com/uxland/uxland/compare/@uxland/redux@2.0.0...@uxland/redux@2.0.1) (2023-01-24)
+
+
+### Bug Fixes
+
+* **redux:** create async state utility ([eb0f5e0](https://github.com/uxland/uxland/commit/eb0f5e0801dee5366c508a0d45ac29b7885b3a51))
+
+
+
+
+
 # [2.0.0](https://github.com/uxland/uxland/compare/@uxland/redux@2.0.0-alpha.2...@uxland/redux@2.0.0) (2023-01-23)
 
 **Note:** Version bump only for package @uxland/redux
