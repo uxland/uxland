@@ -17,8 +17,26 @@
  */
 
 import { CreateSliceOptions, Slice, createSlice } from "@reduxjs/toolkit";
-import { AsyncCaseReducers } from "./domain";
+import { AsyncCaseReducers, AsyncState, AsyncStateStatus } from "./domain";
 import { resetAction } from "./reset-action";
+
+/**
+ * Creates an async state
+ * @function
+ * @name createAsyncState
+ * @memberof ReactServices
+ * @param {*=} payload - Slice name
+ * @since v1.0.0
+ * @returns {AsyncState}
+ * @example
+ *
+ * createAsyncState({foo: 'bar'});
+ */
+export const createAsyncState = (payload?: any) => ({
+  status: AsyncStateStatus.idle,
+  data: payload,
+  error: null,
+});
 
 /**
  * Creates a slice that can be used to control asynchronous cases in state
