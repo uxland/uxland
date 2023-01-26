@@ -63,7 +63,7 @@ export const useGlobalPath = () => {
     return t(`${path.split(".").slice(1).join(".")}`, {
       ...options,
       returnDetails: true,
-    }).res;
+    }).res as unknown as string;
   }
 
   return globalPath;
@@ -89,8 +89,10 @@ export const useLocalePath = (namespace?: string, basePath?: string) => {
 
   function localePath(path: string, args?: any) {
     return basePath
-      ? t(`${basePath}.${path}`, { args, returnDetails: true }).res
-      : t(`${path}`, { args, returnDetails: true }).res;
+      ? (t(`${basePath}.${path}`, { ...args, returnDetails: true })
+          .res as unknown as string)
+      : (t(`${path}`, { ...args, returnDetails: true })
+          .res as unknown as string);
   }
 
   return localePath;
