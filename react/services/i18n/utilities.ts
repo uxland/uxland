@@ -62,7 +62,8 @@ export const useGlobalPath = () => {
     const options = { ...args, ns: path.split(".")[0] };
     return t(`${path.split(".").slice(1).join(".")}`, {
       ...options,
-    });
+      returnDetails: true,
+    }).res;
   }
 
   return globalPath;
@@ -87,7 +88,9 @@ export const useLocalePath = (namespace?: string, basePath?: string) => {
   const { t } = useTranslation(namespace);
 
   function localePath(path: string, args?: any) {
-    return basePath ? t(`${basePath}.${path}`, args) : t(`${path}`, args);
+    return basePath
+      ? t(`${basePath}.${path}`, { args, returnDetails: true }).res
+      : t(`${path}`, { args, returnDetails: true }).res;
   }
 
   return localePath;
@@ -96,7 +99,7 @@ export const useLocalePath = (namespace?: string, basePath?: string) => {
 /**
  * Function that returns correspongind locale value by provided
  * @function
- * @name useLocalePath
+ * @name translate
  * @memberof ReactServices
  * @since v1.0.0
  * @param {string} namespace - Localization namespace
