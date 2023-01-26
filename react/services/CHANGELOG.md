@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.2](https://github.com/uxland/uxland/compare/@uxland/react-services@1.0.1...@uxland/react-services@1.0.2) (2023-01-26)
+
+
+### Bug Fixes
+
+* **react/services:** return type of i18n hooks ([240ddc2](https://github.com/uxland/uxland/commit/240ddc2bd05e07fa3530409aac035914c1af6962))
+
+
+
+
+
 ## [1.0.1](https://github.com/uxland/uxland/compare/@uxland/react-services@1.0.0...@uxland/react-services@1.0.1) (2023-01-26)
 
 
