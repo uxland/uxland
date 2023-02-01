@@ -33,13 +33,13 @@
     "deps:refresh": "yarn deps:clean && yarn deps:install",
     "docgen": "lerna run jsdoc",
     "readme:coverage": "lerna run readme:coverage --stream --parallel",
-    "readme:coverage:commit": "yarn readme:coverage && git add packages/**/*.md && git commit -m 'docs: update README'",
+    "readme:coverage:commit": "yarn readme:coverage && git add packages/**/*.md && { git diff --staged --quiet || git commit -m 'docs: update README'; }",
     "release:dry-run": "lerna run semantic-release:dry-run",
     "release": "yarn build && yarn test && yarn readme:coverage",
-    "postrelease": "yarn docgen && git add . && git commit -m 'docs: update documentation'",
+    "postrelease": "yarn docgen && git add . && { git diff --staged --quiet || git commit -m 'docs: update documentation'; }",
     "test": "lerna run test --parallel",
     "precommit": "yarn test && yarn build:test && yarn readme:coverage && git add .",
-    "postpublish": "yarn docgen && git add docs && git commit -m 'docs: new version documentation' && git push"
+    "postpublish": "yarn docgen && git add docs && { git diff --staged --quiet || git commit -m 'docs: new version documentation'; } && git push;"
   },
   "workspaces": [
     "packages/*",
