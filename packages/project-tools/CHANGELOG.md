@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0](https://github.com/uxland/uxland/compare/@uxland/project-tools@2.0.0...@uxland/project-tools@2.1.0) (2023-02-01)
+
+
+### Features
+
+* allow marking unused function arguments with an underscore in ESLint ([153b26b](https://github.com/uxland/uxland/commit/153b26b37dd23cd406f72aeaa4514bf7e053b923))
+* update ESLint versions ([281b7f8](https://github.com/uxland/uxland/commit/281b7f8c027cbaad9bec450c1144f7204aeb4520))
+
+
+
+
+
 # [2.0.0](https://github.com/uxland/uxland/compare/@uxland/project-tools@1.0.1...@uxland/project-tools@2.0.0) (2023-01-11)
 
 
