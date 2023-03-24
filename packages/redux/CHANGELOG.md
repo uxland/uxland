@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.4](https://github.com/uxland/uxland/compare/@uxland/redux@2.0.3...@uxland/redux@2.0.4) (2023-03-24)
+
+
+### Bug Fixes
+
+* **redux:** throw error on catch ([15aaf92](https://github.com/uxland/uxland/commit/15aaf92f001a488fd27a5b8a09982f39d12167c8))
+
+
+
+
+
 ## [2.0.3](https://github.com/uxland/uxland/compare/@uxland/redux@2.0.2...@uxland/redux@2.0.3) (2023-01-24)
 
 
