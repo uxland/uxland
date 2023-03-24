@@ -15,6 +15,6 @@ export const performAsyncAction = async <T>(
   } catch (error) {
     dispatch(actions.setStatus(AsyncStateStatus.failed));
     dispatch(actions.setError(error.message));
-    return Promise.reject(error);
+    throw error;
   }
 };
