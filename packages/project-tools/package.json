@@ -24,9 +24,6 @@
     "url": "https://github.com/uxland/uxland/issues"
   },
   "dependencies": {
-    "@babel/plugin-proposal-decorators": "^7.10.5",
-    "@babel/plugin-proposal-optional-chaining": "^7.11.0",
-    "@babel/preset-env": "^7.11.5",
     "@commitlint/cli": "^9.1.2",
     "@commitlint/config-conventional": "^9.1.2",
     "@typescript-eslint/eslint-plugin": "^5.50.0",
@@ -40,11 +37,16 @@
     "mutation-observer": "^1.0.3",
     "prettier": "^2.1.1",
     "prettier-airbnb-config": "^1.0.0",
-    "rollup-plugin-babel": "^4.4.0",
-    "rollup-plugin-uglify": "^6.0.4",
     "ts-jest": "^26.3.0",
     "ts-node": "^9.0.0",
     "typescript": "^4.0.2"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-decorators": "^7.10.5",
+    "@babel/plugin-proposal-optional-chaining": "^7.11.0",
+    "@babel/preset-env": "^7.11.5",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-uglify": "^6.0.4"
   },
   "gitHead": "779339a2bf1949d5c7bc5e11875d2e9523d45cf8"
 }
