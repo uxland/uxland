@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.2](https://github.com/uxland/uxland/compare/@uxland/project-tools@2.1.1...@uxland/project-tools@2.1.2) (2023-05-05)
+
+
+### Bug Fixes
+
+* **project-tools:** move babel and rollup to devDeps ([f9b40a2](https://github.com/uxland/uxland/commit/f9b40a2f325ded01360e3e0fa4274db8cc123ad6))
+
+
+
+
+
 ## [2.1.1](https://github.com/uxland/uxland/compare/@uxland/project-tools@2.1.0...@uxland/project-tools@2.1.1) (2023-03-24)
 
 **Note:** Version bump only for package @uxland/project-tools
