@@ -36,7 +36,7 @@ jobs:
         if: github.ref == 'refs/heads/alpha' || github.ref == 'refs/heads/52-uxland-react-utilities'
         run: npx lerna publish --conventional-commits --conventional-prerelease --dist-tag alpha --yes
       - name: Publish Release
-        if: github.ref == 'refs/heads/master'
+        if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/fix-perform-async-action'
         run: npx lerna publish --conventional-commits --conventional-graduate --create-release github --no-private --yes
     env:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
