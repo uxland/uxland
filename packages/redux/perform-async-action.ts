@@ -15,8 +15,8 @@
  * THIS SOFTWARE IS PROVIDED BY <COPYRIGHT HOLDER> ''AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL <COPYRIGHT HOLDER> BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-import {Dispatch} from 'redux';
-import {createAsyncActions} from './create-async-actions';
+import { Dispatch } from "redux";
+import { createAsyncActions } from "./create-async-actions";
 
 export interface ErrorHandler {
   (error: Error): Promise<any>;
@@ -42,14 +42,14 @@ export const performAsyncAction: <T = any>(
   fn: Executor,
   errorHandler?: ErrorHandler
 ) => (meta?: any) => (...args: any[]) => Promise<T> =
-  dispatch =>
+  (dispatch) =>
   (actionType, fn, errorHandler): any => {
     const actions = createAsyncActions(actionType);
     return function (meta) {
-      async (...args: any): Promise<any> => {
+      return async (...args: any): Promise<any> => {
         const started = window.performance.now();
         try {
-          dispatch({type: actions.started, meta});
+          dispatch({ type: actions.started, meta });
           const payload = await fn.apply(this, args);
           dispatch({
             type: actions.succeeded,
@@ -60,11 +60,11 @@ export const performAsyncAction: <T = any>(
           return payload;
         } catch (e) {
           if (errorHandler) await errorHandler(e);
-          dispatch({type: actions.failed, payload: e, meta});
+          dispatch({ type: actions.failed, payload: e, meta });
         } finally {
           dispatch({
             type: actions.ended,
-            payload: {elapsed: window.performance.now() - started},
+            payload: { elapsed: window.performance.now() - started },
             meta,
           });
         }
