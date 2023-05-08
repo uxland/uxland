@@ -12,7 +12,13 @@
   "useWorkspaces": true,
   "command": {
     "version": {
-      "allowBranch": ["master", "alpha", "beta", "52-uxland-react-utilities"],
+      "allowBranch": [
+        "master",
+        "alpha",
+        "beta",
+        "52-uxland-react-utilities",
+        "fix-perform-async-action"
+      ],
       "message": "chore(release): publish new versions"
     },
     "publish": {

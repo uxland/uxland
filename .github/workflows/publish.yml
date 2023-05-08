@@ -7,6 +7,7 @@ on:
       - alpha
       - beta
       - 52-uxland-react-utilities
+      - fix-perform-async-action
 
 jobs:
   build-n-publish:
@@ -36,7 +37,7 @@ jobs:
         run: npx lerna publish --conventional-commits --conventional-prerelease --dist-tag alpha --yes
       - name: Publish Release
         if: github.ref == 'refs/heads/master'
-        run: npx lerna publish --conventional-commits --conventional-graduate --create-release github --yes
+        run: npx lerna publish --conventional-commits --conventional-graduate --create-release github --no-private --yes
     env:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
