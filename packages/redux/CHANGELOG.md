@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.3](https://github.com/uxland/uxland/compare/@uxland/redux@1.0.2...@uxland/redux@1.0.3) (2023-05-08)
+
+
+### Bug Fixes
+
+* solves issue with performAsyncAction return ([1e33af0](https://github.com/uxland/uxland/commit/1e33af0608f46b9e934ba083a407912bbab6f089))
+
+
+
+
+
 ## [1.0.2](https://github.com/uxland/uxland/compare/@uxland/redux@1.0.1...@uxland/redux@1.0.2) (2022-07-28)
 
 **Note:** Version bump only for package @uxland/redux
