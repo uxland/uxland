@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.5](https://github.com/uxland/uxland/compare/@uxland/redux@1.0.4...@uxland/redux@1.0.5) (2023-05-08)
+
+
+### Bug Fixes
+
+* force upgrade ([efb8b60](https://github.com/uxland/uxland/commit/efb8b608397dba050db9a470a30404163297d3da))
+
+
+
+
+
 ## [1.0.4](https://github.com/uxland/uxland/compare/@uxland/redux@1.0.2...@uxland/redux@1.0.4) (2023-05-08)
 
 
