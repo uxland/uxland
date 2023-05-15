@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.1](https://github.com/uxland/uxland/compare/@uxland/redux@2.1.0...@uxland/redux@2.1.1) (2023-05-15)
+
+
+### Bug Fixes
+
+* add legacy to build step, missing on previous version ([aebe348](https://github.com/uxland/uxland/commit/aebe3480830bb1daeb52b178313bf1c74c78e7d7))
+
+
+
+
+
 # [2.1.0](https://github.com/uxland/uxland/compare/@uxland/redux@2.0.4...@uxland/redux@2.1.0) (2023-05-15)
 
 
