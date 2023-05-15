@@ -2,7 +2,7 @@
  * @license
  * BSD License
  *
- * Copyright (c) 2023, UXLand
+ * Copyright (c) 2020, UXLand
  *
  * All rights reserved.
  * Redistribution and use in source and binary forms, with or without
@@ -15,9 +15,38 @@
  * THIS SOFTWARE IS PROVIDED BY <COPYRIGHT HOLDER> ''AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL <COPYRIGHT HOLDER> BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+import identity from 'ramda/es/identity';
+import ifElse from 'ramda/es/ifElse';
+import is from 'ramda/es/is';
+import {Lens} from 'ramda/tools';
+import 'reflect-metadata';
+import {Action} from './create-action';
 
-export * from "./create-async-slice";
-export * from "./domain";
-export * from "./legacy";
-export * from "./perform-async-action";
-export * from "./store-service";
+let STUB = 1;
+/**
+ * Async action factory
+ * @interface PathResolver
+ * @memberof Redux
+ * @since v1.0.0
+ * @property {action => Lens} resolver Resolver function that returns path lens
+ */
+export interface PathResolver {
+  resolver: (action: Action) => Lens;
+}
+STUB = 1;
+
+export type Resolver = (action: Action) => Lens;
+export const factory = (resolver: Resolver): PathResolver => ({resolver} as PathResolver);
+
+/**
+ * Resolves state path
+ * @function
+ * @memberof Redux
+ * @name resolvePath
+ * @since v1.0.0
+ * @param {Redux.PathResolver} path - Path resolver function
+ * @param {Action} action - Redux action
+ * @returns {Lens}
+ */
+export const resolvePath: (path: Lens | PathResolver, action?: Action) => Lens = (path, action) =>
+  ifElse(is(Function), identity, (pr: PathResolver) => pr.resolver(action))(path);

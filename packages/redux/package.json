@@ -37,7 +37,7 @@
     "tdd:benchmark": "jest --watch test/unit/benchmark.spec.ts --collect-coverage=false --testPathIgnorePatterns []",
     "tdd:sandbox": "jest --watch test/unit/sandbox.spec.ts --testPathIgnorePatterns []",
     "test:benchmark": "jest test/unit/benchmark.spec.ts --collect-coverage=false --testPathIgnorePatterns []",
-    "test:unit": "jest --collect-coverage",
+    "test:unit": "web-test-runner test/**/*.spec.ts --node-resolve --coverage",
     "test": "yarn test:unit",
     "jsdoc": "yarn build:cjs && rimraf docs && jsdoc -r ./lib -c jsdoc.config.js",
     "jsdoc:styles": "cat ../../resources/docs/custom.css >> ./docs/$npm_package_name/$npm_package_version/styles/jsdoc.css",
@@ -75,7 +75,15 @@
     "typescript": "^4.0.2"
   },
   "dependencies": {
-    "@reduxjs/toolkit": "^1.9.1"
+    "@reduxjs/toolkit": "^1.9.1",
+    "@uxland/browser-utilities": "^1.0.2",
+    "@uxland/ramda-extensions": "^1.0.1",
+    "@uxland/utilities": "^1.0.1",
+    "date-fns": "^2.10.0",
+    "ramda": "^0.27.0",
+    "redux": "^4.0.5",
+    "reflect-metadata": "^0.1.13",
+    "reselect": "^4.0.0"
   },
   "gitHead": "04056ab7301e2d6a2cb05dddc297ce3269399431"
 }

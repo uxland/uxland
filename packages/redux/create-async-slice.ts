@@ -17,7 +17,11 @@
  */
 
 import { CreateSliceOptions, Slice, createSlice } from "@reduxjs/toolkit";
-import { AsyncCaseReducers, AsyncState, AsyncStateStatus } from "./domain";
+import {
+  AsyncCaseReducers,
+  AsyncStateStatus,
+  ToolkitAsyncState,
+} from "./domain";
 import { resetAction } from "./reset-action";
 
 /**
@@ -27,7 +31,7 @@ import { resetAction } from "./reset-action";
  * @memberof ReactServices
  * @param {*=} payload - Slice name
  * @since v1.0.0
- * @returns {AsyncState}
+ * @returns {ToolkitAsyncState}
  * @example
  *
  * createAsyncState({foo: 'bar'});

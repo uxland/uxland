@@ -2,7 +2,7 @@
  * @license
  * BSD License
  *
- * Copyright (c) 2023, UXLand
+ * Copyright (c) 2020, UXLand
  *
  * All rights reserved.
  * Redistribution and use in source and binary forms, with or without
@@ -15,9 +15,13 @@
  * THIS SOFTWARE IS PROVIDED BY <COPYRIGHT HOLDER> ''AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL <COPYRIGHT HOLDER> BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+import {Action, Reducer} from 'redux';
 
-export * from "./create-async-slice";
-export * from "./domain";
-export * from "./legacy";
-export * from "./perform-async-action";
-export * from "./store-service";
+export const RESET_STORE_ACTION = '@@uxl-redux:reset-state:action';
+export const resetableReducer: (
+  reducer: Reducer<any, any>,
+  defaultState: any
+) => Reducer<any, any> =
+  (reducer: Reducer<any, any>, defaultState: any = {}) =>
+  (state: any, action: Action): any =>
+    action.type === RESET_STORE_ACTION ? defaultState : reducer(state, action);

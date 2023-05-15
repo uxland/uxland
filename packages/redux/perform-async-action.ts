@@ -1,7 +1,7 @@
 import { CaseReducerActions, Dispatch } from "@reduxjs/toolkit";
 import { AsyncCaseReducers, AsyncStateStatus } from "./domain";
 
-export const performAsyncAction = async <T>(
+export const toolkitPerformAsyncAction = async <T>(
   dispatch: Dispatch,
   actions: CaseReducerActions<AsyncCaseReducers<T>, string>,
   fn: (...args: any[]) => Promise<any>

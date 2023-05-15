@@ -48,7 +48,7 @@ export enum AsyncStateStatus {
  * @property {*} error - Async state error
  */
 STUB = 1;
-export interface AsyncState<T> {
+export interface ToolkitAsyncState<T> {
   data: T;
   status: AsyncStateStatus;
   error: any;
