@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0](https://github.com/uxland/uxland/compare/@uxland/redux@2.0.4...@uxland/redux@2.1.0) (2023-05-15)
+
+
+### Features
+
+* add redux legacy library ([4bf82ef](https://github.com/uxland/uxland/commit/4bf82efbecc318e87a73ec8f829df853b18db5d7))
+
+
+
+
+
 ## [2.0.4](https://github.com/uxland/uxland/compare/@uxland/redux@2.0.3...@uxland/redux@2.0.4) (2023-03-24)
 
 
