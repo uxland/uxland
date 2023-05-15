@@ -25,9 +25,9 @@
   },
   "scripts": {
     "build:dts": "tsc --emitDeclarationOnly --noEmit false --declaration --removeComments false --outDir .",
-    "build:clean": "rimraf {create-async-slice,reset-action,store-service}.{!config.js,js,d.ts} tsconfig.tsbuildinfo",
+    "build:clean": "rimraf {create-async-slice,reset-action,store-service,legacy/*}.{!config.js,js,d.ts} tsconfig.tsbuildinfo",
     "build:cjs": "esbuild index.ts --bundle --minify --target=es2018 --outfile=lib/index.js",
-    "build:es": "esbuild *.ts --minify --format=esm --outdir=.",
+    "build:es": "esbuild *.ts legacy/*.ts --minify --format=esm --outdir=.",
     "build:min": "esbuild index.ts --bundle --minify --external:@uxland/* --external:ramda --external:redux --external:date-fns --external:reflect-metadata --format=esm --outfile=./index.min.js",
     "build": "npm-run-all --parallel build:es build:dts",
     "prebuild": "echo nok > .buildstatus",
