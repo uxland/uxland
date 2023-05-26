@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.1](https://github.com/uxland/uxland/compare/@uxland/object-mapper@1.1.0...@uxland/object-mapper@1.1.1) (2023-05-26)
+
+
+### Bug Fixes
+
+* **object-mapper:** add commonjs build ([481aa9a](https://github.com/uxland/uxland/commit/481aa9a09829e55a11500af75a1fd07aea197805))
+
+
+
+
+
 # [1.1.0](https://github.com/uxland/uxland/compare/@uxland/object-mapper@1.0.1...@uxland/object-mapper@1.1.0) (2023-05-26)
 
 
