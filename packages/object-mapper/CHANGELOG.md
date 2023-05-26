@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.3](https://github.com/uxland/uxland/compare/@uxland/object-mapper@1.1.2...@uxland/object-mapper@1.1.3) (2023-05-26)
+
+
+### Bug Fixes
+
+* **object-mapper:** add platform on build ([bcbf562](https://github.com/uxland/uxland/commit/bcbf562afce36206477f38201a39bb1c402dde73))
+* **object-mapper:** change build cjs ([172ff60](https://github.com/uxland/uxland/commit/172ff604afd7dc6f0bc41b77062365f51aae2a7a))
+* **object-mapper:** force publish ([b769111](https://github.com/uxland/uxland/commit/b769111ffe7fe9acae36c488ad1cfacdb21c3bae))
+
+
+
+
+
 ## [1.1.2](https://github.com/uxland/uxland/compare/@uxland/object-mapper@1.1.1...@uxland/object-mapper@1.1.2) (2023-05-26)
 
 
