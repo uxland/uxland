@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.2](https://github.com/uxland/uxland/compare/@uxland/object-mapper@1.1.1...@uxland/object-mapper@1.1.2) (2023-05-26)
+
+
+### Bug Fixes
+
+* **object-mapper:** add main to package.json ([246d6bc](https://github.com/uxland/uxland/commit/246d6bcb6efca0e3dc3a052e16cab7a453e6b811))
+
+
+
+
+
 ## [1.1.1](https://github.com/uxland/uxland/compare/@uxland/object-mapper@1.1.0...@uxland/object-mapper@1.1.1) (2023-05-26)
 
 
