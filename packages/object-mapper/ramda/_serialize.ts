@@ -21,6 +21,7 @@ import Rpath from "ramda/es/path";
 import pipe from "ramda/es/pipe";
 import remove from "ramda/es/remove";
 import split from "ramda/es/split";
+import { SerializerInfo } from "../model";
 import {
   getFrom,
   getSerializerFn,
@@ -34,7 +35,6 @@ import {
   thrower,
 } from "./_utilities";
 import { invalidPath, validSerializers } from "./_validation";
-import { SerializerInfo } from "./model";
 
 const buildFirstIndexPath = pipe(split("."), (paths: string[]) => [
   paths[0],
