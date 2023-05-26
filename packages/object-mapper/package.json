@@ -1,6 +1,6 @@
 {
   "name": "@uxland/object-mapper",
-  "version": "1.1.2",
+  "version": "1.1.1",
   "description": "Object serializer-deserializer",
   "author": "UXLand <dev@uxland.es>",
   "homepage": "https://github.com/uxland/uxland/tree/master/packages/object-mapper#readme",
@@ -27,7 +27,7 @@
   "scripts": {
     "build:dts": "tsc --emitDeclarationOnly --noEmit false --declaration --removeComments false --outDir .",
     "build:clean": "rimraf {*-serializer,deserialize,index,model,serialize*,utilities,validation}.{!config.js,js,d.ts} tsconfig.tsbuildinfo",
-    "build:cjs": "tsc -p tsconfig.build.json --outDir lib --module commonjs --declaration",
+    "build:cjs": "esbuild index.ts --bundle --minify --target=es2018 --platform=node --outfile=lib/index.js",
     "build:es": "esbuild *.ts --minify --format=esm --outdir=.",
     "build:min": "esbuild index.ts --bundle --minify --external:@uxland/* --external:ramda --external:date-fns --external:json-object-mapper --format=esm --outfile=./index.min.js",
     "build": "npm-run-all --parallel build:es build:dts build:cjs",
