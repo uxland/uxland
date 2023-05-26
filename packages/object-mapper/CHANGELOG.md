@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0](https://github.com/uxland/uxland/compare/@uxland/object-mapper@1.0.1...@uxland/object-mapper@1.1.0) (2023-05-26)
+
+
+### Bug Fixes
+
+* correct imports ([2c510bd](https://github.com/uxland/uxland/commit/2c510bd83653f5587674cccb9e13edc65100f47b))
+
+
+### Features
+
+* **object-mapper:** refactor without ramda ([e5aafba](https://github.com/uxland/uxland/commit/e5aafba978a89081e0b24a4550fa4b4cdd6fe49b))
+
+
+
+
+
 ## [1.0.1](https://github.com/uxland/uxland/compare/@uxland/object-mapper@1.0.1-alpha.24...@uxland/object-mapper@1.0.1) (2022-02-03)
 
 **Note:** Version bump only for package @uxland/object-mapper
