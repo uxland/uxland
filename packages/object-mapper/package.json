@@ -27,7 +27,7 @@
   "scripts": {
     "build:dts": "tsc --emitDeclarationOnly --noEmit false --declaration --removeComments false --outDir .",
     "build:clean": "rimraf {*-serializer,deserialize,index,model,serialize*,utilities,validation}.{!config.js,js,d.ts} tsconfig.tsbuildinfo",
-    "build:cjs": "esbuild index.ts --bundle --minify --target=es2018 --outfile=lib/index.js",
+    "build:cjs": "tsc -p tsconfig.build.json --outDir lib --module commonjs --declaration",
     "build:es": "esbuild *.ts --minify --format=esm --outdir=.",
     "build:min": "esbuild index.ts --bundle --minify --external:@uxland/* --external:ramda --external:date-fns --external:json-object-mapper --format=esm --outfile=./index.min.js",
     "build": "npm-run-all --parallel build:es build:dts build:cjs",
