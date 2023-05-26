@@ -1,13 +1,13 @@
 import { describe, expect, it } from "vitest";
-import { deserialize } from "../../deserialize";
-import { SerializerInfo } from "../../model";
-import { serialize } from "../../serialize";
+import { SerializerInfo } from "../../../model";
+import { deserialize } from "../../../ramda/_deserialize";
+import { serialize } from "../../../ramda/_serialize";
 import {
   invalidPath,
   invalidSerializerStructure,
   requiredFrom,
   requiredSerializeFn,
-} from "../../validation";
+} from "../../../ramda/_validation";
 
 type anySerializerInfo = Array<SerializerInfo<any, any, any, any>>;
 describe("Deserializer", () => {

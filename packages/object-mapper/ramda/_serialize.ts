@@ -16,11 +16,13 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-import { SerializerInfo } from "./model";
+import equals from "ramda/es/equals";
+import Rpath from "ramda/es/path";
+import pipe from "ramda/es/pipe";
+import remove from "ramda/es/remove";
+import split from "ramda/es/split";
 import {
-  buildFirstIndexPath,
   getFrom,
-  getPathValue,
   getSerializerFn,
   getSerializers,
   getTo,
@@ -30,18 +32,24 @@ import {
   isSingleObject,
   setProperty,
   thrower,
-} from "./utilities";
-import { invalidPath, validSerializers } from "./validation";
+} from "./_utilities";
+import { invalidPath, validSerializers } from "./_validation";
+import { SerializerInfo } from "./model";
 
+const buildFirstIndexPath = pipe(split("."), (paths: string[]) => [
+  paths[0],
+  0,
+  ...remove(0, 1, paths),
+]);
 const getPropForArray = (from: string[], data: any): any =>
   from.map((fromK: string) => (data ? data[fromK] : undefined));
 const getPropForPath = (from: string, data: any): any => {
-  const path = from.split(".");
+  const path = split(".", from as string);
   const item = data[path[0]];
   return isObject(item)
-    ? getPathValue(path, data)
+    ? Rpath(path, data)
     : isSingleObject(item)
-    ? getPathValue(buildFirstIndexPath(from as string), data)
+    ? Rpath(buildFirstIndexPath(from as string), data)
     : thrower(invalidPath);
 };
 const getProp = (from: string | string[], data: any): any =>
@@ -59,12 +67,7 @@ const multipleTo = (
   // eslint-disable-next-line @typescript-eslint/no-use-before-define
   to.reduce(
     (collection, toK: string) =>
-      inToOut(
-        data,
-        JSON.stringify(from) === JSON.stringify(to) ? toK : from,
-        toK,
-        fn
-      )(collection),
+      inToOut(data, equals(from, to) ? toK : from, toK, fn)(collection),
     {}
   );
 const executeFn = (

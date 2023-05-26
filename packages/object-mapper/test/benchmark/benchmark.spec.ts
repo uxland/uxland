@@ -1,18 +1,25 @@
-import {ObjectMapper} from 'json-object-mapper';
-import 'reflect-metadata';
-import {serialize} from '../..//serialize';
-import {serialize as serializeSet} from '../..//serialize-set';
-import * as generators from '../unit/data/generators';
-const performance = require('perf_hooks').performance;
+import { ObjectMapper } from "json-object-mapper";
+import "reflect-metadata";
+import { describe, expect, it } from "vitest";
+import { serialize as serializeNoRamda } from "../..//serialize";
+import { serialize } from "../../ramda/_serialize";
+import { serialize as serializeSet } from "../../ramda/serialize-set";
+import * as generators from "../unit/data/generators";
+const performance = require("perf_hooks").performance;
 
-describe('Benchmarks', () => {
-  it('Benchmark: object serialization object-mapper vs json-object-mapper', () => {
+describe("Benchmarks", () => {
+  it("Benchmark: object serialization object-mapper vs json-object-mapper", () => {
     /* PREVALIDATION */
     const input = generators.input(100, 0);
     const output = generators.output(100, 0);
     expect(serialize(input, generators.serializers)).toStrictEqual(output);
     expect(serializeSet(input, generators.serializers)).toStrictEqual(output);
-    expect(ObjectMapper.deserializeArray(generators.JsonSerializer, input)).toEqual(output);
+    expect(serializeNoRamda(input, generators.serializers)).toStrictEqual(
+      output
+    );
+    expect(
+      ObjectMapper.deserializeArray(generators.JsonSerializer, input)
+    ).toEqual(output);
 
     /* BENCHMARK */
     const nItems = [1, 10, 100, 1000, 10000, 100000];
@@ -20,6 +27,7 @@ describe('Benchmarks', () => {
     const times = {
       uxl: {},
       set: {},
+      noRamda: {},
       json: {},
     };
     for (let i = 0; i < nItems.length; i++) {
@@ -31,17 +39,22 @@ describe('Benchmarks', () => {
         const t2 = performance.now();
         serializeSet(input, generators.serializers);
         const t3 = performance.now();
-        ObjectMapper.deserializeArray(generators.JsonSerializer, input);
+        serializeNoRamda(input, generators.serializers);
         const t4 = performance.now();
+        ObjectMapper.deserializeArray(generators.JsonSerializer, input);
+        const t5 = performance.now();
         if (!times.uxl[`${items} (${iterations[i]} runs)`])
           times.uxl[`${items} (${iterations[i]} runs)`] = [];
         times.uxl[`${items} (${iterations[i]} runs)`].push(t2 - t1);
         if (!times.set[`${items} (${iterations[i]} runs)`])
           times.set[`${items} (${iterations[i]} runs)`] = [];
         times.set[`${items} (${iterations[i]} runs)`].push(t3 - t2);
+        if (!times.noRamda[`${items} (${iterations[i]} runs)`])
+          times.noRamda[`${items} (${iterations[i]} runs)`] = [];
+        times.noRamda[`${items} (${iterations[i]} runs)`].push(t4 - t3);
         if (!times.json[`${items} (${iterations[i]} runs)`])
           times.json[`${items} (${iterations[i]} runs)`] = [];
-        times.json[`${items} (${iterations[i]} runs)`].push(t4 - t3);
+        times.json[`${items} (${iterations[i]} runs)`].push(t5 - t4);
       }
     }
 
@@ -51,7 +64,7 @@ describe('Benchmarks', () => {
           ...collection,
           [key]:
             times.uxl[key].reduce((acc, time) => (acc += time), 0) /
-            parseInt(key.split('(')[1].split(' ')[0]),
+            parseInt(key.split("(")[1].split(" ")[0]),
         }),
         {}
       ),
@@ -60,7 +73,16 @@ describe('Benchmarks', () => {
           ...collection,
           [key]:
             times.set[key].reduce((acc, time) => (acc += time), 0) /
-            parseInt(key.split('(')[1].split(' ')[0]),
+            parseInt(key.split("(")[1].split(" ")[0]),
+        }),
+        {}
+      ),
+      noRamda: Object.keys(times.noRamda).reduce(
+        (collection, key) => ({
+          ...collection,
+          [key]:
+            times.noRamda[key].reduce((acc, time) => (acc += time), 0) /
+            parseInt(key.split("(")[1].split(" ")[0]),
         }),
         {}
       ),
@@ -69,7 +91,7 @@ describe('Benchmarks', () => {
           ...collection,
           [key]:
             times.json[key].reduce((acc, time) => (acc += time), 0) /
-            parseInt(key.split('(')[1].split(' ')[0]),
+            parseInt(key.split("(")[1].split(" ")[0]),
         }),
         {}
       ),
@@ -77,15 +99,15 @@ describe('Benchmarks', () => {
     console.table(means);
     // const fastest =
     //   means.uxl < means.set && means.uxl < means.json
-    //     ? 'uxl'
+    //     ? "uxl"
     //     : means.set < means.uxl && means.set < means.json
-    //     ? 'set'
-    //     : 'json';
-    // // const results = {
-    // //   uxl: { meanTime: means.uxl, ratio: means.uxl / means[fastest] },
-    // //   set: { meanTime: means.set, ratio: means.set / means[fastest] },
-    // //   json: { meanTime: means.json, ratio: means.json / means[fastest] }
-    // // };
+    //     ? "set"
+    //     : "json";
+    // const results = {
+    //   uxl: { meanTime: means.uxl, ratio: means.uxl / means[fastest] },
+    //   set: { meanTime: means.set, ratio: means.set / means[fastest] },
+    //   json: { meanTime: means.json, ratio: means.json / means[fastest] },
+    // };
     // console.table(results);
   });
 });
