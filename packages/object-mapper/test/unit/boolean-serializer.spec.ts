@@ -1,7 +1,12 @@
-import {expect} from '@open-wc/testing';
-import {AbapBoolean, SAPBooleanDeserializer, SAPBooleanSerializer} from '../..//boolean-serializer';
-describe('Boolean serializer', () => {
-  describe('SAP Boolean Serializer', () => {
+import { describe, expect, it } from "vitest";
+import {
+  AbapBoolean,
+  SAPBooleanDeserializer,
+  SAPBooleanSerializer,
+} from "../..//boolean-serializer";
+
+describe("Boolean serializer", () => {
+  describe("SAP Boolean Serializer", () => {
     it('deserialize must return "X" when value is true', () => {
       expect(SAPBooleanDeserializer(true)).to.equal(AbapBoolean.True);
     });

@@ -1,13 +1,13 @@
 import * as R from "ramda";
 import { describe, expect, it } from "vitest";
-import { SerializerInfo } from "../../model";
-import { serialize } from "../../serialize";
+import { SerializerInfo } from "../..//model";
+import { serialize } from "../..//serialize";
 import {
   invalidPath,
   invalidSerializerStructure,
   requiredFrom,
   requiredSerializeFn,
-} from "../../validation";
+} from "../..//validation";
 
 type anySerializerInfo = Array<SerializerInfo<any, any, any, any>>;
 describe("Serializer", () => {

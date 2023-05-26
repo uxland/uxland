@@ -15,15 +15,16 @@
  * THIS SOFTWARE IS PROVIDED BY <COPYRIGHT HOLDER> ''AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL <COPYRIGHT HOLDER> BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-import {SerializerInfo} from './model';
-import {isArray} from './utilities';
+import { SerializerInfo } from "./model";
+import { isArray } from "./utilities";
 
-export const invalidSerializerFn = 'invalid-serializer-fn';
-export const requiredFrom = 'Serializer requires a from property';
-export const requiredSerializeFn = 'required-serializer-fn';
+export const invalidSerializerFn = "invalid-serializer-fn";
+export const requiredFrom = "Serializer requires a from property";
+export const requiredSerializeFn = "required-serializer-fn";
 export const invalidSerializerStructure =
-  'Cannot define serializerFn and serializers at the same time';
-export const invalidPath = 'Path can only be used for objects and single object arrays';
+  "Cannot define serializerFn and serializers at the same time";
+export const invalidPath =
+  "Path can only be used for objects and single object arrays";
 
 export const validateSerializer = <S, D>(
   serializer: SerializerInfo<S, D>
@@ -42,10 +43,11 @@ export const validateSerializer = <S, D>(
 };
 export const validateSerializers = <S, D>(
   serializers: SerializerInfo<S, D>[]
-): SerializerInfo<S, D>[] => serializers?.map(s => validateSerializer(s));
+): SerializerInfo<S, D>[] => serializers?.map((s) => validateSerializer(s));
 
 export const validSerializers = <S, L>(
   serializers: SerializerInfo<S, L>[]
 ): SerializerInfo<S, L>[] => validateSerializers<S, L>(serializers);
-export const invalidSerializers = <S, L>(serializers: SerializerInfo<S, L>[]): boolean =>
-  !validSerializers(serializers);
+export const invalidSerializers = <S, L>(
+  serializers: SerializerInfo<S, L>[]
+): boolean => !validSerializers(serializers);
