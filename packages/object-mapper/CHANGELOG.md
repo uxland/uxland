@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.4](https://github.com/uxland/uxland/compare/@uxland/object-mapper@1.1.3...@uxland/object-mapper@1.1.4) (2023-05-29)
+
+
+### Bug Fixes
+
+* **object-mapper:** get key from empty data validation ([6e28a8b](https://github.com/uxland/uxland/commit/6e28a8bb2507861b51d8ad576676719d0534416c))
+
+
+
+
+
 ## [1.1.3](https://github.com/uxland/uxland/compare/@uxland/object-mapper@1.1.2...@uxland/object-mapper@1.1.3) (2023-05-26)
 
 
