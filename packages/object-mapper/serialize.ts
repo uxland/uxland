@@ -49,7 +49,7 @@ const getProp = (from: string | string[], data: any): any =>
     ? getPropForArray(from as string[], data)
     : isPath(from as string[])
     ? getPropForPath(from as string, data)
-    : data[from as string];
+    : data && data[from as string];
 const multipleTo = (
   data: any,
   from: string | string[],
