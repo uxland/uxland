@@ -36,8 +36,8 @@ import { invalidPath, validSerializers } from "./validation";
 const getPropForArray = (from: string[], data: any): any =>
   from.map((fromK: string) => (data ? data[fromK] : undefined));
 const getPropForPath = (from: string, data: any): any => {
-  const path = from.split(".");
-  const item = data[path[0]];
+  const path = from.split(".") || [];
+  const item = data ? data[path[0]] : undefined;
   return isObject(item)
     ? getPathValue(path, data)
     : isSingleObject(item)
