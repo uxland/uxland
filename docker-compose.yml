@@ -2,6 +2,11 @@
 version: "3.3"
 services:
   front:
+    deploy:
+      resources:
+        limits:
+          cpus: "0.7"
+          memory: 2800M
     image: node:18
     working_dir: /code
     # ports:

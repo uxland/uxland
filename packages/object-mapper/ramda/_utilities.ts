@@ -16,20 +16,22 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 import { isNotNullNeitherEmpty } from "@uxland/ramda-extensions/is-not-nil-neither-empty";
-import allPass from "ramda/es/allPass";
-import complement from "ramda/es/complement";
-import equals from "ramda/es/equals";
-import has from "ramda/es/has";
-import ifElse from "ramda/es/ifElse";
-import indexOf from "ramda/es/indexOf";
-import is from "ramda/es/is";
-import isNil from "ramda/es/isNil";
-import length from "ramda/es/length";
-import lensPath from "ramda/es/lensPath";
-import RlensProp from "ramda/es/lensProp";
-import pipe from "ramda/es/pipe";
-import prop from "ramda/es/prop";
-import split from "ramda/es/split";
+import {
+  lensProp as RlensProp,
+  allPass,
+  complement,
+  equals,
+  has,
+  ifElse,
+  indexOf,
+  is,
+  isNil,
+  length,
+  lensPath,
+  pipe,
+  prop,
+  split,
+} from "ramda";
 import { SerializerInfo } from "../model";
 
 export const isTrue = equals(true);

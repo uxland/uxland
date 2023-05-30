@@ -1,0 +1,51 @@
+{
+  "name": "CCS",
+  "date": "2023-05-30T07:56:29.304Z",
+  "version": "1.0.0",
+  "results": [
+    {
+      "name": "OBJECT-MAPPER PATIENT",
+      "ops": 28.86,
+      "margin": 12.34,
+      "percentSlower": 0
+    },
+    {
+      "name": "UXL-OBJECT-MAPPER PATIENT",
+      "ops": 6.03,
+      "margin": 5.73,
+      "percentSlower": 79.11
+    },
+    {
+      "name": "OBJECT-MAPPER NURSING",
+      "ops": 16.37,
+      "margin": 5.37,
+      "percentSlower": 43.28
+    },
+    {
+      "name": "UXL-OBJECT-MAPPER NURSING",
+      "ops": 3.04,
+      "margin": 2.95,
+      "percentSlower": 89.47
+    },
+    {
+      "name": "OBJECT-MAPPER CASE",
+      "ops": 14.54,
+      "margin": 19.45,
+      "percentSlower": 49.62
+    },
+    {
+      "name": "UXL-OBJECT-MAPPER CASE",
+      "ops": 3.03,
+      "margin": 2.95,
+      "percentSlower": 89.5
+    }
+  ],
+  "fastest": {
+    "name": "OBJECT-MAPPER PATIENT",
+    "index": 0
+  },
+  "slowest": {
+    "name": "UXL-OBJECT-MAPPER CASE",
+    "index": 5
+  }
+}
