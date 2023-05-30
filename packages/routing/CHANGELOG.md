@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.9](https://github.com/uxland/uxland/compare/@uxland/routing@1.0.6...@uxland/routing@1.0.9) (2023-05-30)
+
+
+### Bug Fixes
+
+* force release ([1561069](https://github.com/uxland/uxland/commit/1561069866ec4f895cb9cebd46c3e7364b7035e4))
+* force release ([5e62af6](https://github.com/uxland/uxland/commit/5e62af634b890062b0b2fde548b059ecf3ab8d8e))
+
+
+
+
+
 ## [1.0.6](https://github.com/uxland/uxland/compare/@uxland/routing@1.0.5...@uxland/routing@1.0.6) (2023-05-30)
 
 **Note:** Version bump only for package @uxland/routing

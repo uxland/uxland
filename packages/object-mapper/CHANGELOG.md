@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.8](https://github.com/uxland/uxland/compare/@uxland/object-mapper@1.1.7...@uxland/object-mapper@1.1.8) (2023-05-30)
+
+
+### Bug Fixes
+
+* **object-mapper:** solves issue with nil validation ([c96305f](https://github.com/uxland/uxland/commit/c96305fe376863c30753c95b73937119a7fa5daf))
+
+
+
+
+
 ## [1.1.7](https://github.com/uxland/uxland/compare/@uxland/object-mapper@1.1.6...@uxland/object-mapper@1.1.7) (2023-05-30)
 
 
