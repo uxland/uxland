@@ -43,12 +43,12 @@ const getProp = (from: string | string[], data: any): any => {
       return collection;
     }, []);
   else if (isPath(from)) {
-    const value = data[(from as string).split(".")[0]];
+    const value = data && data[(from as string).split(".")[0]];
     if (isObject(value)) return getPathValue((from as string).split("."), data);
     else if (isSingleObject(value))
       return getPathValue(buildFirstIndexPath(from as string), data);
     return thrower(invalidPath);
-  } else return data[from as string];
+  } else return data && data[from as string];
 };
 
 const setOutputMultipleTo = (
