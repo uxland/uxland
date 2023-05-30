@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.2](https://github.com/uxland/uxland/compare/@uxland/ramda-extensions@1.0.1...@uxland/ramda-extensions@1.0.2) (2023-05-30)
+
+
+### Bug Fixes
+
+* benchmark ([e4cb6af](https://github.com/uxland/uxland/commit/e4cb6af431e7b26a3a77b7f1a4723fe5120a9ac5))
+
+
+
+
+
 ## [1.0.1](https://github.com/uxland/uxland/compare/@uxland/ramda-extensions@1.0.1-alpha.22...@uxland/ramda-extensions@1.0.1) (2022-02-03)
 
 **Note:** Version bump only for package @uxland/ramda-extensions
