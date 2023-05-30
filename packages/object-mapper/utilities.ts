@@ -144,7 +144,7 @@ export const setProperty =
   (obj: any = {}): any => {
     const path = getPath(to || from);
     const parsedValue =
-      value === undefined && value === null ? undefined : value;
+      value === undefined || value === null ? undefined : value;
     if (Array.isArray(path)) {
       for (let i = path.length - 1; i >= 0; i--) {
         const prop = path[i];
