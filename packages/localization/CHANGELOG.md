@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.2](https://github.com/uxland/uxland/compare/@uxland/localization@1.0.1...@uxland/localization@1.0.2) (2023-05-30)
+
+**Note:** Version bump only for package @uxland/localization
+
+
+
+
+
 ## [1.0.1](https://github.com/uxland/uxland/compare/@uxland/localization@1.0.1-alpha.28...@uxland/localization@1.0.1) (2022-02-03)
 
 **Note:** Version bump only for package @uxland/localization
