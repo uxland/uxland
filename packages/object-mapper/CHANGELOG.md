@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.9](https://github.com/uxland/uxland/compare/@uxland/object-mapper@1.1.8...@uxland/object-mapper@1.1.9) (2023-06-13)
+
+
+### Bug Fixes
+
+* **object-mapper:** unmin library for testing purposes ([38845f0](https://github.com/uxland/uxland/commit/38845f0fe274dc39975d596302794599a1053e0b))
+
+
+
+
+
 ## [1.1.8](https://github.com/uxland/uxland/compare/@uxland/object-mapper@1.1.7...@uxland/object-mapper@1.1.8) (2023-05-30)
 
 
