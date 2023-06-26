@@ -15,12 +15,12 @@
  * THIS SOFTWARE IS PROVIDED BY <COPYRIGHT HOLDER> ''AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL <COPYRIGHT HOLDER> BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-import {isNotNil} from '@uxland/ramda-extensions/is-not-nil';
-import set from 'ramda/es/set';
-import {Lens} from 'ramda/tools';
-import {Reducer} from 'redux';
-import {Action} from './create-action';
-import {PathResolver, resolvePath} from './path-resolver';
+import { isNotNil } from "@uxland/ramda-extensions/is-not-nil";
+import set from "ramda/es/set";
+import { Lens } from "ramda/tools";
+import { Reducer } from "redux";
+import { Action } from "./create-action";
+import { PathResolver, resolvePath } from "./path-resolver";
 
 let STUB = 1;
 /**
@@ -53,6 +53,9 @@ export const createBasicReducer: <T = any>(
   actionName: string,
   options?: BasicOptions<T>
 ) => Reducer<T> =
-  (actionName, options = {defValue: null}) =>
-  (state = isNotNil(options.defValue) ? options.defValue : ({} as any), action: Action): any =>
+  (actionName, options = { defValue: null }) =>
+  (
+    state = isNotNil(options.defValue) ? options.defValue : null,
+    action: Action
+  ): any =>
     action.type === actionName ? setState(state, action, options.path) : state;
