@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.4](https://github.com/uxland/uxland/compare/@uxland/redux@2.1.3...@uxland/redux@2.1.4) (2023-06-26)
+
+
+### Bug Fixes
+
+* **redux:** basic reducer default value to null ([1a52a8e](https://github.com/uxland/uxland/commit/1a52a8eb0563115fd36cb714e37f86c12aa1fbc7))
+
+
+
+
+
 ## [2.1.3](https://github.com/uxland/uxland/compare/@uxland/redux@2.1.2...@uxland/redux@2.1.3) (2023-05-30)
 
 **Note:** Version bump only for package @uxland/redux
