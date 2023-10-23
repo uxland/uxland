@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.3](https://github.com/uxland/uxland/compare/@uxland/ioc@1.0.2...@uxland/ioc@1.0.3) (2023-10-23)
+
+
+### Bug Fixes
+
+* **ioc:** add cjs build index ([e278f31](https://github.com/uxland/uxland/commit/e278f316615787e564959ca5a61c881562c9e495))
+
+
+
+
+
 ## [1.0.2](https://github.com/uxland/uxland/compare/@uxland/ioc@1.0.1...@uxland/ioc@1.0.2) (2023-10-23)
 
 

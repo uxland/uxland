@@ -1,6 +1,6 @@
 {
   "name": "@uxland/react-services",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Browser Utilities",
   "author": "Alex Vizcaino <avizcaino@uxland.es>",
   "homepage": "https://github.com/uxland/uxland/tree/master/packages/browser-utilities#readme",
@@ -73,7 +73,7 @@
     "typescript": "^4.0.2"
   },
   "dependencies": {
-    "@uxland/ioc": "^1.0.2",
+    "@uxland/ioc": "^1.0.3",
     "i18next": "^22.4.9",
     "i18next-browser-languagedetector": "^7.0.1",
     "inversify": "^6.0.1",
