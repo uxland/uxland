@@ -29,7 +29,7 @@
     "build:cjs": "esbuild index.ts --bundle --minify --target=es2018 --outfile=lib/index.js",
     "build:es": "esbuild *.ts --minify --format=esm --outdir=.",
     "build:min": "esbuild index.ts --bundle --minify --external:@uxland/* --format=esm --outfile=./index.min.js",
-    "build": "npm-run-all --parallel build:es build:dts",
+    "build": "npm-run-all --parallel build:es build:dts build:cjs",
     "prebuild": "echo nok > .buildstatus",
     "postbuild": "echo ok > .buildstatus",
     "readme:coverage": "node_modules/.bin/jest-badges-readme",
