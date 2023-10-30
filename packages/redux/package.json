@@ -75,7 +75,7 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.1",
-    "@types/ramda": "^0.27.0",
+    "@types/ramda": "^0.26.41",
     "@uxland/browser-utilities": "^1.0.2",
     "@uxland/ramda-extensions": "^1.0.3",
     "@uxland/utilities": "^1.0.3",
