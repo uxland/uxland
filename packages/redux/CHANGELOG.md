@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.5](https://github.com/uxland/uxland/compare/@uxland/redux@2.1.4...@uxland/redux@2.1.5) (2023-10-30)
+
+
+### Bug Fixes
+
+* **redux:** keep @types/ramda to 0.26.x ([f73d6e8](https://github.com/uxland/uxland/commit/f73d6e840fb44ea34c64e17f258fb63416e5d0b8))
+* **redux:** move @types/ramda to dependencies ([da9ff01](https://github.com/uxland/uxland/commit/da9ff015e536b53e87d4d0bdda11e7a2b19a1947))
+
+
+
+
+
 ## [2.1.4](https://github.com/uxland/uxland/compare/@uxland/redux@2.1.3...@uxland/redux@2.1.4) (2023-06-26)
 
 
