@@ -20,8 +20,8 @@
  * AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH
  * THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-import {subscribe} from '@uxland/event-aggregator';
-import {Constructor} from '@uxland/utilities/dedupe-mixin';
+import { Subscription, subscribe } from "@uxland/event-aggregator";
+import { Constructor } from "@uxland/utilities/dedupe-mixin";
 import {
   FORMATTERS_RESET,
   FORMATTERS_UPDATED,
@@ -29,8 +29,12 @@ import {
   LANGUAGE_UPDATED,
   LOCALES_RESET,
   LOCALES_UPDATED,
-} from './events';
-import {Localizer, localizerFactory, LocalizerFactory} from './localizer-factory';
+} from "./events";
+import {
+  Localizer,
+  LocalizerFactory,
+  localizerFactory,
+} from "./localizer-factory";
 
 export interface LocalizationMixin {
   localize: Localizer;
@@ -38,6 +42,7 @@ export interface LocalizationMixin {
   formats: any;
   language: string;
   locales: Record<string, any>;
+  resetSubscribers: () => void;
 }
 
 /**
@@ -58,7 +63,7 @@ export interface LocalizationMixin {
  */
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 let formats: any = {};
-let language = 'en';
+let language = "en";
 let locales: Record<string, any> = {};
 const useKeyIfMissing = false;
 
@@ -71,14 +76,17 @@ export const localeMixin =
       formats: any = formats;
       language = language;
       locales: Record<string, any> = locales;
+      private subscriptions: Subscription[] = [];
       constructor(...args) {
         super(...args);
-        subscribe(LOCALES_UPDATED, this.localesChanged.bind(this));
-        subscribe(LOCALES_RESET, this.localesChanged.bind(this));
-        subscribe(LANGUAGE_UPDATED, this.languageChanged.bind(this));
-        subscribe(LANGUAGE_RESET, this.languageChanged.bind(this));
-        subscribe(FORMATTERS_UPDATED, this.formattersChanged.bind(this));
-        subscribe(FORMATTERS_RESET, this.formattersChanged.bind(this));
+        this.subscriptions.push(
+          subscribe(LOCALES_UPDATED, this.localesChanged.bind(this)),
+          subscribe(LOCALES_RESET, this.localesChanged.bind(this)),
+          subscribe(LANGUAGE_UPDATED, this.languageChanged.bind(this)),
+          subscribe(LANGUAGE_RESET, this.languageChanged.bind(this)),
+          subscribe(FORMATTERS_UPDATED, this.formattersChanged.bind(this)),
+          subscribe(FORMATTERS_RESET, this.formattersChanged.bind(this))
+        );
         this.localize = factory(language, locales, formats, useKeyIfMissing);
       }
 
@@ -96,6 +104,9 @@ export const localeMixin =
         formats = newFormats;
         this.formats = newFormats;
         this.localize = factory(language, locales, formats, useKeyIfMissing);
+      }
+      resetSubscribers() {
+        this.subscriptions.forEach((s) => s.dispose());
       }
     }
     return localeMixin as Constructor<LocalizationMixin> & T;
