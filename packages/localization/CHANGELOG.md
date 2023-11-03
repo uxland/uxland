@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.4](https://github.com/uxland/uxland/compare/@uxland/localization@1.0.3...@uxland/localization@1.0.4) (2023-11-03)
+
+
+### Bug Fixes
+
+* **lit-mixins:** reset subscribers ([c210293](https://github.com/uxland/uxland/commit/c2102936e2d22a88e543fcb387acb1fb0756bb43))
+
+
+
+
+
 ## [1.0.3](https://github.com/uxland/uxland/compare/@uxland/localization@1.0.2...@uxland/localization@1.0.3) (2023-05-30)
 
 **Note:** Version bump only for package @uxland/localization

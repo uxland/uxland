@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.6](https://github.com/uxland/uxland/compare/@uxland/redux@2.1.5...@uxland/redux@2.1.6) (2023-11-03)
+
+**Note:** Version bump only for package @uxland/redux
+
+
+
+
+
 ## [2.1.5](https://github.com/uxland/uxland/compare/@uxland/redux@2.1.4...@uxland/redux@2.1.5) (2023-10-30)
 
 
