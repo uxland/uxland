@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.5](https://github.com/uxland/uxland/compare/@uxland/utilities@1.0.4...@uxland/utilities@1.0.5) (2023-11-13)
+
+
+### Bug Fixes
+
+* **utilities:** change main in package.json ([f57156e](https://github.com/uxland/uxland/commit/f57156e555dcc00ad8730200cb8a5e18a656074f))
+
+
+
+
+
 ## [1.0.4](https://github.com/uxland/uxland/compare/@uxland/utilities@1.0.3...@uxland/utilities@1.0.4) (2023-11-13)
 
 
